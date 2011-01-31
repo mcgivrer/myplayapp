@@ -1,3 +1,84 @@
-h1. Play! framework - tutoriel partie 2
+Dans le "précédent article":https://github.com/mcgivrer/myplayapp/blob/master/playframework-partie-1.textile, nous avons vu comment installer notre environnement Play! et comment travailler confortablement avec une IDE digne de ce nom, à savoir Eclipse ou bien Netbeans.
+Nous avons également créé une première entité persisté via JPA (merci Java 6) et de plus réalisé une classe de test JUnit assistée par Play!.  Nous sommes presque prêt à travailler de façon professionnelle: il nous manque juste un middleware de gestion de configuration et de version.
 
-h2. Bientôt
+h1. Git'igication
+
+Certes il existe de très nombreuses solutions de gestion des versions de code sources, et le choix n'en est que plus difficile. Aussi vais-je non pas me lancer dans un comparatif des outils existant (plus ou moins libres, suivant les cas), a savoir CVS, subversion (pour les plus connu et anciens) mais aussi, git[1], mercurial(hg)[2], bazaar[3], etc..., mais directement vous en imposer un pour ce tutoriel: Git.
+
+Et je vais même faire pire, je vous impose une plate-forme d'accueil: "github.com":http://github.com/ .
+En effet, notre tutoriel est hébergé, pour des raisons on ne peut plus pratique, sur cette plate-forme Git. Je vais donc vous en expliquer l'intégration à votre projet.
+
+En quelques mot, Git est une solution de versioning qui a l'avantage d'être non centralisée, mais obéissant au principe de distribution. Ainsi un même dépôt peut être cloné de nombreuse fois par des personnes différentes, et par la suite "fusionnés" via l'outil lui même vers un dépôt maître.
+
+Je vous conseille pour comprendre et survivre avec Git la lecture de ce livre "Pragmatic guide to git":http://www.pragprog.com/titles/pg_git/pragmatic-guide-to-git, et de garder en référence ce document "Git Cheat Sheet":http://ktown.kde.org/~zrusin/git/git-cheat-sheet-large.png. Certes tous deux écrits dans la langue de Shakespeare, mais lecture indispensable pour une gestion des sources réussie. Pour ceux qui souhaitent aller plus loin, je vous propose la lecture de "Git Community Book"[4] qui existe également en version PDF.
+
+h2. Création du dépôt master
+
+Commençons par intégrer notre projet dans un dépôt maître. Pour cela, assurez vous d'avoir un compte(au passage, totalement gratuit dans le cas ou votre projet reste en accès public) chez github.com. Pour cela je vous laisse parcourir le site et la documentation mise à disposition des utilisateurs. Mais à l'issue de la création du repository de votre projet, vous vous retrouvez avec une url du style:
+
+pre. 
+    git@github.com:[username]/[projectname].git
+ 
+C'est sur cette adresse de dépôt, que nous appellerons par la suite "master", que devra pointer votre dépôt local afin d'y pousser vos modifications.
+
+_*nota:* N'oubliez pas, comme indiqué sur le site de github.com, d'initialiser auparavant les "variables globales GIT suivantes":http://help.github.com/git-email-settings/ :_
+
+pre. 
+    $ git config --global user.name "[user_name]"
+    $ git config --global user.email "[email_for_user]@gmail.com"
+
+_et de créer et déclarer votre "clé SSH publique":http://help.github.com/linux-key-setup/ , afin de pouvoir pousser votre matière sur le dépôt maître._
+
+Donc, positionnons nous dans le répertoire locale de votre projet
+
+pre. 
+    $ cd ~/projets/myplayapp
+
+et lançons l'initialisation du dépôt local avec la commande Git:
+
+pre. 
+    $ git init
+  
+Voilà qui est fait. Ensuite, ajoutons nos fichiers du projet et commitons ces modifications dans le dépôt local:
+
+pre. 
+    $ git add *
+    $ git commit -m 'Création du projet intial'
+
+Enfin, déclarons notre dépôt maître, poussons-y les modifications locales:
+
+pre. 
+    $ git add remote master git@github.com:[username]/[projectname].git
+    $ git push origin master
+
+où @username@ et @projectname@ correspondent à votre nom d'utilisateur sous Github et le nom de votre projet nouvellement créé via l'interface d'administration.
+
+Voilà. Le répository local et le repository maître(master) sont créés et prêt à servir.
+
+Penchons nous du coté d'Eclipse et voyons comment gérer notre dépôt de sources depuis cet IDE.
+
+h2. Eclipse et EGit
+
+Nous sommes parti dans le précédent article pour utiliser Eclipse. Afin d'optimiser notre environnement de travail, je vous propose ici l'installation d'un nouveau plugin permettant d'intégrer à Eclipse l'utilisation de Git: "Egit":http://www.eclipse.org/egit/.
+
+Tout d'abord, un grand merci ) la fondation Eclipse pour proposer des outils aussi bien intégrer sur leur site, et ensuite, passons à l'installation qui, tenez vous bien, va être extrêmement complexe:
+
+
+
+Enfin, pour découvrir toutes les finesses et subtilités de l'outil, précipitez vous vers les deux pages web suivante :
+
+* "Git for Eclipse users":http://wiki.eclipse.org/EGit/Git_For_Eclipse_Users
+* "EGit - User Guide":http://wiki.eclipse.org/EGit/User_Guide
+
+
+
+h1. Références
+
+fn1. site de Git "http://git-scm.com/":http://git-scm.com/
+
+fn2. Site de Mercurial (Hg) tools "http://mercurial.selenic.com/":http://mercurial.selenic.com/
+
+fn3. Site de Bazaar "http://bazaar.canonical.com/en/":http://bazaar.canonical.com/en/
+
+fn4. Livre sur Git écrit par la communauté d'utilisateur: "http://book.git-scm.com/":http://book.git-scm.com/
+
