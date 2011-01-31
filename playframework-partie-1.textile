@@ -13,11 +13,11 @@ Téléchargez l'archive contenant le framework et dézippez la dans le répertoi
 Ensuite, ajoutez ce nouveau chemin à votre chemin système. 
 Sous Linux, éditer votre fichier ~/.bashrc, et ajouter en fin de fichier
 
-    export PATH=%PATH%:~/tools/play:.
+pre.    export PATH=%PATH%:~/tools/play:.
 
 sous Windows, éditer vos variables système (Propriété du poste de travail, onglet "Avancé", boutons "variables systèmes" et modifier l'entrée PATH en ajoutant à la fin
 
-    ;D;\tools\play;.
+pre.    ;D;\tools\play;.
 
 et le tour est joué.
 
@@ -26,13 +26,14 @@ h2. Création de l'application
 fermez puis relancer votre session utilisateur pour être sur que la nouvelle valeur de PATH soit bien prise en compte.
 enfin,ouvrez une console de commande (Windows) ou un terminal (Linux) et tapez :
 
+pre. 
     mkdir ~/Projects/Java/play
     cd ~/Projects/Java/play
     play new myplayapp
 
 La console indique alors :
-frederic@nostromo6:~/Projects/Java/play$ play new myplayapp
-@
+
+pre. frederic@nostromo6:~/Projects/Java/play$ play new myplayapp
     ~        _            _ 
     ~  _ __ | | __ _ _  _| |
     ~ | '_ \| |/ _' | || |_|
@@ -48,12 +49,12 @@ frederic@nostromo6:~/Projects/Java/play$ play new myplayapp
     ~ Start it with : play run myplayapp
     ~ Have fun!
     ~
-@
 
 Editons dans l'arborescence du projet créé le fichier myplayapp/conf/application.conf
 
 et remplaçons dans les lignes suivantes:
 
+pre. 
 	# Database configuration
 	# ~~~~~
 	# Enable a database engine if needed.
@@ -68,6 +69,7 @@ Remplaçons la ligne du db=mem par un db=fs et supprimons le #, ceci afin d'avoi
 
 Ce qui donne:
 
+pre. 
 	# Database configuration
 	# ~~~~~
 	# Enable a database engine if needed.
@@ -80,12 +82,12 @@ Ce qui donne:
 
 Vérifions que celle-ci est opérationnelle avec la commande :
 
-play run
+pre. play run
 
 et accédons l'url http://localhost:9000/
 
-p=.!https://lh6.googleusercontent.com/_n8m1NWoVppU/TUS1JnCb_2I/AAAAAAAAG48/tODeSqPEtgU/s460/Play%21framework%20-%20premi%C3%A8re%20partie.png (figure 0 - Premier pas dans le monde de Play!)!
-figure 0 - Premier pas dans le monde de Play!
+p=. !https://lh6.googleusercontent.com/_n8m1NWoVppU/TUS1JnCb_2I/AAAAAAAAG48/tODeSqPEtgU/s460/Play%21framework%20-%20premi%C3%A8re%20partie.png (figure 0 - Premier pas dans le monde de Play!)!
+^figure 0 - Premier pas dans le monde de Play!^
 
 Voila, l'application est créée...  Trop dur !
 
@@ -95,11 +97,13 @@ Ok, maintenant, pour pouvoir travailler proprement, je vous propose d'utiliser E
 1. Eclipse
 la commande magique suivante permet de générer un projet Play! éditable dans Eclipse. Simplement, placez-vous dans le répertoire de votre projet nouvellement créé:
 
+pre. 
     cd ~/Projects/Java/play/myplayapp
     play eclipsify .
 
 ce qui donne dans la console:
 
+pre. 
     frederic@nostromo6:~/Projects/Java/play/myplayapp$ play eclipsify .
     ~        _            _ 
     ~  _ __ | | __ _ _  _| |
@@ -119,32 +123,34 @@ ce qui donne dans la console:
 Maintenant, ouvrez votre Eclipse préféré dans une workspace de votre choix (ex: ~/workspaces/java/play/myplayapp).
 
 p=. !https://lh5.googleusercontent.com/_n8m1NWoVppU/TUS1Jeib5xI/AAAAAAAAG44/Y_69yEeOjyo/s460/Play%21framework%20-%20premi%C3%A8re%20partie.png (figure 1 - Ouverture d'un nouveau workspace pour importer notre projet Play!)!
-figure 1 - Ouverture d'un nouveau workspace pour importer notre projet Play!
+^figure 1 - Ouverture d'un nouveau workspace pour importer notre projet Play!^
 
 Puis, via le menu contextuel dans l'explorateur de projet (sidebar de gauche...) faite "Import > Import..." puis dans la fenêtre affichée, choisissez "Existing projects into Workspace". 
 
 p=. !https://lh5.googleusercontent.com/_n8m1NWoVppU/TUS1IYvLp-I/AAAAAAAAG4s/kZX9TF3S2ok/s460/Play%21framework%20-%20premi%C3%A8re%20partie.png (figure 2 - Import du projet play "eclipsifié" dans votre workspace)!
-figure 2 - Import du projet play "eclipsifié" dans votre workspace
+^figure 2 - Import du projet play "eclipsifié" dans votre workspace^
 
 Parcourez le répertoire de votre projet et valider.
 
 p=. !https://lh6.googleusercontent.com/_n8m1NWoVppU/TUS1HYNYZAI/AAAAAAAAG4k/-m1LfXUJ-kI/s460/Play%21framework%20-%20premi%C3%A8re%20partie.png (figure 3 - Projet play détecté par Eclipse (3.5 ici) et prêt à être importé)!
-figure 3 - Projet play détecté par Eclipse (3.5 ici) et prêt à être importé
+^figure 3 - Projet play détecté par Eclipse (3.5 ici) et prêt à être importé^
 
 Un click sur Finish, et voilà votre projet importé, et prêt a être éditer dans Eclipse
 
 p=. !https://lh3.googleusercontent.com/_n8m1NWoVppU/TUUgwRfk8yI/AAAAAAAAG6E/ccri2Gx-45o/s460/Capture-04-Java%20EE%20-%20myplayapp-app-controllers-Application.java%20-%20Eclipse%20.png (figure 4 - Eclipse présentant votre projet Play! fraîchement importé)!
-figure 4 - Eclipse présentant votre projet Play! fraîchement importé
+^figure 4 - Eclipse présentant votre projet Play! fraîchement importé^
 
 Et voilà !
 
 Sous NetBeans, la proécédure est très similaire, la commande permettant de créer la définition du projet Netbeans étant la suivante:
 
+pre. 
     cd ~/Projects/Java/play/myplayapp
     play netbeanify .
 
 Ce qui trace dans la console:
 
+pre. 
     frederic@nostromo6:~/Projects/Java/play/myplayapp$ play netbeansify .
     ~        _            _ 
     ~  _ __ | | __ _ _  _| |
@@ -180,7 +186,7 @@ Un jeu est modélisé par un titre, une plateforme (que nous "entité-iserons" p
 Précipitons nous sous notre IDE préféré, Eclipse pour ma part, et créons une première classe Game dans le package models. N'oubliez pas d'hériter de la classe Model (play.db.jpa.Model) afin de pouvoir faire persister notre jeu dans une base de données (nous aborderons cela au chapitre suivant). Utiliser l'assistant pour vous faciliter la tâche:
 
 p=. !https://lh5.googleusercontent.com/_n8m1NWoVppU/TUS1H_GFOqI/AAAAAAAAG4o/r-XbJRDwYWc/s460/Play%21framework%20-%20premi%C3%A8re%20partie.png (figure 5 - La classe Game héritant de play.db.jpa.Model)!
-figure 5 - La classe Game héritant de play.db.jpa.Model
+^figure 5 - La classe Game héritant de play.db.jpa.Model^
 
 Et après un clic sur "finish", ajoutons les choses suivantes:
 Tout d'abord, 
@@ -202,6 +208,7 @@ Tout d'abord,
 
 Ce qui nous donne a peu de chose près la classe suivante:
 
+pre. 
  /**
   * Projet myplayapp
   * Entité Game
@@ -260,6 +267,7 @@ Créons donc une classe de test dans le répertoire de source test et nommons le
 
 Notre petite classe est destinée à tester la persistance de nos entitée:
 
+pre. 
 public class EntitiesTest extends UnitTest {
   @Test
   public void testGame(){
@@ -281,7 +289,7 @@ public class EntitiesTest extends UnitTest {
 
 Ok,maintenant, testons notre test ;)  et lançons dans la sessions de commandes précédemment ouverte, la ligne suivante:
 
-    play test
+pre.    play test
 
 _nota: depuis Eclipse, via la bar d'icônes de debug, cliquez sur le bouton "Run Configurations...", et dans le groupe "Java applications", lancer "Test myplayapp"._
 
@@ -290,25 +298,23 @@ Vous pouvez alors lancer le ou les tests que vous avez créés.
 
 La page appraissant à l'écran vous propose de lancer les tests souhaités. choisissez EntitiesTest et cliquez sur "Start !".
 
-Capture-06-Play! - Tests runner - Google Chrome.png
-
-p=. !https://lh3.googleusercontent.com/_n8m1NWoVppU/TUS1IgQwUwI/AAAAAAAAG4w/QyKZs-4pReA/s460/Play%21framework%20-%20premi%C3%A8re%20partie.png (figure 6 - Lancement des tests unitaires via l'interface Web de Play!)!
-figure 6 - Lancement des tests unitaires via l'interface Web de Play!
+p=. !https://lh3.googleusercontent.com/_n8m1NWoVppU/TUS1IgQwUwI/AAAAAAAAG4w/QyKZs-4pReA/s460/Play%21framework%20-%20premi%C3%A8re%20partie.png (figure 6 - Lancement des tests unitaires via l'interface Web de Play!
+^figure 6 - Lancement des tests unitaires via l'interface Web de Play!^
 
 Le test choisi déroulé, le résultat de celui-ci apparait dans la même page:
 
 p=. !https://lh5.googleusercontent.com/_n8m1NWoVppU/TUS1JPygvfI/AAAAAAAAG40/YlgavBdohqs/s460/Play%21framework%20-%20premi%C3%A8re%20partie.png (figure 7 - Résultat du test unitaire exécuté)!
-figure 7 - Résultat du test unitaire exécuté
+^figure 7 - Résultat du test unitaire exécuté^
 
 Vous pouvez aussi choisir de lancer l'intégralité des tests unitaires proposés nativement par Play!, ainsi que vos tests "custom".
 
 Pour cela rappelez la page des tests et cliquer sur le lien "select all" puis sur "Start !". Tous les tests natifs sont appelés, y compris un test via Sélénium vérifiant le bon affichage de la page d'accueil de l'application.
 
 p=. !https://lh4.googleusercontent.com/_n8m1NWoVppU/TUS1KDpD9sI/AAAAAAAAG5A/wQaWPOp6tdo/s460/Play%21framework%20-%20premi%C3%A8re%20partie.png (figure 8 - Tous les tests ont été lancés et exécutés avec succès)!
-figure 8 - Tous les tests ont été lancés et exécutés avec succès
+^figure 8 - Tous les tests ont été lancés et exécutés avec succès^
 
 h1. Conclusion
 
-Nous voilà avec les prémices d'une belle application Play! Nous avons découvert a travars ces premiers pas, la richesse technique et la complétude proposées par ce fabuleux framework Java. Nous découvrirons au prochain épisode notre première page bien à nous et la mis en place des modules CRUD et Security, natif eux aussi à Play! mais non activés par défaut.
+Nous voilà avec les prémices d'une belle application Play! Nous avons découvert à travers ces premiers pas, la richesse technique et la complétude proposées par ce fabuleux framework Java. Nous découvrirons au prochain épisode notre première page bien à nous et la mis en place des modules CRUD et Security, natif eux aussi à Play! mais non activés par défaut.
 
-to be continued...
+to be "continued":https://github.com/mcgivrer/myplayapp/blob/master/playframework-partie-2.textile...

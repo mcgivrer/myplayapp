@@ -3,3 +3,17 @@
 Ce projet est accompagné d'une série d'articles publiés sur mon blog (http://www.mcgivrer.fr) et également présent dans le "repository GIT":http://github.com/McGivrer/myplayapp de l'application (http://github.com/McGivrer/myplayapp).
 
 Bonne lecture, et bonne découverte de ce fantastique framework "Play!":http://www.playframework.org/ proposé par l'équipe de Zenity.com
+
+
+* "Partie 1 - Installation et premiers pas":https://github.com/mcgivrer/myplayapp/blob/master/playframework-partie-1.textile
+** Installation du framework sous windows ou sous Ubuntu (linux debian compliant)
+** Mise en place d'un environnement de travail ad-hoc.
+
+* "Partie 2 - Page d'accueil et zone d'aministration":https://github.com/mcgivrer/myplayapp/blob/master/playframework-partie-1.textile
+** Git'ification du projet et utilisation du plugin EGit d'eclipse
+** Première page HTML
+** Mise en place des plugin Security et CRUD
+
+* "Partie 3 - Zone d'administration personnalisée et envoi de mails":https://github.com/mcgivrer/myplayapp/blob/master/playframework-partie-1.textile
+** Création d'une zone d'administration
+** Extension de la classe Mailer de Play! framework
