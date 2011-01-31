@@ -1,0 +1,3 @@
+21:45:35,635 INFO  ~ Starting /home/frederic/Projects/Java/play/myplayapp
+21:45:35,714 WARN  ~ You're running Play! in DEV mode
+21:45:35,797 ERROR ~ Could not bind on port 9000

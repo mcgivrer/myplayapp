@@ -1,0 +1,5 @@
+30 janv. 2011 01:19:34,144 INFO  ~ Starting /home/frederic/Projects/Java/play/myplayapp
+30 janv. 2011 01:19:34,829 WARN  ~ You're running Play! in DEV mode
+30 janv. 2011 01:19:34,915 INFO  ~ Listening for HTTP on port 9000 (Waiting a first request to start) ...
+30 janv. 2011 01:19:47,815 INFO  ~ Connected to jdbc:hsqldb:mem:playembed
+30 janv. 2011 01:19:48,528 INFO  ~ Application 'myplayapp' is now started !

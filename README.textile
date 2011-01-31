@@ -1,0 +1,5 @@
+"myplayapp" est un projet de découverte du framework Play!, accessoirement, c'est une application de gestion d'une bibliothèque de jeux vidéo.
+
+Ce projet est accompagné d'une série d'articles publiés sur mon blog (http://www.mcgivrer.fr) et également présent dans le "repository GIT":http://github.com/McGivrer/myplayapp de l'application (http://github.com/McGivrer/myplayapp).
+
+Bonne lecture, et bonne découverte de ce fantastique framework "Play!":http://www.playframework.org/ proposé par l'équipe de Zenity.com
