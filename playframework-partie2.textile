@@ -63,8 +63,6 @@ Nous sommes parti dans le précédent article pour utiliser Eclipse. Afin d'opti
 
 Tout d'abord, un grand merci ) la fondation Eclipse pour proposer des outils aussi bien intégrer sur leur site, et ensuite, passons à l'installation qui, tenez vous bien, va être extrêmement complexe:
 
-
-
 Enfin, pour découvrir toutes les finesses et subtilités de l'outil, précipitez vous vers les deux pages web suivante :
 
 * "Git for Eclipse users":http://wiki.eclipse.org/EGit/Git_For_Eclipse_Users
