@@ -347,6 +347,16 @@ vous remarquerez la ligne :
 
 Celle-ci liste les champs que vous souhaitez afficher dans la liste des jeux.
 
+
+p=. !http://lh6.ggpht.com/_n8m1NWoVppU/TUdtwiqcqkI/AAAAAAAAG_M/L4GJ5zjh9vQ/Capture-2.12-custom%20list%20of%20fields.jpg(figure 2.12 - Liste de champs personnalisé pour la liste des jeux videos)!
+^figure 2.12 - Liste de champs personnalisé pour la liste des jeux videos^
+
+Vous remarquerz qu'ici aussi, tout les libellés sont traduits.
+
+h2. Secure
+
+_todo_
+
 h1. Références
 
 
