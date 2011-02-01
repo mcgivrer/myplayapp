@@ -86,7 +86,7 @@ pre. play run
 
 et accédons l'url http://localhost:9000/
 
-p=. !http://lh6.ggpht.com/_n8m1NWoVppU/TUS1JnCb_2I/AAAAAAAAG48/tODeSqPEtgU/s640/Play%21framework%20-%20premi%C3%A8re%20partie.png (figure 0 - Premier pas dans le monde de Play!)!
+p=. !public/images/tutorial/part-1/Capture-00-Your%20application%20is%20ready%20%21%20-%20Google%20Chrome.png(figure 0 - Premier pas dans le monde de Play!)!
 ^figure 0 - Premier pas dans le monde de Play!^
 
 Voila, l'application est créée...  Trop dur !
