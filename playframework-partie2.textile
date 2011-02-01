@@ -4,7 +4,7 @@ WIP - WIP - WIP - WIP - WIP - WIP - WIP - WIP - WIP - WIP - WIP - WIP - WIP - WI
 Dans le "précédent article":https://github.com/mcgivrer/myplayapp/blob/master/playframework-partie-1.textile, nous avons vu comment installer notre environnement Play! et comment travailler confortablement avec une IDE digne de ce nom, à savoir Eclipse ou bien Netbeans.
 Nous avons également créé une première entité persisté via JPA (merci Java 6) et de plus réalisé une classe de test JUnit assistée par Play!.  Nous sommes presque prêt à travailler de façon professionnelle: il nous manque juste un middleware de gestion de configuration et de version.
 
-h1. Git'igication
+h1. Git'ification
 
 Certes il existe de très nombreuses solutions de gestion des versions de code sources, et le choix n'en est que plus difficile. Aussi vais-je non pas me lancer dans un comparatif des outils existant (plus ou moins libres, suivant les cas), a savoir CVS, subversion (pour les plus connu et anciens) mais aussi, git[1], mercurial(hg)[2], bazaar[3], etc..., mais directement vous en imposer un pour ce tutoriel: Git.
 
