@@ -86,7 +86,7 @@ pre. play run
 
 et accédons l'url http://localhost:9000/
 
-!http://lh6.ggpht.com/_n8m1NWoVppU/TUS1JnCb_2I/AAAAAAAAG48/tODeSqPEtgU/s640/Play%21framework%20-%20premi%C3%A8re%20partie.png (figure 0 - Premier pas dans le monde de Play!)!
+p=. !http://lh6.ggpht.com/_n8m1NWoVppU/TUS1JnCb_2I/AAAAAAAAG48/tODeSqPEtgU/s640/Play%21framework%20-%20premi%C3%A8re%20partie.png (figure 0 - Premier pas dans le monde de Play!)!
 ^figure 0 - Premier pas dans le monde de Play!^
 
 Voila, l'application est créée...  Trop dur !

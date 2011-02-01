@@ -1,0 +1,13 @@
+# You can specialize this file for each language.
+# For example, for French create a messages.fr file
+#
+title=Titre
+platform=Platforme
+description=Description
+publish=Publié
+testContent=Texte du test
+developerStudio=Studio de développement
+editor=Editeur
+yearOfPublication=Année d'édition
+note=Note
+cover=Jaquette
