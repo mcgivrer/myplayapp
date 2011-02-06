@@ -10,7 +10,7 @@ import play.db.jpa.Model;
 
 /**
  * Game est une entité représentant un jeu video dans la bibliothèque.
- * @author frederic
+ * @author McGivrer
  */
 @Entity
 public class Game extends Model {
@@ -28,6 +28,8 @@ public class Game extends Model {
 	public Integer yearOfPublication;
 	public Integer note;
 	public String cover;
+	@Required
+	public User author;
 
 	/**
 	 * Default constructor for persistence purpose.
@@ -41,10 +43,11 @@ public class Game extends Model {
 	 * @param yearOfPublication
 	 * @param note
 	 * @param cover
+	 * @param author
 	 */
 	public Game(String title, String Game, String description, Boolean publish,
 			String testContent, String developerStudio, String editor,
-			Integer yearOfPublication, Integer note, String cover) {
+			Integer yearOfPublication, Integer note, String cover, User author) {
 		this.title=title;
 		this.description=description;
 		this.publish = publish;
@@ -54,13 +57,12 @@ public class Game extends Model {
 		this.yearOfPublication = yearOfPublication;
 		this.note = note;
 		this.cover = cover;
+		this.author = author;
 	}
-	
 	/**
 	 * Displayed name in list
 	 */
 	public String toString(){
 		return this.title + "(" + this.yearOfPublication + ")";
 	}
-	
 }

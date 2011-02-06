@@ -11,6 +11,26 @@
         #{get 'moreScripts' /}
     </head>
     <body>
-        #{doLayout /}
+    	<header>
+    		<h1>&{'site.title'}</h1>
+    		<h2>&{'site.subtitle'}</h2>
+    		<nav>
+    			<ul>
+    				#{if !user}
+    				<li><a href="@{Application.register()}" title="&{'home.actions.register.label'}">&{'home.actions.register'}</a></li>
+    				<li><a href="@{Application.login()}" title="&{'home.actions.login.label'}">&{'home.actions.login'}</a></li>
+    				#{/if}
+    				#{else}
+    				<li><a href="@{Application.logout()}" title="&{'home.actions.logout.label'}">&{'home.actions.logout'}</a></li>
+    				#{/else}
+    			</ul>
+    		</nav>
+    	</header>
+    	<section id="content">
+	        #{doLayout /}
+    	</section>
+    	<footer>
+    		<p>&{'site.footer.label'}</p>
+    	</fooyter>
     </body>
 </html>

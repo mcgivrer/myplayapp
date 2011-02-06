@@ -1,6 +1,10 @@
 # You can specialize this file for each language.
 # For example, for French create a messages.fr file
 #
+site.title=My Video Games list
+site.subtitle=LE site pour gérer Votre liste de jeux vidéos.
+site.welcome.label=Bienvenu 
+site.footer.label=Copyright (c) 2011 - Frédéric Delorme - <a href="mailto:frederic.delorme@web-context.com">contact</a>
 title=Titre
 platform=Platforme
 description=Description
@@ -11,3 +15,16 @@ editor=Editeur
 yearOfPublication=Année d'édition
 note=Note
 cover=Jaquette
+home.actions.register=S'enregistrer
+home.actions.register.label=S'enregistrer sur le site comme nouvel utilisateur
+home.actions.login=Se connecter
+home.actions.login.label=Se connecter au site avec mon compte utilisateur existant
+home.actions.logout=Se déconnecter
+home.actions.logout.label=Se déconnecter du site de gestion de mes liste de jeux vidéos
+home.games.title=List of games for %s
+home.games.noitems=Aucun jeu dans la base.
+home.games.game.description=Description
+home.games.game.test=Test
+admin.users.label=Utilisateurs
+admin.games.label=Jeux Vidéos
+admin.preferences.label=Préférences

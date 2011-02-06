@@ -1,4 +1,36 @@
 #{extends 'main.html' /}
-#{set title:'Home' /}
 
-#{welcome /}
+<div id="games" class="games">
+	#{if games && user}
+		<h1>&{'home.games.title', user.username}</h1>
+		#{list items:games, as:'game'}
+			#{set title:'Home / '+game.platform+'/'+game.title /}
+			<div class="game" id="game_${game.id}">
+					<div class="title"><span>#${game.id}.</span> ${game.platform}/${game.title}</div>
+				<div class="side">
+					#{if game.cover}
+					<div class="cover">
+						<img src="public/images/games/${game.platform}/${game.title}/cover/${game.cover}.resized" 
+							title="${game.platform}/${game.title}" width="60"/>
+					</div>
+					#{/if}
+					<div class="tags">
+					</div>
+				</div>
+				<div class="info">
+					#{if game.description}
+					<div class="label">&{'home.games.game.description'}</div>
+					<div class="bloc">${game.description}</div>
+					#{/if}
+					#{if game.testContent}
+					<div class="label">&{'home.games.game.test'}</div>
+					<div class="bloc">${game.testContent}</div>
+					#{/if}
+				</div>
+			</div>
+		#{/list}
+	#{/if}
+	#{else}
+		<p>&{'home.games.noitems'}</p>
+	#{/else}
+</div> 

@@ -1,0 +1,23 @@
+User(admin):
+   username: admin
+   password: admin
+   firstname: Administrator
+   lastname: Blog manager
+   email: frederic.delorme@web-context.com
+   weblog: http://www.mcgivrer.fr/
+   image: test
+   status: a
+   role: ADMINISTRATOR
+   
+Game(game1):
+   title: Risen
+   platform: X360
+   description: Risen est une jeu de rôle avec une vue à la troisième personne.
+   publish: true
+   testContent: Le jeu Risen, même si il a de nombreux défaut visuels dans sa version XBox360, il n'en reste pas moins une belle et longue aventure.
+   developerStudio: WizardBox
+   editor: Deep Silver
+   yearOfPublication: 2009
+   note: 6
+   cover: x360-risen-cover.jpg
+   author: admin
