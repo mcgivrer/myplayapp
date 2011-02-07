@@ -60,19 +60,3 @@ Les méthodes intéressantes sont:
 
 Référez vous à la "documentation":http://www.playframework.org/documentation/1.0.1/templates présente sur le site de Play! pour découvrir toutes les subtilités de Groovy, qui est le langage utilisé ici.
 
-
-
-
-h1. Références
-
-
-fn1. site de Git "http://git-scm.com/":http://git-scm.com/
-
-fn2. Site de Mercurial (Hg) tools "http://mercurial.selenic.com/":http://mercurial.selenic.com/
-
-fn3. Site de Bazaar "http://bazaar.canonical.com/en/":http://bazaar.canonical.com/en/
-
-fn4. Livre sur Git écrit par la communauté d'utilisateur: "http://book.git-scm.com/":http://book.git-scm.com/
-
-WIP - WIP - WIP - WIP - WIP - WIP - WIP - WIP - WIP - WIP - WIP - WIP - WIP - WIP - WIP - WIP - WIP - WIP - WIP
-
