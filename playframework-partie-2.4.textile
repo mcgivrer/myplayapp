@@ -69,7 +69,7 @@ pre.
 
 Référez vous à la "documentation":http://www.playframework.org/documentation/1.0.1/templates présente sur le site de Play! pour découvrir toutes les subtilités de Groovy, qui est le langage utilisé ici.
 
-Noter l'importance de @#{extends main.html /}@ qui permet à votre page d'hériter de la mise en page de votre site située dans @app/view/maint.html@.
+Noter l'importance de @#{extends main.html /}@ qui permet à votre page d'hériter de la mise en page de votre site située dans @app/view/main.html@.
 
 Pour le moment, cette page se résume à :
 
