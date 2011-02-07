@@ -56,7 +56,16 @@ Les méthodes intéressantes sont:
 
 * @#{if}#{/if}@ délimite une condition
 * @#{else}#{/else}@ délimite le cas échéant de la condition
-* @#{list items:[liste], as:'[item]'}@ permet de parcourir une liste [liste] avec comme index l'objet [item]. il est alors possible de référencer chaque occurense dans la liste par "item.attribut, où attribut est un attribut valorisé de l'occurence.
+* @#{list items:[liste], as:'[item]'}@ permet de parcourir une liste [liste] avec comme index l'objet [item]. il est alors possible de référencer chaque occurense dans la liste par "@[item].attribut@", où attribut est un attribut valorisé de l'occurence.
+
+Par exemple, la génération d'une liste de prénoms d'utilisateurs:
+
+pre. 
+    <ul>
+        #{list:users, as: 'user'}
+        <li>@user.firstname.</li>
+        #{/list}
+    </ul>
 
 Référez vous à la "documentation":http://www.playframework.org/documentation/1.0.1/templates présente sur le site de Play! pour découvrir toutes les subtilités de Groovy, qui est le langage utilisé ici.
 
