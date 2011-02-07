@@ -15,16 +15,26 @@ editor=Editor
 yearOfPublication=Year
 note=Note
 cover=Cover
+
+#Home page
+#Actions
 home.actions.register=Register
 home.actions.register.label=Register a new user account on this site
 home.actions.login=Login
 home.actions.login.label=Login with an existing user account
 home.actions.logout=Logout
 home.actions.logout.label=Logout connected user from this site
+
+#Games zone
 home.games.title=List of games for %s
 home.games.noitems=No game in database !
 home.games.game.description=Description
 home.games.game.test=Test
+
+#Platforms zone
+home.platforms.title=
+
+#Administration zone
 admin.users.label=Users
 admin.games.label=Games
 admin.preferences.label=Preferences
