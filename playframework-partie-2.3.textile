@@ -1,5 +1,14 @@
 h2. Secure
 
+h3. Activation du module Secure
+
+Pour le module secure, il suffira d'ajouter la ligne:
+
+pre.
+	module.secure=${play.path}/modules/crud
+
+h3. Modele User pour le login
+
 Avant de pouvoir mettre en place la sécurité, nous avons besoin de pouvoir modéliser les utilisateurs qui pourront se connecter à notre application de gestion de liste de jeux.
 
 Pour cela, créons l'entité User suivante:

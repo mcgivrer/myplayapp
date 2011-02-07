@@ -2,7 +2,7 @@ h1. Les modules
 
 Comme mentionné précédemment, nous souhaitons mettre en oeuvre deux plugins du framework Play! Ces deux plugins, pourtant natifs, ne sont pas activé par défaut. Nous allons le faire de ce pas.
 
-h2. Activation CRUD et Secure
+h2. Activation CRUD
 
 Pour activer un plugin engénéral, il faut éditer le fichier @[projectname]/conf/application.conf@ et se rendre vers la section traitant des ... modules !
 
@@ -44,14 +44,6 @@ pre.
 	GET     /admin	     module:crud
 
 Cette déclaration va permettre d'accéder au page générée dynamiquement a partir de l'url http://localhost:9000/admin, (pour un accès depuis le server play en mode run).
-
-h3. Secure
-
-Pour le module secure, il suffira d'ajouter la ligne:
-
-pre.
-	module.secure=${play.path}/modules/crud
-
 
 Voilà. Comme vu déjà auparavant, on s'apperçoit que les fonctionnalité de Play! sont d'une simplicité de mise en oeuvre déconcertante. Tout développeur Java se souvient des nombreux fichier de configuration qu'ils soient @.properties@, @.conf@ ou @.xml@, ils étaient dans tous les cas nombreux. Ici, point de complexité, juste du bon sens.
 
