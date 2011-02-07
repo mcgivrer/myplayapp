@@ -30,12 +30,13 @@
 	#{else}
 		<p>&{'home.games.noitems'}</p>
 	#{/else}
+<div class="clearRight"></div>
 </section>
 <section id="platforms">
 	<h2>&{'home.platforms.title'}</h2>
 	#{if platforms && user}
 		<ul>
-			<li><a href="@{Application.index()}" title="&{'home.platform.filter.showAll.label'}">&{'home.platform.filter.showAll'}</a></li>		
+			<li><a href="@{Application.index()}" title="&{'home.platform.filter.showAll.label'}">&{'home.platforms.filter.showAll'}</a></li>		
 			#{list items:platforms, as:'platform'}
 			<li><a href="@{Application.filterByPlatform(platform)}" title="&{'home.platform.filter.label', platform}">${platform}</a></li>
 			#{/list}

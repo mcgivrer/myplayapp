@@ -33,7 +33,8 @@ home.games.game.description=Description
 home.games.game.test=Test
 
 #Platforms zone
-home.platforms.title=
+home.platforms.title=Platformes
+home.platforms.filter.showAll=Toutes
 
 #Administration zone
 admin.users.label=Utilisateurs
