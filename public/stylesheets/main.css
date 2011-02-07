@@ -5,7 +5,41 @@ html > *{
 body {
 	font-family:Tahoma, Verdana, Sans Serif;
 	font-size:10pt;
+	margin:0em 5em;
 }
+header {
+    background-color:#000;
+    color:#fff;
+}
+header nav.menu{
+	display:inline-block;
+}
+header nav.menu ul{
+	display:block;
+	list-style:none;
+	margin:0em; 
+	padding:0.2em;
+}
+header nav.menu ul li {
+	display:inline-block;
+	background-color:#ddd;
+	margin:0px; padding:0em 0.2em;
+	-weblit-border-radius:0.2em;
+	-moz-border-radius:0.2em;
+	border-radius:0.4em;
+	border:0.15em inset #aaa;
+}
+header nav.menu ul li a{
+	color:#000;
+	text-decoration:none;
+	font-size:0.8em;
+}
+header nav.menu ul li:hover {
+	background-color:#fff;
+	margin:0px; padding:0em 0.2em;
+	color:#666;
+}
+
 .clear{
     clear:both;
 }
@@ -17,21 +51,28 @@ body {
 }
 .games{
 	display:block;
-	min-width:52em;
-	
+	width:62em;
 }
 .platforms{
-    float:left;
+    float:right;
     width:15em;
     padding:0.5em;
 }
+.platforms ul {
+	list-type:none;
+}
+.platforms li {
+	padding:none;
+}
+
 .game {
 	float:left;
 	display:block;
 	margin:0.5em;
 	padding-bottom:0.5em;
-	border-bottom:1px dotted #ddd;
-	min-width:25em;
+	/*border-bottom:1px dotted #ddd;*/
+	width:30em;
+	height:12em;
 	font-size:0.8em;
 }
 .cover {
@@ -43,7 +84,7 @@ body {
 }
 .title {
 	display:block;
-		font-size:12pt;
+	font-size:1.2em;
 	border-bottom:1px solid #ddd;
 	padding-bottom:5px;
 	margin-bottom:5px;
@@ -53,7 +94,6 @@ body {
 	color:#666;
 }
 .info {
-	display:block;
 	margin-left: 90px;
 	border-left:1px dotted #ddd;
 	padding-left:10px;
@@ -62,9 +102,17 @@ body {
 	display:block;
 	font-weight:bold;	
 }
-.bloc {
+.block {
 	display:block;
 	padding-bottom:10px;
 	width:25em;
 	clear:right;
+}
+footer{
+    background-color:#000;
+    color:#fff;
+    font-size:0.7em;
+    text-align:center;
+    padding:0.4em;
+    margin-top:1em;
 }

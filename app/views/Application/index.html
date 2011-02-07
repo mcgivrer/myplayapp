@@ -1,5 +1,16 @@
 #{extends 'main.html' /}
 
+<section id="platforms" class="platforms">
+	<h2>&{'home.platforms.title'}</h2>
+	#{if platforms && user}
+		<ul>
+			<li><a href="@{Application.index()}" title="&{'home.platform.filter.showAll.label'}">&{'home.platforms.filter.showAll'}</a></li>		
+			#{list items:platforms, as:'platform'}
+			<li><a href="@{Application.filterByPlatform(platform)}" title="&{'home.platform.filter.label', platform}">${platform}</a></li>
+			#{/list}
+		</ul>
+	#{/if}
+</section> 
 <section id="games" class="games">
 	#{if games && user}
 		<h1>&{'home.games.title', user?.username}</h1>
@@ -12,7 +23,7 @@
 					<div class="cover">
 						<a href="/public/images/games/${game.platform}/${game.title}/cover/${game.cover}">
 							<img src="/public/images/games/${game.platform}/${game.title}/cover/${game.cover}.resized" 
-								title="${game.platform}/${game.title}" width="60"/></a>
+								title="${game.platform}/${game.title}"/></a>
 					</div>
 					#{/if}
 					<div class="tags">
@@ -32,14 +43,4 @@
 	#{/else}
 <div class="clearRight"></div>
 </section>
-<section id="platforms">
-	<h2>&{'home.platforms.title'}</h2>
-	#{if platforms && user}
-		<ul>
-			<li><a href="@{Application.index()}" title="&{'home.platform.filter.showAll.label'}">&{'home.platforms.filter.showAll'}</a></li>		
-			#{list items:platforms, as:'platform'}
-			<li><a href="@{Application.filterByPlatform(platform)}" title="&{'home.platform.filter.label', platform}">${platform}</a></li>
-			#{/list}
-		</ul>
-	#{/if}
-</section> 
+
