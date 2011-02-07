@@ -2,10 +2,20 @@ h2. Secure
 
 h3. Activation du module Secure
 
-Pour le module secure, il suffira d'ajouter la ligne:
+Comme pour le module CRUD, cela se passe dans le fichier @conf/application.conf@. A la suite  de la déclaration que nous avons ajouté pour le module CRUD, insérez la ligne:
 
 pre. 
 	module.secure=${play.path}/modules/crud
+
+
+POur que la déclaration de la sécurité soit complète, nous devons ajouter les routes qui vont bien dans le fichier @routes@ :
+
+pre. 
+    # Import Secure routes
+    *       /admin                                  module:secure
+
+
+Voila, tout accès au "sous-domaine" admin sera soumis à authentification.
 
 h3. Modele User pour le login
 
