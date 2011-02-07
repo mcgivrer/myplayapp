@@ -9,11 +9,13 @@ Bonne lecture, et bonne découverte de ce fantastique framework "Play!":http://w
 ** Installation du framework sous windows ou sous Ubuntu (linux debian compliant)
 ** Mise en place d'un environnement de travail ad-hoc.
 
-* "Partie 2 - Page d'accueil et zone d'aministration":http://github.com/mcgivrer/myplayapp/blob/master/playframework-partie-2.textile
-** Git'ification du projet et utilisation du plugin EGit d'eclipse
-** Première page HTML
-** Mise en place des plugin Security et CRUD
-
+* Partie 2 -  Zone d'aministration et Page d'accueil
+** "2.1 - Git'ification du projet et utilisation du plugin EGit d'eclipse":http://github.com/mcgivrer/myplayapp/blob/master/playframework-partie-2.1.textile
+** "2.2 - Mise en place du module CRUD":http://github.com/mcgivrer/myplayapp/blob/master/playframework-partie-2.2.textile @WIP@
+** "2.3 - Mise en place du module Secure":http://github.com/mcgivrer/myplayapp/blob/master/playframework-partie-2.3.textile @WIP@
+** "2.4 - Customisation de la page d'accueil":http://github.com/mcgivrer/myplayapp/blob/master/playframework-partie-2.4.textile @WIP@
+16
 * "Partie 3 - Zone d'administration personnalisée et envoi de mails":http://github.com/mcgivrer/myplayapp/blob/master/playframework-partie-3.textile
-** Création d'une zone d'administration
-** Extension de la classe Mailer de Play! framework
+** 3.1 - Création d'une zone d'administration @A venir@
+** 3.2 - Extension de la classe Mailer de Play! framework @A venir@
+
