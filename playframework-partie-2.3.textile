@@ -143,8 +143,12 @@ Maintenant que nous avons notre User, profitons-en pour enrichir l'entité Game 
 
 Ajoutons la ligne :
 
-pre. 
+pre.
+    @Required
+    @ManyToOne
 	public User author;
+
+Vous constaterez la présente d'une relation @N->1@ décrivant le lien entre un jeu (Game) et un utilisateur, sachant qu'un utilisateur peut posséder plusieurs jeux.
 
 et n'oublions pas de modifier le constructeur de l'entité avec le nouvel attribut:
 

@@ -4,6 +4,7 @@
 package models;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 
 import play.data.validation.Required;
 import play.db.jpa.Model;
@@ -29,6 +30,7 @@ public class Game extends Model {
 	public Integer note;
 	public String cover;
 	@Required
+	@ManyToOne
 	public User author;
 
 	/**
