@@ -146,7 +146,7 @@ Ajoutons la ligne :
 pre. 
     @Required
     @ManyToOne
-	public User author;
+    public User author;
 
 Vous constaterez la présente d'une relation @N->1@ décrivant le lien entre un jeu (Game) et un utilisateur, sachant qu'un utilisateur peut posséder plusieurs jeux.
 
