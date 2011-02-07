@@ -1,8 +1,38 @@
-<nav>
-	<ul>
-		<li><a href="@{Users.index()}">&{'admin.users.label'}</a></li>
-		<li><a href="@{Games.index()}">&{'admin.games.label'}</a></li>
-		<li><a href="@{Secure.logout()}">Logout</a></li>      
-		<li><a href="@{Administration.preferences()}">&{'admin.preferences.label'}</a></li>
-	</ul>
-</nav>
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>#{get 'title' /}</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/main.css'}">
+        #{get 'moreStyles' /}
+        <link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}">
+        <script src="@{'/public/javascripts/jquery-1.4.2.min.js'}" type="text/javascript" charset="utf-8"></script>
+        #{get 'moreScripts' /}
+    </head>
+    <body>
+	    <header>
+			<h1>&{'site.title'}</h1>
+			<h2>&{'site.subtitle'}</h2>
+			<nav>
+				<ul>
+					#{if user}
+					<li>${user.firstname} ${user.lastname}</li>
+					#{/if}
+					<li><a href="@{Users.list()}">&{'admin.users.label'}</a></li>
+					<li><a href="@{Games.list()}">&{'admin.games.label'}</a></li>
+					<li><a href="@{Secure.logout()}">Logout</a></li>      
+					<li><a href="@{Administration.preferences()}">&{'admin.preferences.label'}</a></li>
+					<li><a href="@{Application.index()}">&{'admin.back.home'}</a></li>
+				</ul>
+			</nav>
+		</header>
+    	<section id="content">
+	        #{doLayout /}
+	    	<div class="clear"></div>
+    	</section>
+    	<footer>
+    		<p>&{'site.footer.label'}</p>
+    	</footer>
+	</body>
+</html>

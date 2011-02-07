@@ -59,6 +59,9 @@ public class User extends Model {
 	@Enumerated(EnumType.STRING)
 	public UserRole role;
 	
+	@Required
+	public String language;
+	
 	@OneToMany
 	public List<Game> games;
 	
@@ -71,7 +74,8 @@ public class User extends Model {
 			String webblog,
 			String image,
 			String status,
-			UserRole role){
+			UserRole role,
+			String language){
 		this.username=username;
 		this.password=password;
 		this.firstname=firstname;
@@ -81,6 +85,7 @@ public class User extends Model {
 		this.image=image;
 		this.status=status;
 		this.role=role;
+		this.language = language;
 	}
 	
 	/**

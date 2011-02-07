@@ -1,0 +1,12 @@
+#{extends 'administration.html' /}
+#{form @Preferences.update(user?.id)}
+	<fieldset>
+		<legend>&{'preferences.user.label'}</legend>
+		<label for="userLanguage">&{'preferences.user.language.label'}</label>
+		<select id="userLanguage" name="userLanguage" value="${user?.language}">
+			<option value="en">&{'language.english.label'}</option>
+			<option value="fr">&{'language.french.label'}</option>
+		</select>
+	</fieldset>
+	<input type="submit" value="&{'preferences.action.update'}"/>
+#{/form}

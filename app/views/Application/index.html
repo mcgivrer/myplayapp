@@ -1,17 +1,18 @@
 #{extends 'main.html' /}
 
-<div id="games" class="games">
+<section id="games" class="games">
 	#{if games && user}
-		<h1>&{'home.games.title', user.username}</h1>
+		<h1>&{'home.games.title', user?.username}</h1>
 		#{list items:games, as:'game'}
 			#{set title:'Home / '+game.platform+'/'+game.title /}
 			<div class="game" id="game_${game.id}">
-					<div class="title"><span>#${game.id}.</span> ${game.platform}/${game.title}</div>
+					<div class="title"><span>#${game.id}.</span> <a href="@{Application.details(game.id)}">${game.platform}/${game.title}</a></div>
 				<div class="side">
 					#{if game.cover}
 					<div class="cover">
-						<img src="public/images/games/${game.platform}/${game.title}/cover/${game.cover}.resized" 
-							title="${game.platform}/${game.title}" width="60"/>
+						<a href="/public/images/games/${game.platform}/${game.title}/cover/${game.cover}">
+							<img src="/public/images/games/${game.platform}/${game.title}/cover/${game.cover}.resized" 
+								title="${game.platform}/${game.title}" width="60"/></a>
 					</div>
 					#{/if}
 					<div class="tags">
@@ -22,10 +23,6 @@
 					<div class="label">&{'home.games.game.description'}</div>
 					<div class="bloc">${game.description}</div>
 					#{/if}
-					#{if game.testContent}
-					<div class="label">&{'home.games.game.test'}</div>
-					<div class="bloc">${game.testContent}</div>
-					#{/if}
 				</div>
 			</div>
 		#{/list}
@@ -33,4 +30,15 @@
 	#{else}
 		<p>&{'home.games.noitems'}</p>
 	#{/else}
-</div> 
+</section>
+<section id="platforms">
+	<h2>&{'home.platforms.title'}</h2>
+	#{if platforms && user}
+		<ul>
+			<li><a href="@{Application.index()}" title="&{'home.platform.filter.showAll.label'}">&{'home.platform.filter.showAll'}</a></li>		
+			#{list items:platforms, as:'platform'}
+			<li><a href="@{Application.filterByPlatform(platform)}" title="&{'home.platform.filter.label', platform}">${platform}</a></li>
+			#{/list}
+		</ul>
+	#{/if}
+</section> 

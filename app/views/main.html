@@ -16,21 +16,28 @@
     		<h2>&{'site.subtitle'}</h2>
     		<nav>
     			<ul>
+    				#{if user}
+    				<li>${user.firstname} ${user.lastname}</li>
+    				#{/if}
     				#{if !user}
     				<li><a href="@{Application.register()}" title="&{'home.actions.register.label'}">&{'home.actions.register'}</a></li>
-    				<li><a href="@{Application.login()}" title="&{'home.actions.login.label'}">&{'home.actions.login'}</a></li>
+    				<li><a href="@{Administration.index()}" title="&{'home.actions.login.label'}">&{'home.actions.login'}</a></li>
     				#{/if}
-    				#{else}
-    				<li><a href="@{Application.logout()}" title="&{'home.actions.logout.label'}">&{'home.actions.logout'}</a></li>
-    				#{/else}
+    				#{if user}
+    				<li><a href="@{Secure.logout()}" title="&{'home.actions.logout.label'}">&{'home.actions.logout'}</a></li>
+	    				#{if user.isRole("ADMINISTRATOR")}
+	    				<li><a href="@{Administration.index()}" title="&{'home.actions.admin.label'}">&{'home.actions.admin'}</a></li>
+	    				#{/if}
+    				#{/if}
     			</ul>
     		</nav>
     	</header>
     	<section id="content">
 	        #{doLayout /}
+	    	<div class="clear"></div>
     	</section>
     	<footer>
     		<p>&{'site.footer.label'}</p>
-    	</fooyter>
+    	</footer>
     </body>
 </html>

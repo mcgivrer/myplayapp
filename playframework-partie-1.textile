@@ -10,7 +10,7 @@ h2. Installation
 
 Téléchargez l'archive contenant le framework et dézippez la dans le répertoire de votre choix sur votre machine; par exemple dans ~/tools/play si vous êtes sous Linux/Ubuntu oubien sur D:\tools\play sous Windows.
 
-Ensuite, ajoutez ce nouveau chemin à votre chemin système. 
+Ensuite, ajoutez ce nouveau chemin à votre chemin système.
 Sous Linux, éditer votre fichier ~/.bashrc, et ajouter en fin de fichier
 
 pre.    export PATH=%PATH%:~/tools/play:.
@@ -26,7 +26,7 @@ h2. Création de l'application
 fermez puis relancer votre session utilisateur pour être sur que la nouvelle valeur de PATH soit bien prise en compte.
 enfin,ouvrez une console de commande (Windows) ou un terminal (Linux) et tapez :
 
-pre. 
+pre.
     mkdir ~/Projects/Java/play
     cd ~/Projects/Java/play
     play new myplayapp
@@ -34,16 +34,16 @@ pre.
 La console indique alors :
 
 pre. frederic@nostromo6:~/Projects/Java/play$ play new myplayapp
-    ~        _            _ 
+    ~        _            _
     ~  _ __ | | __ _ _  _| |
     ~ | '_ \| |/ _' | || |_|
     ~ |  __/|_|\____|\__ (_)
-    ~ |_|            |__/   
+    ~ |_|            |__/
     ~
     ~ play! 1.1, http://www.playframework.org
     ~
     ~ The new application will be created in /home/frederic/Projects/Java/play/myplayapp
-    ~ What is the application name? [myplayapp] 
+    ~ What is the application name? [myplayapp]
     ~
     ~ OK, the application is created.
     ~ Start it with : play run myplayapp
@@ -54,7 +54,7 @@ Editons dans l'arborescence du projet créé le fichier myplayapp/conf/applicati
 
 et remplaçons dans les lignes suivantes:
 
-pre. 
+pre.
 	# Database configuration
 	# ~~~~~
 	# Enable a database engine if needed.
@@ -69,7 +69,7 @@ Remplaçons la ligne du db=mem par un db=fs et supprimons le #, ceci afin d'avoi
 
 Ce qui donne:
 
-pre. 
+pre.
 	# Database configuration
 	# ~~~~~
 	# Enable a database engine if needed.
@@ -97,19 +97,19 @@ Ok, maintenant, pour pouvoir travailler proprement, je vous propose d'utiliser E
 1. Eclipse
 la commande magique suivante permet de générer un projet Play! éditable dans Eclipse. Simplement, placez-vous dans le répertoire de votre projet nouvellement créé:
 
-pre. 
+pre.
     cd ~/Projects/Java/play/myplayapp
     play eclipsify .
 
 ce qui donne dans la console:
 
-pre. 
+pre.
     frederic@nostromo6:~/Projects/Java/play/myplayapp$ play eclipsify .
-    ~        _            _ 
+    ~        _            _
     ~  _ __ | | __ _ _  _| |
     ~ | '_ \| |/ _' | || |_|
     ~ |  __/|_|\____|\__ (_)
-    ~ |_|            |__/   
+    ~ |_|            |__/
     ~
     ~ play! 1.1, http://www.playframework.org
     ~
@@ -125,7 +125,7 @@ Maintenant, ouvrez votre Eclipse préféré dans une workspace de votre choix (e
 p=. !https://lh5.googleusercontent.com/_n8m1NWoVppU/TUS1Jeib5xI/AAAAAAAAG44/Y_69yEeOjyo/s460/Play%21framework%20-%20premi%C3%A8re%20partie.png(figure 1 - Ouverture d'un nouveau workspace pour importer notre projet Play)!
 ^figure 1 - Ouverture d'un nouveau workspace pour importer notre projet Play!^
 
-Puis, via le menu contextuel dans l'explorateur de projet (sidebar de gauche...) faite "Import > Import..." puis dans la fenêtre affichée, choisissez "Existing projects into Workspace". 
+Puis, via le menu contextuel dans l'explorateur de projet (sidebar de gauche...) faite "Import > Import..." puis dans la fenêtre affichée, choisissez "Existing projects into Workspace".
 
 p=. !https://lh5.googleusercontent.com/_n8m1NWoVppU/TUS1IYvLp-I/AAAAAAAAG4s/kZX9TF3S2ok/s460/Play%21framework%20-%20premi%C3%A8re%20partie.png(figure 2 - Import du projet play "eclipsifié" dans votre workspace)!
 ^figure 2 - Import du projet play "eclipsifié" dans votre workspace^
@@ -144,19 +144,19 @@ Et voilà !
 
 Sous NetBeans, la proécédure est très similaire, la commande permettant de créer la définition du projet Netbeans étant la suivante:
 
-pre. 
+pre.
     cd ~/Projects/Java/play/myplayapp
     play netbeanify .
 
 Ce qui trace dans la console:
 
-pre. 
+pre.
     frederic@nostromo6:~/Projects/Java/play/myplayapp$ play netbeansify .
-    ~        _            _ 
+    ~        _            _
     ~  _ __ | | __ _ _  _| |
     ~ | '_ \| |/ _' | || |_|
     ~ |  __/|_|\____|\__ (_)
-    ~ |_|            |__/   
+    ~ |_|            |__/
     ~
     ~ play! 1.1, http://www.playframework.org
     ~
@@ -189,7 +189,7 @@ p=. !https://lh5.googleusercontent.com/_n8m1NWoVppU/TUS1H_GFOqI/AAAAAAAAG4o/r-Xb
 ^figure 5 - La classe Game héritant de play.db.jpa.Model^
 
 Et après un clic sur "finish", ajoutons les choses suivantes:
-Tout d'abord, 
+Tout d'abord,
 
     * l'annotation @Entity indiquant à Java et à JPA que cette classe devra persister.
     Ajoutons les attributs dont nous avons parlé précédemment, à savoir:
@@ -208,7 +208,7 @@ Tout d'abord,
 
 Ce qui nous donne a peu de chose près la classe suivante:
 
-pre. 
+pre.
  /**
   * Projet myplayapp
   * Entité Game
@@ -220,30 +220,24 @@ pre.
  /**
   * Game Classe modélisant un jeu vidéo de la bibliothèque
   * @author frederic
-  * 
+  *
   */
  @Entity
  public class Game extends Model {
 	@Required
 	public String title;
-
 	@Required
 	public String platform;
-
 	@Required
 	public String description;
-
 	public Boolean publish;
 	public String testContent;
 	public String developerStudio;
 	public String editor;
-
 	@Required
 	public Integer yearOfPublication;
-
 	public Integer note;
 	public String cover;
-
 	public Game(String title, String description, Boolean publish,
 				String testContent, String developerStudio, String editor,
 				Integer yearOfPublication, Integer note, String cover) {
@@ -267,16 +261,16 @@ Créons donc une classe de test dans le répertoire de source test et nommons le
 
 Notre petite classe est destinée à tester la persistance de nos entitée:
 
-pre. 
+pre.
 public class EntitiesTest extends UnitTest {
   @Test
   public void testGame(){
-    Game game = new Game("MyGame", 
-             "X360", 
-             "My Description game", 
+    Game game = new Game("MyGame",
+             "X360",
+             "My Description game",
              true,
              "Test of the game",
-             "My Studio", 
+             "My Studio",
              "My Editor",
              2010,
              8,
@@ -298,7 +292,7 @@ Vous pouvez alors lancer le ou les tests que vous avez créés.
 
 La page appraissant à l'écran vous propose de lancer les tests souhaités. choisissez EntitiesTest et cliquez sur "Start !".
 
-p=. !https://lh3.googleusercontent.com/_n8m1NWoVppU/TUS1IgQwUwI/AAAAAAAAG4w/QyKZs-4pReA/s460/Play%21framework%20-%20premi%C3%A8re%20partie.png(figure 6 - Lancement des tests unitaires via l'interface Web de Play!
+p=. !https://lh3.googleusercontent.com/_n8m1NWoVppU/TUS1IgQwUwI/AAAAAAAAG4w/QyKZs-4pReA/s460/Play%21framework%20-%20premi%C3%A8re%20partie.png(figure 6 - Lancement des tests unitaires via l'interface Web de Play)!
 ^figure 6 - Lancement des tests unitaires via l'interface Web de Play!^
 
 Le test choisi déroulé, le résultat de celui-ci apparait dans la même page:
@@ -318,3 +312,4 @@ h1. Conclusion
 Nous voila avec les prémices d'une belle application Play! Nous avons découvert à travers ces premiers pas, la richesse technique et la complétude proposées par ce fabuleux framework Java. Nous découvrirons au prochain épisode notre première page bien à nous et la mis en place des modules CRUD et Security, natif eux aussi à Play! mais non activés par défaut.
 
 to be "continued":https://github.com/mcgivrer/myplayapp/blob/master/playframework-partie-2.textile...
+

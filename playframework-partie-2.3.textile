@@ -1,0 +1,355 @@
+h2. Secure
+
+Avant de pouvoir mettre en place la sécurité, nous avons besoin de pouvoir modéliser les utilisateurs qui pourront se connecter à notre application de gestion de liste de jeux.
+
+Pour cela, créons l'entité User suivante:
+
+pre.
+/**
+ * User modélise un utilisateur pouvant se connecter.
+ * @author McGivrer
+ */
+@Entity
+public class User extends Model {
+	public enum UserRole {
+		ADMINISTRATOR,
+		MODERATOR,
+		USER
+	}
+	@Required
+	@MaxSize(30)
+	public String username;
+	@Required
+	@MinSize(4)
+	@MaxSize(25)
+	public String password;
+	@MaxSize(50)
+	public String firstname;
+	@MaxSize(50)
+	public String lastname;
+	@Required
+	@Email
+	@MaxSize(100)
+	public String email;
+	@MaxSize(100)
+	public String webblog;
+	public String image="test";
+	public String status="a";
+	@Required
+	@Enumerated(EnumType.STRING)
+	public UserRole role;
+	/**
+	 * constructeur par défaut pour un utilisateur.
+	 */
+	public User(	String username,
+			String password,
+			String firstname,
+			String lastname,
+			String email,
+			String webblog,
+			String image,
+			String status,
+			UserRole role){
+		this.username=username;
+		this.password=password;
+		this.firstname=firstname;
+		this.lastname=lastname;
+		this.email=email;
+		this.webblog=webblog;
+		this.image=image;
+		this.status=status;
+		this.role=role;
+	}
+	/**
+	 * Permet l'affichage sous une forme plus accessible un objet User dans une liste (CRUD).
+	 */
+	public String toString(){
+		return this.username+" ("+this.firstname+" "+this.lastname+")";
+	}
+}
+
+Voila, nous allons bientôt pouvoir nous connecter.  Mais pour pouvoir nous connecter, il faut nous assurer qu'il y ait au moins un utilisateur utilisable dès l'installation de l'application.  Découvrons ensemble la magie du "Bootstrap" et de l'annotation @\@OnApplicationStart@.
+
+Soit la classe ci-dessous:
+
+pre.
+	import models.User;
+	import play.jobs.Job;
+	import play.jobs.OnApplicationStart;
+	import play.test.Fixtures;
+	@OnApplicationStart
+	public class Bootstrap extends Job {
+	    public void doJob() {
+	        // Check if the database is empty
+	        if(User.count() == 0) {
+	           Fixtures.load("initial-data.yml");
+	        }
+	    }
+	}
+
+Si nous lisons attentivement, nous comprendrons que lors du démarrage de l'application, un Job BootStrap est lancé afin de vérifié la présence d'utilisateur dans la base de données, et le cas échéant, charge un fichier de données au format YML, permettant d'initialiser un premier utilisateur dans la base de données.
+
+le fichier @initial-data.yml@ contient les informations suivantes:
+
+pre.
+User(admin):
+   username: admin
+   password: admin
+   firstname: Administrator
+   lastname: Blog manager
+   email: frederic.delorme@web-context.com
+   weblog: http://www.mcgivrer.fr/
+   image: test
+   status: a
+   role: ADMINISTRATOR
+
+On comprend que dans cette définition, la première ligne défini l'entité à créer. Le nom entre parenthèses servira à identifier cet occurence de User dans le reste du fichier, lorsque plus-tard, nous ajouterons d'autres données. Chaque ligne suivante correspond à chacun des attributs de l'entité User. Il est ainsi très facile de pré-renseigner des informations indispensable à l'initialisation de votre application.
+
+Une dernière chose, nous devons pouvoir gérer les utilisateurs.  Créons donc le controlleur de type CRUD accessible depuis la zone d'administration.
+
+pre.
+	/**
+	 * Project myplayapp Play! tutorial
+	 */
+	package controllers;
+	import play.mvc.With;
+	/**
+	 * CRUD sur les Users.
+	 * @author McGivrer
+	 */
+	public class Users extends CRUD {
+	}
+
+Maintenant que nous avons notre User, profitons-en pour enrichir l'entité Game avec un "author" correspondant au propriétaire d'un jeu.
+
+Ajoutons la ligne :
+
+pre.
+	public User author;
+
+et n'oublions pas de modifier le constructeur de l'entité avec le nouvel attribut:
+
+pre.
+	public Game(String title, String Game, String description, Boolean publish,
+			String testContent, String developerStudio, String editor,
+			Integer yearOfPublication, Integer note, String cover, User author) {
+		this.title=title;
+		this.description=description;
+		this.publish = publish;
+		this.testContent=testContent;
+		this.developerStudio=developerStudio;
+		this.editor=editor;
+		this.yearOfPublication = yearOfPublication;
+		this.note = note;
+		this.cover = cover;
+		this.author = author;
+	}
+
+Ok, matérialisons clairement la relation entre User et Game dans la classe User, en ajoutant à la suite des attributs déjà déclarés:
+
+pre.
+	@OneToMany
+	public List<Game> games;
+
+Ainsi, on réalise cette liste de jeux attachée à un utilisateur.
+
+Essayer d'accéder à l'application par l'url "http://localhost:9000/admin":http://localhost:9000/admin, vous verrez apparaitre alors une nouvelle entrée dans la liste des entités gérées: @Users@.
+
+p=. !http://lh6.ggpht.com/_n8m1NWoVppU/TUswk_yff9I/AAAAAAAAG_o/hMFyGsgazEs/s460/Capture-2.13-Users-CRUD.jpg(figure 13 - CRUD Users)!
+^figure 13 - CRUD Users^
+
+p=. !http://lh3.ggpht.com/_n8m1NWoVppU/TUswmd4af4I/AAAAAAAAG_8/q_1hzHIk4qk/s460/Capture-2.14-Users-list.jpg(figure 14 - CRUD Users : liste des utilisateurs)!
+^figure 14 - CRUD Users : liste des utilisateurs^
+
+p=. !http://lh4.ggpht.com/_n8m1NWoVppU/TUswoJwoIEI/AAAAAAAAHAQ/bp6sVo-P4_g/s460/Capture-2.15-Users-edit.jpg(figure 15 - CRUD Users : Edition d'un User)!
+^figure 15 - CRUD Users : Edition d'un User^
+
+Ok, nous avons notre gestion d'utlisateur. Activons maintenant la sécurité.
+Nous devons pour cela, fournir le service de sécurité de base à notre application. Pour cela, nous devons implezmenter notre propre version de l'objet de sécurité @controllers.Secure.Security@ proposé par Play!:
+
+pre.
+	public class Security extends controllers.Secure.Security {
+		/**
+		 * Authentication method
+		 * @param username
+		 * @param password
+		 * @return
+		 */
+		public static boolean authenticate(String username, String password){
+			return User.connect(username,password)!=null;
+		}
+		/**
+		 * Route to Controller/method on positive authentication
+		 */
+		static void onAuthenticated(){
+			Administration.index();
+		}
+		/**
+		 * Route to Controller/Method on Diconnection
+		 */
+		static void onDisconnected(){
+			Application.index();
+		}
+		/**
+		 * return if User have corresponding role.
+		 * @param role
+		 * @return boolean value.
+		 */
+		static boolean check(String role) {
+		    return User.find("byUsername", connected()).<User>first().isRole(role);
+		}
+	}
+
+Les méthodes:
+
+* @public static boolean authenticate(String username, String password);@
+C'est la méthode qui est appelée par l'objet dont notre @Security@ hérite lorsqu'un utilisateur tente d'accéder à un contrôleur sécurisé.
+
+* @static void onAuthenticated();@
+Une fois authentifié, l'évènement onAuthenticated est appelé. Ici, vous appelez l'action du contrôleur correspondant à la page vers laquelle vous souhaitez que l'utilisateur soit routé en cas de succès.
+
+* @static void onDisconnected();@
+Lorsque l'utilisateur se déconnecter (nous verrons plus tard comment l'on traite cette évènement), @onDisctonneted()@ est appelé. A vous d'appeler votre traitement préféré pour la déconnection. N'oubliez pas de finir en appelant la méthode/contrôleur pour router l'utilisateur vers une page précise.
+
+* @static boolean check(String profile);@
+Cette permet de vérifier si le profile de l'utilisateur.
+
+Dans notre cas, nous allons déléguer l'authentification à l'objet User. Nous appelons la méthode connect() de User.
+
+pre.
+	/**
+	 * Find Method to implement user connection.
+	 * @param email
+	 * @param password
+	 * @return
+	 */
+	public static User connect(String username, String password){
+		return User.find("byUsernameAndPassword",username,password).first();
+	}
+
+Ici, l'utilisateur sera identifié par son @username@ et son @password@. Vous pouvez d'ailleurs constater la facilité d'utilisation de la méthode @find()@ de la couche JPA proposée par Play!
+la simple chaîne @"byUsernameAndPassword"@ permet de tester l'égalité des champs username et password.
+
+Ensuite, notons la délégation de la vérification du profil d'un utilisateur à la méthode @User.isRole(String role)@. Un moyen simple d'externaliser ce traitement.
+
+Soit dans la classe user:
+
+pre.
+	/**
+	 * check if user have Administrator profile.
+	 * @return
+	 */
+	public boolean isRole(String role){
+		return role.equals(this.role.toString());
+	}
+
+Donc comment active-t-on maintenant la sécurité sur un contrôleur ?
+
+Nous allons mettre en oeuvre cette sécurité dans un nouveau contrôleur:
+
+pre.
+	/**
+	 * Project myplayapp tutorial
+	 */
+	package controllers;
+	import play.*;
+	import play.mvc.*;
+	import java.util.*;
+	import models.*;
+	/**
+	 * Contrôleur de la zone de sécurité
+	 * @author McGivrer
+	 */
+	@With(Security.class)
+	public class Administration extends Controller {
+		/**
+		 * récupération de l'utilisateur connecté.
+		 */
+	    @Before
+	    static void setConnectedUser() {
+	        if(Security.isConnected()) {
+	            User user = User.find("byEmail", Security.connected()).first();
+	            renderArgs.put("user", user);
+	        }
+	    }
+	    /**
+	     * Page d'accueil par défaut du contrôleur.
+	     */
+	    public static void index() {
+	    	List<Game> games=Game.find("byAuthor",((User)renderArgs.get("user"))).fetch();
+	        render(games);
+	    }
+	}
+
+Toute l'astuce se résume à la simple annotation @\@With(Security.class)@. Et la magie de Play! agit.
+
+Allons plus loins dans la magie.
+
+Nous souhaitons limiter l'accès à un contrôleur, par exemple notre nouveau "Games" héritant de CRUD, à la population des administrateurs. Nous allons donc demander à la sécurité applicative de tester le role des utilisateur qui se connecte.
+
+Attention, ca va être très complexe, suivez bien !
+
+pre.
+	/**
+	 * Project myplayapp Play! tutorial
+	 * Admin zone
+	 */
+	package controllers;
+	import play.mvc.With;
+	/**
+	 * CRUD management for Game entity.
+	 * @author frederic
+	 *
+	 */
+	@Check("ADMINISTRATOR")
+	@With(Security.class)
+	public class Games extends CRUD {
+	}
+
+la vérification d'un rôle est réalisé par l'appel à la notation @"@Check("ADMINISTRATOR")"@.  Ici, donc, est vérifié le rôle "Administrateur" (UserRole.ADMINISTRATOR) de l'utilisateur.
+
+Maintenant que nous avons quelque-peu avancé, je vous propose de modifier le template par défaut de l'ensemble des pages du site. Pour cela, éditons le fichier @myplayapp/app/view/main.html@ et remplaçons contenu par les lignes suivantes:
+
+pre.
+	<!DOCTYPE html>
+
+	<html>
+	    <head>
+	        <title>#{get 'title' /}</title>
+	        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	        <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/main.css'}">
+	        #{get 'moreStyles' /}
+	        <link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}">
+	        <script src="@{'/public/javascripts/jquery-1.4.2.min.js'}" type="text/javascript" charset="utf-8"></script>
+	        #{get 'moreScripts' /}
+	    </head>
+	    <body>
+	    	<header>
+	    		<h1>&{'site.title'}</h1>
+	    		<h2>&{'site.subtitle'}</h2>
+	    		<nav>
+	    			<ul>
+	    				#{if !user}
+		    				<li><a href="@{Application.login()}" title="&{'home.actions.login.label'}">&{'home.actions.login'}</a></li>
+	    				#{/if}
+	    				#{else}
+		    				<li><a href="@{Application.logout()}" title="&{'home.actions.logout.label'}">&{'home.actions.logout'}</a></li>
+	    				#{/else}
+	    			</ul>
+	    		</nav>
+	    	</header>
+	    	<section id="content">
+		        #{doLayout /}
+	    	</section>
+	    	<footer>
+	    		<p>&{'site.footer.label'}</p>
+	    	</fooyter>
+	    </body>
+	</html>
+
+Première chose, vous constaterez le fait que nous travaillons avec HTML5 et non le traditionnel HTML 4.01 ou l'XHTML. D'où l'introduction des nouveaux tags @header@, @section@ et @footer@. Les lignes contenues dans le @HEAD@ sont celles générée par le framework.
+
+Par contre les lignes du body sont largement retouchée. Dans le @header@ de la page, soit la zone de titre, nous avons ajouté un titre, un sous-titre ainsi qu'un menu, proposant le nouveau tag HTML5 @nav@.
+
+Dans ce menu de navigation sont présentes deux actions:  login et logout.  elle se passe de commentaire, si ce n'est que leur affichage est exclusif.
+

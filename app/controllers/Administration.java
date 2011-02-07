@@ -31,11 +31,7 @@ public class Administration extends Controller {
     public static void index(){
     	render();
     }
-    
-    public static void logout(){
-    	render();
-    }
-    
+
     public static void preferences(){
     	render();
     }
