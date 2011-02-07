@@ -66,7 +66,6 @@ Pour le moment, cette page se résume à :
 
 pre. 
     <!DOCTYPE html>
-
     <html>
         <head>
             <title>#{get 'title' /}</title>
@@ -81,7 +80,6 @@ pre.
             #{doLayout /}
         </body>
     </html>
-
 
 Vous pouvez constater l'utlisation du doctype HTML5.  Je ferai abstration des nombreuses déclarations de début de fichier pour me concentrer sur celle qui, à mon goût, mérite toute notre attention:
 
