@@ -8,7 +8,7 @@ Pour activer un plugin engénéral, il faut éditer le fichier @[projectname]/co
 
 Elle a à quelques choses prêt cette tête :
 
-pre.
+pre. 
 	# Additional modules
 	# ~~~~~
 	# A module is another play! application. Add a line for each module you want
@@ -32,14 +32,14 @@ h3. CRUD
 
 Nous souhaitons donc ajouter le module CRUD:
 
-pre.
+pre. 
 	module.crud=${play.path}/modules/crud
 
 Le module apportant un certain nombre de fonctionnalités, il est accompagne de nouvelles pages qui seront dynamiquement créés. pour permettre l'accés à ces pages, nous allons devoir découvrir une nouvelle fonctionnalité de Play!:  les routes !
 
 Commençons par finir de configurer notre module CRUD en ajoutant dans le fichier @myplayapp/conf/routes@ la ligne suivante, en fin de fichier:
 
-pre.
+pre. 
 	# Import the default CRUD routes
 	GET     /admin	     module:crud
 
@@ -60,7 +60,7 @@ Pour celà, une simple opération permet de définir un contrôleur spécifique 
 
 La classe sera :
 
-pre.
+pre. 
 	/**
 	 * Project myplayapp Part 2
 	 * Admin zone
@@ -78,7 +78,7 @@ pre.
 
 Puis, prenez votre élant et lancer le serveur play en mode DEV via la commande:
 
-pre.
+pre. 
 	$ play run
 
 et constatez la beauté du geste ;)
@@ -106,7 +106,7 @@ Pour celà, penchons nous sur un autre point fort de Play! : la gestion de l'int
 
 Vous constaterez certainement, tôt ou tard, la présence, certe bizard, d'un fichier "@messages@" dans le répertoire @conf@ de votre projet Play!. Et bien, ouvrons le pour voir !
 
-pre.
+pre. 
 	# You can specialize this file for each language.
 	# For example, for French create a messages.fr file
 	#
@@ -130,7 +130,7 @@ p=. !http://lh5.ggpht.com/_n8m1NWoVppU/TUdedG2thgI/AAAAAAAAG9s/DfZW-D9FH5E/s576/
 
 Donc, nous devons tout d'abord déclarer la liste des langues supportées par notre application. Nous nous contenterons ici,,dans le cadre de ce tutoriel, de supporter l'anglais et le français. Aussi, le fichier @conf/application.conf@ sera modifié comme suit:
 
-pre.
+pre. 
 	# i18n
 	# ~~~~~
 	# Define locales used by your application.
@@ -139,7 +139,7 @@ pre.
 
 Créons maintenant un fichier @conf/messages.fr@ pour le français, et  ajoutons-y nos libellés:
 
-pre.
+pre. 
 	# You can specialize this file for each language.
 	# For example, for French create a messages.fr file
 	#
@@ -163,7 +163,7 @@ p=. !http://lh5.ggpht.com/_n8m1NWoVppU/TUdkijKHshI/AAAAAAAAG-M/MshrtYYEmhk/s576/
 
 * Si nous créons la version anglaise dans le fichier @conf/messages.en@ :
 
-pre.
+pre. 
 	# You can specialize this file for each language.
 	# For example, for French create a messages.fr file
 	#
@@ -191,7 +191,7 @@ Si les affichage par défaut dans les liste de type d'entiés et des listes des 
 
 Pour modifier la liste des entités, il suffit d'ajouter dans les Entity une méthode toString() qui permettra de formater l'affichage d'un objet de type entité dans une liste. Ainsi, pour un object de type Game, on implémentera la méthode @toString()@ comme ci-dessous:
 
-pre.
+pre. 
 	public String toString(){
 		return this.title + "("+this.yearOfPublication+")";
 	}
@@ -207,7 +207,7 @@ Vous pouvez également donner plus d'information dans les listes affichées. pou
 
 Pour cela, créons un répertoire @views/Games@ et dans celui-ci créer le fichier @list.html@ et copiez-y les lignes ci-dessous:
 
-pre.
+pre. 
 	#{extends 'CRUD/layout.html' /}
 	<div id="crudList" class="${type.name}">
 		<h2 id="crudListTitle">&{'crud.list.title', type.name}</h2>

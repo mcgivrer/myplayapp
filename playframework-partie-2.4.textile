@@ -9,7 +9,7 @@ p=. !http://lh3.ggpht.com/_n8m1NWoVppU/TUsywpNZplI/AAAAAAAAHAo/2gA044DjJx8/Captu
 
 Ce qui se traduit côté code "HTML/Groovy" par les lignes suivantes:
 
-pre.
+pre. 
 	#{extends 'main.html' /}
 	<div id="games" class="games">
 		<h1>&{'home.games.title'}</h1>

@@ -4,7 +4,7 @@ h3. Activation du module Secure
 
 Pour le module secure, il suffira d'ajouter la ligne:
 
-pre.
+pre. 
 	module.secure=${play.path}/modules/crud
 
 h3. Modele User pour le login
@@ -13,75 +13,75 @@ Avant de pouvoir mettre en place la sécurité, nous avons besoin de pouvoir mod
 
 Pour cela, créons l'entité User suivante:
 
-pre.
-/**
- * User modélise un utilisateur pouvant se connecter.
- * @author McGivrer
- */
-@Entity
-public class User extends Model {
-	public enum UserRole {
-		ADMINISTRATOR,
-		MODERATOR,
-		USER
-	}
-	@Required
-	@MaxSize(30)
-	public String username;
-	@Required
-	@MinSize(4)
-	@MaxSize(25)
-	public String password;
-	@MaxSize(50)
-	public String firstname;
-	@MaxSize(50)
-	public String lastname;
-	@Required
-	@Email
-	@MaxSize(100)
-	public String email;
-	@MaxSize(100)
-	public String webblog;
-	public String image="test";
-	public String status="a";
-	@Required
-	@Enumerated(EnumType.STRING)
-	public UserRole role;
-	/**
-	 * constructeur par défaut pour un utilisateur.
-	 */
-	public User(	String username,
-			String password,
-			String firstname,
-			String lastname,
-			String email,
-			String webblog,
-			String image,
-			String status,
-			UserRole role){
-		this.username=username;
-		this.password=password;
-		this.firstname=firstname;
-		this.lastname=lastname;
-		this.email=email;
-		this.webblog=webblog;
-		this.image=image;
-		this.status=status;
-		this.role=role;
-	}
-	/**
-	 * Permet l'affichage sous une forme plus accessible un objet User dans une liste (CRUD).
-	 */
-	public String toString(){
-		return this.username+" ("+this.firstname+" "+this.lastname+")";
-	}
-}
+pre. 
+    /**
+     * User modélise un utilisateur pouvant se connecter.
+     * @author McGivrer
+     */
+    @Entity
+    public class User extends Model {
+	    public enum UserRole {
+		    ADMINISTRATOR,
+		    MODERATOR,
+		    USER
+	    }
+	    @Required
+	    @MaxSize(30)
+	    public String username;
+	    @Required
+	    @MinSize(4)
+	    @MaxSize(25)
+	    public String password;
+	    @MaxSize(50)
+	    public String firstname;
+	    @MaxSize(50)
+	    public String lastname;
+	    @Required
+	    @Email
+	    @MaxSize(100)
+	    public String email;
+	    @MaxSize(100)
+	    public String webblog;
+	    public String image="test";
+	    public String status="a";
+	    @Required
+	    @Enumerated(EnumType.STRING)
+	    public UserRole role;
+	    /**
+	     * constructeur par défaut pour un utilisateur.
+	     */
+	    public User(	String username,
+			    String password,
+			    String firstname,
+			    String lastname,
+			    String email,
+			    String webblog,
+			    String image,
+			    String status,
+			    UserRole role){
+		    this.username=username;
+		    this.password=password;
+		    this.firstname=firstname;
+		    this.lastname=lastname;
+		    this.email=email;
+		    this.webblog=webblog;
+		    this.image=image;
+		    this.status=status;
+		    this.role=role;
+	    }
+	    /**
+	     * Permet l'affichage sous une forme plus accessible un objet User dans une liste (CRUD).
+	     */
+	    public String toString(){
+		    return this.username+" ("+this.firstname+" "+this.lastname+")";
+	    }
+    }
 
 Voila, nous allons bientôt pouvoir nous connecter.  Mais pour pouvoir nous connecter, il faut nous assurer qu'il y ait au moins un utilisateur utilisable dès l'installation de l'application.  Découvrons ensemble la magie du "Bootstrap" et de l'annotation @\@OnApplicationStart@.
 
 Soit la classe ci-dessous:
 
-pre.
+pre. 
 	import models.User;
 	import play.jobs.Job;
 	import play.jobs.OnApplicationStart;
@@ -100,23 +100,23 @@ Si nous lisons attentivement, nous comprendrons que lors du démarrage de l'appl
 
 le fichier @initial-data.yml@ contient les informations suivantes:
 
-pre.
-User(admin):
-   username: admin
-   password: admin
-   firstname: Administrator
-   lastname: Blog manager
-   email: frederic.delorme@web-context.com
-   weblog: http://www.mcgivrer.fr/
-   image: test
-   status: a
-   role: ADMINISTRATOR
+pre. 
+    User(admin):
+       username: admin
+       password: admin
+       firstname: Administrator
+       lastname: Blog manager
+       email: frederic.delorme@web-context.com
+       weblog: http://www.mcgivrer.fr/
+       image: test
+       status: a
+       role: ADMINISTRATOR
 
 On comprend que dans cette définition, la première ligne défini l'entité à créer. Le nom entre parenthèses servira à identifier cet occurence de User dans le reste du fichier, lorsque plus-tard, nous ajouterons d'autres données. Chaque ligne suivante correspond à chacun des attributs de l'entité User. Il est ainsi très facile de pré-renseigner des informations indispensable à l'initialisation de votre application.
 
 Une dernière chose, nous devons pouvoir gérer les utilisateurs.  Créons donc le controlleur de type CRUD accessible depuis la zone d'administration.
 
-pre.
+pre. 
 	/**
 	 * Project myplayapp Play! tutorial
 	 */
@@ -133,12 +133,12 @@ Maintenant que nous avons notre User, profitons-en pour enrichir l'entité Game 
 
 Ajoutons la ligne :
 
-pre.
+pre. 
 	public User author;
 
 et n'oublions pas de modifier le constructeur de l'entité avec le nouvel attribut:
 
-pre.
+pre. 
 	public Game(String title, String Game, String description, Boolean publish,
 			String testContent, String developerStudio, String editor,
 			Integer yearOfPublication, Integer note, String cover, User author) {
@@ -156,7 +156,7 @@ pre.
 
 Ok, matérialisons clairement la relation entre User et Game dans la classe User, en ajoutant à la suite des attributs déjà déclarés:
 
-pre.
+pre. 
 	@OneToMany
 	public List<Game> games;
 
@@ -176,7 +176,7 @@ p=. !http://lh4.ggpht.com/_n8m1NWoVppU/TUswoJwoIEI/AAAAAAAAHAQ/bp6sVo-P4_g/s460/
 Ok, nous avons notre gestion d'utlisateur. Activons maintenant la sécurité.
 Nous devons pour cela, fournir le service de sécurité de base à notre application. Pour cela, nous devons implezmenter notre propre version de l'objet de sécurité @controllers.Secure.Security@ proposé par Play!:
 
-pre.
+pre. 
 	public class Security extends controllers.Secure.Security {
 		/**
 		 * Authentication method
@@ -225,7 +225,7 @@ Cette permet de vérifier si le profile de l'utilisateur.
 
 Dans notre cas, nous allons déléguer l'authentification à l'objet User. Nous appelons la méthode connect() de User.
 
-pre.
+pre. 
 	/**
 	 * Find Method to implement user connection.
 	 * @param email
@@ -243,7 +243,7 @@ Ensuite, notons la délégation de la vérification du profil d'un utilisateur �
 
 Soit dans la classe user:
 
-pre.
+pre. 
 	/**
 	 * check if user have Administrator profile.
 	 * @return
@@ -256,7 +256,7 @@ Donc comment active-t-on maintenant la sécurité sur un contrôleur ?
 
 Nous allons mettre en oeuvre cette sécurité dans un nouveau contrôleur:
 
-pre.
+pre. 
 	/**
 	 * Project myplayapp tutorial
 	 */
@@ -298,7 +298,7 @@ Nous souhaitons limiter l'accès à un contrôleur, par exemple notre nouveau "G
 
 Attention, ca va être très complexe, suivez bien !
 
-pre.
+pre. 
 	/**
 	 * Project myplayapp Play! tutorial
 	 * Admin zone
@@ -319,7 +319,7 @@ la vérification d'un rôle est réalisé par l'appel à la notation @"@Check("A
 
 Maintenant que nous avons quelque-peu avancé, je vous propose de modifier le template par défaut de l'ensemble des pages du site. Pour cela, éditons le fichier @myplayapp/app/view/main.html@ et remplaçons contenu par les lignes suivantes:
 
-pre.
+pre. 
 	<!DOCTYPE html>
 
 	<html>
