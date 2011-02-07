@@ -81,11 +81,11 @@ pre.
         </body>
     </html>
 
-Vous pouvez constater l'utlisation du doctype HTML5.  Je ferai abstration des nombreuses déclarations de début de fichier pour me concentrer sur celle qui, à mon goût, mérite toute notre attention:
+Vous pouvez constater l'utlisation du doctype HTML5.  Je ferai abstraction des nombreuses déclarations de début de fichier pour me concentrer sur celle qui, à mon goût, mérite toute notre attention:
 
 pre. 
             #{doLayout /}
 
-C'est via cette simple balise que toutes les pages héritant de @main.html@ (@#{extends 'main.html'}@) véront leur contenu inséré.
+C'est via cette simple balise que toutes les pages héritant de @main.html@ (@#{extends 'main.html'}@) verront leur contenu inséré.
 
 
