@@ -16,14 +16,14 @@ h2. Création du dépôt master
 
 Commençons par intégrer notre projet dans un dépôt maître. Pour cela, assurez vous d'avoir un compte(au passage, totalement gratuit dans le cas ou votre projet reste en accès public) chez github.com. Pour cela je vous laisse parcourir le site et la documentation mise à disposition des utilisateurs. Mais à l'issue de la création du repository de votre projet, vous vous retrouvez avec une url du style:
 
-pre.
+pre. 
     git@github.com:[username]/[projectname].git
 
 C'est sur cette adresse de dépôt, que nous appellerons par la suite "master", que devra pointer votre dépôt local afin d'y pousser vos modifications.
 
 _*nota:* N'oubliez pas, comme indiqué sur le site de github.com, d'initialiser auparavant les "variables globales GIT suivantes":http://help.github.com/git-email-settings/ :_
 
-pre.
+pre. 
     $ git config --global user.name "[user_name]"
     $ git config --global user.email "[email_for_user]@gmail.com"
 
@@ -31,23 +31,23 @@ _et de créer et déclarer votre "clé SSH publique":http://help.github.com/linu
 
 Donc, positionnons nous dans le répertoire locale de votre projet
 
-pre.
+pre. 
     $ cd ~/projets/myplayapp
 
 et lançons l'initialisation du dépôt local avec la commande Git:
 
-pre.
+pre. 
     $ git init
 
 Voilà qui est fait. Ensuite, ajoutons nos fichiers du projet et commitons ces modifications dans le dépôt local:
 
-pre.
+pre. 
     $ git add *
     $ git commit -m 'Création du projet intial'
 
 Enfin, déclarons notre dépôt maître, poussons-y les modifications locales:
 
-pre.
+pre. 
     $ git add remote master git@github.com:[username]/[projectname].git
     $ git push origin master
 
