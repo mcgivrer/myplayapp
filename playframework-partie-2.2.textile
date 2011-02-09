@@ -237,6 +237,6 @@ p=. !http://lh6.ggpht.com/_n8m1NWoVppU/TUdtwiqcqkI/AAAAAAAAG_M/L4GJ5zjh9vQ/Captu
 
 Vous remarquerz qu'ici aussi, tout les libellés sont traduits.
 
-Nous avons donc effectué une première passe sur ce module CRUD et découvert la puissance et la simplicité de mise en oeuvre. Attaquons nous à un autre morceau de bravour: "le module Secure":http://github.com/mcgivrer/myplayapp/blob/master/playframework-partie-2.3.textile .
+Voilà pour aujourd'hui, nous arrêterons là.  La suite se concentrera sur le "module Secure":http://github.com/mcgivrer/myplayapp/blob/master/playframework-partie-2.3.textile et son implémentation, ainsi que sur la customisation de la page d'accueil de l'application. Nous en profiterons également pour mettre en place une belle zone d'administration avec plein d'information.
 
-
+Il sera également temps de revoir nos diverses entités pour en faire un beau modèle fonctionnel.
