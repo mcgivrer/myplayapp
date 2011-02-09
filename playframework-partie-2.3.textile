@@ -335,7 +335,6 @@ Maintenant que nous avons quelque-peu avancé, je vous propose de modifier le te
 
 pre. 
 	<!DOCTYPE html>
-
 	<html>
 	    <head>
 	        <title>#{get 'title' /}</title>
@@ -370,9 +369,8 @@ pre.
 	    </body>
 	</html>
 
-Première chose, vous constaterez le fait que nous travaillons avec HTML5 et non le traditionnel HTML 4.01 ou l'XHTML. D'où l'introduction des nouveaux tags @header@, @section@ et @footer@. Les lignes contenues dans le @HEAD@ sont celles générée par le framework.
+Première chose, vous constaterez le fait que nous travaillons avec HTML5 et non le traditionnel HTML 4.01 ou l'XHTML. D'où l'introduction des nouveaux tags @header@, @section@ et @footer@. Les lignes contenues dans le @HEAD@ sont celles générées par le framework.
 
 Par contre les lignes du body sont largement retouchée. Dans le @header@ de la page, soit la zone de titre, nous avons ajouté un titre, un sous-titre ainsi qu'un menu, proposant le nouveau tag HTML5 @nav@.
 
 Dans ce menu de navigation sont présentes deux actions:  login et logout.  elle se passe de commentaire, si ce n'est que leur affichage est exclusif.
-
