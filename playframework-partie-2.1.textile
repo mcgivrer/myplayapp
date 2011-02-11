@@ -93,7 +93,7 @@ p=. !http://lh5.ggpht.com/_n8m1NWoVppU/TUdO_zRWETI/AAAAAAAAG7c/gDlP0aKryH0/s576/
 
 * Une fois le projet sélectionné, vous pouvezvalider le partage Git avec le bouton "Finish". La décoration de label liée à EGit apparaît alors dans votre explorateur de fichier, dans la side bar gauche d'Eclipse:
 
-p=. !http://lh6.ggpht.com/_n8m1NWoVppU/TUdPArKIRCI/AAAAAAAAG7k/5M11XSzrK7g/Capture-2.4-project%20explorer%20with%20git%20label%20decoration.jpg (figure 2.4 - Mise en valeur des informations GIT dans l'explorateur de projet)!
+p=. !http://lh6.ggpht.com/_n8m1NWoVppU/TUdPArKIRCI/AAAAAAAAG7k/5M11XSzrK7g/Capture-2.4-project%20explorer%20with%20git%20label%20decoration.jpg(figure 2.4 - Mise en valeur des informations GIT dans l'explorateur de projet)!
 ^figure 2.4 - Mise en valeur des informations GIT dans l'explorateur de projet^
 
 Voilà, votre projet est complètement intégré Git, et Eclipse vous permettra de travailler dans un environnement très professionnel.
