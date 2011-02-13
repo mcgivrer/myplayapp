@@ -1,0 +1,23 @@
+#{extends 'main.html' /}
+
+#{set title:'Home / ' + game.platform + ' / ' + game.title /}
+<div class="game" id="game_${game.id}">
+		<div class="title"><span>#${game.id}.</span> <a href="@{Application.details(game.id)}">${game.platform}/${game.title}</a></div>
+	<div class="side">
+		#{if game.cover}
+		<div class="cover">
+			<a href="/public/images/games/${game.platform}/${game.title}/cover/${game.cover}">
+				<img src="/public/images/games/${game.platform}/${game.title}/cover/${game.cover}.resized" 
+					title="${game.platform}/${game.title}"/></a>
+		</div>
+		#{/if}
+		<div class="tags">
+		</div>
+	</div>
+	<div class="info">
+		#{if game.description}
+		<div class="label">&{'home.games.game.description'}</div>
+		<div class="bloc">${game.description}</div>
+		#{/if}
+	</div>
+</div>

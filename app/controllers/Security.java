@@ -26,7 +26,7 @@ public class Security extends controllers.Secure.Security {
 	 * Route to Controller/method on positive authentication
 	 */
 	static void onAuthenticated(){
-		Administration.index();	
+		Application.index();	
 	}
 	/**
 	 * Route to Controller/Method on Disconnection

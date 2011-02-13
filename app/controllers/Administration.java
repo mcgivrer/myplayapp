@@ -28,10 +28,23 @@ public class Administration extends Controller {
         }
     }   
     
+    /**
+     * Login d'un utilisateur.
+     */
+    public static void login(){
+    	renderTemplate("Application/index.html");
+    }
+
+    /**
+     * Page d'accueil du module d'administration.
+     */
     public static void index(){
     	render();
     }
 
+    /**
+     * Affichage des préférences d'un utilisateur.
+     */
     public static void preferences(){
     	render();
     }

@@ -1,0 +1,30 @@
+#{extends 'main.html' /}
+
+#{form @Register.save()}
+<fieldset>
+	<legend>&{'user.create.legend'}</legend>
+	<div>
+		<label for="user.username">&{'user.create.username'}</label>
+		<input type="text" name="user.username" value="${flash['user.username']}" />
+		<span class="error">#{error 'user.username' /}</span>
+	</div>
+	<div>
+		<label for="user.email">&{'user.create.email'}</label>
+		<input type="text" name="user.email" value="${flash['user.email']}" />
+		<span class="error">#{error 'user.email' /}</span>
+	</div>
+	<div>
+		<label for="user.password">&{'user.create.password'}</label>
+		<input type="text" name="user.password" value="${flash['user.password']}" />
+		<span class="error">#{error 'user.password' /}</span>
+	</div>
+	<div>
+		<label for="user.password2">&{'user.create.password.confirm'}</label>
+		<input type="text" name="user.password2" value="${flash['user.password2']}" />
+		<span class="error">#{error 'user.password2' /}</span>
+	</div>
+	<div>
+		<input type="submit" value="&{'user.create.save'}" /> 
+	</div>
+</fieldset>
+#{/form}

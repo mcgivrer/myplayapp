@@ -2,8 +2,11 @@
  * Project myplayapp Play! tutorial
  * Admin zone
  */
-package controllers;
+package controllers.administration;
 
+import controllers.CRUD;
+import controllers.Check;
+import controllers.Security;
 import play.mvc.With;
 
 /**

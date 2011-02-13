@@ -14,18 +14,22 @@
 	    <header>
 			<h1>&{'site.title'}</h1>
 			<h2>&{'site.subtitle'}</h2>
-			<nav class="menu">
-				<ul>
-					#{if user}
+			<nav class="menu admin">
+				#{if user}
+				<ul class="user">
 					<li>${user.firstname} ${user.lastname}</li>
-					#{/if}
-					<li><a href="@{Users.list()}">&{'admin.users.label'}</a></li>
-					<li><a href="@{Games.list()}">&{'admin.games.label'}</a></li>
-					<li><a href="@{Secure.logout()}">Logout</a></li>      
-					<li><a href="@{Administration.preferences()}">&{'admin.preferences.label'}</a></li>
-					<li><a href="@{Application.index()}">&{'admin.back.home'}</a></li>
+					<li><a href="@{Administration.preferences()}" title="&{'admin.preferences.label.tooltip'}">&{'admin.preferences.label'}</a></li>
+					<li><a href="@{Secure.logout()}" title="&{'admin.logout.label.tooltip'}">&{'admin.logout.label'}</a></li>      
 				</ul>
+				#{/if}
+				<ul class="admin">
+					<li><a href="@{Application.index()}" title="&{'admin.backhome.label.tooltip'}">&{'admin.backhome.label'}</a></li>
+					<li><a href="@{administration.Users.list()}" title="&{'admin.users.label.tooltip'}">&{'admin.users.label'}</a></li>
+					<li><a href="@{administration.Games.list()}" title="&{'admin.games.label.tooltip'}">&{'admin.games.label'}</a></li>
+				</ul>
+			<div class="clear"></div>
 			</nav>
+			
 		</header>
     	<section id="content">
 	        #{doLayout /}

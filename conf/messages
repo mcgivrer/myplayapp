@@ -30,12 +30,38 @@ home.games.title=List of games for %s
 home.games.noitems=No game in database !
 home.games.game.description=Description
 home.games.game.test=Test
+home.add.game.label=Add Game
+home.add.game.label.tooltip=Add a new Game to your collection
 
 #Platforms zone
 home.platforms.title=Platforms
 home.platforms.filter.showAll=All
+home.platforms.filter.showAll.pageTitle=All platforms
 
 #Administration zone
+admin.logout.label=Logout
+admin.logout.label.tooltip= Disconnect user from personal zone
 admin.users.label=Users
+admin.users.label.tooltip=Manage Users
 admin.games.label=Games
+admin.games.label.tooltip=Manage Games
 admin.preferences.label=Preferences
+admin.preferences.label.tootip=Edit user preferences
+admin.backhome.label=Home
+admin.backhome.label.tooltip=Back to home page
+
+#preferences
+preferences.user.legend=User Preferences
+preferences.user.language.label=Default language
+preferences.actions.update.label=Update
+preferences.actions.update.label.tooltip=Save modifications
+language.english.label=English
+language.french.label=French
+
+#user create
+user.create.legend=Register yourself on this site
+user.create.username=Choose a Username
+user.create.email=Enter your own email
+user.create.password=Choose a password
+user.create.password.confirm=Confirm this password
+user.create.save=Register

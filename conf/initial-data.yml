@@ -3,12 +3,37 @@ User(admin):
    password: admin
    firstname: Administrator
    lastname: Blog manager
-   email: frederic.delorme@web-context.com
+   email: frederic.delorme@gmail.com
    weblog: http://www.mcgivrer.fr/
    image: test
    status: a
    role: ADMINISTRATOR
    language: fr
+
+User(mods):
+   username: moderator
+   password: moderator
+   firstname: Moderator
+   lastname: Game moderator
+   email: mods@myplayapp.com
+   weblog: 
+   image: test
+   status: a
+   role: MODERATOR
+   language: fr
+
+User(user1):
+   username: user1
+   password: user1
+   firstname: User1
+   lastname: FirstUser
+   email: firstuser@myplayapp.com
+   weblog: 
+   image: test
+   status: a
+   role: USER
+   language: fr
+
 
 Game(game1):
    title: Risen

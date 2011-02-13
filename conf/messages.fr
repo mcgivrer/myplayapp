@@ -37,6 +37,21 @@ home.platforms.title=Platformes
 home.platforms.filter.showAll=Toutes
 
 #Administration zone
+admin.logout.label=Déconnecter
+admin.logout.label.tooltip= Déconnecter l'utilisateur de sa zone personnelle
 admin.users.label=Utilisateurs
+admin.users.label.tooltip=Manage Users
 admin.games.label=Jeux Vidéos
+admin.games.label.tooltip=Manage Games
 admin.preferences.label=Préférences
+admin.preferences.label.tootip=Edit user preferences
+admin.backhome.label=Accueil
+admin.backhome.label.tooltip=Retour à l'accueil
+
+#preferences
+preferences.user.legend=Préférences Utilisateur
+preferences.user.language.label=Langue par défaut
+preferences.actions.update.label=Modifer
+preferences.actions.update.label.tooltip=Sauvegarder les modifications
+language.english.label=Anglais
+language.french.label=Français

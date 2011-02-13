@@ -1,8 +1,11 @@
 /**
  * Project myplayapp Play! tutorial 
  */
-package controllers;
+package controllers.administration;
 
+import controllers.CRUD;
+import controllers.Check;
+import controllers.Security;
 import play.mvc.With;
 
 /**

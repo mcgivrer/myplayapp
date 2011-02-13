@@ -1,23 +1,26 @@
 #{extends 'main.html' /}
 
 <section id="platforms" class="platforms">
-	<h2>&{'home.platforms.title'}</h2>
-	#{if platforms && user}
-		<ul>
-			<li><a href="@{Application.index()}" title="&{'home.platform.filter.showAll.label'}">&{'home.platforms.filter.showAll'}</a></li>		
-			#{list items:platforms, as:'platform'}
-			<li><a href="@{Application.filterByPlatform(platform)}" title="&{'home.platform.filter.label', platform}">${platform}</a></li>
-			#{/list}
-		</ul>
+	#{if user}
+		#{if platforms}
+			<h2>&{'home.platforms.title'}</h2>
+			<ul>
+				<li><a href="@{Application.index()}" title="&{'home.platform.filter.showAll.label'}">&{'home.platforms.filter.showAll'}</a></li>		
+				#{list items:platforms, as:'platform'}
+				<li><a href="@{Application.filterByPlatform(platform)}" title="&{'home.platform.filter.label', platform}">${platform}</a></li>
+				#{/list}
+			</ul>
+		#{/if}
 	#{/if}
 </section> 
+
 <section id="games" class="games">
 	#{if games && user}
-		<h1>&{'home.games.title', user?.username}</h1>
+		<h2>&{'home.games.title', user?.username}</h2>
 		#{list items:games, as:'game'}
-			#{set title:'Home / '+game.platform+'/'+game.title /}
+			#{set title:'Home / ' + filterPlatform /}
 			<div class="game" id="game_${game.id}">
-					<div class="title"><span>#${game.id}.</span> <a href="@{Application.details(game.id)}">${game.platform}/${game.title}</a></div>
+					<div class="title"><span>#${game.id}.</span> <a href="@{Application.details(game.id)}">${game.title}</a></div>
 				<div class="side">
 					#{if game.cover}
 					<div class="cover">
@@ -30,9 +33,9 @@
 					</div>
 				</div>
 				<div class="info">
+				 	<span class="platform"><a class="${game.platform}" href="@{Application.filterByPlatform(game.platform)}">${game.platform}</a></span>
 					#{if game.description}
-					<div class="label">&{'home.games.game.description'}</div>
-					<div class="bloc">${game.description}</div>
+						<div class="bloc">${game.description}</div>
 					#{/if}
 				</div>
 			</div>
@@ -41,6 +44,9 @@
 	#{else}
 		<p>&{'home.games.noitems'}</p>
 	#{/else}
-<div class="clearRight"></div>
+	<div class="clear"></div>
+	<hr size="2"></hr>
+	#{if user}
+		<a class="button add" accesskey="A" href="@{Application.addGame()}" title="&{'home.add.game.label.tooltip'}">&{'home.add.game.label'}</a>
+	#{/if}
 </section>
-

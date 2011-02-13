@@ -1,7 +1,91 @@
-08 févr. 2011 00:21:35,543 INFO  ~ Starting /home/frederic/Projects/Java/play/myplayapp
-08 févr. 2011 00:21:35,546 INFO  ~ Module secure is available (/home/frederic/Tools/java/tools/play-1.1/modules/secure)
-08 févr. 2011 00:21:35,547 INFO  ~ Module crud is available (/home/frederic/Tools/java/tools/play-1.1/modules/crud)
-08 févr. 2011 00:21:36,252 WARN  ~ You're running Play! in DEV mode
-08 févr. 2011 00:21:36,331 INFO  ~ Listening for HTTP on port 8500 (Waiting a first request to start) ...
-08 févr. 2011 00:21:42,141 INFO  ~ Connected to jdbc:hsqldb:mem:playembed
-08 févr. 2011 00:21:42,950 INFO  ~ Application 'myplayapp' is now started !
+14 févr. 2011 00:01:40,071 INFO  ~ Starting /home/frederic/Projects/Java/play/myplayapp
+14 févr. 2011 00:01:40,076 INFO  ~ Module secure is available (/home/frederic/Tools/java/tools/play-1.1/modules/secure)
+14 févr. 2011 00:01:40,076 INFO  ~ Module crud is available (/home/frederic/Tools/java/tools/play-1.1/modules/crud)
+14 févr. 2011 00:01:40,811 WARN  ~ You're running Play! in DEV mode
+14 févr. 2011 00:01:40,889 INFO  ~ Listening for HTTP on port 8500 (Waiting a first request to start) ...
+14 févr. 2011 00:01:47,691 INFO  ~ Connected to jdbc:hsqldb:mem:playembed
+14 févr. 2011 00:01:48,438 INFO  ~ Application 'myplayapp' is now started !
+14 févr. 2011 00:07:59,337 ERROR ~ 
+
+@65eg3pif7
+Internal Server Error (500) for request GET /
+
+Template compilation error (In /app/views/Application/index.html around line 47)
+The template /app/views/Application/index.html does not compile : #{if} is not closed.
+
+play.exceptions.TemplateCompilationException: #{if} is not closed.
+	at play.templates.TemplateCompiler.generate(TemplateCompiler.java:102)
+	at play.templates.TemplateCompiler.compile(TemplateCompiler.java:15)
+	at play.templates.GroovyTemplateCompiler.compile(GroovyTemplateCompiler.java:39)
+	at play.templates.TemplateCompiler.compile(TemplateCompiler.java:26)
+	at play.templates.TemplateLoader.load(TemplateLoader.java:53)
+	at play.templates.TemplateLoader.load(TemplateLoader.java:138)
+	at play.mvc.Controller.renderTemplate(Controller.java:587)
+	at play.mvc.Controller.renderTemplate(Controller.java:568)
+	at play.mvc.Controller.render(Controller.java:623)
+	at controllers.Application.index(Application.java:45)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:413)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:408)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:182)
+	at Invocation.HTTP Request(Play!)
+14 févr. 2011 00:08:26,300 ERROR ~ 
+
+@65eg3pifa
+Internal Server Error (500) for request GET /
+
+No route found (In /app/views/Application/index.html around line 48)
+No route able to invoke action Application.addGame was found.
+
+play.exceptions.NoRouteFoundException: No route found
+	at play.templates.BaseTemplate.throwException(BaseTemplate.java:80)
+	at play.templates.GroovyTemplate.render(GroovyTemplate.java:211)
+	at play.mvc.results.RenderTemplate.<init>(RenderTemplate.java:21)
+	at play.mvc.Controller.renderTemplate(Controller.java:588)
+	at play.mvc.Controller.renderTemplate(Controller.java:568)
+	at play.mvc.Controller.render(Controller.java:623)
+	at controllers.Application.index(Application.java:45)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:413)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:408)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:182)
+	at Invocation.HTTP Request(Play!)
+14 févr. 2011 00:22:03,773 ERROR ~ 
+
+@65eg3pifc
+Internal Server Error (500) for request GET /application/addgame
+
+Template not found (In /app/controllers/Application.java around line 86)
+The template Application/addGame.html does not exist.
+
+play.exceptions.TemplateNotFoundException: Template not found : Application/addGame.html
+	at play.mvc.Controller.renderTemplate(Controller.java:595)
+	at play.mvc.Controller.renderTemplate(Controller.java:568)
+	at play.mvc.Controller.render(Controller.java:623)
+	at controllers.Application.addGame(Application.java:86)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:413)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:408)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:182)
+	at Invocation.HTTP Request(Play!)
+14 févr. 2011 00:31:02,025 ERROR ~ 
+
+@65eg3pifd
+Internal Server Error (500) for request GET /application/addgame
+
+Template execution error (In /app/views/Application/addGame.html around line 3)
+Execution error occured in template /app/views/Application/addGame.html. Exception raised was NullPointerException : Cannot get property 'name' on null object.
+
+play.exceptions.TemplateExecutionException: Cannot get property 'name' on null object
+	at play.templates.BaseTemplate.throwException(BaseTemplate.java:84)
+	at play.templates.GroovyTemplate.render(GroovyTemplate.java:226)
+	at play.mvc.results.RenderTemplate.<init>(RenderTemplate.java:21)
+	at play.mvc.Controller.renderTemplate(Controller.java:588)
+	at play.mvc.Controller.renderTemplate(Controller.java:568)
+	at play.mvc.Controller.render(Controller.java:623)
+	at controllers.Application.addGame(Application.java:86)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:413)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:408)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:182)
+	at Invocation.HTTP Request(Play!)
+Caused by: java.lang.NullPointerException: Cannot get property 'name' on null object
+	at /app/views/Application/addGame.html.(line:3)
+	at play.templates.GroovyTemplate.render(GroovyTemplate.java:203)
+	... 9 more

@@ -10,12 +10,14 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.OneToMany;
+import javax.persistence.Transient;
 
 import play.data.validation.Email;
 import play.data.validation.MaxSize;
 import play.data.validation.MinSize;
 import play.data.validation.Required;
 import play.db.jpa.Model;
+import play.mvc.Before;
 
 /**
  * User modélise un utilisateur pouvant se connecter.
@@ -29,6 +31,7 @@ public class User extends Model {
 		MODERATOR,
 		USER
 	}
+
 	
 	@Required
 	@MaxSize(30)
@@ -52,7 +55,12 @@ public class User extends Model {
 	
 	@MaxSize(100)
 	public String webblog;
+	
+	@MaxSize(255)
 	public String image="test";
+	
+	@Required
+	@MaxSize(2)
 	public String status="a";
 	
 	@Required
@@ -61,6 +69,12 @@ public class User extends Model {
 	
 	@Required
 	public String language;
+	
+	@Transient
+	public String password2;
+
+	@Transient
+	public String gravatarHash;
 	
 	@OneToMany
 	public List<Game> games;
@@ -86,6 +100,7 @@ public class User extends Model {
 		this.status=status;
 		this.role=role;
 		this.language = language;
+		this.gravatarHash = play.libs.Crypto.passwordHash(this.email);
 	}
 	
 	/**
@@ -112,4 +127,9 @@ public class User extends Model {
 	public boolean isRole(String role){
 		return role.equals(this.role.toString());
 	}
+	
+	public String getGravatarHash(){
+		return  play.libs.Crypto.passwordHash(this.email.trim());
+	}
+
 }
