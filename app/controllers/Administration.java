@@ -41,11 +41,4 @@ public class Administration extends Controller {
     public static void index(){
     	render();
     }
-
-    /**
-     * Affichage des préférences d'un utilisateur.
-     */
-    public static void preferences(){
-    	render();
-    }
 }

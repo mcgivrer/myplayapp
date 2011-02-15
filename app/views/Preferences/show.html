@@ -1,0 +1,51 @@
+#{extends 'main.html' /}
+
+#{form @Preferences.update(user?.id)}
+	<fieldset>
+		<legend>&{'preferences.user.personal'}</legend>
+		<div>
+			<label for="user.image">&{'preferences.user.image.label'}<br /> </label>
+			<img src="images/User/avatars/${user.image}" title=""/><br />
+			<input type="file" name="user.image" value="${user.image}"/>
+		</div>
+		<div>
+			<label for="user.username">&{'preferences.user.username.label'}</label>
+			<input type="text" name="user.username" value="${user.username}"/>
+		</div>
+		<div>
+			<label for="user.firstname">&{'preferences.user.firstname.label'}</label>
+			<input type="text" name="user.firstname" value="${user.firstname}"/>
+		</div>
+		<div>
+			<label for="user.lastname">&{'preferences.user.lastname.label'}</label>
+			<input type="text" name="user.lastname" value="${user.lastname}"/>
+		</div>
+		<div>
+			<label for="user.email">&{'preferences.user.email.label'}</label>
+			<input type="text" name="user.email" value="${user.email}"/>
+		</div>
+		<div>
+			<label for="user.webblog">&{'preferences.user.weblog.label'}</label>
+			<input type="text" name="user.webblog" value="${user.webblog}"/>
+		</div>
+		<hr size="1" noshade="noshade" />
+		<div>
+			<label for="user.password">&{'preferences.user.password.label'}</label>
+			<input type="text" name="user.password" value="${user.password}"/>
+		</div>
+		<div>
+			<label for="user.password2">&{'preferences.user.password2.label'}</label>
+			<input type="text" name="user.password2" value="${user.password2}"/>
+		</div>
+	</fieldset>
+
+	<fieldset>
+		<legend>&{'preferences.user.legend'}</legend>
+		<label for="user.language">&{'preferences.user.language.label'}</label>
+		<select id="user.language" name="user.language" value="${user?.language}">
+			<option value="en">&{'language.english.label'}</option>
+			<option value="fr">&{'language.french.label'}</option>
+		</select>
+	</fieldset>
+	<input type="submit" value="&{'preferences.actions.update.label'}" title="&{'preferences.actions.update.label.tooltip'}"/>
+#{/form}

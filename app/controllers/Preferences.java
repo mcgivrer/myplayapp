@@ -27,10 +27,23 @@ public class Preferences extends Controller {
         }
     }   
 
+    /**
+     * sauvegarde les préférences utilisateur.
+     * @param userLanguage
+     */
 	public static void update(String userLanguage){
 		User user = (User)renderArgs.get("user");
 		user.language = userLanguage;
 		user.save();
-		Administration.preferences();
+		Preferences.show(user.getId());
+	}
+	
+	/**
+	 * Affichage des informations utilisateurs
+	 * @param id
+	 */
+	public static void show(Long id){
+		User user = (User)renderArgs.get("user");
+		render(user);
 	}
 }

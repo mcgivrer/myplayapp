@@ -20,6 +20,8 @@
     			<ul class="user">
    				#{if user}
     				<li><img class="avatar" src="http://www.gravatar.com/avatar/${user.gravatarHash}?s=16"/>${user.firstname} ${user.lastname}</li>
+					<li><a href="@{Application.index()}" title="&{'admin.backhome.label.tooltip'}">&{'admin.backhome.label'}</a></li>
+					<li><a href="@{Preferences.show()}" title="&{'admin.preferences.label.tooltip'}">&{'admin.preferences.label'}</a></li>
     				<li><a href="@{Secure.logout()}" title="&{'home.actions.logout.label'}">&{'home.actions.logout'}</a></li>
    				#{/if}
    				#{if !user}
