@@ -38,6 +38,9 @@ home.platforms.title=Platforms
 home.platforms.filter.showAll=All
 home.platforms.filter.showAll.pageTitle=All platforms
 
+#Message
+home.anonymous.welcome.message=Please, <a href="%s">register</a> yourself to be able to create and maintain your own video game list !
+
 #Administration zone
 admin.logout.label=Logout
 admin.logout.label.tooltip= Disconnect user from personal zone

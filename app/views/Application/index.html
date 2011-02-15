@@ -15,7 +15,8 @@
 </section> 
 
 <section id="games" class="games">
-	#{if games && user}
+#{if user}
+	#{if games}
 		<h2>&{'home.games.title', user?.username}</h2>
 		#{list items:games, as:'game'}
 			#{set title:'Home / ' + filterPlatform /}
@@ -46,7 +47,10 @@
 	#{/else}
 	<div class="clear"></div>
 	<hr size="2"></hr>
-	#{if user}
 		<a class="button add" accesskey="A" href="@{Application.addGame()}" title="&{'home.add.game.label.tooltip'}">&{'home.add.game.label'}</a>
-	#{/if}
+#{/if}
+#{else}
+	<p>&{'home.anonymous.welcome.message',{Register.create()}}</p>
+#{/else}
+
 </section>

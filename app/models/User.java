@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.OneToMany;
+import javax.persistence.PostLoad;
 import javax.persistence.Transient;
 
 import play.data.validation.Email;
@@ -17,7 +18,6 @@ import play.data.validation.MaxSize;
 import play.data.validation.MinSize;
 import play.data.validation.Required;
 import play.db.jpa.Model;
-import play.mvc.Before;
 
 /**
  * User modélise un utilisateur pouvant se connecter.
@@ -31,7 +31,6 @@ public class User extends Model {
 		MODERATOR,
 		USER
 	}
-
 	
 	@Required
 	@MaxSize(30)
@@ -79,6 +78,19 @@ public class User extends Model {
 	@OneToMany
 	public List<Game> games;
 	
+	/**
+	 * Constructeur paramétré par défaut.
+	 * @param username
+	 * @param password
+	 * @param firstname
+	 * @param lastname
+	 * @param email
+	 * @param webblog
+	 * @param image
+	 * @param status
+	 * @param role
+	 * @param language
+	 */
 	public User(
 			String username,
 			String password,
@@ -100,7 +112,15 @@ public class User extends Model {
 		this.status=status;
 		this.role=role;
 		this.language = language;
-		this.gravatarHash = play.libs.Crypto.passwordHash(this.email);
+	}
+	
+	
+	/**
+	 * Initialisation des données calculées non persistantes.
+	 */
+	@PostLoad
+	public void initializeTransientAttribute(){
+		this.gravatarHash = play.libs.Crypto.passwordHash(this.email);		
 	}
 	
 	/**

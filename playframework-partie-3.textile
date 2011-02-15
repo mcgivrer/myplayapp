@@ -1,3 +1,0 @@
-h1. Play! framework - tutoriel partie 3
-
-h2. Bientôt
