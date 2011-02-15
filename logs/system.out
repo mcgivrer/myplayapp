@@ -1,7 +1,0 @@
-01:06:05,421 INFO  ~ Starting /home/frederic/Projects/Java/play/myplayapp
-01:06:05,424 INFO  ~ Module secure is available (/home/frederic/Tools/java/tools/play-1.1/modules/secure)
-01:06:05,425 INFO  ~ Module crud is available (/home/frederic/Tools/java/tools/play-1.1/modules/crud)
-01:06:06,076 WARN  ~ You're running Play! in DEV mode
-01:06:06,178 INFO  ~ Listening for HTTP on port 8500 (Waiting a first request to start) ...
-01:06:13,328 INFO  ~ Connected to jdbc:hsqldb:file:/home/frederic/Projects/Java/play/myplayapp/db/db
-01:06:14,065 INFO  ~ Application 'myplayapp' is now started !
