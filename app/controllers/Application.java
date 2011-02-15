@@ -40,7 +40,7 @@ public class Application extends Controller {
         if(user!=null){
         	Logger.debug(user.username+": "+user.firstname+" "+user.lastname);
         	List<Game> platforms = Game.find("select distinct g.platform from Game g where g.author = ? order by g.platform",user).fetch();
-        	List<Game> games = Game.find("select g from Game g where g.publish=true and g.author = ? order by platform, title", user).fetch();
+        	List<Game> games = Game.find("select g from Game g where g.publish=true and g.author = ? order by platform asc, title asc", user).fetch();
         	Logger.debug("Number of retrieved games: %d, Number of platforme: %d",games.size(),platforms.size());
             render(games,platforms);
         }else{
@@ -67,8 +67,9 @@ public class Application extends Controller {
      */
     public static void filterByPlatform(String platform){
         renderArgs.put("filterPlatform", platform);
+        User user = (User)renderArgs.get("user");
     	List<Game> platforms = Game.find("select distinct g.platform from Game g order by g.platform").fetch();
-    	List<Game> games = Game.find("byPlatform",platform).fetch();
+    	List<Game> games = Game.find("select g from Game g where g.publish=true and g.author=? and g.platform=? order by title asc",user, platform).fetch();
         render(games,platforms);
     }
     

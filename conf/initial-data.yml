@@ -74,3 +74,67 @@ Game(game3):
    cover: wii-donkey_kong_country_returns-cover.jpg
    author: admin
    
+Game(game4):
+   title: Darksiders
+   platform: X360
+   description: Un jeu dans un monde Gothique post-appocalytique. 
+   publish: true
+   testContent: todo.
+   developerStudio: unknown
+   editor: unknown
+   yearOfPublication: 2010
+   note: 8
+   cover: x360-darksiders-cover.jpg
+   author: admin
+   
+Game(game5):
+   title: Alpha Protocol
+   platform: X360
+   description: Un RPG d'espionage ! 
+   publish: true
+   testContent: todo.
+   developerStudio: unknown
+   editor: unknown
+   yearOfPublication: 2010
+   note: 8
+   cover: x360-alpha_protocol-cover.jpg
+   author: user1
+
+Game(game6):
+   title: Super Mario All Stars
+   platform: Wii
+   description: Un revivalde tous les mario Nintendo 
+   publish: true
+   testContent: todo.
+   developerStudio: unknown
+   editor: unknown
+   yearOfPublication: 2010
+   note: 8
+   cover: wii-super_mario_all_stars_25th_anniversary_edition-cover.jpg
+   author: admin
+
+Game(game7):
+   title: New Super Mario Bros Wii
+   platform: Wii
+   description: Le petit dernier né des MArtio sur Wii. Une référence 
+   publish: true
+   testContent: todo.
+   developerStudio: unknown
+   editor: unknown
+   yearOfPublication: 2010
+   note: 8
+   cover: wii-new_super_mario_bros_wii-cover.jpg
+   author: user1
+
+Game(game8):
+   title: Prince of Persia Forgotten Sands
+   platform: Wii
+   description: Un PoP taillé pour la Wii,  une vraie réussite sur les plans graphique et gameplay.  
+   publish: true
+   testContent: todo.
+   developerStudio: unknown
+   editor: unknown
+   yearOfPublication: 2010
+   note: 8
+   cover: wii-prince_of_persia_forgotten_sands-cover.jpg
+   author: user1
