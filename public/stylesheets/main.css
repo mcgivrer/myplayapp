@@ -7,6 +7,18 @@ body {
 	font-size:10pt;
 	margin:0em 5em;
 }
+.clear{
+    clear:both;
+}
+.clearLeft{
+    clear:left;    
+}
+.clearRight{
+    clear:right;    
+}
+.hidden{
+	display:none;
+}
 header {
     background-color:#000;
     color:#fff;
@@ -83,16 +95,6 @@ header nav.admin ul li a{
 	background-color:#e85;
 	border:1px outset #e85;
 	color:#fe9;
-}
-
-.clear{
-    clear:both;
-}
-.clearLeft{
-    clear:left;    
-}
-.clearRight{
-    clear:right;    
 }
 #content{
 	min-height:20em;
@@ -211,4 +213,80 @@ footer{
     text-align:center;
     padding:0.4em;
     margin-top:1em;
+}
+#loginForm{
+	position:absolute;
+	margin-left:35%;
+	width:30%;
+	height:250px;
+	text-align:0px;
+	border:1px outset #333;
+	border-radius:4px;
+	box-shadow:#ccc 0.2em 0.2em 0.4em;
+	background-color:#eee;
+}
+#loginForm h1 {
+    font-weight: bold;
+    color: #111;
+}
+#loginForm form {
+    padding: 10px;
+    padding-top:30px;
+    text-align: left;
+}
+#loginForm form p {
+    margin: 3px;
+}
+#username-field {
+    margin-top: 10px !important;
+}
+
+#username-field label, #password-field label {
+    display: block;
+    width: 150px;
+    float: left;
+    text-align: right;
+    margin-right: 5px;
+    color: #333;
+    font-size: 15px;
+}
+
+#username-field input {
+    width: 200px;
+    font-size: 13px;
+}
+
+#password-field input {
+    width: 150px;
+    font-size: 13px;
+}
+
+#remember-field input {
+    margin-left: 155px;
+}
+
+#remember-field {
+    font-size: 12px;
+    color: #666;
+}
+
+#signin-field input {
+    margin-left: 155px;
+    margin-top: 10px;
+}
+
+#loginForm .error, #login .success  {
+    color: #fff;
+    font-size: 12px;
+    text-align: center;
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
+#loginForm .error {
+    background: #c00 !important;
+}
+
+#loginForm .success {
+    background: #008800 !important;
 }
