@@ -291,3 +291,11 @@ footer{
 #loginForm .success {
     background: #008800 !important;
 }
+.3columns{
+	-webkit-column-count: 3;
+	-webkit-column-gap: 20px;
+	-moz-column-count: 3;
+	-moz-column-gap: 20px;
+	column-count: 3;
+	column-gap: 20px;
+}

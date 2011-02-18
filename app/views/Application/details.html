@@ -1,7 +1,7 @@
 #{extends 'main.html' /}
 
 #{set title:'Home / ' + game.platform + ' / ' + game.title /}
-<div class="game" id="game_${game.id}">
+<div class="gameDetails" id="game_${game.id}">
 		<div class="title"><span>#${game.id}.</span> <a href="@{Application.details(game.id)}">${game.platform}/${game.title}</a></div>
 	<div class="side">
 		#{if game.cover}
@@ -19,5 +19,10 @@
 		<div class="label">&{'home.games.game.description'}</div>
 		<div class="bloc">${game.description}</div>
 		#{/if}
+		#{if game.testContent}
+		<div class="label">&{'home.games.game.test'}</div>
+		<div class="bloc 3columns">${game.testContent.textile().raw()}</div>
+		#{/if}
+
 	</div>
 </div>

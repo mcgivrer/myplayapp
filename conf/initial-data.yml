@@ -38,9 +38,9 @@ User(user1):
 Game(game1):
    title: Risen
    platform: X360
-   description: Risen est une jeu de rôle avec une vue à la troisième personne.
+   description: Risen est un jeu de rôle avec une vue à la troisième personne.
    publish: true
-   testContent: Le jeu Risen, même si il a de nombreux défaut visuels dans sa version XBox360, il n'en reste pas moins une belle et longue aventure.
+   testContent: Le _jeu_ @Risen@, "même":http://www.google.fr/ si il a de *nombreux* défaut visuels dans sa version XBox360, il n'en reste pas moins une belle et longue aventure."
    developerStudio: WizardBox
    editor: Deep Silver
    yearOfPublication: 2009

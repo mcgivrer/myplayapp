@@ -5,9 +5,11 @@
         <title>#{get 'title' /}</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/main.css'}">
+        <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/jquery.lightbox-0.5.css'}">
         #{get 'moreStyles' /}
         <link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}">
         <script src="@{'/public/javascripts/jquery-1.4.2.min.js'}" type="text/javascript" charset="utf-8"></script>
+        <script src="@{'/public/javascripts/jquery.lightbox-0.5.pack.js'}" type="text/javascript" charset="utf-8"></script>
         #{get 'moreScripts' /}
     </head>
     <body>
@@ -58,5 +60,20 @@
         		});
     		});
     	</script>
+		<script type="text/javascript">
+		$(function() {
+		   $('a[rel=lightbox]').lightBox({
+			overlayBgColor: '#FFF',
+			overlayOpacity: 0.6,
+			imageLoading: 'public/images/jquery/lightbox/lightbox-ico-loading.gif',
+			imageBtnClose: 'public/images/jquery/lightbox/lightbox-btn-close.gif',
+			imageBtnPrev: 'public/images/jquery/lightbox/lightbox-btn-prev.gif',
+			imageBtnNext: 'public/images/jquery/lightbox/lightbox-btn-next.gif',
+			containerResizeSpeed: 350,
+			txtImage: '&{'lightbox.image.label'}',
+			txtOf: '&{'lightbox.image.of'}'
+		   });
+		});
+		</script>
     </body>
 </html>
