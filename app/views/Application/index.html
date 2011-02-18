@@ -12,7 +12,7 @@
 			</ul>
 		#{/if}
 	#{/if}
-</section> 
+</section>
 
 <section id="games" class="games">
 #{if user}
@@ -47,7 +47,7 @@
 	#{/else}
 	<div class="clear"></div>
 	<hr size="2"></hr>
-		<a class="button add" accesskey="A" href="@{Application.addGame()}" title="&{'home.add.game.label.tooltip'}">&{'home.add.game.label'}</a>
+	<a class="button add" accesskey="A" href="@{Application.addGame()}" title="&{'home.add.game.label.tooltip'}">&{'home.add.game.label'}</a>
 #{/if}
 #{else}
 	<p>&{'home.anonymous.welcome.message',"Register/create","Goto to Register form"}</p>
