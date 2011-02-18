@@ -217,10 +217,10 @@ footer{
 #loginForm{
 	position:absolute;
 	margin-left:35%;
-	width:30%;
+	width:350px;
 	height:250px;
 	text-align:0px;
-	border:1px outset #333;
+	border:3px outset #333;
 	border-radius:4px;
 	box-shadow:#ccc 0.2em 0.2em 0.4em;
 	background-color:#eee;
@@ -228,6 +228,7 @@ footer{
 #loginForm h1 {
     font-weight: bold;
     color: #111;
+    text-align:center;
 }
 #loginForm form {
     padding: 10px;
@@ -243,7 +244,7 @@ footer{
 
 #username-field label, #password-field label {
     display: block;
-    width: 150px;
+    width: 100px;
     float: left;
     text-align: right;
     margin-right: 5px;
@@ -252,7 +253,7 @@ footer{
 }
 
 #username-field input {
-    width: 200px;
+    width: 150px;
     font-size: 13px;
 }
 
@@ -262,7 +263,7 @@ footer{
 }
 
 #remember-field input {
-    margin-left: 155px;
+    margin-left: 100px;
 }
 
 #remember-field {
@@ -271,7 +272,7 @@ footer{
 }
 
 #signin-field input {
-    margin-left: 155px;
+    margin-left: 100px;
     margin-top: 10px;
 }
 

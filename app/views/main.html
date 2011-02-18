@@ -51,10 +51,10 @@
     	</footer>
     	<script type="text/javascript">
     		$('a#login').click(function(){
-        		alert('Secure.login() calles');
         		$.get('@{Secure.login()}',function(data){
             		$('#loginForm').html(data);
             		$('#loginForm').show();
+            		$('#username').focus()
         		});
     		});
     	</script>

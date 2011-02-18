@@ -25,6 +25,8 @@ home.actions.login.label=Login with an existing user account
 home.actions.logout=Logout
 home.actions.logout.label=Logout connected user from this site
 
+home.secure.title=Please Login
+
 #Games zone
 home.games.title=List of games for %s
 home.games.noitems=No game in database !

@@ -1,6 +1,6 @@
 <div id="login">
 	
-	<h1>&{'secure.title'}</h1>
+	<h1>&{'home.secure.title'}</h1>
 		
 	#{form @authenticate()}
 		
@@ -17,11 +17,11 @@
 	
 		<p id="username-field">
 			<label for="username">&{'secure.username'}</label>
-			<input type="text" name="username" id="username" value="${flash.username}" />
+			<input type="text" name="username" id="username" size="20" value="${flash.username}" />
 		</p>
 		<p id="password-field">
 			<label for="password">&{'secure.password'}</label>
-			<input type="password" name="password" id="password" value="" />
+			<input type="password" name="password" id="password"  size="20" value="" />
 		</p>
 		<p id="remember-field">
 			<input type="checkbox" name="remember" id="remember" value="true" ${flash.remember ? 'checked="true"' : ''} />
