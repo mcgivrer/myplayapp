@@ -57,6 +57,18 @@ admin.backhome.label=Home
 admin.backhome.label.tooltip=Back to home page
 
 #preferences
+preferences.user.personal=User details
+preferences.user.image.label=Avatar
+preferences.user.username.label=Username
+preferences.user.firstname.label=Firstname
+preferences.user.lastname.label=Lastname
+preferences.user.email.label=Email
+preferences.user.webblog.label=Blog
+preferences.user.password.label=Password
+preferences.user.passwordConfirm.label=Confirm password
+
+
+
 preferences.user.legend=User Preferences
 preferences.user.language.label=Default language
 preferences.actions.update.label=Update
