@@ -14,9 +14,11 @@ import javax.persistence.PostLoad;
 import javax.persistence.Transient;
 
 import play.data.validation.Email;
+import play.data.validation.Equals;
 import play.data.validation.MaxSize;
 import play.data.validation.MinSize;
 import play.data.validation.Required;
+import play.data.validation.URL;
 import play.db.jpa.Model;
 
 /**
@@ -41,6 +43,11 @@ public class User extends Model {
 	@MaxSize(25)
 	public String password;
 	
+	//@Transient
+	//@Required
+	//@Equals("password")
+	//public String passwordConfirm;
+
 	@MaxSize(50)
 	public String firstname;
 	
@@ -53,6 +60,7 @@ public class User extends Model {
 	public String email;
 	
 	@MaxSize(100)
+	@URL
 	public String webblog;
 	
 	@MaxSize(255)
@@ -69,9 +77,6 @@ public class User extends Model {
 	@Required
 	public String language;
 	
-	@Transient
-	public String password2;
-
 	@Transient
 	public String gravatarHash;
 	
@@ -94,6 +99,7 @@ public class User extends Model {
 	public User(
 			String username,
 			String password,
+			//String passwordConfirm,
 			String firstname,
 			String lastname,
 			String email,
@@ -104,6 +110,7 @@ public class User extends Model {
 			String language){
 		this.username=username;
 		this.password=password;
+		//this.passwordConfirm=passwordConfirm;
 		this.firstname=firstname;
 		this.lastname=lastname;
 		this.email=email;
@@ -120,7 +127,9 @@ public class User extends Model {
 	 */
 	@PostLoad
 	public void initializeTransientAttribute(){
-		this.gravatarHash = play.libs.Crypto.passwordHash(this.email);		
+		if(null!=this.email){
+    		this.gravatarHash = play.libs.Crypto.passwordHash(this.email);		
+	    }
 	}
 	
 	/**
