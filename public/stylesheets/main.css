@@ -299,3 +299,23 @@ footer{
 	column-count: 3;
 	column-gap: 20px;
 }
+#preferences{
+	display:block;
+}
+#preferences 
+#preferences .infos{
+	dislpay:block;
+	margin-left:200px;
+}
+#preferences .field{
+	display:inline-block;
+	width:300px;
+}
+#preferences .field label{
+	float:left;
+	width:150px;
+}
+#preferences .field input{
+	float:left;
+	width:150px;
+}
