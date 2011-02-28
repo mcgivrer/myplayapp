@@ -26,7 +26,7 @@
    				#{/if}
    				#{if !user}
     				<li><a href="@{Register.create()}" title="&{'home.actions.register.label'}">&{'home.actions.register'}</a></li>
-    				<li><a href="@{Secure.login()}" title="&{'home.actions.login.label'}">&{'home.actions.login'}</a></li>
+    				<li><a id="login" href="#" title="&{'home.actions.login.label'}">&{'home.actions.login'}</a></li>
    				#{/if}
    				</ul>
    				<ul class="admin">
@@ -43,10 +43,24 @@
     	<section id="content">
 	        #{doLayout /}
 	    	<div class="clear"></div>
+	    	<div id="loginForm" class="hidden">
+	    	</div>
     	</section>
     	<footer>
     		<p>&{'site.footer.label'}</p>
     	</footer>
-    </body>
+    	<script type="text/javascript">
+    		$('a#login').click(function(){
+        		$.get('@{Secure.login()}',function(data){
+            		$('#loginForm').html(data);
+            		$('#loginForm').show();
+            		$('#username').focus()
+            		$('#cancel').click(function(){
+            			$('loginForm').hide();
+            		});
+        		});
+    		});
+		</script>
+	</body>
 </html>
 

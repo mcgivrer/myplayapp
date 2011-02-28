@@ -14,5 +14,6 @@ GET     /public/                                staticDir:public
 # Crud Path
 GET     /admin/?                                Administration.index
 *       /admin                                  module:crud
+*       /crud/index                             Administration.index
 # Import Secure routes
 *       /admin                                  module:secure

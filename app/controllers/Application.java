@@ -79,13 +79,6 @@ public class Application extends Controller {
     public static void register(){
     	render();
     }
-
-    /**
-     * Add a new game to the collection
-     */
-    public static void addGame(){
-    	render();
-    }
     
 }
 
