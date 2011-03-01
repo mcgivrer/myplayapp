@@ -1,0 +1,19 @@
+#{extends 'main.html' /}
+
+#{form @GameLibrary.save(game?.id)}
+	<div id="game">
+		<div class="cover">
+			<img alt="${game?.title}" src="${game?.cover}">
+			<p>&{'gamelibrary.add.game.cover'}</p>
+			<input type="file" name="game.cover" id="game.cover" value="${game?.cover}" />
+			</div>
+		<div class="info">
+			<ul>
+				<li><span>&{'gamelibrary.add.game.developerstudio'}</span>${game?.developerStudio}</li>
+				<li><span>&{'gamelibrary.add.game.editor'}</span>${game?.editor}</li>
+				<li><span>&{'gamelibrary.add.game.platform'}</span>${game?.platform}</li>
+				<li><span>&{'gamelibrary.add.game.note'}</span>${game?.note}</li>
+			</ul>
+		</div>
+	</div>
+#{/form}

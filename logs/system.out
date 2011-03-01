@@ -1,0 +1,7 @@
+14:21:01,622 INFO  ~ Starting /home/frederic/Projetcs/play/myplayapp
+14:21:01,641 INFO  ~ Module secure is available (/home/frederic/tools/play-1.1.1/modules/secure)
+14:21:01,643 INFO  ~ Module crud is available (/home/frederic/tools/play-1.1.1/modules/crud)
+14:21:02,730 WARN  ~ You're running Play! in DEV mode
+14:21:02,837 INFO  ~ Listening for HTTP on port 9000 (Waiting a first request to start) ...
+14:21:17,974 INFO  ~ Connected to jdbc:hsqldb:file:/home/frederic/Projetcs/play/myplayapp/db/db
+14:21:19,172 INFO  ~ Application 'myplayapp' is now started !
