@@ -1,4 +1,6 @@
 server.pid
+eclipse/
+nbproject/
 tmp/
 logs/
 db/
