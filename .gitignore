@@ -1,4 +1,4 @@
-tmp/*
-logs/*
-db/*
-
+server.pid
+tmp/
+logs/
+db/
