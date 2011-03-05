@@ -3,8 +3,11 @@
  */
 package models;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import play.data.validation.Required;
 import play.db.jpa.Model;
@@ -32,7 +35,7 @@ public class Game extends Model {
 	@Required
 	@ManyToOne
 	public User author;
-
+	
 	/**
 	 * Default constructor for persistence purpose.
 	 * @param title

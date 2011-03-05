@@ -112,7 +112,9 @@ header nav.admin ul li a{
 }
 .games{
 	display:inline-block;
-	width:80%;
+	width:77%;
+	padding-right:0.5em;
+	border-right:1px dotted #ddd;
 }
 .platforms{
     float:right;
@@ -290,4 +292,32 @@ footer{
 
 #loginForm .success {
     background: #008800 !important;
+}
+.columns3{
+	-webkit-column-count: 3;
+	-webkit-column-gap: 20px;
+	-moz-column-count: 3;
+	-moz-column-gap: 20px;
+	column-count: 3;
+	column-gap: 20px;
+}
+#preferences{
+	display:block;
+}
+#preferences 
+#preferences .infos{
+	display:block;
+	margin-left:200px;
+}
+#preferences .field{
+	display:inline-block;
+	width:300px;
+}
+#preferences .field label{
+	float:left;
+	width:150px;
+}
+#preferences .field input{
+	float:left;
+	width:150px;
 }

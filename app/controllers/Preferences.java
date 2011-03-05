@@ -4,6 +4,7 @@
 package controllers;
 
 import models.User;
+import play.data.validation.Valid;
 import play.mvc.Before;
 import play.mvc.Controller;
 import play.mvc.With;
@@ -31,9 +32,9 @@ public class Preferences extends Controller {
      * sauvegarde les préférences utilisateur.
      * @param userLanguage
      */
-	public static void update(String userLanguage){
-		User user = (User)renderArgs.get("user");
-		user.language = userLanguage;
+	public static void update(@Valid User user){
+		//User user = (User)renderArgs.get("user");
+		
 		user.save();
 		Preferences.show(user.getId());
 	}

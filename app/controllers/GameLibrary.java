@@ -29,5 +29,9 @@ public class GameLibrary extends Controller {
     	game.save();
     	renderTemplate("GameLibrary/addGame.html");
     }
+
+		public static void exportGamesList(){
+			renderTemplate("Application/index.html");
+		}
 	
 }

@@ -18,7 +18,7 @@ import play.mvc.With;
  * @author McGivrer
  */
 @With(Security.class)
-public class Application extends Controller {
+public class Application extends SecureController {
 
 	/**
 	 * récupération de l'utilisateur connecté.
@@ -81,4 +81,3 @@ public class Application extends Controller {
     }
     
 }
-

@@ -1,13 +1,13 @@
 #{extends 'main.html' /}
 
 #{set title:'Home / ' + game.platform + ' / ' + game.title /}
-<div class="game" id="game_${game.id}">
+<div class="details" id="game_${game.id}">
 		<div class="title"><span>#${game.id}.</span> <a href="@{Application.details(game.id)}">${game.platform}/${game.title}</a></div>
 	<div class="side">
 		#{if game.cover}
 		<div class="cover">
 			<a href="/public/images/games/${game.platform}/${game.title}/cover/${game.cover}">
-				<img src="/public/images/games/${game.platform}/${game.title}/cover/${game.cover}.resized" 
+                            <img alt="&{'game.details.cover.alt', game.title, game.platform}" src="/public/images/games/${game.platform}/${game.title}/cover/${game.cover}.resized"
 					title="${game.platform}/${game.title}"/></a>
 		</div>
 		#{/if}
@@ -19,5 +19,15 @@
 		<div class="label">&{'home.games.game.description'}</div>
 		<div class="bloc">${game.description}</div>
 		#{/if}
+		#{if game.testContent}
+		<div class="label">&{'home.games.game.test'}</div>
+		<div class="bloc 3columns">${game.testContent.textile().raw()}</div>
+		#{/if}
+
 	</div>
+                
+	<div class="clear"></div>
+	<hr size="2"></hr>
+        <a class="button" href="@{Application.index()}" title="&{'admin.backhome.label.tooltip'}">&{'admin.backhome.label'}</a>
+
 </div>
