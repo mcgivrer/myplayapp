@@ -1,4 +1,9 @@
+eclipse/*
 tmp/*
 logs/*
 db/*
 
+/server.pid
+/eclipse
+/db
+/logs
