@@ -14,7 +14,7 @@ import play.mvc.Controller;
 import play.mvc.With;
 
 /**
- * Classe de gestion de la bibliothèque des jeux video commune aux utilisateurs.
+ * Classe de gestion de la bibliothèque des jeux video.
  * 
  * @author frederic
  */
@@ -35,8 +35,10 @@ public class GameLibrary extends Controller {
 	/**
 	 * Add a new game to the collection
 	 */
+	@Check("USER")
 	public static void addGame() {
-		render();
+		User user = (User) renderArgs.get("user");
+		render(user);
 	}
 
 	/**
@@ -45,8 +47,9 @@ public class GameLibrary extends Controller {
 	 * @param game
 	 */
 	public static void save(@Valid Game game) {
+		User user = (User) renderArgs.get("user");
 		game.save();
-		renderTemplate("GameLibrary/addGame.html");
+		renderTemplate("GameLibrary/addGame.html",user,game);
 	}
 
 }

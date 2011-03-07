@@ -8,7 +8,7 @@
         <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/jquery.lightbox-0.5.css'}">
         #{get 'moreStyles' /}
         <link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}">
-        <script src="@{'/public/javascripts/jquery-1.4.2.min.js'}" type="text/javascript" charset="utf-8"></script>
+        <script src="@{'/public/javascripts/jquery-1.5.1.js'}" type="text/javascript" charset="utf-8"></script>
         <script src="@{'/public/javascripts/jquery.lightbox-0.5.pack.js'}" type="text/javascript" charset="utf-8"></script>
         #{get 'moreScripts' /}
     </head>
@@ -24,11 +24,11 @@
     				<li><img class="avatar" src="http://www.gravatar.com/avatar/${user.gravatarHash}?s=16"/>${user.firstname} ${user.lastname}</li>
 					<li><a href="@{Application.index()}" title="&{'admin.backhome.label.tooltip'}">&{'admin.backhome.label'}</a></li>
 					<li><a href="@{Preferences.show()}" title="&{'admin.preferences.label.tooltip'}">&{'admin.preferences.label'}</a></li>
- 					<li><a href="@{Secure.logout()}" title="&{'home.actions.logout.label'}">&{'home.actions.logout'}</a></li>
+ 					<li><a id="logout" class="item logout"href="@{Secure.logout()}" title="&{'home.actions.logout.label'}">&{'home.actions.logout'}</a></li>
    				#{/if}
    				#{if !user}
     				<li><a href="@{Register.create()}" title="&{'home.actions.register.label'}">&{'home.actions.register'}</a></li>
-    				<li><a id="login" href="#" title="&{'home.actions.login.label'}">&{'home.actions.login'}</a></li>
+    				<li><a id="login" class="item login" href="#" title="&{'home.actions.login.label'}">&{'home.actions.login'}</a></li>
    				#{/if}
    				</ul>
    				<ul class="admin">

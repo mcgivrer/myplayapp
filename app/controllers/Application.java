@@ -117,35 +117,7 @@ public class Application extends Controller {
 		List<Game> platforms = Game.find(
 				"select distinct g.platform from Game g order by g.platform")
 				.fetch();
-		render(games, platforms);
-	}
-
-
-	/**
-	 * Export la liste des jeux affichés dans le format souhaité
-	 */
-	public static void exportGamesList(){
-		// Récupération de l'utilisateur connecté.
-		User user = (User) renderArgs.get("user");
-		Logger.debug("Export game list for user "+user.username);
-		// Si un utilisateur connecté.
-		if (user != null) {
-			Logger.debug(user.username + ": " + user.firstname + " " + user.lastname);
-			// Création de la liste des jeux
-			List<Game> games = Game.find("select g from Game g "
-								+"where "
-								+"g.publish=true "
-								+"and g.author = ? "
-								+"order by platform asc, title asc", user).fetch();
-			Logger.debug("Number of exported games: %d", games.size());
-			// Preparation de la date de génération
-			Date dateOfTheDay = new Date();
-			DateFormat df = new SimpleDateFormat("dd-mm-yyyy");
-			String date = df.format(dateOfTheDay);
-			// Définition du nom de fichier (pour FF)
-			renderArgs.put("filename","mygames.xls");
-			renderExcel(user, games, date);
-		}
+		render(games, platforms,user);
 	}
 	
 	/**
@@ -174,7 +146,35 @@ public class Application extends Controller {
 						+ "order by g.title ",
 				"%" + search.toLowerCase() + "%", user).fetch();
 		// rendu de la page
-		renderTemplate("Application/index.html", games, platforms);
+		renderTemplate("Application/search.html", games, user, platforms);
 	}
 
+	/**
+	 * Export la liste des jeux affichés dans le format souhaité
+	 */
+	public static void exportGamesList(){
+		// Récupération de l'utilisateur connecté.
+		User user = (User) renderArgs.get("user");
+		Logger.debug("Export game list for user "+user.username);
+		// Si un utilisateur connecté.
+		if (user != null) {
+			Logger.debug(user.username + ": " + user.firstname + " " + user.lastname);
+			// Création de la liste des jeux
+			List<Game> games = Game.find("select g from Game g "
+								+"where "
+								+"g.publish=true "
+								+"and g.author = ? "
+								+"order by platform asc, title asc", user).fetch();
+			Logger.debug("Number of exported games: %d", games.size());
+			// Preparation de la date de génération
+			Date dateOfTheDay = new Date();
+			DateFormat df = new SimpleDateFormat("dd-mm-yyyy");
+			String date = df.format(dateOfTheDay);
+			// Définition du nom de fichier (pour FF)
+			renderArgs.put("filename","mygames.xls");
+			renderExcel(user, games, date);
+		}
+	}
+	
+	
 }
