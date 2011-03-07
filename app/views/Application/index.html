@@ -1,5 +1,13 @@
 #{extends 'main.html' /}
-
+<section id="search">
+	<label for="search">&{'home.search.label'}</label>
+	<input type="text" name="search" id="search" size="15" maxlength="40"/>
+	<script type="text/javascript">
+	$("#search").click(function() { // retour simple
+		$.post('@{filterByGameTitle()}',{search: $("#search").val()});
+	});
+	</script>
+</section>
 <section id="platforms" class="platforms">
 	#{if user}
 		#{if platforms}

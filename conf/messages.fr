@@ -6,7 +6,7 @@ site.subtitle=LE site pour gérer Votre liste de jeux vidéos.
 site.welcome.label=Bienvenu 
 site.footer.label=Copyright (c) 2011 - Frédéric Delorme - <a href="mailto:frederic.delorme@web-context.com">contact</a>
 title=Titre
-platform=Platforme
+platform=Plateforme
 description=Description
 publish=Publié
 testContent=Texte du test
@@ -33,7 +33,7 @@ home.games.game.description=Description
 home.games.game.test=Test
 
 #Platforms zone
-home.platforms.title=Platformes
+home.platforms.title=Plateformes
 home.platforms.filter.showAll=Toutes
 
 #Administration zone
