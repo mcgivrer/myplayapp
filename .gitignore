@@ -1,5 +1,10 @@
-eclipse/*
-tmp/*
-logs/*
-db/*
+eclipse
+tmp
+logs
+db
 server.pid
+.classpath
+.project
+.settings
+nbproject
+
