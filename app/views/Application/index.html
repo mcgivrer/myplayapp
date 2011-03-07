@@ -4,7 +4,7 @@
 	<input type="text" name="search" id="search" size="15" maxlength="40"/>
 	<script type="text/javascript">
 	$("#search").click(function() { // retour simple
-		$.post('@{filterByGameTitle()}',{search: $("#search").val()});
+		$.post('@{Application.filterByGameTitle()}',{search: $("#search").val()});
 	});
 	</script>
 </section>
