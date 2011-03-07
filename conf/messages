@@ -37,6 +37,8 @@ home.add.game.label.tooltip=Add a new Game to your collection
 home.export.game.label=Export List
 home.export.game.label.tooltip=Export list of Games to your own file type
 
+home.search.label=Search :
+
 #Game details
 game.details.cover.alt=Cover for game '%s' on %s platform
 
