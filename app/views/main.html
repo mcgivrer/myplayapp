@@ -24,7 +24,7 @@
     				<li><img class="avatar" src="http://www.gravatar.com/avatar/${user.gravatarHash}?s=16"/>${user.firstname} ${user.lastname}</li>
 					<li><a href="@{Application.index()}" title="&{'admin.backhome.label.tooltip'}">&{'admin.backhome.label'}</a></li>
 					<li><a href="@{Preferences.show()}" title="&{'admin.preferences.label.tooltip'}">&{'admin.preferences.label'}</a></li>
-    				<li><a href="@{Secure.logout()}" title="&{'home.actions.logout.label'}">&{'home.actions.logout'}</a></li>
+ 					<li><a href="@{Secure.logout()}" title="&{'home.actions.logout.label'}">&{'home.actions.logout'}</a></li>
    				#{/if}
    				#{if !user}
     				<li><a href="@{Register.create()}" title="&{'home.actions.register.label'}">&{'home.actions.register'}</a></li>
@@ -57,23 +57,28 @@
             		$('#loginForm').html(data);
             		$('#loginForm').show();
             		$('#username').focus()
+            		$('#cancel').click(function(){
+            			$('loginForm').hide();
+            		});
         		});
     		});
+
     	</script>
-		<script type="text/javascript">
-		$(function() {
-		   $('a[rel=lightbox]').lightBox({
-			overlayBgColor: '#FFF',
-			overlayOpacity: 0.6,
-			imageLoading: 'public/images/jquery/lightbox/lightbox-ico-loading.gif',
-			imageBtnClose: 'public/images/jquery/lightbox/lightbox-btn-close.gif',
-			imageBtnPrev: 'public/images/jquery/lightbox/lightbox-btn-prev.gif',
-			imageBtnNext: 'public/images/jquery/lightbox/lightbox-btn-next.gif',
-			containerResizeSpeed: 350,
-			txtImage: '&{'lightbox.image.label'}',
-			txtOf: '&{'lightbox.image.of'}'
-		   });
-		});
-		</script>
+        <script type="text/javascript">
+        $(function() {
+           $('a[rel=lightbox]').lightBox({
+                overlayBgColor: '#FFF',
+                overlayOpacity: 0.6,
+                imageLoading: 'public/images/jquery/lightbox/lightbox-ico-loading.gif',
+                imageBtnClose: 'public/images/jquery/lightbox/lightbox-btn-close.gif',
+                imageBtnPrev: 'public/images/jquery/lightbox/lightbox-btn-prev.gif',
+                imageBtnNext: 'public/images/jquery/lightbox/lightbox-btn-next.gif',
+                containerResizeSpeed: 350,
+                txtImage: '&{'lightbox.image.label'}',
+                txtOf: '&{'lightbox.image.of'}'
+           });
+        });
+        </script>
     </body>
 </html>
+

@@ -111,8 +111,10 @@ header nav.admin ul li a{
 	text-decoration:none;
 }
 .games{
-	display:block;
-	width:80%;
+	display:inline-block;
+	width:77%;
+	padding-right:0.5em;
+	border-right:1px dotted #ddd;
 }
 .platforms{
     float:right;
@@ -291,7 +293,7 @@ footer{
 #loginForm .success {
     background: #008800 !important;
 }
-.3columns{
+.columns3{
 	-webkit-column-count: 3;
 	-webkit-column-gap: 20px;
 	-moz-column-count: 3;
@@ -304,7 +306,7 @@ footer{
 }
 #preferences 
 #preferences .infos{
-	dislpay:block;
+	display:block;
 	margin-left:200px;
 }
 #preferences .field{

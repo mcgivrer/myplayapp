@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 eclipse
 tmp
 logs
@@ -8,3 +9,11 @@ server.pid
 .settings
 nbproject
 
+=======
+server.pid
+eclipse/
+nbproject/
+tmp/
+logs/
+db/
+>>>>>>> 90db4603d6dc9ccd720a4822f78fe2491ff089f1

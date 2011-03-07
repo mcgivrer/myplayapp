@@ -34,11 +34,19 @@ home.games.game.description=Description
 home.games.game.test=Test
 home.add.game.label=Add Game
 home.add.game.label.tooltip=Add a new Game to your collection
+home.export.game.label=Export List
+home.export.game.label.tooltip=Export list of Games to your own file type
+
+#Game details
+game.details.cover.alt=Cover for game '%s' on %s platform
 
 #Platforms zone
 home.platforms.title=Platforms
+home.platforms.filter.label=Show games from platform '%s'
 home.platforms.filter.showAll=All
+home.platforms.filter.showAll.label=Show games from all platforms
 home.platforms.filter.showAll.pageTitle=All platforms
+
 
 #Message
 home.anonymous.welcome.message=Please, <a href="%s" title="%s">register</a> yourself to be able to create and maintain your own video game list !
@@ -83,3 +91,6 @@ user.create.email=Enter your own email
 user.create.password=Choose a password
 user.create.password.confirm=Confirm this password
 user.create.save=Register
+
+#signin zone
+secure.cancel=Cancel
