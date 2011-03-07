@@ -80,8 +80,8 @@ Game(game4):
    description: Un jeu dans un monde Gothique post-appocalytique. 
    publish: true
    testContent: todo.
-   developerStudio: unknown
-   editor: unknown
+   developerStudio: Vigil Games 
+   editor: THQ
    yearOfPublication: 2010
    note: 8
    cover: x360-darksiders-cover.jpg
@@ -93,8 +93,8 @@ Game(game5):
    description: Un RPG d'espionage ! 
    publish: true
    testContent: todo.
-   developerStudio: unknown
-   editor: unknown
+   developerStudio: Obsidian Entertainment
+   editor: Sega
    yearOfPublication: 2010
    note: 8
    cover: x360-alpha_protocol-cover.jpg
@@ -106,8 +106,8 @@ Game(game6):
    description: Un revivalde tous les mario Nintendo 
    publish: true
    testContent: todo.
-   developerStudio: unknown
-   editor: unknown
+   developerStudio: Nintendo
+   editor: Nintendo
    yearOfPublication: 2010
    note: 8
    cover: wii-super_mario_all_stars_25th_anniversary_edition-cover.jpg
@@ -119,8 +119,8 @@ Game(game7):
    description: Le petit dernier né des MArtio sur Wii. Une référence 
    publish: true
    testContent: todo.
-   developerStudio: unknown
-   editor: unknown
+   developerStudio: Nintendo
+   editor: Nintendo
    yearOfPublication: 2010
    note: 8
    cover: wii-new_super_mario_bros_wii-cover.jpg
@@ -132,8 +132,8 @@ Game(game8):
    description: Un PoP taillé pour la Wii,  une vraie réussite sur les plans graphique et gameplay.  
    publish: true
    testContent: todo.
-   developerStudio: unknown
-   editor: unknown
+   developerStudio: Ubisoft Quebec
+   editor: Ubisoft
    yearOfPublication: 2010
    note: 8
    cover: wii-prince_of_persia_forgotten_sands-cover.jpg

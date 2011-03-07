@@ -74,9 +74,6 @@ preferences.user.email.label=Email
 preferences.user.webblog.label=Blog
 preferences.user.password.label=Password
 preferences.user.passwordConfirm.label=Confirm password
-
-
-
 preferences.user.legend=User Preferences
 preferences.user.language.label=Default language
 preferences.actions.update.label=Update
@@ -94,3 +91,6 @@ user.create.save=Register
 
 #signin zone
 secure.cancel=Cancel
+
+#export
+export.title.user=List for user %s
