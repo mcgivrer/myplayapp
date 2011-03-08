@@ -1,7 +1,7 @@
-#{if _user}
-	#{if _games}
-	<h2>&{'home.games.title', _user?.username}</h2>
-	    #{list items:_games, as:'game'}
+#{if _userConnected}
+	#{if _items}
+	<h2>&{'home.games.title', _userConnected?.username}</h2>
+	    #{list items:_items, as:'game'}
 		#{set title:'Home / ' + filterPlatform /}
 		
 		<div class="game" id="game_${game.id}">

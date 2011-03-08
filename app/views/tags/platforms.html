@@ -1,30 +1,34 @@
-
-	#{if _user}
-<section id="searchForm">
-	<label for="search">&{'home.search.label'}</label><br />
-	<input type="text" name="search" id="search" size="25" maxlength="40"/>
-	<script type="text/javascript">
-	$("#search").keyup(function(event) { // retour simple
-		if(event.keyCode==13){
-			$.post('@{Application.filterByGameTitle()}',
-					{search: $("#search").val()}, 
-					function(data){
-						$('#games').html(data);
-					}
-			);
-		}
-	});
-	</script>
-</section>
-
-		#{if _platforms}
-    <h2>&{'home.platforms.title'}</h2>
-    <ul>
-        <li><a href="@{Application.filterByPlatform('*')}" title="&{'home.platforms.filter.showAll.label'}">&{'home.platforms.filter.showAll'}</a></li>
-				#{list items:_platforms, as:'platform'}
-        <li><a href="@{Application.filterByPlatform(platform)}" title="&{'home.platforms.filter.label', platform}">${platform}</a></li>
-				#{/list}
-    </ul>
-		#{/if}
+#{if _userConnected}
+	<section id="searchForm">
+		<label for="search">&{'home.search.label'}</label><br />
+		<input type="text" name="search" id="search" size="25" maxlength="40"/>
+		<script type="text/javascript">
+		$("#search").keyup(function(event) { // retour simple
+			if(event.keyCode==13){
+				$.post('@{Application.filterByGameTitle()}',
+						{search: $("#search").val()}, 
+						function(data){
+							$('#games').html(data);
+						}
+				);
+			}
+		});
+		</script>
+	</section>
+	#{if _items}
+	    <h2>&{'home.platforms.title'}</h2>
+	    <ul>
+	        <li>
+	        	<a href="@{Application.filterByPlatform('*')}" 
+	        		title="&{'home.platforms.filter.showAll.label'}">
+	        		&{'home.platforms.filter.showAll'}</a>
+	        </li>
+		#{list items:_items, as:'platform'}
+	        <li><a href="@{Application.filterByPlatform(platform)}" 
+	        		title="&{'home.platforms.filter.label', platform}">
+	        		${platform}</a>
+       		</li>
+		#{/list}
+	    </ul>
 	#{/if}
-
+#{/if}
