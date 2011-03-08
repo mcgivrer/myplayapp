@@ -143,7 +143,7 @@ public class Application extends Controller {
 		List<Game> games = Game.find(
 				"select g from Game g " + "where lower(g.title) like ? "
 						+ "and g.author=? " + "and g.publish=true "
-						+ "order by g.title ",
+						+ "order by g.platform, g.title ",
 				"%" + search.toLowerCase() + "%", user).fetch();
 		// rendu de la page
 		renderTemplate("Application/search.html", games, user, platforms);

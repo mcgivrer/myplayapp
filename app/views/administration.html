@@ -17,19 +17,31 @@
 			<nav class="menu admin">
 				#{if user}
 				<ul class="user">
-					<li>${user.firstname} ${user.lastname}</li>
-					<li><a href="@{Application.index()}" title="&{'admin.backhome.label.tooltip'}">&{'admin.backhome.label'}</a></li>
-					<li><a href="@{Preferences.show()}" title="&{'admin.preferences.label.tooltip'}">&{'admin.preferences.label'}</a></li>
-					<li><a href="@{Secure.logout()}" title="&{'admin.logout.label.tooltip'}">&{'admin.logout.label'}</a></li>      
+					<li><a href="#">
+                        <img class="avatar" src="http://www.gravatar.com/avatar/${user.gravatarHash}?s=16"/>
+                        ${user.firstname} ${user.lastname}</a></li>
+					<li><a class="item home" 
+                        href="@{Application.index()}" 
+                        title="&{'admin.backhome.label.tooltip'}">&{'admin.backhome.label'}</a></li>
+					<li><a class="item prefs" 
+                        href="@{Preferences.show()}" 
+                        title="&{'admin.preferences.label.tooltip'}">&{'admin.preferences.label'}</a></li>
+					<li><a class="item logout" 
+                        href="@{Secure.logout()}" 
+                        title="&{'admin.logout.label.tooltip'}">&{'admin.logout.label'}</a></li>      
 				</ul>
 				#{/if}
 				#{if user.isRole('ADMINISTRATOR')}
 				<ul class="admin">
-					<li><a href="@{administration.Users.list()}" title="&{'admin.users.label.tooltip'}">&{'admin.users.label'}</a></li>
-					<li><a href="@{administration.Games.list()}" title="&{'admin.games.label.tooltip'}">&{'admin.games.label'}</a></li>
+					<li><a class="item admin users-bt" 
+                        href="@{administration.Users.list()}" 
+                        title="&{'admin.users.label.tooltip'}">&{'admin.users.label'}</a></li>
+					<li><a class="item admin games-bt" 
+                        href="@{administration.Games.list()}" 
+                        title="&{'admin.games.label.tooltip'}">&{'admin.games.label'}</a></li>
 				</ul>
 				#{/if}
-			<div class="clear"></div>
+			    <div class="clear"></div>
 			</nav>
 			
 		</header>

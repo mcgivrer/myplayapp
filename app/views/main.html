@@ -18,28 +18,7 @@
     		<h1><a href="@{Application.index()}">&{'site.title'}</a></h1>
     		<h2>&{'site.subtitle'}</h2>
 
-    		<nav class="menu">
-    			<ul class="user">
-   				#{if user}
-    				<li><img class="avatar" src="http://www.gravatar.com/avatar/${user.gravatarHash}?s=16"/>${user.firstname} ${user.lastname}</li>
-					<li><a href="@{Application.index()}" title="&{'admin.backhome.label.tooltip'}">&{'admin.backhome.label'}</a></li>
-					<li><a href="@{Preferences.show()}" title="&{'admin.preferences.label.tooltip'}">&{'admin.preferences.label'}</a></li>
- 					<li><a id="logout" class="item logout"href="@{Secure.logout()}" title="&{'home.actions.logout.label'}">&{'home.actions.logout'}</a></li>
-   				#{/if}
-   				#{if !user}
-    				<li><a href="@{Register.create()}" title="&{'home.actions.register.label'}">&{'home.actions.register'}</a></li>
-    				<li><a id="login" class="item login" href="#" title="&{'home.actions.login.label'}">&{'home.actions.login'}</a></li>
-   				#{/if}
-   				</ul>
-   				<ul class="admin">
-   				#{if user}
-    				#{if user.isRole("ADMINISTRATOR")}
-	    				<li><a class="admin" href="@{Administration.index()}" title="&{'home.actions.admin.label'}">&{'home.actions.admin'}</a></li>
-    				#{/if}
-   				#{/if}
-    			</ul>
-    			<div class="clear"></div>
-    		</nav>
+    		#{menu user:user/}
 
     	</header>
     	<section id="content">
@@ -49,7 +28,7 @@
 	    	</div>
     	</section>
     	<footer>
-    		<p>&{'site.footer.label'}</p>
+    		<p>&{'site.footer.label'} - &{'site.footer.credits', "http://www.famfamfam.com/lab/icons/silk/"}</p>
     	</footer>
     	<script type="text/javascript">
     		$('a#login').click(function(){

@@ -4,7 +4,9 @@
 site.title=My Video Games list
 site.subtitle=the site to manage your own list of video games
 site.welcome.label=Welcome
-site.footer.label=Copyright (c) 2011 - Frédéric Delorme - <a href="mailto:frederic.delorme@web-context.com" title="send a mail to team member">contact</a>
+site.footer.label=Copyright (c) 2011 - Frédéric Delorme - <a href="mailto:frederic.delorme@web-context.com"
+site.footer.credits=Icons from <a href="http://www.famfamfam.com/lab/icons/silk/">Silk iconset from famfamfam</a> and <a href="http://www.iconfinder.com/blog/5/">IconFinder "Copenhagen" iconset</a>
+ title="send a mail to team member">contact</a>
 title=Title
 platform=Platform
 description=Description
@@ -62,7 +64,7 @@ admin.users.label.tooltip=Manage Users
 admin.games.label=Games
 admin.games.label.tooltip=Manage Games
 admin.preferences.label=Preferences
-admin.preferences.label.tootip=Edit user preferences
+admin.preferences.label.tooltip=Edit user preferences
 admin.backhome.label=Home
 admin.backhome.label.tooltip=Back to home page
 
@@ -80,6 +82,8 @@ preferences.user.legend=User Preferences
 preferences.user.language.label=Default language
 preferences.actions.update.label=Update
 preferences.actions.update.label.tooltip=Save modifications
+preferences.actions.cancel.label=Cancel
+preferences.actions.cancel.label.tooltip=Cancel modifications
 language.english.label=English
 language.french.label=French
 

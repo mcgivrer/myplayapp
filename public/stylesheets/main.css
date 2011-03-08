@@ -46,16 +46,40 @@ body {
 	border-color: #FE9
 }
 .login{
-	background-image:url('../images/icons/lock_open.png');
+	background-image:url('../images/icons/silk/lock_open.png');
 }
 .logout{
-	background-image:url('../images/icons/lock_close.png');
+	background-image:url('../images/icons/silk/lock_close.png');
 }
 .add{
-	background-image:url('../images/icons/item_add_2.png');
+	background-image:url('../images/icons/silk/item_add.png');
 }
 .export{
-	background-image:url('../images/icons/table_excel.png');
+	background-image:url('../images/icons/silk/table_excel.png');
+}
+.prefs{
+	background-image:url('../images/icons/silk/application_view_tile.png');
+}
+.home{
+	background-image:url('../images/icons/silk/house_go.png');
+}
+.cancel{
+	background-image:url('../images/icons/silk/cancel.png');
+}
+.save{
+	background-image:url('../images/icons/silk/database_save.png');
+}
+.accept{
+	background-image:url('../images/icons/silk/accept.png');
+}
+.admin {
+	background-color:#e85;
+}
+.users-bt{
+	background-image:url('../images/icons/silk/folder_user.png');
+}
+.games-bt{
+	background-image:url('../images/icons/silk/controller.png');
 }
 /*----- Page header definition -----*/
 header {
@@ -65,50 +89,62 @@ header {
     padding:0em;
 }
 header h1 {
-	padding:0.5em;
+	padding: 0.5em 0.5em 0.2em 1em;
+    text-shadow:#fff 4px 4px 8px;
+    font-family:Arial, sans serif;
 }
 header h1 a{
 	color:#fff;
 	text-decoration:none;
 }
 header h2{
-	padding:0.1em 0.5em;
+	padding:0em 0em 0em 1em;
 }
-header nav.menu{
+header nav {
 	display:block;
 	background-color:#ccc;
+	padding:0px;
+	margin:0px;
+	height:30px;
 }
 header nav.menu ul.user{
 	float:left;
 	display:block;
+	padding:2px;
+	margin:0px;
+	height:30px;
 }
 header nav.menu ul.admin{
 	float:right;
 	display:block;
+	padding:2px;
+	margin:0px;
+	height:26px;
+	min-width:200px;
 }
-header nav.menu ul li img.avatar{
+header nav.menu ul li a img.avatar{
 	float:left;
 	text-align:middle;
-	padding-left:0.3em;
+	padding:0px;
+	margin:0px;
+	margin:0px 4px -2px -1px;
 }
-
 header nav.menu ul{
 	display:block;
 	list-style:none;
-	margin:0em; 
-	padding:0.4em;
 	height:1.5em;
 }
 header nav.menu ul li {
 	float:left;
 	display:inline-block;
-	padding-left:0.2em;
+	/*height:16px;*/
 }
 header nav.menu ul li a{
 	display:block;
 	background-color:#ddd;
-	margin:0px; 
-	padding:0.2em 0.6em;
+	margin:2px; 
+	padding:2px 4px;
+	height:16px;
 	-weblit-border-radius:0.2em;
 	-moz-border-radius:0.2em;
 	border-radius:0.4em;
@@ -120,29 +156,37 @@ header nav.menu ul li a{
 header nav.menu ul li a.item{
 	padding-left:24px;
 	background-repeat:no-repeat;
-	background-position: 4px 0px;
+	background-position: 3px 1px;
 }
 header nav.menu ul li a:hover {
 	background-color:#fff;
 	color:#666;
 }
-header nav.menu ul li a.admin{
+header nav.admin{
+	display:block;
+	background-color:#f96;
+}
+header nav.admin ul li a{
+	display:block;
+	background-color:#e85;
+	border:1px outset #e85;
+	color:#fe9;
+}
+header ul.admin li a {
 	background-color:#f96;
 	border:1px outset #f96;
 	color:#fe9;
 }
 
-header nav.admin{
-	background-color:#f96;
-}
-header nav.admin ul li a{
-	background-color:#e85;
-	border:1px outset #e85;
-	color:#fe9;
-}
-
 #content{
 	min-height:20em;
+} 
+input#search {
+	background-color:#eee;
+	width:98%;
+	background-image:url('../images/icons/silk/magnifier.png');
+	background-repeat:no-repeat;
+	background-position:right;
 }
 
 /*----- Games list zone -----*/
@@ -267,6 +311,7 @@ footer{
     padding:0.4em;
     margin-top:1em;
 }
+/*----- FOrmulaire de connexion -----*/ 
 #loginForm{
 	position:absolute;
 	margin-left:35%;
@@ -352,10 +397,11 @@ footer{
 	column-count: 3;
 	column-gap: 20px;
 }
+
+/*----- Préférences utilisateur -----*/
 #preferences{
 	display:block;
 }
-#preferences 
 #preferences .infos{
 	display:block;
 	margin-left:200px;
