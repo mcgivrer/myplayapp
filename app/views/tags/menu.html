@@ -1,0 +1,25 @@
+<nav class="menu">
+    <ul class="user">
+    #{if _user}
+	    <li><a id="backhome" class="item home" href="@{Application.index()}" title="&{'admin.backhome.label.tooltip'}">&{'admin.backhome.label'}</a></li>
+	   <li><a href="#"><img class="avatar" src="http://www.gravatar.com/avatar/${_user.gravatarHash}?s=16"/>
+${_user.firstname} ${_user.lastname}</a></li>
+	    <li><a id="userpreferences" class="item prefs" href="@{Preferences.show()}" title="&{'admin.preferences.label.tooltip'}">&{'admin.preferences.label'}</a></li>
+	    <li><a id="logout" class="item logout"href="@{Secure.logout()}" title="&{'home.actions.logout.label'}">&{'home.actions.logout'}</a></li>
+    #{/if}
+    #{if !_user}
+	    <li><a href="@{Register.create()}" title="&{'home.actions.register.label'}">&{'home.actions.register'}</a></li>
+	    <li><a id="login" class="item login" href="#" title="&{'home.actions.login.label'}">&{'home.actions.login'}</a></li>
+    #{/if}
+    </ul>
+    #{if _user}
+        #{if _user.isRole("ADMINISTRATOR")}
+        <ul class="admin">
+		        <li><a class="item admin" 
+		            href="@{Administration.index()}" 
+		            title="&{'home.actions.admin.label'}">&{'home.actions.admin'}</a></li>
+        </ul>
+	    #{/if}
+    #{/if}
+    <div class="clear"></div>
+</nav>

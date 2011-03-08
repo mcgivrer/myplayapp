@@ -1,0 +1,4 @@
+icons from:
+	http://famfamfam.com/lab/icons/silk/
+license:
+	http://creativecommons.org/licenses/by/2.5/

@@ -27,10 +27,14 @@ home.actions.logout.label=Se déconnecter du site de gestion de mes liste de jeu
 home.actions.admin=Administration
 
 #Games zone
-home.games.title=List of games for %s
+home.games.title=Liste des jeux vidéo de  <em>%s</em>
 home.games.noitems=Aucun jeu dans la base.
 home.games.game.description=Description
 home.games.game.test=Test
+
+
+#search formulaire
+home.search.label=Rechercher :
 
 #Platforms zone
 home.platforms.title=Plateformes
@@ -38,13 +42,13 @@ home.platforms.filter.showAll=Toutes
 
 #Administration zone
 admin.logout.label=Déconnecter
-admin.logout.label.tooltip= Déconnecter l'utilisateur de sa zone personnelle
+admin.logout.label.tooltip= Vous déconnecter de la zone personnelle
 admin.users.label=Utilisateurs
-admin.users.label.tooltip=Manage Users
-admin.games.label=Jeux Vidéos
-admin.games.label.tooltip=Manage Games
+admin.users.label.tooltip=Gestion des utilisateurs
+admin.games.label=Jeux Vidéo
+admin.games.label.tooltip=Gestion des jeux vidéo
 admin.preferences.label=Préférences
-admin.preferences.label.tootip=Edit user preferences
+admin.preferences.label.tooltip=Modifier vos préférences utilisateur
 admin.backhome.label=Accueil
 admin.backhome.label.tooltip=Retour à l'accueil
 
@@ -55,3 +59,32 @@ preferences.actions.update.label=Modifer
 preferences.actions.update.label.tooltip=Sauvegarder les modifications
 language.english.label=Anglais
 language.french.label=Français
+
+
+#user create
+preferences.user.personal=Détails de l'utilisateur
+preferences.user.image.label=Avatar
+preferences.user.username.label=Nom utilisateur
+preferences.user.firstname.label=Prénom
+preferences.user.lastname.label=Nom
+preferences.user.email.label=Email
+preferences.user.webblog.label=Blog
+preferences.user.password.label=Mot de passe
+preferences.user.passwordConfirm.label=Confirmer le mot-de-passe
+preferences.actions.update.label=Enregistrer
+preferences.actions.update.label.tooltip=Sauver les modifications
+preferences.actions.cancel.label=Annuler
+preferences.actions.cancel.label.tooltip=Annuler les modifications
+user.create.legend=Vous enregister sur le site
+user.create.username=Choisissez un nom d'utilisateur
+user.create.email=Saisissez votre email
+user.create.password=Choisissez un mot-de-passe
+user.create.password.confirm=Confirmer ce mot-de-passe
+user.create.save=Enregistrer
+
+
+#signin zone
+secure.cancel=Cancel
+
+#export
+export.title.user=List for user %s

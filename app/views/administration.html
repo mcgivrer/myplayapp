@@ -14,24 +14,7 @@
 	    <header>
 			<h1>&{'site.title'}</h1>
 			<h2>&{'site.subtitle'}</h2>
-			<nav class="menu admin">
-				#{if user}
-				<ul class="user">
-					<li>${user.firstname} ${user.lastname}</li>
-					<li><a href="@{Application.index()}" title="&{'admin.backhome.label.tooltip'}">&{'admin.backhome.label'}</a></li>
-					<li><a href="@{Preferences.show()}" title="&{'admin.preferences.label.tooltip'}">&{'admin.preferences.label'}</a></li>
-					<li><a href="@{Secure.logout()}" title="&{'admin.logout.label.tooltip'}">&{'admin.logout.label'}</a></li>      
-				</ul>
-				#{/if}
-				#{if user.isRole('ADMINISTRATOR')}
-				<ul class="admin">
-					<li><a href="@{administration.Users.list()}" title="&{'admin.users.label.tooltip'}">&{'admin.users.label'}</a></li>
-					<li><a href="@{administration.Games.list()}" title="&{'admin.games.label.tooltip'}">&{'admin.games.label'}</a></li>
-				</ul>
-				#{/if}
-			<div class="clear"></div>
-			</nav>
-			
+            #{menuadmin user:user /}			
 		</header>
     	<section id="content">
 	        #{doLayout /}

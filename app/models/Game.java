@@ -68,6 +68,6 @@ public class Game extends Model {
 	 * Displayed name in list
 	 */
 	public String toString(){
-		return this.title + "(" + this.yearOfPublication + ")";
+		return this.title + " - ( " + this.platform + " / "+ this.yearOfPublication + " )";
 	}
 }

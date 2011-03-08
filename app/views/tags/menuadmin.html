@@ -1,0 +1,30 @@
+<nav class="menu admin">
+	#{if _user}
+	<ul class="user">
+		<li><a href="#">
+            <img class="avatar" src="http://www.gravatar.com/avatar/${_user.gravatarHash}?s=16"/>
+            ${_user.firstname} ${_user.lastname}</a></li>
+		<li><a class="item home" 
+            href="@{Application.index()}" 
+            title="&{'admin.backhome.label.tooltip'}">&{'admin.backhome.label'}</a></li>
+		<li><a class="item prefs" 
+            href="@{Preferences.show()}" 
+            title="&{'admin.preferences.label.tooltip'}">&{'admin.preferences.label'}</a></li>
+		<li><a class="item logout" 
+            href="@{Secure.logout()}" 
+            title="&{'admin.logout.label.tooltip'}">&{'admin.logout.label'}</a></li>      
+	</ul>
+	#{/if}
+	#{if _user.isRole('ADMINISTRATOR')}
+	<ul class="admin">
+		<li><a class="item admin users-bt" 
+            href="@{administration.Users.list()}" 
+            title="&{'admin.users.label.tooltip'}">&{'admin.users.label'}</a></li>
+		<li><a class="item admin games-bt" 
+            href="@{administration.Games.list()}" 
+            title="&{'admin.games.label.tooltip'}">&{'admin.games.label'}</a></li>
+	</ul>
+	#{/if}
+    <div class="clear"></div>
+</nav>
+
