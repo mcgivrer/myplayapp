@@ -405,17 +405,17 @@ footer{
 }
 #preferences .infos{
 	display:block;
-	margin-left:200px;
+	/*margin-left:200px;*/
 }
 #preferences .field{
-	display:inline-block;
+	display:block;
 	width:300px;
 }
 #preferences .field label{
 	float:left;
-	width:150px;
+	min-width:150px;
 }
 #preferences .field input{
-	float:left;
-	width:150px;
+	float:right;
+	min-width:150px;
 }

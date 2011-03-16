@@ -1,9 +1,9 @@
 <nav class="menu admin">
-	#{if _user}
+	#{if _userConnected}
 	<ul class="user">
 		<li><a href="#">
-            <img class="avatar" src="http://www.gravatar.com/avatar/${_user.gravatarHash}?s=16"/>
-            ${_user.firstname} ${_user.lastname}</a></li>
+            <img class="avatar" src="@{Preferences.getAvatarPicture(_userConnected.id)}" width="16" height="16"/>
+            ${_userConnected.firstname} ${_userConnected.lastname}</a></li>
 		<li><a class="item home" 
             href="@{Application.index()}" 
             title="&{'admin.backhome.label.tooltip'}">&{'admin.backhome.label'}</a></li>
@@ -15,7 +15,7 @@
             title="&{'admin.logout.label.tooltip'}">&{'admin.logout.label'}</a></li>      
 	</ul>
 	#{/if}
-	#{if _user.isRole('ADMINISTRATOR')}
+	#{if _userConnected.isRole('ADMINISTRATOR')}
 	<ul class="admin">
 		<li><a class="item admin users-bt" 
             href="@{administration.Users.list()}" 

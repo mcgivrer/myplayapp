@@ -14,11 +14,11 @@ import javax.persistence.PostLoad;
 import javax.persistence.Transient;
 
 import play.data.validation.Email;
-import play.data.validation.Equals;
 import play.data.validation.MaxSize;
 import play.data.validation.MinSize;
 import play.data.validation.Required;
 import play.data.validation.URL;
+import play.db.jpa.Blob;
 import play.db.jpa.Model;
 
 /**
@@ -79,6 +79,8 @@ public class User extends Model {
 	
 	@Transient
 	public String gravatarHash;
+
+	public Blob avatar;
 	
 	@OneToMany
 	public List<Game> games;
@@ -157,8 +159,12 @@ public class User extends Model {
 		return role.equals(this.role.toString());
 	}
 	
+	
+	/**
+	 * Encode Gravatar hash.
+	 * @return
+	 */
 	public String getGravatarHash(){
 		return  play.libs.Crypto.passwordHash(this.email.trim());
 	}
-
 }

@@ -1,15 +1,21 @@
 #{extends 'main.html' /}
 
-#{form @Preferences.update(user?.id)}
+
+#{form @Preferences.update(user?.id), enctype:'multipart/form-data'}
 	<fieldset id="preferences">
 		<legend>&{'preferences.user.personal'}</legend>
+		
+		#{ifErrors}
+		<p class="error">&{'preferences.user.error.global'}</p>
+		#{/ifErrors}
+		
 		<div class="avatar">
 			#{field 'user.image'}
 			<div class="field">
-				<label for="${field.id}">&{'preferences.user.image.label'}<br /> </label>
-				<img src="images/User/avatars/${field.value}" title=""/><br />
-				<input id="${field.id}" type="file" name="${field.name}" value="${field.value}" class="${field.errorClass}" />
-	            <span class="error">${field.error}</span>
+				<label for="user.avatar">&{'preferences.user.avatar.label'}<br /> </label>
+				<img src="@{Preferences.getAvatarPicture(user.id)}" title="&{'preferences.user.avatar.tooltip'}"/><br />
+				<input id="user.avatar" type="file" name="user.avatar" value="user.avatar" />
+	            <span class="error">#{error 'user.avatar'/}</span>
 			</div>
 			#{/field}
 		</div>

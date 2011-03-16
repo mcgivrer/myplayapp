@@ -53,14 +53,16 @@ public class Application extends Controller {
 			if (platform != null) {
 				games = Game.find(
 						"select g from Game g " + "where " + "g.publish=true "
-								+ "and g.author = ? " + "and g.platform = ? "
-								+ "order by platform asc, title asc", user,
-						platform).fetch();
+						+ "and g.author = ? " + "and g.platform = ? "
+						+ "order by platform asc, title asc", 
+						user,
+				        platform).fetch();
 			} else {
 				games = Game.find(
 						"select g from Game g " + "where " + "g.publish=true "
-								+ "and g.author = ? "
-								+ "order by platform asc, title asc", user)
+						+ "and g.author = ? "
+						+ "order by platform asc, title asc", 
+						user)
 						.fetch();
 			}
 			Logger.debug(

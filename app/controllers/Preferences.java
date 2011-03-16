@@ -32,12 +32,21 @@ public class Preferences extends Controller {
      * sauvegarde les préférences utilisateur.
      * @param userLanguage
      */
-	public static void update(@Valid User user){
-		//User user = (User)renderArgs.get("user");
-		
+	public static void update(@Valid User user){		
 		user.save();
 		Preferences.show(user.getId());
 	}
+	
+	/**
+	 * Render image for user edited.
+	 * @param id
+	 */
+	public static void getAvatarPicture(Long id){
+		User user = User.findById(id);
+		renderBinary(user.avatar.get());
+	}
+
+	
 	
 	/**
 	 * Affichage des informations utilisateurs
