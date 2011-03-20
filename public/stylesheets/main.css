@@ -5,7 +5,6 @@ html > *{
 body {
 	font-family:Tahoma, Verdana, Sans Serif;
 	font-size:10pt;
-	margin:0em 5em;
 }
 /*----- Technical classes -----*/
 .clear{
@@ -82,6 +81,12 @@ a.users-bt{
 a.games-bt{
 	background-image:url('../images/icons/silk/controller.png');
 }
+/*----- Page decoration -----*/
+.page {
+	box-shadow:#000 0.3em 0.3em 1em;
+	margin:0em 5%;
+	padding:0em;
+}
 /*----- Page header definition -----*/
 header {
     background-color:#000;
@@ -123,6 +128,11 @@ header nav.menu ul.admin{
 	height:26px;
 	min-width:200px;
 }
+
+header nav.menu ul.admin li{
+	float:right;
+}
+
 header nav.menu ul li a img.avatar{
 	float:left;
 	text-align:middle;
@@ -163,6 +173,8 @@ header nav.menu ul li a:hover {
 	background-color:#fff;
 	color:#666;
 }
+
+/* admin mode */
 header nav.admin{
 	display:block;
 	background-color:#f96;
@@ -173,15 +185,19 @@ header nav.admin ul li a{
 	border:1px outset #e85;
 	color:#fe9;
 }
-header ul.admin li a {
+header nav.admin ul.admin li a {
 	background-color:#f96;
 	border:1px outset #f96;
 	color:#fe9;
 }
 
+/*----- Contenu de la page -----*/
+
 #content{
 	min-height:20em;
-} 
+	padding:0em 2em;
+}
+/*----- Search component -----*/
 input#search {
 	background-color:#eee;
 	width:98%;
@@ -192,10 +208,18 @@ input#search {
 
 /*----- Games list zone -----*/
 .games{
+	float:left;
 	display:inline-block;
-	width:77%;
+	width:76%;
 	padding-right:0.5em;
 	border-right:1px dotted #ddd;
+	margin:Oem;
+}
+.platforms{
+    float:right;
+    width:20%;
+    padding:0.5em;
+	margin:Oem;
 }
 /*----- Actions links on page bottom -----*/
 .games ul.actions{
@@ -210,12 +234,6 @@ input#search {
 	padding:0px;
 	margin:0px;
 	margin-right:4px;
-}
-
-.platforms{
-    float:right;
-    width:20%;
-    padding:0.5em;
 }
 .platforms ul {
 	list-style:none;
@@ -243,7 +261,8 @@ input#search {
 	margin:0.5em;
 	padding-bottom:0.5em;
 	/*border-bottom:1px dotted #ddd;*/
-	width:24em;
+	min-width:20em;
+	max-width:24em;
 	height:12em;
 	font-size:0.8em;
 }
@@ -309,9 +328,32 @@ footer{
     color:#fff;
     font-size:0.7em;
     text-align:center;
-    padding:0.4em;
+    padding:0em;
+    magin:0em;
     margin-top:1em;
 }
+footer .copyright{
+	border-top:1px dotted #666;
+	padding:0.4em;
+}
+footer a{
+	color:#ffe;
+	text-decoration:none;
+	border-bottom:1px dotted #ffe;
+}
+footer .columns{
+	margin:0em;
+	padding:0.5em 0em;
+	background-color:#333;
+}
+footer .columns p{
+	float:left;
+	margin:Oem;
+	margin-left:1em;
+	padding:0em;
+	width:32%;
+}
+
 /*----- FOrmulaire de connexion -----*/ 
 #loginForm{
 	position:absolute;

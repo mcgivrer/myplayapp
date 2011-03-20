@@ -2,7 +2,7 @@
 	#{if _items}
 	<h2>&{'home.games.title', _userConnected?.username}</h2>
 	    #{list items:_items, as:'game'}
-		#{set title:'Home / ' + filterPlatform /}
+		#{set title:'Home / ' + _userConnected.username /}
 		
 		<div class="game" id="game_${game.id}">
 		    <div class="title"><span>#${game.id}.</span> <a href="@{Application.details(game.id)}">${game.title}</a></div>

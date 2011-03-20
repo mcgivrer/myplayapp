@@ -1,9 +1,9 @@
 <nav class="menu">
     <ul class="user">
     #{if _userConnected}
-	    <li><a id="backhome" class="item home" href="@{Application.index()}" title="&{'admin.backhome.label.tooltip'}">&{'admin.backhome.label'}</a></li>
 	   <li><a href="#"><img class="avatar" src="@{Preferences.getAvatarPicture(_userConnected.id)}" width="16" height="16"/>
 ${_userConnected.firstname} ${_userConnected.lastname}</a></li>
+	    <li><a id="backhome" class="item home" href="@{Application.index()}" title="&{'admin.backhome.label.tooltip'}">&{'admin.backhome.label'}</a></li>
 	    <li><a id="userpreferences" class="item prefs" href="@{Preferences.show()}" title="&{'admin.preferences.label.tooltip'}">&{'admin.preferences.label'}</a></li>
 	    <li><a id="logout" class="item logout"href="@{Secure.logout()}" title="&{'home.actions.logout.label'}">&{'home.actions.logout'}</a></li>
     #{/if}
@@ -12,14 +12,12 @@ ${_userConnected.firstname} ${_userConnected.lastname}</a></li>
 	    <li><a id="login" class="item login" href="#" title="&{'home.actions.login.label'}">&{'home.actions.login'}</a></li>
     #{/if}
     </ul>
-    #{if _userConnected}
-        #{if _userConnected.isRole("ADMINISTRATOR")}
-        <ul class="admin">
-		        <li><a class="item admin" 
-		            href="@{Administration.index()}" 
-		            title="&{'home.actions.admin.label'}">&{'home.actions.admin'}</a></li>
-        </ul>
-	    #{/if}
+    #{if _userConnected && _userConnected.isRole("ADMINISTRATOR")}
+    <ul class="admin">
+      <li><a class="item admin" 
+          href="@{Administration.index()}" 
+          title="&{'home.actions.admin.label'}">&{'home.actions.admin'}</a></li>
+    </ul>
     #{/if}
     <div class="clear"></div>
 </nav>

@@ -11,17 +11,17 @@
         #{get 'moreScripts' /}
     </head>
     <body>
-	    <header>
-			<h1>&{'site.title'}</h1>
-			<h2>&{'site.subtitle'}</h2>
-            #{menuadmin userConnected:user /}			
-		</header>
-    	<section id="content">
-	        #{doLayout /}
-	    	<div class="clear"></div>
-    	</section>
-    	<footer>
-    		<p>&{'site.footer.label'}</p>
-    	</footer>
+    	<div class="page">
+		    <header>
+				<h1>&{'site.title'}</h1>
+				<h2>&{'site.subtitle'}</h2>
+	            #{menuadmin userConnected:user /}			
+			</header>
+	    	<section id="content">
+		        #{doLayout /}
+		    	<div class="clear"></div>
+	    	</section>
+	    	#{footer /}
+    	</div>
 	</body>
 </html>
