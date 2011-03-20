@@ -4,12 +4,18 @@
  */
 package controllers;
 
+import static play.modules.excel.Excel.renderExcel;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+
 import models.Game;
 import models.User;
-
-import org.junit.Before;
-
+import play.Logger;
 import play.data.validation.Valid;
+import play.mvc.Before;
 import play.mvc.Controller;
 import play.mvc.With;
 
@@ -49,7 +55,63 @@ public class GameLibrary extends Controller {
 	public static void save(@Valid Game game) {
 		User user = (User) renderArgs.get("user");
 		game.save();
-		renderTemplate("GameLibrary/addGame.html",user,game);
+		renderTemplate("GameLibrary/addGame.html", user, game);
+	}
+
+	/**
+	 * Recherche dans la liste de jeux de l'utilisateur connecté des jeux
+	 * contenant la chaîne <code>search</code> dans le titre du jeu. Se base
+	 * également sur la plateforme sélectionnée et sur l'utilisateur connecté.
+	 * 
+	 * @param search
+	 *            nom ou partie du nom de jeu à rechercher
+	 */
+	public static void findByGameTitle(String search) {
+		renderArgs.put("search", search);
+		// récupération de l'utilisateur connecté
+		User user = (User) renderArgs.get("user");
+		// recupération de la plateforme (si présente)
+		// String platform = (String) renderArgs.get("filterPlatform");
+		// Constitution de la liste des plateformes distinctes
+		List<Game> platforms = Game.find(
+				"select distinct g.platform from Game g order by g.platform")
+				.fetch();
+		// recherche des jeux correspondant à game.title=%search% et
+		// game.platform=platefom
+		List<Game> games = Game.find(
+				"select g from Game g " + "where lower(g.title) like ? "
+						+ "and g.author=? " + "and g.publish=true "
+						+ "order by g.platform, g.title ",
+				"%" + search.toLowerCase() + "%", user).fetch();
+		// rendu de la page
+		renderTemplate("GameLibrary/search.html", games, user, platforms);
+	}
+
+	/**
+	 * Export la liste des jeux affichés dans le format souhaité
+	 */
+	public static void exportGamesList() {
+		// Récupération de l'utilisateur connecté.
+		User user = (User) renderArgs.get("user");
+		Logger.debug("Export game list for user " + user.username);
+		// Si un utilisateur connecté.
+		if (user != null) {
+			Logger.debug(user.username + ": " + user.firstname + " "
+					+ user.lastname);
+			// Création de la liste des jeux
+			List<Game> games = Game.find(
+					"select g from Game g " + "where " + "g.publish=true "
+							+ "and g.author = ? "
+							+ "order by platform asc, title asc", user).fetch();
+			Logger.debug("Number of exported games: %d", games.size());
+			// Preparation de la date de génération
+			Date dateOfTheDay = new Date();
+			DateFormat df = new SimpleDateFormat("dd-mm-yyyy");
+			String date = df.format(dateOfTheDay);
+			// Définition du nom de fichier (pour FF)
+			renderArgs.put("filename", "mygames.xls");
+			renderExcel(user, games, date);
+		}
 	}
 
 }

@@ -5,7 +5,7 @@
 		<script type="text/javascript">
 		$("#search").keyup(function(event) { // retour simple
 			if(event.keyCode==13){
-				$.post('@{Application.filterByGameTitle()}',
+				$.post('@{GameLibrary.findByGameTitle()}',
 						{search: $("#search").val()}, 
 						function(data){
 							$('#games').html(data);
