@@ -53,15 +53,6 @@ admin.backhome.label=Accueil
 admin.backhome.label.tooltip=Retour à l'accueil
 
 #preferences
-preferences.user.legend=Préférences Utilisateur
-preferences.user.language.label=Langue par défaut
-preferences.actions.update.label=Modifer
-preferences.actions.update.label.tooltip=Sauvegarder les modifications
-language.english.label=Anglais
-language.french.label=Français
-
-
-#user create
 preferences.user.personal=Détails de l'utilisateur
 preferences.user.image.label=Avatar
 preferences.user.username.label=Nom utilisateur
@@ -75,6 +66,14 @@ preferences.actions.update.label=Enregistrer
 preferences.actions.update.label.tooltip=Sauver les modifications
 preferences.actions.cancel.label=Annuler
 preferences.actions.cancel.label.tooltip=Annuler les modifications
+preferences.user.legend=Préférences
+preferences.user.language.label=Langue par défaut
+preferences.actions.update.label=Modifer
+preferences.actions.update.label.tooltip=Sauvegarder les modifications
+language.english.label=Anglais
+language.french.label=Français
+
+#user create
 user.create.legend=Vous enregister sur le site
 user.create.username=Choisissez un nom d'utilisateur
 user.create.email=Saisissez votre email

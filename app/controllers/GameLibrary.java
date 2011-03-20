@@ -6,10 +6,8 @@ package controllers;
 
 import models.Game;
 import models.User;
-
-import org.junit.Before;
-
 import play.data.validation.Valid;
+import play.mvc.Before;
 import play.mvc.Controller;
 import play.mvc.With;
 

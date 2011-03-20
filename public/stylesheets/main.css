@@ -401,21 +401,63 @@ footer{
 
 /*----- Préférences utilisateur -----*/
 #preferences{
+	float:left;
 	display:block;
+	font-size:11pt;
+	width:80%;
 }
 #preferences .infos{
+	float:left;
 	display:block;
 	/*margin-left:200px;*/
 }
-#preferences .field{
-	display:block;
-	width:300px;
+#preferences fieldset {
+	border:1px solid #ddd;
+	border-radius:4px;
+	margin-top:20px;
 }
+
+#preferences fieldset legend{
+	border:1px solid #ddd;
+	border-radius:8px;
+	background-color:#ddd;
+	color:#333;
+	padding:0.2em 2em;
+}
+
+#preferences .field{
+	display:inline-block;
+	width:100%;
+	min-height:2.5em;
+	border-bottom:1px dotted #ddd;
+	/*border-bottom:1px dotted #ddd;*/
+}
+
+#preferences .field:last{
+	border:none;
+}
+
 #preferences .field label{
 	float:left;
-	min-width:150px;
+	min-width:40%;
+	margin:0.2em /*0em*/;
 }
 #preferences .field input{
+	float:left;
+	min-width:30%;
+	vertical-align:center;
+	border:1px solid #ddd;
+	border-radius:4px;
+	font-size:11pt;
+	background-color:#eee;
+	padding:2px;
+	margin:0.2em 0em;
+}
+#preferences .avatar{
 	float:right;
-	min-width:150px;
+	margin:10px;
+	padding:4px;
+	border-radius:4px;
+	border:1px inset #ddd;
+	background-color:#ddd;
 }

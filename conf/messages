@@ -69,6 +69,7 @@ admin.backhome.label=Home
 admin.backhome.label.tooltip=Back to home page
 
 #preferences
+preferences.user.avatar.label=Avatar (image pour l'utilisateur)
 preferences.user.personal=User details
 preferences.user.image.label=Avatar
 preferences.user.username.label=Username
