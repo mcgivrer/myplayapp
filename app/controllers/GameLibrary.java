@@ -143,4 +143,43 @@ public class GameLibrary extends Controller {
 		}
 	}
 
+	/**
+	 * Upload a <code>picture</code> into a <code>type</code> for the game
+	 * <code>id</code>.
+	 * 
+	 * @param id
+	 *            game unique identifier
+	 * @param type
+	 *            type of picture to be uploaded
+	 * @param picture
+	 *            file data to store.
+	 */
+	public static void upload(Long id, String type, File picture) {
+		// User connectedUser = (User)renderArgs.get("user");
+		Game game = Game.findById(id);
+		int number = 1;
+		// remove existing file
+		File remove = Play.getFile("/public/images/games/" + game.id + "/"
+				+ type + "/" + number + ".jpg");
+		if (remove.exists()) {
+			remove.delete();
+		}
+		// move new file to right place
+		if (!Play.getFile("/public/images/games/" + game.id).exists()) {
+			Play.getFile("/public/images/games/" + game.id).mkdir();
+		}
+		if (!Play.getFile("/public/images/games/" + game.id + "/" + type)
+				.exists()) {
+			Play.getFile("/public/images/games/" + game.id + "/" + type)
+					.mkdir();
+		}
+		File output = Play.getFile("/public/images/games/" + game.id + "/"
+				+ type + "/" + picture.getName());
+		picture.renameTo(output);
+		// update game model and save
+		game.cover = "avatar_" + picture.getName();
+		game.save();
+		// render page
+		render("GameLibrary/addGame.html");
+	}
 }
