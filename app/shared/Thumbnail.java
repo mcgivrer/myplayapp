@@ -23,13 +23,13 @@ import com.sun.imageio.plugins.png.PNGImageWriter;
  * @author frederic
  * 
  */
-@SuppressWarnings("restriction")
 class Thumbnail {
 
 	class Resolution {
 		public int width;
 		public int height;
 		public String name;
+
 	}
 
 	/**
@@ -46,7 +46,6 @@ class Thumbnail {
 			throws Exception {
 		double scale;
 		int sizeDifference, originalImageLargestDim;
-
 		int largestDimension;
 
 		Resolution res = this.extractSize(size);

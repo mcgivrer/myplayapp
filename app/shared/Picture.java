@@ -165,7 +165,14 @@ public class Picture<T> implements BinaryField,UserType, IPicture{
 	}
 
 	public Class returnedClass() {
-		return Picture.class;
+		
+		try {
+			return Class.forName(this.getClass().getName());
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	public boolean equals(Object o, Object o1) throws HibernateException {

@@ -1,95 +1,110 @@
 #{extends 'main.html' /}
 
+<div id="preferences">
+
+#{form @Preferences.upload(), id:'upload', method:'POST', enctype:'multipart/form-data'}
+	<input type="hidden" name="id" value="${user.id}"/>
+	<input id="avatar" type="file" name="avatar" style="visibility:hidden;"/> 
+#{/form}
 
 #{form @Preferences.update(user?.id), enctype:'multipart/form-data'}
-	<fieldset id="preferences">
-		<legend>&{'preferences.user.personal'}</legend>
-		
-		#{ifErrors}
-		<p class="error">&{'preferences.user.error.global'}</p>
-		#{/ifErrors}
-		
-		<div class="avatar">
-			#{field 'user.image'}
-			<div class="field">
-				<label for="user.avatar">&{'preferences.user.avatar.label'}<br /> </label>
-				<img src="@{Preferences.getAvatarPicture(user.id)}" title="&{'preferences.user.avatar.tooltip'}"/><br />
-				<input id="user.avatar" type="file" name="user.avatar" value="user.avatar" />
-	            <span class="error">#{error 'user.avatar'/}</span>
-			</div>
-			#{/field}
-		</div>
-		<div class="infos">
-			#{field 'user.username'}
-			<div class="field">
-				<label for="${field.id}">&{'preferences.user.username.label'}</label>
-				<input id="${field.id}" type="text" name="{field.name}" value="${field.value}" class="${field.errorClass}" />
-	            <span class="error">${field.error}</span>
-			</div>
-			#{/field}
-			#{field 'user.firstname'}
-			<div class="field">
-				<label for="${field.id}">&{'preferences.user.firstname.label'}</label>
-				<input id="${field.id}" type="text" name="{field.name}" value="${field.value}" class="${field.errorClass}" />
-	            <span class="error">${field.error}</span>
-			</div>
-			#{/field}
-			#{field 'user.lastname'}
-			<div class="field">
-				<label for="${field.id}">&{'preferences.user.lastname.label'}</label>
-				<input id="${field.id}" type="text" name="{field.name}" value="${field.value}" class="${field.errorClass}" />
-	            <span class="error">${field.error}</span>
-			</div>
-			#{/field}
-			#{field 'user.email'}
-			<div class="field">
-				<label for="${field.id}">&{'preferences.user.email.label'}</label>
-				<input id="${field.id}" type="text" name="{field.name}" value="${field.value}" class="${field.errorClass}" />
-	            <span class="error">${field.error}</span>
-			</div>
-			#{/field}
-			#{field 'user.webblog'}
-			<div class="field">
-				<label for="${field.id}">&{'preferences.user.webblog.label'}</label>
-				<input id="${field.id}" type="text" name="{field.name}" value="${field.value}" class="${field.errorClass}" />
-	            <span class="error">${field.error}</span>
-			</div>
-			#{/field}
-		</div>
-		
-		<hr size="1" noshade="noshade" />
 
-		#{field 'user.password'}
-		<div class="field">
-			<label for="${field.id}">&{'preferences.user.password.label'}</label>
-			<input id="${field.id}" type="text" name="{field.name}" value="${field.value}" class="${field.errorClass}" />
-            <span class="error">${field.error}</span>
-		</div>
-		#{/field}
-		#{field 'user.passwordConfirm'}
-		<div class="field">
-			<label for="${field.id}">&{'preferences.user.passwordConfirm.label'}</label>
-			<input id="${field.id}" type="text" name="{field.name}" value="${field.value}" class="${field.errorClass}" />
-            <span class="error">${field.error}</span>
-		</div>
-		#{/field}
-	</fieldset>
+<fieldset>
+	<legend>&{'preferences.user.personal'}</legend>
 
-	<fieldset>
-		<legend>&{'preferences.user.legend'}</legend>
+	#{ifErrors}
+	<p class="error">&{'preferences.user.error.global'}</p>
+	#{/ifErrors}
+	
+	<ul>
+	#{field 'user.image'}
+	<li class="field">
+		<img id="getAvatar" class="avatar"
+			src="/public/images/users/${user.image}"
+			title="&{'preferences.user.avatar.tooltip'}" width="80px" />
+		<label for="user_avatar">&{'preferences.user.avatar.label'}</label>
+		<input type="text" value="${user.image}" id="user_image" readonly="readonly"/>
+		<span class="error">#{error
+		'user.avatar'/}</span></li>
+	#{/field}
 
-		#{field 'user.language'}
-		<div class="field">
-			<label for="${field.id}">&{'preferences.user.language.label'}</label>
-			<select id="${field.id}" name="{field.name}" value="${field.value}" class="${field.errorClass}" >
-				<option value="en">&{'language.english.label'}</option>
-				<option value="fr">&{'language.french.label'}</option>
-			</select>
-            <span class="error">${field.error}</span>
-		</div>
+	#{field 'user.username'}
+	<li class="field"><label for="${field.id}">&{'preferences.user.username.label'}</label>
+		<input id="${field.id}" type="text" name="{field.name}"
+			value="${field.value}" class="${field.errorClass}" /> <span
+			class="error">${field.error}</span></li>
+	#{/field}
+	
+	#{field 'user.firstname'}
+	<li class="field"><label for="${field.id}">&{'preferences.user.firstname.label'}</label>
+		<input id="${field.id}" type="text" name="{field.name}"
+			value="${field.value}" class="${field.errorClass}" /> <span
+			class="error">${field.error}</span></li>
+	#{/field} 
+	
+	#{field 'user.lastname'}
+	<li class="field"><label for="${field.id}">&{'preferences.user.lastname.label'}</label>
+	<input id="${field.id}" type="text" name="{field.name}"
+		value="${field.value}" class="${field.errorClass}" /> <span
+		class="error">${field.error}</span></li>
+	#{/field} 
+	
+	#{field 'user.email'}
+	<li class="field"><label for="${field.id}">&{'preferences.user.email.label'}</label>
+		<input id="${field.id}" type="text" name="{field.name}"
+			value="${field.value}" class="${field.errorClass}" /> <span
+			class="error">${field.error}</span></li>
+	#{/field} 
+	
+	#{field 'user.webblog'}
+	<li class="field"><label for="${field.id}">&{'preferences.user.webblog.label'}</label>
+		<input id="${field.id}" type="text" name="{field.name}"
+			value="${field.value}" class="${field.errorClass}" /> <span
+			class="error">${field.error}</span></li>
+	#{/field}
+	
+	#{field 'user.password'}
+	<li class="field"><label for="${field.id}">&{'preferences.user.password.label'}</label>
+		<input id="${field.id}" type="password" name="{field.name}"
+			value="${field.value}" class="${field.errorClass}" /> <span
+			class="error">${field.error}</span></li>
+	#{/field} 
+	
+	#{field 'user.passwordConfirm'}
+	<li class="field"><label for="${field.id}">&{'preferences.user.passwordConfirm.label'}</label>
+		<input id="${field.id}" type="password" name="{field.name}"
+			value="${field.value}" class="${field.errorClass}" /> <span
+			class="error">${field.error}</span></li>
+	#{/field}
+
+	#{field 'user.language'}
+	<li class="field"><label for="${field.id}">&{'preferences.user.language.label'}</label>
+		<select id="${field.id}" name="{field.name}" value="${user.language}"
+			class="${field.errorClass}">
+			<option value="en">&{'language.english.label'}</option>
+			<option value="fr">&{'language.french.label'}</option>
+		</select> <span class="error">${field.error}</span>
+	</li>
 		#{/field}
-	</fieldset>
-	<hr size="2" noshade="noshade">
-	<input type="submit" class="button save" value="&{'preferences.actions.update.label'}" title="&{'preferences.actions.update.label.tooltip'}"/>
-	<a class="button cancel" href="/" title="&{'preferences.actions.cancel.label.tooltip'}">&{'preferences.actions.cancel.label'}</a>
+
+	<div class="actions">
+		<input type="submit" class="button save"
+			value="&{'preferences.actions.update.label'}"
+			title="&{'preferences.actions.update.label.tooltip'}" /> <a
+			class="button cancel" href="/"
+			title="&{'preferences.actions.cancel.label.tooltip'}">&{'preferences.actions.cancel.label'}</a>
+	
+	</div>
+</fieldset>
 #{/form}
+<script  type="text/javascript">
+	$('#avatar').change(function(){
+		//alert($('#avatar').val());
+		$('#user_image').val($('#avatar').val());
+		$('#upload').submit();
+	});
+	$('#getAvatar').click(function(){
+		$('#avatar').click();
+	});
+</script>
+</div>
