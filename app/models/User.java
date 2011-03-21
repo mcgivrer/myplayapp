@@ -20,6 +20,7 @@ import play.data.validation.Required;
 import play.data.validation.URL;
 import play.db.jpa.Blob;
 import play.db.jpa.Model;
+import shared.UserPicture;
 
 /**
  * User modélise un utilisateur pouvant se connecter.
@@ -79,8 +80,8 @@ public class User extends Model {
 	
 	@Transient
 	public String gravatarHash;
-
-	public Blob avatar;
+	
+	//public UserPicture picture;
 	
 	@OneToMany
 	public List<Game> games;

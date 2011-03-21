@@ -53,18 +53,18 @@ public class Preferences extends Controller {
 		
 		if(user.id==connectedUser.id){
 			// remove existing file
-			File remove = Play.getFile("/public/images/users/"+user.image);
+			File remove = Play.getFile("/public/images/users/"+user.id+"/"+user.image);
 			if(remove.exists()){
 				remove.delete();
 			}
 			// move new file to right place
-			if(!Play.getFile("/public/images/users/"+user.username).exists()){
-				Play.getFile("/public/images/users/"+user.username).mkdir();
+			if(!Play.getFile("/public/images/users/"+user.id).exists()){
+				Play.getFile("/public/images/users/"+user.id).mkdir();
 			}
-			File output = Play.getFile("/public/images/users/"+user.username+"/avatar_"+avatar.getName());
+			File output = Play.getFile("/public/images/users/"+user.id+"/avatar_"+avatar.getName());
 			avatar.renameTo(output);
 			//update user model and save
-			user.image = user.username+"/avatar_"+avatar.getName();
+			user.image = "avatar_"+avatar.getName();
 			user.save();
 			// render page
 			render("Preferences/show.html");
@@ -78,13 +78,29 @@ public class Preferences extends Controller {
 	public static void getAvatarPicture(Long id){
 		User user = User.findById(id);
 		FileInputStream output;
+		File of;
 		try {
-			File of=  Play.getFile("/public/images/users/"+user.image);
-			output = new FileInputStream(of);
-			renderBinary(output);
+			if(user!=null && user.image!=null && !user.image.equals("")){
+				of = Play.getFile("/public/images/users/"+user.id+"/"+user.image);
+				output = new FileInputStream(of);
+
+				renderBinary(output);
+			}else{
+				of = Play.getFile("/public/images/icons/copenhagen/user_default.png");
+				output = new FileInputStream(of);
+
+				renderBinary(output);
+			}
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			of = Play.getFile("/public/images/icons/copenhagen/user_default.png");
+			try {
+				output = new FileInputStream(of);
+
+				renderBinary(output);
+			} catch (FileNotFoundException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}		
 		}
 	}
 	

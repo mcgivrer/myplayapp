@@ -20,7 +20,7 @@
 	#{field 'user.image'}
 	<li class="field">
 		<img id="getAvatar" class="avatar"
-			src="/public/images/users/${user.image}"
+			src="@{Preferences.getAvatarPicture(user.id)}"
 			title="&{'preferences.user.avatar.tooltip'}" width="80px" />
 		<label for="user_avatar">&{'preferences.user.avatar.label'}</label>
 		<input type="text" value="${user.image}" id="user_image" readonly="readonly"/>

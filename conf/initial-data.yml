@@ -5,7 +5,7 @@ User(admin):
    lastname: Blog manager
    email: frederic.delorme@gmail.com
    weblog: http://www.mcgivrer.fr/
-   image: test
+   image: avatar_user_admin.png
    status: a
    role: ADMINISTRATOR
    language: fr
@@ -17,7 +17,7 @@ User(mods):
    lastname: Game moderator
    email: mods@myplayapp.com
    weblog: 
-   image: test
+   image: avatar_user_group.png
    status: a
    role: MODERATOR
    language: fr
@@ -29,11 +29,22 @@ User(user1):
    lastname: FirstUser
    email: firstuser@myplayapp.com
    weblog: 
-   image: test
+   image: avatar_user_default.png
    status: a
    role: USER
    language: fr
 
+User(user1):
+   username: McGivrer
+   password: nathalie
+   firstname: Frédéric
+   lastname: Delorme
+   email: frederic.delorme@web-context.com
+   weblog: http://www.mcgivrer.fr/
+   image: avatar_frederic.jpg
+   status: a
+   role: ADMINISTRATOR
+   language: fr
 
 Game(game1):
    title: Risen

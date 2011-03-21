@@ -2,7 +2,7 @@
 	#{if _items}
 	<h2>&{'home.games.title', _userConnected?.username}</h2>
 	    #{list items:_items, as:'game'}
-		#{set title:'Home / ' + filterPlatform /}
+		#{set title:'Home / ' + _userConnected.username /}
 		
 		<div class="game" id="game_${game.id}">
 		    <div class="title"><span>#${game.id}.</span> <a href="@{Application.details(game.id)}">${game.title}</a></div>
@@ -35,7 +35,7 @@
 	<div class="clear"></div>
 	<ul class="actions">
 		<li><a class="button add" accesskey="A" href="@{GameLibrary.addGame()}" title="&{'home.add.game.label.tooltip'}">&{'home.add.game.label'}</a></li>
-		<li><a class="button export" accesskey="E" href="@{Application.exportGamesList()}" title="&{'home.export.game.label.tooltip'}">&{'home.export.game.label'}</a></li>
+		<li><a class="button export" accesskey="E" href="@{GameLibrary.exportGamesList()}" title="&{'home.export.game.label.tooltip'}">&{'home.export.game.label'}</a></li>
 	</ul>
 #{/if}
 #{else}

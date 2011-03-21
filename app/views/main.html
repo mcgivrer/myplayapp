@@ -13,23 +13,23 @@
         #{get 'moreScripts' /}
     </head>
     <body>
-    	<header>
-
-    		<h1><a href="@{Application.index()}">&{'site.title'}</a></h1>
-    		<h2>&{'site.subtitle'}</h2>
-
-    		#{menu userConnected:user/}
-
-    	</header>
-    	<section id="content">
-	        #{doLayout /}
-	    	<div class="clear"></div>
-	    	<div id="loginForm" class="hidden">
-	    	</div>
-    	</section>
-    	<footer>
-    		<p>&{'site.footer.label'} - &{'site.footer.credits', "http://www.famfamfam.com/lab/icons/silk/"}</p>
-    	</footer>
+    	<div class="page">
+	    	<header>
+	
+	    		<h1><a href="@{Application.index()}">&{'site.title'}</a></h1>
+	    		<h2>&{'site.subtitle'}</h2>
+	
+	    		#{menu userConnected:user/}
+	
+	    	</header>
+	    	<section id="content">
+		        #{doLayout /}
+		    	<div class="clear"></div>
+		    	<div id="loginForm" class="hidden">
+		    	</div>
+	    	</section>
+	    	#{footer /}
+    	</div>
     	<script type="text/javascript">
     		$('a#login').click(function(){
         		$.get('@{Secure.login()}',function(data){

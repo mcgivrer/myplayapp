@@ -1,4 +1,0 @@
-icon from:
-	http://www.iconfinder.com/search/?q=iconset%3ACopenhagen
-license:
-	http://creativecommons.org/licenses/by/2.5/dk/deed.en
