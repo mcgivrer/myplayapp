@@ -6,9 +6,10 @@
 	<div class="side">
 		#{if game.cover}
 		<div class="cover">
-			<a href="/public/images/games/${game.platform}/${game.title}/cover/${game.cover}">
-                            <img alt="&{'game.details.cover.alt', game.title, game.platform}" src="/public/images/games/${game.platform}/${game.title}/cover/${game.cover}.resized"
-					title="${game.platform}/${game.title}"/></a>
+	        <a rel="lightbox" href="@{GameLibrary.getPicture(game.id,"cover",null,"")}">
+	        <img alt="&{'game.details.cover.alt', game.title, game.platform}" 
+	        	 src="@{GameLibrary.getPicture(game.id,"cover",null,"60x90")}"
+	             title="${game.platform}/${game.title}"/></a>
 		</div>
 		#{/if}
 		<div class="tags">
@@ -29,6 +30,6 @@
                 
 	<div class="clear"></div>
 	<hr size="2"></hr>
-        <a class="button" href="@{Application.index()}" title="&{'admin.backhome.label.tooltip'}">&{'admin.backhome.label'}</a>
+        <a class="button home" href="@{Application.index()}" title="&{'admin.backhome.label.tooltip'}">&{'admin.backhome.label'}</a>
 
 </div>

@@ -54,7 +54,7 @@ Game(game1):
    testContent: Le _jeu_ @Risen@, "même":http://www.google.fr/ si il a de *nombreux* défaut visuels dans sa version XBox360, il n'en reste pas moins une belle et longue aventure."
    developerStudio: WizardBox
    editor: Deep Silver
-   yearOfPublication: 2009
+   yearOfPublication: 2009-01-01
    note: 6
    cover: x360-risen-cover.jpg
    author: admin
@@ -67,7 +67,7 @@ Game(game2):
    testContent: todo.
    developerStudio: A2M
    editor: Bethesda Softwork
-   yearOfPublication: 2009
+   yearOfPublication: 2009-01-01
    note: 8
    cover: x360-wet-cover.jpg
    author: admin
@@ -80,7 +80,7 @@ Game(game3):
    testContent: todo.
    developerStudio: A2M
    editor: Bethesda Softwork
-   yearOfPublication: 2009
+   yearOfPublication: 2009-01-01
    note: 8
    cover: wii-donkey_kong_country_returns-cover.jpg
    author: admin
@@ -93,7 +93,7 @@ Game(game4):
    testContent: todo.
    developerStudio: Vigil Games 
    editor: THQ
-   yearOfPublication: 2010
+   yearOfPublication: 2010-01-01
    note: 8
    cover: x360-darksiders-cover.jpg
    author: admin
@@ -106,7 +106,7 @@ Game(game5):
    testContent: todo.
    developerStudio: Obsidian Entertainment
    editor: Sega
-   yearOfPublication: 2010
+   yearOfPublication: 2010-01-01
    note: 8
    cover: x360-alpha_protocol-cover.jpg
    author: user1
@@ -119,7 +119,7 @@ Game(game6):
    testContent: todo.
    developerStudio: Nintendo
    editor: Nintendo
-   yearOfPublication: 2010
+   yearOfPublication: 2010-01-01
    note: 8
    cover: wii-super_mario_all_stars_25th_anniversary_edition-cover.jpg
    author: admin
@@ -132,7 +132,7 @@ Game(game7):
    testContent: todo.
    developerStudio: Nintendo
    editor: Nintendo
-   yearOfPublication: 2010
+   yearOfPublication: 2010-01-01
    note: 8
    cover: wii-new_super_mario_bros_wii-cover.jpg
    author: user1
@@ -145,7 +145,7 @@ Game(game8):
    testContent: todo.
    developerStudio: Ubisoft Quebec
    editor: Ubisoft
-   yearOfPublication: 2010
+   yearOfPublication: 2010-01-01
    note: 8
    cover: wii-prince_of_persia_forgotten_sands-cover.jpg
    author: user1
