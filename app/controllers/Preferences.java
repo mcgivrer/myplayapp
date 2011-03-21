@@ -53,18 +53,18 @@ public class Preferences extends Controller {
 		
 		if(user.id==connectedUser.id){
 			// remove existing file
-			File remove = Play.getFile("/public/images/users/"+user.image);
+			File remove = Play.getFile("/public/images/users/"+user.id+"/"+user.image);
 			if(remove.exists()){
 				remove.delete();
 			}
 			// move new file to right place
-			if(!Play.getFile("/public/images/users/"+user.username).exists()){
-				Play.getFile("/public/images/users/"+user.username).mkdir();
+			if(!Play.getFile("/public/images/users/"+user.id).exists()){
+				Play.getFile("/public/images/users/"+user.id).mkdir();
 			}
-			File output = Play.getFile("/public/images/users/"+user.username+"/avatar_"+avatar.getName());
+			File output = Play.getFile("/public/images/users/"+user.id+"/avatar_"+avatar.getName());
 			avatar.renameTo(output);
 			//update user model and save
-			user.image = user.username+"/avatar_"+avatar.getName();
+			user.image = "avatar_"+avatar.getName();
 			user.save();
 			// render page
 			render("Preferences/show.html");
@@ -79,7 +79,7 @@ public class Preferences extends Controller {
 		User user = User.findById(id);
 		FileInputStream output;
 		try {
-			File of=  Play.getFile("/public/images/users/"+user.image);
+			File of=  Play.getFile("/public/images/users/"+user.id+"/"+user.image);
 			output = new FileInputStream(of);
 			renderBinary(output);
 		} catch (FileNotFoundException e) {
