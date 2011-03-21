@@ -3,7 +3,12 @@
  */
 package controllers;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+
 import models.User;
+import play.Play;
 import play.data.validation.Valid;
 import play.mvc.Before;
 import play.mvc.Controller;
@@ -38,15 +43,50 @@ public class Preferences extends Controller {
 	}
 	
 	/**
+	 * Upload new avatar picture file for user id
+	 * @param id
+	 * @param file
+	 */
+	public static void upload(Long id, File avatar){
+		User connectedUser = (User)renderArgs.get("user");
+		User user = User.findById(id);
+		
+		if(user.id==connectedUser.id){
+			// remove existing file
+			File remove = Play.getFile("/public/images/users/"+user.image);
+			if(remove.exists()){
+				remove.delete();
+			}
+			// move new file to right place
+			if(!Play.getFile("/public/images/users/"+user.username).exists()){
+				Play.getFile("/public/images/users/"+user.username).mkdir();
+			}
+			File output = Play.getFile("/public/images/users/"+user.username+"/avatar_"+avatar.getName());
+			avatar.renameTo(output);
+			//update user model and save
+			user.image = user.username+"/avatar_"+avatar.getName();
+			user.save();
+			// render page
+			render("Preferences/show.html");
+		}
+	}
+	
+	/**
 	 * Render image for user edited.
 	 * @param id
 	 */
 	public static void getAvatarPicture(Long id){
 		User user = User.findById(id);
-		renderBinary(user.avatar.get());
+		FileInputStream output;
+		try {
+			File of=  Play.getFile("/public/images/users/"+user.image);
+			output = new FileInputStream(of);
+			renderBinary(output);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
-
-	
 	
 	/**
 	 * Affichage des informations utilisateurs

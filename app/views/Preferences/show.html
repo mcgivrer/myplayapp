@@ -1,6 +1,12 @@
 #{extends 'main.html' /}
 
 <div id="preferences">
+
+#{form @Preferences.upload(), id:'upload', method:'POST', enctype:'multipart/form-data'}
+	<input type="hidden" name="id" value="${user.id}"/>
+	<input id="avatar" type="file" name="avatar" style="visibility:hidden;"/> 
+#{/form}
+
 #{form @Preferences.update(user?.id), enctype:'multipart/form-data'}
 
 <fieldset>
@@ -13,14 +19,12 @@
 	<ul>
 	#{field 'user.image'}
 	<li class="field">
-		<a href="#" onclick="$('#preferences#user.avatar').click();"><img class="avatar"
-			src="@{Preferences.getAvatarPicture(user.id)}"
-			title="&{'preferences.user.avatar.tooltip'}" /></a>
-		<br />
-		<label for="user.avatar">&{'preferences.user.avatar.label'}<br />
-		</label>
-		<input id="user.avatar" type="file" name="user.avatar"
-			value="user.avatar" style="display:none;"/> <span class="error">#{error
+		<img id="getAvatar" class="avatar"
+			src="/public/images/users/${user.image}"
+			title="&{'preferences.user.avatar.tooltip'}" width="80px" />
+		<label for="user_avatar">&{'preferences.user.avatar.label'}</label>
+		<input type="text" value="${user.image}" id="user_image" readonly="readonly"/>
+		<span class="error">#{error
 		'user.avatar'/}</span></li>
 	#{/field}
 
@@ -72,22 +76,16 @@
 			value="${field.value}" class="${field.errorClass}" /> <span
 			class="error">${field.error}</span></li>
 	#{/field}
-	
-	</ul>
-		
-	<fieldset>
-		<legend>&{'preferences.user.legend'}</legend>
-	
-		#{field 'user.language'}
-		<li class="field"><label for="${field.id}">&{'preferences.user.language.label'}</label>
-			<select id="${field.id}" name="{field.name}" value="${user.language}"
-				class="${field.errorClass}">
-				<option value="en">&{'language.english.label'}</option>
-				<option value="fr">&{'language.french.label'}</option>
-			</select> <span class="error">${field.error}</span>
-		</li>
+
+	#{field 'user.language'}
+	<li class="field"><label for="${field.id}">&{'preferences.user.language.label'}</label>
+		<select id="${field.id}" name="{field.name}" value="${user.language}"
+			class="${field.errorClass}">
+			<option value="en">&{'language.english.label'}</option>
+			<option value="fr">&{'language.french.label'}</option>
+		</select> <span class="error">${field.error}</span>
+	</li>
 		#{/field}
-	</fieldset>
 
 	<div class="actions">
 		<input type="submit" class="button save"
@@ -99,4 +97,14 @@
 	</div>
 </fieldset>
 #{/form}
+<script  type="text/javascript">
+	$('#avatar').change(function(){
+		//alert($('#avatar').val());
+		$('#user_image').val($('#avatar').val());
+		$('#upload').submit();
+	});
+	$('#getAvatar').click(function(){
+		$('#avatar').click();
+	});
+</script>
 </div>
