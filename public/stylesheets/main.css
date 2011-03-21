@@ -412,7 +412,7 @@ footer{
 	/*margin-left:200px;*/
 }
 #preferences fieldset {
-	border:1px solid #ddd;
+	border:2px solid #ddd;
 	border-radius:4px;
 	margin-top:20px;
 }
@@ -459,5 +459,5 @@ footer{
 	padding:4px;
 	border-radius:4px;
 	border:1px inset #ddd;
-	background-color:#ddd;
+	/*background-color:#ddd;*/
 }
