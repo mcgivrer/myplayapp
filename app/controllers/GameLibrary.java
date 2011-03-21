@@ -6,6 +6,9 @@ package controllers;
 
 import static play.modules.excel.Excel.renderExcel;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -14,6 +17,7 @@ import java.util.List;
 import models.Game;
 import models.User;
 import play.Logger;
+import play.Play;
 import play.data.validation.Valid;
 import play.mvc.Before;
 import play.mvc.Controller;
@@ -111,6 +115,31 @@ public class GameLibrary extends Controller {
 			// Définition du nom de fichier (pour FF)
 			renderArgs.put("filename", "mygames.xls");
 			renderExcel(user, games, date);
+		}
+	}
+
+	/**
+	 * Render Picture <code>type</code>/<code>number</code> for game
+	 * <code>id</code>
+	 * 
+	 * @param id
+	 *            game unique id
+	 * @param type
+	 *            type of picture (cover, screenshot, art)
+	 * @param number
+	 *            image number for the selected type
+	 */
+	public static void getPicture(Long id, String type, Long number) {
+		Game game = Game.findById(id);
+		FileInputStream output;
+		try {
+			File of = Play.getFile("/public/images/games/" + game.id + "/"
+					+ type + "/" + number + ".jpg");
+			output = new FileInputStream(of);
+			renderBinary(output);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 
