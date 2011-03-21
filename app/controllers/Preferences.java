@@ -78,13 +78,29 @@ public class Preferences extends Controller {
 	public static void getAvatarPicture(Long id){
 		User user = User.findById(id);
 		FileInputStream output;
+		File of;
 		try {
-			File of=  Play.getFile("/public/images/users/"+user.id+"/"+user.image);
-			output = new FileInputStream(of);
-			renderBinary(output);
+			if(user!=null && user.image!=null && !user.image.equals("")){
+				of = Play.getFile("/public/images/users/"+user.id+"/"+user.image);
+				output = new FileInputStream(of);
+
+				renderBinary(output);
+			}else{
+				of = Play.getFile("/public/images/icons/copenhagen/user_default.png");
+				output = new FileInputStream(of);
+
+				renderBinary(output);
+			}
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			of = Play.getFile("/public/images/icons/copenhagen/user_default.png");
+			try {
+				output = new FileInputStream(of);
+
+				renderBinary(output);
+			} catch (FileNotFoundException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}		
 		}
 	}
 	

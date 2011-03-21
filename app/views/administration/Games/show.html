@@ -1,0 +1,46 @@
+#{extends 'CRUD/layout.html' /}
+
+
+
+<div id="crudShow" class="${type.name}">
+
+	#{form action:@GameLibrary.upload(), id:'upload', method:'POST', enctype:'multipart/form-data'}
+		<input type="hidden" name="id" value="${object.id}"/>
+		<input type="hidden" name="type" value="cover"/>
+		<input id="picture" type="file" name="picture" style="visibility:hidden;"/> 
+	#{/form}
+	
+	<h2 id="crudShowTitle">&{'crud.show.title', type.modelName}</h2>
+	
+	<div class="objectForm">
+	#{form action:@save(object._key()), enctype:'multipart/form-data'}
+		#{crud.form}
+			#{crud.custom 'cover'}
+				<label for="user_avatar">&{'preferences.user.avatar.label'}</label>
+				<input type="text" value="${field.value}" id="user_image" readonly="readonly"/>
+				<a href="#"><img src="@{GameLibrary.getPicture(object.id,"cover",1)}" title="" alt="cover"></a>
+			#{/crud.custom}
+		#{/crud.form}
+		<p class="crudButtons">
+			<input type="submit" name="_save" value="&{'crud.save', type.modelName}" />
+			<input type="submit" name="_saveAndContinue" value="&{'crud.saveAndContinue', type.modelName}" />
+		</p>
+	#{/form}
+	</div>
+	
+	#{form @delete(object._key())}
+		<p class="crudDelete">
+			<input type="submit" value="&{'crud.delete', type.modelName}" />
+		</p>
+	#{/form}
+<script  type="text/javascript">
+	$('#picture').change(function(){
+		//alert($('#avatar').val());
+		$('#game_cover').val($('#picture').val());
+		$('#upload').submit();
+	});
+	$('#cover').click(function(){
+		$('#picture').click();
+	});
+</script>
+</div>

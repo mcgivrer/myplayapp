@@ -177,7 +177,7 @@ public class GameLibrary extends Controller {
 				+ type + "/" + picture.getName());
 		picture.renameTo(output);
 		// update game model and save
-		game.cover = "avatar_" + picture.getName();
+		game.cover = picture.getName();
 		game.save();
 		// render page
 		render("GameLibrary/addGame.html");

@@ -80,8 +80,6 @@ public class User extends Model {
 	
 	@Transient
 	public String gravatarHash;
-
-	public Blob avatar;
 	
 	//public UserPicture picture;
 	
