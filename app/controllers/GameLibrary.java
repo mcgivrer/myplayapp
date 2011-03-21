@@ -130,12 +130,16 @@ public class GameLibrary extends Controller {
 	 * @param number
 	 *            image number for the selected type
 	 */
-	public static void getPicture(Long id, String type, Long number,String size) {
+	public static void getPicture(Long id, String type, Long number, String size) {
 		Game game = Game.findById(id);
 		FileInputStream output;
 		try {
-			File of = Play.getFile("/public/images/games/" + game.id + "/"
-					+ GameLibrary.generatePictureName(game, type, number, size));
+			File of = Play
+					.getFile("/public/images/games/"
+							+ game.id
+							+ "/"
+							+ GameLibrary.generatePictureName(game, type,
+									number, size));
 			output = new FileInputStream(of);
 			renderBinary(output);
 		} catch (FileNotFoundException e) {
@@ -144,14 +148,12 @@ public class GameLibrary extends Controller {
 		}
 	}
 
-	public static String generatePictureName(Game game, String type, Long number, String size){
-		return type + "/" 
-		+ game.platform.toLowerCase()+"-"
-		+WS.encode(game.title.toLowerCase())+"-"
-		+type
-		+ (number!=null?"-"+number:"") 
-		+ (size!=null && !size.equals("")?"."+size:"")
-		+ ".jpg";
+	public static String generatePictureName(Game game, String type,
+			Long number, String size) {
+		return type + "/" + game.platform.toLowerCase() + "-"
+				+ WS.encode(game.title.toLowerCase()) + "-" + type
+				+ (number != null ? "-" + number : "")
+				+ (size != null && !size.equals("") ? "." + size : "") + ".jpg";
 	}
 
 	/**

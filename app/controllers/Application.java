@@ -1,10 +1,5 @@
 package controllers;
 
-import static play.modules.excel.Excel.renderExcel;
-
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 import models.Game;
@@ -53,16 +48,14 @@ public class Application extends Controller {
 			if (platform != null) {
 				games = Game.find(
 						"select g from Game g " + "where " + "g.publish=true "
-						+ "and g.author = ? " + "and g.platform = ? "
-						+ "order by platform asc, title asc", 
-						user,
-				        platform).fetch();
+								+ "and g.author = ? " + "and g.platform = ? "
+								+ "order by platform asc, title asc", user,
+						platform).fetch();
 			} else {
 				games = Game.find(
 						"select g from Game g " + "where " + "g.publish=true "
-						+ "and g.author = ? "
-						+ "order by platform asc, title asc", 
-						user)
+								+ "and g.author = ? "
+								+ "order by platform asc, title asc", user)
 						.fetch();
 			}
 			Logger.debug(
@@ -119,6 +112,6 @@ public class Application extends Controller {
 		List<Game> platforms = Game.find(
 				"select distinct g.platform from Game g order by g.platform")
 				.fetch();
-		render(games, platforms,user);
+		render(games, platforms, user);
 	}
 }
