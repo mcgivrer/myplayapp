@@ -44,11 +44,6 @@ public class User extends Model {
 	@MaxSize(25)
 	public String password;
 	
-	//@Transient
-	//@Required
-	//@Equals("password")
-	//public String passwordConfirm;
-
 	@MaxSize(50)
 	public String firstname;
 	
@@ -67,15 +62,19 @@ public class User extends Model {
 	@MaxSize(255)
 	public String image="test";
 	
+	/**
+	 * c=created, v=valide, a=actif, d=desactive, b=banni
+	 */
 	@Required
-	@MaxSize(2)
-	public String status="a";
+	@MaxSize(1)
+	public String status="v";
 	
 	@Required
 	@Enumerated(EnumType.STRING)
 	public UserRole role;
 	
 	@Required
+	@MaxSize(5)
 	public String language;
 	
 	@Transient
@@ -102,7 +101,6 @@ public class User extends Model {
 	public User(
 			String username,
 			String password,
-			//String passwordConfirm,
 			String firstname,
 			String lastname,
 			String email,
@@ -113,7 +111,6 @@ public class User extends Model {
 			String language){
 		this.username=username;
 		this.password=password;
-		//this.passwordConfirm=passwordConfirm;
 		this.firstname=firstname;
 		this.lastname=lastname;
 		this.email=email;

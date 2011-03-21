@@ -112,7 +112,7 @@ Game(game5):
    author: user1
 
 Game(game6):
-   title: Super Mario All Stars
+   title: Super Mario All Stars 25th anniversary edition
    platform: Wii
    description: Un revivalde tous les mario Nintendo 
    publish: true
@@ -127,7 +127,7 @@ Game(game6):
 Game(game7):
    title: New Super Mario Bros Wii
    platform: Wii
-   description: Le petit dernier né des MArtio sur Wii. Une référence 
+   description: Le petit dernier né dela série des MArio sur Wii. Une référence 
    publish: true
    testContent: todo.
    developerStudio: Nintendo

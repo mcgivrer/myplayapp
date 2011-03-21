@@ -19,6 +19,7 @@ import models.User;
 import play.Logger;
 import play.Play;
 import play.data.validation.Valid;
+import play.libs.WS;
 import play.mvc.Before;
 import play.mvc.Controller;
 import play.mvc.With;
@@ -129,18 +130,28 @@ public class GameLibrary extends Controller {
 	 * @param number
 	 *            image number for the selected type
 	 */
-	public static void getPicture(Long id, String type, Long number) {
+	public static void getPicture(Long id, String type, Long number,String size) {
 		Game game = Game.findById(id);
 		FileInputStream output;
 		try {
 			File of = Play.getFile("/public/images/games/" + game.id + "/"
-					+ type + "/" + number + ".jpg");
+					+ GameLibrary.generatePictureName(game, type, number, size));
 			output = new FileInputStream(of);
 			renderBinary(output);
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	public static String generatePictureName(Game game, String type, Long number, String size){
+		return type + "/" 
+		+ game.platform.toLowerCase()+"-"
+		+WS.encode(game.title.toLowerCase())+"-"
+		+type
+		+ (number!=null?"-"+number:"") 
+		+ (size!=null && !size.equals("")?"."+size:"")
+		+ ".jpg";
 	}
 
 	/**
@@ -157,10 +168,10 @@ public class GameLibrary extends Controller {
 	public static void upload(Long id, String type, File picture) {
 		// User connectedUser = (User)renderArgs.get("user");
 		Game game = Game.findById(id);
-		int number = 1;
+		Long number = new Long(1);
 		// remove existing file
 		File remove = Play.getFile("/public/images/games/" + game.id + "/"
-				+ type + "/" + number + ".jpg");
+				+ GameLibrary.generatePictureName(game, type, number, null));
 		if (remove.exists()) {
 			remove.delete();
 		}
@@ -174,7 +185,7 @@ public class GameLibrary extends Controller {
 					.mkdir();
 		}
 		File output = Play.getFile("/public/images/games/" + game.id + "/"
-				+ type + "/" + picture.getName());
+				+ GameLibrary.generatePictureName(game, type, number, null));
 		picture.renameTo(output);
 		// update game model and save
 		game.cover = picture.getName();

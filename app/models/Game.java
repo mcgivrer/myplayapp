@@ -3,12 +3,13 @@
  */
 package models;
 
-import java.util.List;
+import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
+import play.data.validation.MaxSize;
 import play.data.validation.Required;
 import play.db.jpa.Model;
 
@@ -19,18 +20,22 @@ import play.db.jpa.Model;
 @Entity
 public class Game extends Model {
 	@Required
+	@MaxSize(60)
 	public String title;
 	@Required
+	@MaxSize(10)
 	public String platform;
 	@Required
 	public String description;
 	public Boolean publish;
+	@Lob
 	public String testContent;
 	public String developerStudio;
 	public String editor;
 	@Required
-	public Integer yearOfPublication;
+	public Date yearOfPublication;
 	public Integer note;
+	@Required
 	public String cover;
 	@Required
 	@ManyToOne
@@ -52,7 +57,7 @@ public class Game extends Model {
 	 */
 	public Game(String title, String Game, String description, Boolean publish,
 			String testContent, String developerStudio, String editor,
-			Integer yearOfPublication, Integer note, String cover, User author) {
+			Date yearOfPublication, Integer note, String cover, User author) {
 		this.title=title;
 		this.description=description;
 		this.publish = publish;

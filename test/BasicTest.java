@@ -22,7 +22,7 @@ public class BasicTest extends UnitTest {
 
 		//Create
 		Game game = new Game("MyGame", "X360", "My Description game", true,
-				"Test of the game", "My Studio", "My Editor", 2010, 8,
+				"Test of the game", "My Studio", "My Editor", new Date(), 8,
 				"public/images/x360/my_game/cover/mygame-cover.jpg", 
 				user);
 		game.save();
