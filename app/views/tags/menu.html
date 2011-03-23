@@ -1,9 +1,9 @@
 <nav class="menu">
     <ul class="user">
     #{if _userConnected}
-	   <li><a href="#"><img class="avatar" src="@{Preferences.getAvatarPicture(_userConnected.id)}" width="16" height="16"/>
+	   <li><a href="@{Application.index()}"><img class="avatar" src="@{Preferences.getAvatarPicture(_userConnected.id)}" width="16" height="16"/>
 ${_userConnected.firstname} ${_userConnected.lastname}</a></li>
-	    <li><a id="backhome" class="item home" href="@{Application.index()}" title="&{'admin.backhome.label.tooltip'}">&{'admin.backhome.label'}</a></li>
+	    <!-- li><a id="backhome" class="item home" href="@{Application.index()}" title="&{'admin.backhome.label.tooltip'}">&{'admin.backhome.label'}</a></li -->
 	    <li><a id="userpreferences" class="item prefs" href="@{Preferences.show()}" title="&{'admin.preferences.label.tooltip'}">&{'admin.preferences.label'}</a></li>
 	    <li><a id="logout" class="item logout"href="@{Secure.logout()}" title="&{'home.actions.logout.label'}">&{'home.actions.logout'}</a></li>
     #{/if}

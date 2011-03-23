@@ -71,7 +71,9 @@ admin.backhome.label.tooltip=Back to home page
 #preferences
 preferences.user.avatar.label=Avatar (image pour l'utilisateur)
 preferences.user.personal=User details
-preferences.user.image.label=Avatar
+preferences.user.image.label=Avatar (image pour l'utilisateur)
+preferences.user.image.note=Please, click on the image to change it.
+preferences.user.image.tooltip=Current image for user.
 preferences.user.username.label=Username
 preferences.user.firstname.label=Firstname
 preferences.user.lastname.label=Lastname
@@ -87,6 +89,8 @@ preferences.actions.cancel.label=Cancel
 preferences.actions.cancel.label.tooltip=Cancel modifications
 language.english.label=English
 language.french.label=French
+preferences.user.error.global=Some error exists, please fix them.
+preferences.user.username.already.exists=This username already used by someone, please an other one.
 
 #user create
 user.create.legend=Register yourself on this site

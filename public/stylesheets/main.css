@@ -173,6 +173,14 @@ header nav.menu ul li a:hover {
 	background-color:#fff;
 	color:#666;
 }
+header nav.menu ul li a.user {
+	border:1px solid #ddd;
+}
+
+header nav.menu ul li a.user:hover {
+	background-color:#ddd;
+	color:#000;
+}
 
 /* admin mode */
 header nav.admin{
@@ -352,183 +360,4 @@ footer .columns p{
 	margin-left:1em;
 	padding:0em;
 	width:32%;
-}
-
-/*----- FOrmulaire de connexion -----*/ 
-#loginForm{
-	position:absolute;
-	margin-left:35%;
-	width:350px;
-	height:250px;
-	text-align:0px;
-	border:3px outset #333;
-	border-radius:4px;
-	box-shadow:#ccc 0.2em 0.2em 0.4em;
-	background-color:#eee;
-}
-#loginForm h1 {
-    font-weight: bold;
-    color: #111;
-    text-align:center;
-}
-#loginForm form {
-    padding: 10px;
-    padding-top:30px;
-    text-align: left;
-}
-#loginForm form p {
-    margin: 3px;
-}
-#username-field {
-    margin-top: 10px !important;
-}
-
-#username-field label, #password-field label {
-    display: block;
-    width: 100px;
-    float: left;
-    text-align: right;
-    margin-right: 5px;
-    color: #333;
-    font-size: 15px;
-}
-
-#username-field input {
-    width: 150px;
-    font-size: 13px;
-}
-
-#password-field input {
-    width: 150px;
-    font-size: 13px;
-}
-
-#remember-field input {
-    margin-left: 100px;
-}
-
-#remember-field {
-    font-size: 12px;
-    color: #666;
-}
-
-#signin-field input {
-    margin-left: 100px;
-    margin-top: 10px;
-}
-
-#loginForm .error, #login .success  {
-    color: #fff;
-    font-size: 12px;
-    text-align: center;
-    margin-bottom: 10px;
-    padding: 5px;
-}
-
-#loginForm .error {
-    background: #c00 !important;
-}
-
-#loginForm .success {
-    background: #008800 !important;
-}
-.columns3{
-	-webkit-column-count: 3;
-	-webkit-column-gap: 20px;
-	-moz-column-count: 3;
-	-moz-column-gap: 20px;
-	column-count: 3;
-	column-gap: 20px;
-}
-
-/*----- Préférences utilisateur -----*/
-#preferences{
-	float:left;
-	display:block;
-	font-size:11pt;
-	width:80%;
-}
-#preferences .infos{
-	float:left;
-	display:block;
-	/*margin-left:200px;*/
-}
-#preferences fieldset {
-	border:2px solid #ddd;
-	border-radius:4px;
-	margin:5px;
-}
-
-#preferences fieldset legend{
-	border:1px solid #ddd;
-	border-radius:8px;
-	background-color:#ddd;
-	color:#333;
-	padding:0.2em 2em;
-}
-#preferences fieldset ul{
-	padding:0px;
-	margin:0px;
-}
-#preferences .field{
-	display:inline-block;
-	width:100%;
-	min-height:2.5em;
-	border-bottom:1px dotted #ddd;
-	/*border-bottom:1px dotted #ddd;*/
-}
-
-#preferences .field:last{
-	border:none;
-}
-
-#preferences .field label{
-	float:left;
-	min-width:40%;
-	margin:0.2em /*0em*/;
-}
-#preferences .field input{
-	float:left;
-	min-width:30%;
-	vertical-align:center;
-	border:1px solid #ddd;
-	border-radius:4px;
-	font-size:11pt;
-	background-color:#eee;
-	padding:2px;
-	margin:0.2em 0em;
-}
-
-#preferences div.actions{
-	text-align:right;
-	padding:10px 0px;
-	margin:0px;
-	border-top:2px solid #ddd;
-}
-
-#preferences .avatar{
-	float:right;
-	margin:10px;
-	padding:4px;
-	border-radius:4px;
-	border:1px inset #ddd;
-	/*background-color:#ddd;*/
-}
-#preferences .avatar:hover{
-	float:right;
-	margin:10px;
-	padding:4px;
-	border-radius:4px;
-	/*border:2px inset #ddd;*/
-	background-color:#dcc;
-	mouse:hand;
-}
-#preferences .avatar:active{
-	float:right;
-	margin:10px;
-	padding:4px;
-	border-radius:4px;
-	border:1px outset #ddd;
-	background-color:#fee;
-	mouse:hand;
 }

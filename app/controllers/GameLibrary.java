@@ -134,12 +134,8 @@ public class GameLibrary extends Controller {
 		Game game = Game.findById(id);
 		FileInputStream output;
 		try {
-			File of = Play
-					.getFile("/public/images/games/"
-							+ game.id
-							+ "/"
-							+ GameLibrary.generatePictureName(game, type,
-									number, size));
+			File of = Play.getFile(GameLibrary.getPicturePath(
+					"/public/images/games/", game, type, number, size));
 			output = new FileInputStream(of);
 			renderBinary(output);
 		} catch (FileNotFoundException e) {
@@ -148,8 +144,58 @@ public class GameLibrary extends Controller {
 		}
 	}
 
-	public static String generatePictureName(Game game, String type,
-			Long number, String size) {
+	/**
+	 * Compose Base path for game pictures.
+	 * 
+	 * @param basePath
+	 *            Chemin de base pour les images de jeux
+	 * @param game
+	 *            Jeu concerné
+	 * @return
+	 */
+	public static String getGamePicturesPath(String basePath, Game game) {
+		return basePath + File.separator + game.id + File.separator;
+	}
+
+	/**
+	 * Compose Picture filename and path, based on <code>basePath</code>.
+	 * 
+	 * @param basePath
+	 *            Chemin de base pour les images de jeux
+	 * @param game
+	 *            Jeu concerné
+	 * @param type
+	 *            type d'image (cover, screenshot, artwork)
+	 * @param number
+	 *            numéro d'image (si necessaire, sinon, null ou 0
+	 * @param size
+	 *            Taille cible de l'image (pour retourner la bonne taille de
+	 *            thumbnail.
+	 * @return
+	 */
+	public static String getPicturePath(String basePath, Game game,
+			String type, Long number, String size) {
+		return GameLibrary.getGamePicturesPath(basePath, game)
+				+ GameLibrary.getPictureName(game, type, number, size);
+	}
+
+	/**
+	 * Get Picture name based on Game information, picture type , picture number
+	 * and target size.
+	 * 
+	 * @param game
+	 *            Jeu concerné
+	 * @param type
+	 *            type d'image (cover, screenshot, artwork)
+	 * @param number
+	 *            numéro d'image (si nécessaire, sinon null ou 0)
+	 * @param size
+	 *            Taille cible de l'image (pour retourner la bonne taille de
+	 *            thumbnail.
+	 * @return
+	 */
+	public static String getPictureName(Game game, String type, Long number,
+			String size) {
 		return type + "/" + game.platform.toLowerCase() + "-"
 				+ WS.encode(game.title.toLowerCase()) + "-" + type
 				+ (number != null ? "-" + number : "")
@@ -172,22 +218,29 @@ public class GameLibrary extends Controller {
 		Game game = Game.findById(id);
 		Long number = new Long(1);
 		// remove existing file
-		File remove = Play.getFile("/public/images/games/" + game.id + "/"
-				+ GameLibrary.generatePictureName(game, type, number, null));
+		File remove = Play.getFile(GameLibrary.getPicturePath(
+				"/public/images/games", game, type, number, null));
 		if (remove.exists()) {
 			remove.delete();
 		}
 		// move new file to right place
-		if (!Play.getFile("/public/images/games/" + game.id).exists()) {
-			Play.getFile("/public/images/games/" + game.id).mkdir();
-		}
-		if (!Play.getFile("/public/images/games/" + game.id + "/" + type)
+		if (!Play.getFile(
+				GameLibrary.getGamePicturesPath("/public/images/games", game))
 				.exists()) {
-			Play.getFile("/public/images/games/" + game.id + "/" + type)
-					.mkdir();
+			Play.getFile(
+					GameLibrary.getGamePicturesPath("/public/images/games",
+							game)).mkdir();
 		}
-		File output = Play.getFile("/public/images/games/" + game.id + "/"
-				+ GameLibrary.generatePictureName(game, type, number, null));
+		if (!Play.getFile(
+				GameLibrary.getGamePicturesPath("/public/images/games", game)
+						+ File.separator + type).exists()) {
+			Play.getFile(
+					GameLibrary.getGamePicturesPath("/public/images/games",
+							game) + File.separator + type).mkdir();
+		}
+		File output = Play.getFile(GameLibrary.getGamePicturesPath(
+				"/public/images/games", game)
+				+ GameLibrary.getPictureName(game, type, number, null));
 		picture.renameTo(output);
 		// update game model and save
 		game.cover = picture.getName();

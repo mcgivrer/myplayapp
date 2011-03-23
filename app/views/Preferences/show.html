@@ -1,5 +1,7 @@
 #{extends 'main.html' /}
-
+#{set 'moreStyles'}
+<link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/preferences.css'}">
+#{/set}
 <div id="preferences">
 
 #{form @Preferences.upload(), id:'upload', method:'POST', enctype:'multipart/form-data'}
@@ -8,7 +10,9 @@
 #{/form}
 
 #{form @Preferences.update(user?.id), enctype:'multipart/form-data'}
-
+	#{field 'user.id'}
+	<input type="hidden" name="${field.name}" id="${field.id}" value="${field.value}"/>
+	#{/field}
 <fieldset>
 	<legend>&{'preferences.user.personal'}</legend>
 
@@ -21,68 +25,67 @@
 	<li class="field">
 		<img id="getAvatar" class="avatar"
 			src="@{Preferences.getAvatarPicture(user.id)}"
-			title="&{'preferences.user.avatar.tooltip'}" width="80px" />
-		<label for="user_avatar">&{'preferences.user.avatar.label'}</label>
-		<input type="text" value="${user.image}" id="user_image" readonly="readonly"/>
-		<span class="error">#{error
-		'user.avatar'/}</span></li>
+			title="&{'preferences.user.image.tooltip'}" width="80px" />
+		<label for="user_avatar">&{'preferences.user.image.label'}</label>
+		<input type="text" value="${flash['user.image']}" id="${field.id}" name="${field.name}" readonly="readonly"/>
+		<div class="note">&{'preferences.user.image.note'}</div>
+		<span class="error">#{error 'user.avatar'/}</span></li>
 	#{/field}
 
 	#{field 'user.username'}
-	<li class="field"><label for="${field.id}">&{'preferences.user.username.label'}</label>
-		<input id="${field.id}" type="text" name="{field.name}"
-			value="${field.value}" class="${field.errorClass}" /> <span
+	<li class="field ${field.errorClass}"><label for="${field.id}">&{'preferences.user.username.label'}</label>
+		<input id="${field.id}" type="text" name="${field.name}"
+			value="${flash['user.username']}" class="${field.errorClass}" /> <span
 			class="error">${field.error}</span></li>
 	#{/field}
 	
 	#{field 'user.firstname'}
-	<li class="field"><label for="${field.id}">&{'preferences.user.firstname.label'}</label>
-		<input id="${field.id}" type="text" name="{field.name}"
-			value="${field.value}" class="${field.errorClass}" /> <span
+	<li class="field ${field.errorClass}"><label for="${field.id}">&{'preferences.user.firstname.label'}</label>
+		<input id="${field.id}" type="text" name="${field.name}"
+			value="${flash['user.firstname']}" class="${field.errorClass}" /> <span
 			class="error">${field.error}</span></li>
 	#{/field} 
 	
 	#{field 'user.lastname'}
-	<li class="field"><label for="${field.id}">&{'preferences.user.lastname.label'}</label>
-	<input id="${field.id}" type="text" name="{field.name}"
-		value="${field.value}" class="${field.errorClass}" /> <span
+	<li class="field ${field.errorClass}"><label for="${field.id}">&{'preferences.user.lastname.label'}</label>
+	<input id="${field.id}" type="text" name="${field.name}"
+		value="${flash['user.lastname']}" class="${field.errorClass}" /> <span
 		class="error">${field.error}</span></li>
 	#{/field} 
 	
 	#{field 'user.email'}
-	<li class="field"><label for="${field.id}">&{'preferences.user.email.label'}</label>
-		<input id="${field.id}" type="text" name="{field.name}"
-			value="${field.value}" class="${field.errorClass}" /> <span
+	<li class="field ${field.errorClass}"><label for="${field.id}">&{'preferences.user.email.label'}</label>
+		<input id="${field.id}" type="text" name="${field.name}"
+			value="${flash['user.email']}" class="${field.errorClass}" /> <span
 			class="error">${field.error}</span></li>
 	#{/field} 
 	
 	#{field 'user.webblog'}
-	<li class="field"><label for="${field.id}">&{'preferences.user.webblog.label'}</label>
-		<input id="${field.id}" type="text" name="{field.name}"
-			value="${field.value}" class="${field.errorClass}" /> <span
+	<li class="field ${field.errorClass}"><label for="${field.id}">&{'preferences.user.webblog.label'}</label>
+		<input id="${field.id}" type="text" name="${field.name}"
+			value="${flash['user.webblog']}" class="${field.errorClass}" /> <span
 			class="error">${field.error}</span></li>
 	#{/field}
 	
 	#{field 'user.password'}
-	<li class="field"><label for="${field.id}">&{'preferences.user.password.label'}</label>
-		<input id="${field.id}" type="password" name="{field.name}"
-			value="${field.value}" class="${field.errorClass}" /> <span
+	<li class="field ${field.errorClass}"><label for="${field.id}">&{'preferences.user.password.label'}</label>
+		<input id="${field.id}" type="password" name="${field.name}"
+			value="${flash['user.password']}" class="${field.errorClass}" /> <span
 			class="error">${field.error}</span></li>
 	#{/field} 
 	
 	#{field 'user.passwordConfirm'}
-	<li class="field"><label for="${field.id}">&{'preferences.user.passwordConfirm.label'}</label>
-		<input id="${field.id}" type="password" name="{field.name}"
-			value="${field.value}" class="${field.errorClass}" /> <span
+	<li class="field ${field.errorClass}"><label for="${field.id}">&{'preferences.user.passwordConfirm.label'}</label>
+		<input id="${field.id}" type="password" name="${field.name}"
+			value="${flash['user.passwordConfirm']}" class="${field.errorClass}" /> <span
 			class="error">${field.error}</span></li>
 	#{/field}
 
 	#{field 'user.language'}
 	<li class="field"><label for="${field.id}">&{'preferences.user.language.label'}</label>
-		<select id="${field.id}" name="{field.name}" value="${user.language}"
-			class="${field.errorClass}">
-			<option value="en">&{'language.english.label'}</option>
-			<option value="fr">&{'language.french.label'}</option>
+		<select id="${field.id}" name="${field.name}" >
+			<option value="en" #{if user.language==field.value} selected="selected" #{/if}>&{'language.english.label'}</option>
+			<option value="fr" #{if user.language==field.value} selected="selected" #{/if}>&{'language.french.label'}</option>
 		</select> <span class="error">${field.error}</span>
 	</li>
 		#{/field}

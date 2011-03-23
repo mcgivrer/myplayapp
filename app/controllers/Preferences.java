@@ -7,6 +7,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
+import com.mysql.jdbc.Messages;
+
 import models.User;
 import play.Play;
 import play.data.validation.Valid;
@@ -37,9 +39,22 @@ public class Preferences extends Controller {
 	 * 
 	 * @param userLanguage
 	 */
-	public static void update(@Valid User user) {
-		user.save();
-		Preferences.show(user.getId());
+	public static void update(
+			@Valid User user
+			) {
+		User other = (User)User.find("byUsername", user.username).first();
+		
+		if(other!=null && user.id!=other.id){
+			validation.addError("user.username", "preferences.user.username.already.exists");
+		}
+		if(validation.hasErrors()) {
+			params.flash(); // add http parameters to the flash scope
+			validation.keep(); // keep the errors for the next request
+       		Preferences.show(user.getId());
+		} else {
+			user.save();
+			Application.index();
+		}
 	}
 
 	/**
@@ -70,7 +85,7 @@ public class Preferences extends Controller {
 			user.image = "avatar_" + avatar.getName();
 			user.save();
 			// render page
-			render("Preferences/show.html");
+			Preferences.show(user.id);
 		}
 	}
 
@@ -118,6 +133,15 @@ public class Preferences extends Controller {
 	 */
 	public static void show(Long id) {
 		User user = (User) renderArgs.get("user");
+	    flash("user.image",user.image); // add http parameters to the flash scope
+	    flash("user.username",user.username); // add http parameters to the flash scope
+	    flash("user.firstname",user.firstname); // add http parameters to the flash scope
+	    flash("user.lastname",user.lastname); // add http parameters to the flash scope
+	    flash("user.email",user.email); // add http parameters to the flash scope
+	    flash("user.webblog",user.webblog); // add http parameters to the flash scope
+	    flash("user.password",user.password); // add http parameters to the flash scope
+	    flash("user.passwordConfirm",user.password); // add http parameters to the flash scope
+	    flash("user.language",user.language); // add http parameters to the flash scope
 		render(user);
 	}
 }
