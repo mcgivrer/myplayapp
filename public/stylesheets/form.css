@@ -1,0 +1,127 @@
+@CHARSET "UTF-8";
+
+/*----- Préférences utilisateur -----*/
+.form{
+	float:left;
+	display:block;
+	font-size:11pt;
+	padding:0em 10%;
+	margin:none;
+}
+.form #upload{
+	height:0px;
+}
+.form .infos{
+	float:left;
+	display:block;
+	/*margin-left:200px;*/
+}
+
+.form fieldset {
+	border:2px solid #ddd;
+	border-radius:4px;
+	margin:5px;
+}
+
+.form fieldset legend{
+	border:1px solid #ddd;
+	border-radius:8px;
+	background-color:#ddd;
+	color:#333;
+	padding:0.2em 2em;
+}
+.form fieldset ul{
+	padding:0px;
+	margin:0px;
+}
+.form .field{
+	display:inline-block;
+	width:100%;
+	min-height:2.5em;
+	border-bottom:1px dotted #ddd;
+	/*border-bottom:1px dotted #ddd;*/
+}
+.form .textarea{
+	display:inline-block;
+	width:100%;
+	min-height:2.5em;
+	border-bottom:1px dotted #ddd;
+	/*border-bottom:1px dotted #ddd;*/
+}
+.form .field:last{
+	border:none;
+}
+
+.form .field label{
+	float:left;
+	text-align:right;
+	min-width:40%;
+	margin:0.2em /*0em*/;
+	padding-right:3em;
+}
+.form .note{
+	float:right;
+	font-size:8pt;
+	font-style:italic;
+	margin:0.2em /*0em*/;
+	padding-right:3em;
+	width:70%;
+	color:#456;
+}
+.form .field input, .form .field select, .form .textarea textarea{
+	float:left;
+	min-width:30%;
+	vertical-align:center;
+	border:1px solid #ddd;
+	border-radius:4px;
+	font-size:11pt;
+	background-color:#eee;
+	padding:2px;
+	margin:0.2em 0em;
+}
+
+.form div.actions{
+	text-align:right;
+	padding:10px 0px;
+	margin:0px;
+	border-top:2px solid #ddd;
+}
+
+.form .avatar{
+	float:right;
+	margin:10px;
+	padding:4px;
+	border-radius:4px;
+	border:1px inset #ddd;
+	/*background-color:#ddd;*/
+	cursor: pointer;
+}
+.form .avatar:hover{
+	float:right;
+	margin:10px;
+	padding:4px;
+	border-radius:4px;
+	/*border:2px inset #ddd;*/
+	background-color:#dcc;
+	mouse:hand;
+}
+.form .avatar:active{
+	float:right;
+	margin:10px;
+	padding:4px;
+	border-radius:4px;
+	border:1px outset #ddd;
+	background-color:#fee;
+	mouse:hand;
+}
+.form .hasError{
+	background-color:#fee;
+	color:#600;
+}
+.form .error{
+	float:right;
+	font-size:9pt;
+	color:#f00;
+	padding:0.5em;
+	margin:0.2em 1em;
+}

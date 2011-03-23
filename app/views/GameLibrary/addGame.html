@@ -1,19 +1,102 @@
 #{extends 'main.html' /}
 
-#{form @GameLibrary.save(game?.id)}
-	<div id="game">
-		<div class="cover">
-			<img alt="${game?.title}" src="${game?.cover}">
-			<p>&{'gamelibrary.add.game.cover'}</p>
-			<input type="file" name="game.cover" id="game.cover" value="${game?.cover}" />
-			</div>
-		<div class="info">
+#{set 'moreStyles'}
+	<link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/addGame.css'}">
+	<link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/form.css'}">
+#{/set}
+
+#{form @GameLibrary.upload(), id:'upload', method:'POST', enctype:'multipart/form-data'}
+	<input type="hidden" name="id" value="${game?.id}"/>
+	<input id="cover" type="file" name="cover" style="visibility:hidden;"/> 
+#{/form}
+
+#{form @GameLibrary.save(game?.id), id:'gameForm', method:'POST', enctype:'mutlipart/form-data'}
+	<div class="form">
+		<fieldset id="info">
+			<legend>&{'game.addgame.information.legend'}</legend>
+			#{field 'game.cover'}
+			<img id="getCover" class="cover" alt="${game?.title}" src="@{GameLibrary.getPicture(game?.id,"cover",null,"60x90")}" />
+			#{/field}
 			<ul>
-				<li><span>&{'gamelibrary.add.game.developerstudio'}</span>${game?.developerStudio}</li>
-				<li><span>&{'gamelibrary.add.game.editor'}</span>${game?.editor}</li>
-				<li><span>&{'gamelibrary.add.game.platform'}</span>${game?.platform}</li>
-				<li><span>&{'gamelibrary.add.game.note'}</span>${game?.note}</li>
+				#{field 'game.cover'}
+				<li class="field ${field.errorClass}">
+					<label for="${field.name}">&{'gamelibrary.add.game.cover.label'}</label>
+					<input id="game.cover" type="text" name="game.cover" 
+							value="${game?.cover}" class="${field.error}" readonly="readonly"/>
+					<span class="error">${field.error}</span></li>
+				</li>
+				#{/field}
+				
+				#{field 'game.editor'}
+				<li class="field ${field.errorClass}">
+					<label for="${field.id}">&{'gamelibrary.add.game.editor.label'}</label>
+					<input id="${field.id}" type="text" name="${field.name}"
+						value="${flash['user.username']}" class="autocomplete ${field.errorClass}" /> 
+					<span class="error">${field.error}</span>
+				</li>
+				#{/field}
+				
+				#{field 'game.developperStudio'}
+				<li class="field ${field.errorClass}">
+					<label for="${field.id}">&{'gamelibrary.add.game.developerstudio.label'}</label>
+					<input id="${field.id}" type="text" name="${field.name}"
+						value="${flash['user.username']}" class="autocomplete ${field.errorClass}" />
+					<span class="error">${field.error}</span>
+				</li>
+				#{/field}
+
+				#{field 'game.platform'}
+				<li class="field ${field.errorClass}">
+					<label for="${field.id}">&{'gamelibrary.add.game.platform.label'}</label>
+					<input id="${field.id}" type="text" name="${field.name}"
+						value="${flash['user.username']}" class="autocomplete ${field.errorClass}" />
+					<span class="error">${field.error}</span>
+				</li>
+				#{/field}
+
+				#{field 'game.note'}
+				<li class="field ${field.errorClass}">
+					<label for="${field.id}">&{'gamelibrary.add.game.note.label'}</label>
+					<input id="${field.id}" type="number" min="0" max="10" default="0" name="${field.name}"
+						value="${flash['user.username']}" 
+						class="notation ${field.errorClass}" 
+						size="2" maxlength="2"/> 
+					<span class="error">${field.error}</span>
+				</li>
+				#{/field}
+
+				#{field 'game.yearOfPublication'}
+				<li class="field ${field.errorClass}">
+					<label for="${field.id}">&{'gamelibrary.add.game.yearOfPublication.label'}</label>
+					<input id="${field.id}" type="text" name="${field.name}" 
+						placeholder="01-01-2011"
+						value="${flash['user.username']}" class="${field.errorClass}" />
+					<span class="error">${field.error}</span>
+				</li>
+				#{/field}
+
+				#{field 'game.description'}
+				<li class="textarea ${field.errorClass}">
+					<label for="${field.id}">&{'gamelibrary.add.game.description.label'}</label><br/>
+					<textarea id="${field.id}" name="${field.name}"
+						cols="60"
+						rows="5"
+						class="${field.errorClass}">${flash['user.username']}</textarea> 
+					<span class="error">${field.error}</span>
+				</li>
+				#{/field}
+
 			</ul>
-		</div>
+		</fieldset>
 	</div>
 #{/form}
+<script type="text/javascript">
+	$('#cover').change(function(){
+		//alert($('#avatar').val());
+		$('#game_cover').val($('#cover').val());
+		$('#upload').submit();
+	});
+	$('#getAvatar').click(function(){
+		$('#cover').click();
+	});
+</script>

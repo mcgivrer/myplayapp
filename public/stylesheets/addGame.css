@@ -1,0 +1,25 @@
+@CHARSET "UTF-8";
+.form #info ul li {
+	float:right;
+	width:80%;
+}
+.form #info .cover{
+	float:left;
+	display:block;
+	width:100px;
+	height:140px;
+	padding:0.2em;
+	margin:0.5em;
+	border:1px solid #ddd;
+	-moz-border-radius:4px;
+	-webkit-border-radius:4px;
+	border-radius:4px;
+}
+.form .textarea textarea{
+	width:99%;
+}
+input.notation {
+	min-width:2em;
+	width:2em;
+	text-align:center;
+}
