@@ -44,6 +44,9 @@ body {
 	background-color:#FE9;
 	border-color: #FE9
 }
+.register{
+	background-image:url('../images/icons/silk/application_form.png');
+}
 .login{
 	background-image:url('../images/icons/silk/lock_open.png');
 }
@@ -112,6 +115,67 @@ header nav {
 	padding:0px;
 	margin:0px;
 	height:30px;
+	border-bottom:1px solid #666;
+}
+header nav ul {
+	display:block;
+	margin:0px;
+	padding:0px;
+	box-shadow:outset 1px 1px 2px #000;
+}
+header nav ul li {
+	display:inline-block;
+	padding:0px;
+	margin:0px;
+}
+header nav ul li a {
+	display:block;
+	margin:2px 0px; 
+	padding:2px 4px;
+	height:16px;
+	font-size:0.8em;
+	border-right:1px solid #aaa;
+	text-decoration:none;
+	font-size:0.8em;
+	text-decoration:none;
+	font-size:0.8em;
+}
+header nav ul li a img.avatar{
+	float:left;
+	text-align:middle;
+	padding:0px;
+	margin:0px;
+	margin:0px 4px -2px -1px;
+	border-radius:2px;
+}
+header nav ul li a.item{
+	padding-left:24px;
+	background-repeat:no-repeat;
+	background-position: 3px 1px;
+}
+header nav ul.admin {
+	float:right;
+	display:block;
+	padding:2px;
+	margin:0px;
+	padding-left:6px;
+	height:26px;
+	min-width:200px;
+	border-left:1px solid #666;
+}
+header nav ul li a{
+	-weblit-border-radius:0px;
+	-moz-border-radius:0px;
+	border-radius:0px;
+}
+header nav ul li:last-child a{
+	border-radius:4px 0px 0px 4px;
+}                         
+header nav ul li:first-child a{
+	border-radius:0px 4px 4px 0px;
+}
+header nav ul.admin li {
+	float:right;
 }
 header nav.menu ul.user{
 	float:left;
@@ -120,85 +184,43 @@ header nav.menu ul.user{
 	margin:0px;
 	height:30px;
 }
-header nav.menu ul.admin{
-	float:right;
-	display:block;
-	padding:2px;
-	margin:0px;
-	height:26px;
-	min-width:200px;
-}
-
-header nav.menu ul.admin li{
-	float:right;
-}
-
-header nav.menu ul li a img.avatar{
-	float:left;
-	text-align:middle;
-	padding:0px;
-	margin:0px;
-	margin:0px 4px -2px -1px;
-}
-header nav.menu ul{
-	display:block;
-	list-style:none;
-	height:1.5em;
-}
-header nav.menu ul li {
-	float:left;
-	display:inline-block;
-	/*height:16px;*/
-}
 header nav.menu ul li a{
-	display:block;
 	background-color:#ddd;
-	margin:2px; 
-	padding:2px 4px;
-	height:16px;
-	-weblit-border-radius:0.2em;
-	-moz-border-radius:0.2em;
-	border-radius:0.4em;
-	border:1px solid #aaa;
 	color:#000;
-	text-decoration:none;
-	font-size:0.8em;
-}
-header nav.menu ul li a.item{
-	padding-left:24px;
-	background-repeat:no-repeat;
-	background-position: 3px 1px;
+	border:1px outset #ccc;
 }
 header nav.menu ul li a:hover {
 	background-color:#fff;
 	color:#666;
+	border:1px outset #eee;
 }
-header nav.menu ul li a.user {
-	border:1px solid #ddd;
-}
-
 header nav.menu ul li a.user:hover {
 	background-color:#ddd;
 	color:#000;
 }
-
 /* admin mode */
 header nav.admin{
-	display:block;
 	background-color:#f96;
 }
 header nav.admin ul li a{
-	display:block;
 	background-color:#e85;
 	border:1px outset #e85;
 	color:#fe9;
 }
+header nav.admin ul.admin{
+	background-color:#fb7;
+	border-left:1px solid #963;
+}
 header nav.admin ul.admin li a {
 	background-color:#f96;
-	border:1px outset #f96;
-	color:#fe9;
+	border:1px outset #e85;
+	color:#000;
 }
-
+header nav.admin ul.admin li a:hover {
+	background-color:#fb8;
+	border:1px outset #ea7;
+	color:#ffc;
+}
 /*----- Contenu de la page -----*/
 
 #content{

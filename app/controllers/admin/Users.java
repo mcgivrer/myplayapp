@@ -1,7 +1,7 @@
 /**
  * Project myplayapp Play! tutorial 
  */
-package controllers.administration;
+package controllers.admin;
 
 import controllers.CRUD;
 import controllers.Check;

@@ -2,7 +2,7 @@
  * Project myplayapp Play! tutorial
  * Admin zone
  */
-package controllers.administration;
+package controllers.admin;
 
 import controllers.CRUD;
 import controllers.Check;

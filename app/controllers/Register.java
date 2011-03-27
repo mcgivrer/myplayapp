@@ -22,9 +22,6 @@ public class Register extends Controller {
 	 * @param user : User in case of validation of the form, used to redisplay form fields with errors.
 	 */
 	public static void create(User user){
-		if(user!=null){
-			user = new User("","","","","","","","",UserRole.USER,"en");
-		}
 		render(user);
 	}
 	
@@ -37,5 +34,4 @@ public class Register extends Controller {
 		user.save();
 		renderTemplate("Register/create.html");
 	}
-
 }

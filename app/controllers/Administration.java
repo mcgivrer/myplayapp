@@ -39,6 +39,6 @@ public class Administration extends Controller {
      * Page d'accueil du module d'administration.
      */
     public static void index(){
-    	renderTemplate("administration/index.html");
+    	renderTemplate("admin/index.html");
     }
 }
