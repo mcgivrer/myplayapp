@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 eclipse
 tmp
 logs
@@ -8,13 +7,4 @@ server.pid
 .project
 .settings
 nbproject
-
-=======
-server.pid
 myplayapp.iml
-eclipse/
-nbproject/
-tmp/
-logs/
-db/
->>>>>>> 90db4603d6dc9ccd720a4822f78fe2491ff089f1
