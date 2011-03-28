@@ -8,11 +8,12 @@
     <version>1.1</version>
   </parent>
 
-  <groupId>my.group.Id</groupId>
-  <artifactId>myartifactid</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <name>My Artifact Name</name>
-  <description>My Artifact Description</description>
+  <groupId>fr.mcgivrer.play</groupId>
+  <artifactId>myplayapp</artifactId>
+  <version>0.0.1</version>
+  <packaging>war</packaging>
+  <name>MyPlayApp</name>
+  <description>MyPlayApp est une application de démonstration de mise en oeuvre du framework Play!, dans le cadre d'un projet industrialisé réalisé au fil de la rédaction du livre &quot;Play!framework - un tutoriel pas-à-pas&quot;.</description>
 
   <dependencies>
   <!-- Add your dependencies here
@@ -24,6 +25,7 @@
    -->
   </dependencies>
   
+  <url>https://github.com/mcgivrer/myplayapp</url>
   <build>
     <plugins>
       <plugin>
