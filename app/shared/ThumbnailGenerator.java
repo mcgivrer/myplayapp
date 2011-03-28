@@ -1,5 +1,6 @@
 package shared;
 
+
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -23,9 +24,9 @@ import com.sun.imageio.plugins.png.PNGImageWriter;
  * @author frederic
  * 
  */
-class Thumbnail {
+public class ThumbnailGenerator {
 
-	class Resolution {
+	protected class Resolution {
 		public int width;
 		public int height;
 		public String name;
@@ -179,11 +180,18 @@ class Thumbnail {
 			res.width = -1;
 			res.height = -1;
 		} else {
-			String[] params = size.split("-");
-			res.name = params[0];
-			String[] dimension = params[1].split("x");
-			res.width = Integer.parseInt(dimension[0]);
-			res.height = Integer.parseInt(dimension[1]);
+			if(size.contains("-")){
+				String[] params = size.split("-");
+				res.name = params[0];
+				String[] dimension = params[1].split("x");
+				res.width = Integer.parseInt(dimension[0]);
+				res.height = Integer.parseInt(dimension[1]);
+			}else{
+				res.name = size;
+				String[] dimension = size.split("x");
+				res.width = Integer.parseInt(dimension[0]);
+				res.height = Integer.parseInt(dimension[1]);				
+			}
 		}
 		return res;
 	}

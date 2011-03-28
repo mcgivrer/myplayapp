@@ -112,7 +112,7 @@ public class Picture<T> implements BinaryField,UserType, IPicture{
 	 */
 	public void generateThumbnails() throws Exception {
 		String size;
-		Thumbnail thb = new Thumbnail();
+		ThumbnailGenerator thb = new ThumbnailGenerator();
 		// Generate Thumbnails
 		for (int i = 0; i < setThumbnailsSize().length; i++) {
 			size = setThumbnailsSize()[i];

@@ -1,7 +1,7 @@
 #{if _userConnected}
 	<section id="searchForm">
 		<label for="search">&{'home.search.label'}</label><br />
-		<input type="text" name="search" id="search" size="25" maxlength="40"/>
+		<input type="text" name="search" id="search" size="25" maxlength="40" placeholder="&{'home.search.placeholder'}"/>
 		<script type="text/javascript">
 		$("#search").keyup(function(event) { // retour simple
 			if(event.keyCode==13){

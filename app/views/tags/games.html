@@ -5,7 +5,8 @@
 		#{set title:'Home / ' + _userConnected.username /}
 		
 		<div class="game" id="game_${game.id}">
-		    <div class="title"><span>#${game.id}.</span> <a href="@{Application.details(game.id)}">${game.title}</a></div>
+		    <div class="title"><span>#${game.id}.</span>
+		    <a href="@{Application.details(game.id)}" title="&{'game.details.readmore',game.title}">${game.title}</a></div>
 		    <div class="side">
 		        #{if game.cover}
 		        <div class="cover">
@@ -20,11 +21,13 @@
 		    </div>
 		    <div class="info">
 		        <span class="platform">
-				<a class="${game.platform}" 
+				<a class="${game.platform.toLowerCase()}" 
 					href="@{Application.filterByPlatform(game.platform)}">${game.platform}</a>
-			</span>
+				</span>
 		        #{if game.description}
-		        <div class="bloc">${game.description}</div>
+		        <div class="bloc">${(game.description.size()>90?game.description.substring(0,90):game.description)}
+		        <a href="@{Application.details(game.id)}" title="&{'game.details.readmore',game.title}">...</a>
+		        </div>
 		        #{/if}
 		    </div>
 		</div>

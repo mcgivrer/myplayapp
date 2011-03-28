@@ -234,6 +234,9 @@ input#search {
 	background-image:url('../images/icons/silk/magnifier.png');
 	background-repeat:no-repeat;
 	background-position:right;
+	-webkit-border-radius:0.4em;
+	-moz-border-radius:0.4em;
+	border-radius:0.4em;
 }
 
 /*----- Games list zone -----*/
@@ -291,8 +294,7 @@ input#search {
 	margin:0.5em;
 	padding-bottom:0.5em;
 	/*border-bottom:1px dotted #ddd;*/
-	min-width:20em;
-	max-width:24em;
+	width:20em;
 	height:12em;
 	font-size:0.8em;
 }
@@ -301,14 +303,17 @@ input#search {
 	display:block;
 	margin:0px 10px;
 	padding-right:10px;
+	border-right:1px dotted #ddd;
 	clear:both;
 }
 .title {
 	display:block;
+	height:2.2em;
 	font-size:1.2em;
 	border-bottom:1px solid #ddd;
 	padding-bottom:5px;
 	margin-bottom:5px;
+	vertical-align:bottom;
 }
 .title a{
 	text-decoration:none;
@@ -317,13 +322,18 @@ input#search {
 	font-weight:bold;
 }
 .title span {
+	margin:0.2em;
+	float:left;
 	font-size:8pt;
 	color:#666;
 }
 .info {
-	margin-left: 90px;
-	border-left:1px dotted #ddd;
+	margin: 10px 0px 10px 80px;
 	padding-left:10px;
+}
+.platform {
+	display:block;
+	padding-bottom:0.5em;
 }
 .platform a {
 	-webkit-border-radius:4px;
@@ -331,14 +341,13 @@ input#search {
 	border-radius:4px;
 	font-size:7pt;
 	padding:2px;
-	margin-bottom:5px;
 	text-decoration:none;
 }
-.X360 {
+.x360 {
 	background-color:#396;
 	color:#fff;
 }
-.Wii {
+.wii {
 	background-color:#fff;
 	color:#000;
 	border:1px solid #ddd;

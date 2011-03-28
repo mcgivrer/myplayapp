@@ -23,6 +23,7 @@ import play.libs.WS;
 import play.mvc.Before;
 import play.mvc.Controller;
 import play.mvc.With;
+import shared.ThumbnailGenerator;
 
 /**
  * Classe de gestion de la bibliothèque des jeux video.
@@ -136,6 +137,20 @@ public class GameLibrary extends Controller {
 		try {
 			File of = Play.getFile(GameLibrary.getPicturePath(
 					"/public/images/games/", game, type, number, size));
+			
+			if(!of.exists()){
+				ThumbnailGenerator th = new ThumbnailGenerator();
+				try {
+					th.create(
+							Play.getFile(GameLibrary.getPicturePath("/public/images/games/", game, type, number, "")),
+							Play.getFile(GameLibrary.getPicturePath("/public/images/games/", game, type, number, size)),
+							size);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+			}
 			output = new FileInputStream(of);
 			renderBinary(output);
 		} catch (FileNotFoundException e) {
