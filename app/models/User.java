@@ -1,6 +1,6 @@
 /**
- * Project myplayapp
- * Classe modélisant un utilisateur de l'application
+ * Project: myplayapp
+ * Object: Classe modélisant un utilisateur de l'application
  */
 package models;
 
@@ -21,41 +21,79 @@ import play.data.validation.URL;
 import play.db.jpa.Model;
 
 /**
- * User modélise un utilisateur pouvant se connecter.
- * 
- * @author McGivrer
+ * la classe <code>User</code> modélise un utilisateur du site.
+ * il peut se connecter au site (<code>User.connect(String,String)</code>).
+ * il est potentiellement l'auteur de la fiche de jeu et du test qui va avec.
+ * Cet utilisateur peut avoir l'un des 3 rôles porposés: Administrateur, Modérateur
+ * ou simple utilisateur.
+ * - L'administrateur possède tous les droits de modificaiton de contenu du site,
+ * - les modérateurs sont des personnes habilitées par les administrateurs à agir
+ * sur l'état publication des differentes entités,
+ * - les utilisateurs quand à eux, peuvent constituer leur listes de jeux et 
+ * attribuer leur propres notes et commentaires aux jeux de leur liste.
+ *
+ * ces rôles sont hiérarchiquement cumulatif: un administrateur possède les droits
+ * du modérateur et du User.
+ *
+ * @see app.models.Game
+ *
+ * @author frederic
  */
 @Entity
 public class User extends Model {
-
+    /**
+     * Enumérateur listant les rôles des utilisateurs
+     */
 	public enum UserRole {
 		ADMINISTRATOR, MODERATOR, USER
 	}
 
+    /**
+     * Nom de connexion de l'utilisateur.
+     */
 	@Required
 	@MaxSize(30)
 	public String username;
 
-	@Required
+    /**
+    * Mot de passe de l'utilisateur. Une classe de test pourra être utlisée pour 
+    * la validation du mot de passe.
+    */
+    @Required
 	@MinSize(4)
 	@MaxSize(25)
 	public String password;
 
+    /**
+     * Prénom de l'utilisateur.
+     */
 	@MaxSize(50)
 	public String firstname;
 
+    /**
+     * Nom de l'utilisateur.
+     */
 	@MaxSize(50)
 	public String lastname;
 
+    /**
+     * Email de l'utilisateur.
+     */
 	@Required
 	@Email
 	@MaxSize(100)
 	public String email;
 
+    /**
+     * url du blog de l'utilisateur.
+     */
 	@MaxSize(100)
 	@URL
 	public String webblog;
 
+    /**
+     * Image de l'utilisateur (avatar)
+     */
 	@MaxSize(255)
 	public String image = "test";
 
@@ -66,19 +104,29 @@ public class User extends Model {
 	@MaxSize(1)
 	public String status = "v";
 
+    /**
+     * Role de l'utilisateur.
+     */
 	@Required
 	@Enumerated(EnumType.STRING)
 	public UserRole role;
 
+    /**
+     * Langage  préféré de l'utilisateur.
+     */
 	@Required
 	@MaxSize(5)
 	public String language;
 
+    /**
+     * hashcode pour le Gravatar de l'utilisateur.
+     */
 	@Transient
 	public String gravatarHash;
 
-	// public UserPicture picture;
-
+    /**
+     * Liste des fiches de jeux dont l'utilisateur est le créateur/rédacteur/testeur.
+     */
 	@OneToMany
 	public List<Game> games;
 
@@ -130,7 +178,8 @@ public class User extends Model {
 	}
 
 	/**
-	 * Find Method to implement user connection.
+	 * Méthode de connexion d'un utilsateur. Utilisé par le module <code>Security</code>
+	 * @see app.controller.Security
 	 * 
 	 * @param email
 	 * @param password

@@ -105,3 +105,13 @@ secure.cancel=Cancel
 
 #export
 export.title.user=List for user %s
+
+#game file add
+game.addgame.information.legend=Game details
+gamelibrary.add.game.cover.label=Image Cover
+gamelibrary.add.game.editor.label=Editor
+gamelibrary.add.game.developerstudio.label=Developer
+gamelibrary.add.game.platform.label=Platform
+gamelibrary.add.game.note.label=Note
+gamelibrary.add.game.yearOfPublication.label=Year of Publication
+gamelibrary.add.game.description.label=Description

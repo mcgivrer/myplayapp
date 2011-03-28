@@ -3,11 +3,19 @@
 	float:right;
 	width:80%;
 }
+.form #info ul li label {
+	padding-right:1em;
+	width:25%;
+}
+.form #info ul li input {
+	width:54%;
+}
+
 .form #info .cover{
 	float:left;
 	display:block;
 	width:100px;
-	height:140px;
+	height:160px;
 	padding:0.2em;
 	margin:0.5em;
 	border:1px solid #ddd;
@@ -15,8 +23,38 @@
 	-webkit-border-radius:4px;
 	border-radius:4px;
 }
+.form #info .cover img{
+	display:block;
+	background-color:#ccc;
+	width:98%;
+	height:140px;
+	padding:0.1em;
+	-moz-border-radius:4px;
+	-webkit-border-radius:4px;
+	border-radius:4px;
+}
+.form #info .cover .file {
+	font-size:8pt;
+	width:100px;
+	border:none;
+}
+.form fieldset legend {
+	padding-left:24px;
+	background-image:url('../images/icons/silk/add.png'));
+	background-repeat:no-repeat;
+	color:red;
+}
 .form .textarea textarea{
-	width:99%;
+	width:98%;
+}
+.form #info .title label {
+	text-align:left;
+	width:98%;
+	font-size:8pt;
+}
+.form #info .title input {
+	width:98%;
+	font-size:14pt;
 }
 input.notation {
 	min-width:2em;

@@ -1,5 +1,7 @@
 /**
- * Project myplayapp Play! tutorial
+ * Project: myplayapp Play! tutorial
+ * Objet: Fiche d'un jeu contenant toutes les informations technique et un test 
+ * minimaliste.
  */
 package models;
 
@@ -14,29 +16,82 @@ import play.data.validation.Required;
 import play.db.jpa.Model;
 
 /**
- * Game est une entité représentant un jeu video dans la bibliothèque.
+ * Game est une entité représentant un jeu video dans la bibliothèque. Les 
+ * attributs title, platform, description, editor et developerStudio permettent 
+ * une qualification technique du jeu, tandis que note et testContent fournisse
+ * une analyse qualitative de ce jeu.
+ * l'attribut cover' apporte un élément graphique de distinction: la pochette 
+ * de la boite de jeu.
+ * @see app.models.User
  * @author McGivrer
  */
 @Entity
 public class Game extends Model {
+    /**
+     * titre du jeu
+     */
 	@Required
 	@MaxSize(60)
 	public String title;
+
+    /**
+     * Plateforme d'accueil du jeu (wii, ps2, ps3, x360, psp, ds, 3ds).
+     */
 	@Required
 	@MaxSize(10)
 	public String platform;
+	
+	/**
+	 * une description sommaire du jeu permettant une affichage court dans les pages
+	 */
 	@Required
 	public String description;
+	
+	/**
+	 * flag de publication du jeu : s'il est vrai le jeux peut-être attaché 
+	 * dans les listes des utilisateurs.
+	 */
 	public Boolean publish;
+	
+	/**
+	 * testContent offre un test plus complet au format textile
+	 * @see http://www.textism.com/tools/textile/
+	 */
 	@Lob
 	public String testContent;
+	
+	/**
+	 * Studio de développement du jeu. Le champs est en saisie libre. mais une saisie 
+	 * en mode autocomplete sera proposée en création/modification.
+	 */
 	public String developerStudio;
+	
+	/**
+	 * Editeur du jeu. Le champs est en saisie libre. mais une saisie 
+	 * en mode autocomplete sera proposée en création/modification.
+	 */
 	public String editor;
+	
+	/**
+	 * Date de publication du jeu.
+	 */
 	@Required
 	public Date yearOfPublication;
+	
+	/**
+	 * Note attribuée au jeu par le testeur.
+	 */
 	public Integer note;
+	
+	/**
+	 * Image de la jaquette de la boite du jeu.
+	 */
 	@Required
 	public String cover;
+	
+	/**
+	 * Auteur du jeux
+	 */
 	@Required
 	@ManyToOne
 	public User author;

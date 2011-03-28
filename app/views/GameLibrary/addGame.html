@@ -14,19 +14,23 @@
 	<div class="form">
 		<fieldset id="info">
 			<legend>&{'game.addgame.information.legend'}</legend>
-			#{field 'game.cover'}
-			<img id="getCover" class="cover" alt="${game?.title}" src="@{GameLibrary.getPicture(game?.id,"cover",null,"60x90")}" />
-			#{/field}
-			<ul>
 				#{field 'game.cover'}
-				<li class="field ${field.errorClass}">
-					<label for="${field.name}">&{'gamelibrary.add.game.cover.label'}</label>
-					<input id="game.cover" type="text" name="game.cover" 
-							value="${game?.cover}" class="${field.error}" readonly="readonly"/>
-					<span class="error">${field.error}</span></li>
+				<div class="cover" >
+					<img id="getCover" alt="${game?.title}" src="@{GameLibrary.getPicture(game?.id,"cover",null,"60x90")}" />
+					<br/>
+					<input id="${field.id}" type="text" class="file" name="${field.name}"
+							value="${flash['user.cover']}" class="${field.errorClass}" /> 
+				</div>
+				#{/field}
+			<ul>
+				#{field 'game.title'}
+				<li class="field title ${field.errorClass}">
+					<label for="${field.id}">&{'gamelibrary.add.game.title.label'}</label><br/>
+					<input id="${field.id}" type="text" name="${field.name}"
+						value="${flash['user.username']}" class="autocomplete ${field.errorClass}" /> 
+					<span class="error">${field.error}</span>
 				</li>
 				#{/field}
-				
 				#{field 'game.editor'}
 				<li class="field ${field.errorClass}">
 					<label for="${field.id}">&{'gamelibrary.add.game.editor.label'}</label>
@@ -87,6 +91,15 @@
 				#{/field}
 
 			</ul>
+		</fieldset>
+		<fieldset id="test">
+			<legend>&{'game.addgame.test.legend'}</legend>
+		</fieldset>
+		<fieldset id="pictures">
+			<legend>&{'game.addgame.pictures.legend'}</legend>
+		</fieldset>
+		<fieldset id="video">
+			<legend>&{'game.addgame.video.legend'}</legend>
 		</fieldset>
 	</div>
 #{/form}

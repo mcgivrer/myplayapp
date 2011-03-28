@@ -1,11 +1,10 @@
 /**
- * Project myplayapp tutorial
- * Security implementation.
+ * Project myplayapp Play!framework tutorial
+ * Object: Security implementation.
  */
 package controllers;
 
 import models.User;
-
 
 /**
  * MyPlayApp Security implementation.

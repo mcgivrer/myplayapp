@@ -149,3 +149,27 @@ Game(game8):
    note: 8
    cover: wii-prince_of_persia_forgotten_sands-cover.jpg
    author: user1
+Game(game9):
+   title: The Last Story
+   platform: Wii
+   description: Le dernier jeu de rôle du maître Sakaguchi, père des Final Fantasy et du plus rescent "Last Odyssey".
+   publish: true
+   testContent: todo.
+   developerStudio: Mistwalker
+   editor: Nintendo
+   yearOfPublication: 2011-01-01
+   note: 7
+   cover: wii-the+last+story-cover.jpg
+   author: user1
+Game(game10):
+   title: Le seigneur des anneaux, la Quête d'Aragorn
+   platform: Wii
+   description: Connaissez-vous Aragorn, fils d'Arathorn et de Gilraen, petit-fils d'Arador et héritier du Gondor ? Évidemment, oui, que ce soit à travers la littérature ou le cinéma. Figurez-vous qu'un jeu console, Le Seigneur des Anneaux : La Quête d'Aragorn a pour ambition de présenter Grand-Pas et ses aventures sous un jour nouveau... et comme nous allons le constater, le raté est à peu près aussi épique que le périple originel (gameblog.fr).
+   publish: true
+   testContent: todo.
+   developerStudio: Headstrong Games
+   editor: Warner Bros.
+   yearOfPublication: 2010-01-01
+   note: 6
+   cover: wii-le+seigneur+des+anneaux+la+quete+d+aragorn-cover.jpg
+   author: user1
