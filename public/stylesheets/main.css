@@ -294,7 +294,7 @@ input#search {
 	margin:0.5em;
 	padding-bottom:0.5em;
 	/*border-bottom:1px dotted #ddd;*/
-	width:20em;
+	width:22em;
 	height:12em;
 	font-size:0.8em;
 }
@@ -330,6 +330,7 @@ input#search {
 .info {
 	margin: 10px 0px 10px 80px;
 	padding-left:10px;
+	text-align:justify;
 }
 .platform {
 	display:block;
