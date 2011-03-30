@@ -54,6 +54,7 @@ Game(game1):
    testContent: Le _jeu_ @Risen@, "même":http://www.google.fr/ si il a de *nombreux* défaut visuels dans sa version XBox360, il n'en reste pas moins une belle et longue aventure."
    developerStudio: WizardBox
    editor: Deep Silver
+   tags: rpg, rôle, aventure
    yearOfPublication: 2009-01-01
    note: 6
    cover: x360-risen-cover.jpg
@@ -67,6 +68,7 @@ Game(game2):
    testContent: todo.
    developerStudio: A2M
    editor: Bethesda Softwork
+   tags: action, aventure
    yearOfPublication: 2009-01-01
    note: 8
    cover: x360-wet-cover.jpg
@@ -80,6 +82,7 @@ Game(game3):
    testContent: todo.
    developerStudio: A2M
    editor: Bethesda Softwork
+   tags: plateforme, Donkey 
    yearOfPublication: 2009-01-01
    note: 8
    cover: wii-donkey_kong_country_returns-cover.jpg
@@ -93,6 +96,8 @@ Game(game4):
    testContent: todo.
    developerStudio: Vigil Games 
    editor: THQ
+   tags: action, aventure, beat'em all
+   
    yearOfPublication: 2010-01-01
    note: 8
    cover: x360-darksiders-cover.jpg
@@ -106,6 +111,7 @@ Game(game5):
    testContent: todo.
    developerStudio: Obsidian Entertainment
    editor: Sega
+   tags: rpg, rôle, aventure, espionage
    yearOfPublication: 2010-01-01
    note: 8
    cover: x360-alpha_protocol-cover.jpg
@@ -119,6 +125,7 @@ Game(game6):
    testContent: todo.
    developerStudio: Nintendo
    editor: Nintendo
+   tags: plateforme, Mario, revival
    yearOfPublication: 2010-01-01
    note: 8
    cover: wii-super_mario_all_stars_25th_anniversary_edition-cover.jpg
@@ -131,6 +138,7 @@ Game(game7):
    publish: true
    testContent: todo.
    developerStudio: Nintendo
+   tags: plateforme, Mario
    editor: Nintendo
    yearOfPublication: 2010-01-01
    note: 8
@@ -149,6 +157,7 @@ Game(game8):
    note: 8
    cover: wii-prince_of_persia_forgotten_sands-cover.jpg
    author: user1
+   
 Game(game9):
    title: The Last Story
    platform: Wii
@@ -156,11 +165,13 @@ Game(game9):
    publish: true
    testContent: todo.
    developerStudio: Mistwalker
+   tags: rpg, rôle, aventure
    editor: Nintendo
    yearOfPublication: 2011-01-01
    note: 7
    cover: wii-the_last_story-cover.jpg
    author: user1
+   
 Game(game10):
    title: Le seigneur des anneaux, la quête d'Aragorn
    platform: Wii
@@ -169,7 +180,40 @@ Game(game10):
    testContent: todo.
    developerStudio: Headstrong Games
    editor: Warner Bros.
+   tags: action, rôle, aventure
    yearOfPublication: 2010-01-01
    note: 6
    cover: wii-le_seigneur_des_anneaux_la_quete_d_aragorn-cover.jpg
    author: user1
+
+Comment(comment1):
+   game:game1
+   title:What is this list ?
+   content:I am not agree with you about content of the list.
+   user:admin
+
+GameListItem(glitem1):
+   list:gl1
+   user:user1
+   game:game1
+   rate:6
+   comment:A beautiful RPG game
+
+GameListItem(glitem2):
+   list:gl1
+   user:user1
+   game:game5
+   rate:8
+   comment:The first Spy RPG game
+
+GameListItem(glitem3):
+   list:gl1
+   user:user1
+   game:game9
+   rate:7
+   comment:I'd like to get it !
+
+GameList(gl1):
+   title:My first list
+   description:RPG games
+   user:user1

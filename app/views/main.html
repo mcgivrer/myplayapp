@@ -1,49 +1,49 @@
 <!DOCTYPE html>
 
 <html>
-    <head>
-        <title>#{get 'title' /}</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/main.css'}">
-        <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/loginForm.css'}">
-        <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/jquery.lightbox-0.5.css'}">
-        #{get 'moreStyles' /}
-        <link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}">
-        <script src="@{'/public/javascripts/jquery-1.5.1.js'}" type="text/javascript" charset="utf-8"></script>
-        <script src="@{'/public/javascripts/jquery.lightbox-0.5.pack.js'}" type="text/javascript" charset="utf-8"></script>
-        #{get 'moreScripts' /}
-    </head>
-    <body>
-    	<div class="page">
-	    	<header>
+	<head>
+		<title>#{get 'title' /}</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/main.css'}">
+		<link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/loginForm.css'}">
+		<link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/jquery.lightbox-0.5.css'}">
+		#{get 'moreStyles' /}
+		<link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}">
+		<script src="@{'/public/javascripts/jquery-1.5.1.js'}" type="text/javascript" charset="utf-8"></script>
+		<script src="@{'/public/javascripts/jquery.lightbox-0.5.pack.js'}" type="text/javascript" charset="utf-8"></script>
+		#{get 'moreScripts' /}
+	</head>
+	<body>
+		<div class="page">
+			<header>
 	
-	    		<h1><a href="@{Application.index()}">&{'site.title'}</a></h1>
-	    		<h2>&{'site.subtitle'}</h2>
+				<h1><a href="@{Application.index()}">&{'site.title'}</a></h1>
+				<h2>&{'site.subtitle'}</h2>
 	
-	    		#{menu userConnected:user/}
+				#{menu userConnected:user/}
 	
-	    	</header>
-	    	<section id="content">
-		        #{doLayout /}
-		    	<div class="clear"></div>
-		    	<div id="loginForm" class="hidden">
-		    	</div>
-	    	</section>
-	    	#{footer /}
-    	</div>
-    	<script type="text/javascript">
-    		$('a#login').click(function(){
-        		$.get('@{Secure.login()}',function(data){
-            		$('#loginForm').html(data);
-            		$('#loginForm').show();
-            		$('#username').focus()
-            		$('#cancel').click(function(){
-            			$('loginForm').hide();
-            		});
-        		});
-    		});
+			</header>
+			<section id="content">
+				#{doLayout /}
+				<div class="clear"></div>
+				<div id="loginForm" class="hidden">
+				</div>
+			</section>
+			#{footer /}
+		</div>
+		<script type="text/javascript">
+			$('a#login').click(function(){
+				$.get('@{Secure.login()}',function(data){
+					$('#loginForm').html(data);
+					$('#loginForm').show();
+					$('#username').focus()
+					$('#cancel').click(function(){
+						$('loginForm').hide();
+					});
+				});
+			});
 
-    	</script>
-    </body>
+		</script>
+	</body>
 </html>
 

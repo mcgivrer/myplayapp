@@ -1,40 +1,40 @@
 #{if _userConnected}
 	#{if _items}
 	<h2>&{'home.games.title', _userConnected?.username}</h2>
-	    #{list items:_items, as:'game'}
-		#{set title:'Home / ' + _userConnected.username /}
+		#{list items:_items, as:'game'}
+		#{set title:'Home - list of games for ' + _userConnected.username /}
 		
 		<div class="game" id="game_${game.id}">
-		    <div class="title"><span>#${game.id}.</span>
-		    <a href="@{Application.details(game.id)}" title="&{'game.details.readmore',game.title}">${game.title}</a></div>
-		    <div class="side">
-		        #{if game.cover}
-		        <div class="cover">
-		            <a rel="lightbox" href="@{GameLibrary.getPicture(game.id,"cover",null,"")}">
-		                <img alt="&{'game.details.cover.alt', game.title, game.platform}" 
-		                	 src="@{GameLibrary.getPicture(game.id,"cover",null,"60x90")}"
-		                     title="${game.platform}/${game.title}"/></a>
-		        </div>
-		        #{/if}
-		        <div class="tags">
-		        </div>
-		    </div>
-		    <div class="info">
-		        <span class="platform">
+			<div class="title"><span>#${game.id}.</span>
+			<a href="@{Application.details(game.id)}" title="&{'game.details.readmore',game.title}">${game.title}</a></div>
+			<div class="side">
+				#{if game.cover}
+				<div class="cover">
+					<a rel="lightbox" 
+						href="@{GameLibrary.getPicture(game.id,"cover",null,"320x640")}"
+						title="<strong>${game.platform} / ${game.title}</strong><br/><em>${game.shortDescription}</em>">
+						<img alt="&{'game.details.cover.alt', game.title, game.platform}" 
+							 src="@{GameLibrary.getPicture(game.id,"cover",null,"60x90")}"
+							 title="${game.platform}/${game.title}"/></a>
+				</div>
+				#{/if}
+			</div>
+			<div class="info">
+				<span class="platform">
 				<a class="${game.platform.toLowerCase()}" 
 					href="@{Application.filterByPlatform(game.platform)}">${game.platform}</a>
 				</span>
-		        #{if game.description}
-		        <div class="bloc">${(game.description.size()>90?game.description.substring(0,90):game.description)}
-		        <a href="@{Application.details(game.id)}" title="&{'game.details.readmore',game.title}">...</a>
-		        </div>
-		        #{/if}
-		    </div>
+				#{if game.description}
+				<div class="bloc">${(game.description.size()>90?game.description.substring(0,90):game.description)}
+				<a href="@{Application.details(game.id)}" title="&{'game.details.readmore',game.title}">...</a>
+				</div>
+				#{/if}
+			</div>
 		</div>
-	    #{/list}
+		#{/list}
 	#{/if}
 	#{else}
-	    <p>&{'home.games.noitems'}</p>
+		<p>&{'home.games.noitems'}</p>
 	#{/else}
 	<div class="clear"></div>
 	<ul class="actions">
@@ -47,16 +47,17 @@
 #{/else}
 <script type="text/javascript">
 $(function() {
-   $('a[rel=lightbox]').lightBox({
-        overlayBgColor: '#FFF',
-        overlayOpacity: 0.6,
-        imageLoading: 'public/images/jquery/lightbox/lightbox-ico-loading.gif',
-        imageBtnClose: 'public/images/jquery/lightbox/lightbox-btn-close.gif',
-        imageBtnPrev: 'public/images/jquery/lightbox/lightbox-btn-prev.gif',
-        imageBtnNext: 'public/images/jquery/lightbox/lightbox-btn-next.gif',
-        containerResizeSpeed: 350,
-        txtImage: '&{'lightbox.image.label'}',
-        txtOf: '&{'lightbox.image.of'}'
-   });
+	$('a[rel=lightbox]').lightBox({
+		overlayBgColor: '#000',
+		overlayOpacity: 0.6,
+		imageBlank: '/public/images/jquery/lightbox/lightbox-blank.gif',
+		imageLoading: 'public/images/jquery/lightbox/lightbox-ico-loading.gif',
+		imageBtnClose: 'public/images/jquery/lightbox/lightbox-btn-close.gif',
+		imageBtnPrev: 'public/images/jquery/lightbox/lightbox-btn-prev.gif',
+		imageBtnNext: 'public/images/jquery/lightbox/lightbox-btn-next.gif',
+		containerResizeSpeed: 350,
+		txtImage: "&{'lightbox.image.label'}",
+		txtOf: "&{'lightbox.image.of'}"
+	});
 });
 </script>

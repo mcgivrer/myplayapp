@@ -1,0 +1,9 @@
+<div id="c_${_comment.id}" class="comment">
+	<h3>${_comment.title}</h3>
+	<div>${_comment.content}</div>
+	#{if _comment.childComments}
+		#{list items:_comment.childComments, as:'child'}
+			#{comment comment:child}
+		#{/list}
+	#{/if}
+</div>

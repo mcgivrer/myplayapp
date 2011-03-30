@@ -1,0 +1,54 @@
+<div class="details" id="game_${game.id}">
+		<div class="title"><span>#${game.id}.</span> <a href="@{Application.details(game.id)}">${game.platform}/${game.title}</a></div>
+	<div class="side">
+		#{if game.cover}
+		<div class="cover">
+			<a rel="lightbox" 
+				href="@{GameLibrary.getPicture(game.id,"cover",null,"320x640")}"
+				title="<strong>${game.platform}/${game.title}<strong><br/><em>&{game.shortDescription}</em>">
+			<img alt="&{'game.details.cover.alt', game.title, game.platform}" 
+				 src="@{GameLibrary.getPicture(game.id,"cover",null,"120x180")}"
+				 title="${game.platform}/${game.title}"/></a>
+		</div>
+		#{/if}
+		<div class="tags">
+		<!-- in futur chapter-->
+		</div>
+	</div>
+	<div class="info">
+		<span class="platform">
+			<a class="${game.platform.toLowerCase()}" 
+			href="@{Application.filterByPlatform(game.platform)}">${game.platform}</a>
+		</span>
+		#{if game.description}
+		<div class="label">&{'home.games.game.description'}</div>
+		<div class="bloc">${game.description}</div>
+		#{/if}
+		#{if game.testContent}
+		<div class="label">&{'home.games.game.test'}</div>
+		<div class="bloc 3columns">${game.testContent.textile().raw()}</div>
+		#{/if}
+
+	</div>
+
+	<div class="clear"></div>
+	<hr size="2"></hr>
+		<a class="button home" href="@{Application.index()}" title="&{'admin.backhome.label.tooltip'}">&{'admin.backhome.label'}</a>
+
+</div>
+<script type="text/javascript">
+$(function() {
+   $('a[rel=lightbox]').lightBox({
+		overlayBgColor: '#000',
+		overlayOpacity: 0.6,
+		imageBlank: '/public/images/jquery/lightbox/lightbox-blank.gif',
+		imageLoading: '/public/images/jquery/lightbox/lightbox-ico-loading.gif',
+		imageBtnClose: '/public/images/jquery/lightbox/lightbox-btn-close.gif',
+		imageBtnPrev: '/public/images/jquery/lightbox/lightbox-btn-prev.gif',
+		imageBtnNext: '/public/images/jquery/lightbox/lightbox-btn-next.gif',
+		containerResizeSpeed: 250,
+		txtImage: "&{'lightbox.image.label'}",
+		txtOf: "&{'lightbox.image.of'}"
+   });
+});
+</script>

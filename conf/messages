@@ -26,6 +26,8 @@ home.actions.login=Login
 home.actions.login.label=Login with an existing user account
 home.actions.logout=Logout
 home.actions.logout.label=Logout connected user from this site
+home.actions.admin=Administration
+home.actions.admin.label=Administration Web site management 
 
 home.secure.title=Please Login
 
@@ -45,6 +47,11 @@ home.search.placeholder=Game title parts
 #Game details
 game.details.cover.alt=Cover for game '%s' on %s platform
 game.details.readmore=Read more about the game %s
+
+#game show
+game.details=Game
+game.comments=Comments
+game.no.comments=No comment.
 
 #Platforms zone
 home.platforms.title=Platforms
@@ -69,6 +76,10 @@ admin.preferences.label=Preferences
 admin.preferences.label.tooltip=Edit user preferences
 admin.backhome.label=Home
 admin.backhome.label.tooltip=Back to home page
+admin.welcome.message=Please, find bellow your games.
+admin.games.column.title.label=Game title
+admin.games.column.title.link.tooltip=show details about %s
+admin.games.column.publish.label=Published
 
 #preferences
 preferences.user.avatar.label=Avatar (image pour l'utilisateur)
@@ -117,3 +128,7 @@ gamelibrary.add.game.platform.label=Platform
 gamelibrary.add.game.note.label=Note
 gamelibrary.add.game.yearOfPublication.label=Year of Publication
 gamelibrary.add.game.description.label=Description
+
+#Lightbox
+lightbox.image.label=Image N°
+lightbox.image.of=of

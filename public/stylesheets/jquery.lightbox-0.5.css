@@ -27,6 +27,7 @@
 	z-index: 100;
 	text-align: center;
 	line-height: 0;
+	box-shadow:4px4px8px #000;
 }
 #jquery-lightbox a img { border: none; }
 #lightbox-container-image-box {
@@ -81,18 +82,23 @@
 }
 #lightbox-container-image-data {
 	padding: 0 10px; 
-	color: #666; 
+	color: #666;
 }
 #lightbox-container-image-data #lightbox-image-details { 
 	width: 70%; 
 	float: left; 
 	text-align: left; 
 }	
-#lightbox-image-details-caption { font-weight: bold; }
+#lightbox-image-details-caption { 
+	/*font-weight: bold; */
+}
 #lightbox-image-details-currentNumber {
 	display: block; 
 	clear: left; 
-	padding-bottom: 1.0em;	
+	text-align: center;
+	margin-top: 0.4em;
+	border-top: 1px dotted #ccc;
+	padding: 0.4em;	
 }			
 #lightbox-secNav-btnClose {
 	width: 66px; 

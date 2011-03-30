@@ -1,27 +1,27 @@
 <!DOCTYPE html>
 
 <html>
-    <head>
-        <title>#{get 'title' /}</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/main.css'}">
-        #{get 'moreStyles' /}
-        <link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}">
-        <script src="@{'/public/javascripts/jquery-1.4.2.min.js'}" type="text/javascript" charset="utf-8"></script>
-        #{get 'moreScripts' /}
-    </head>
-    <body>
-    	<div class="page">
-		    <header>
+	<head>
+		<title>#{get 'title' /}</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/main.css'}">
+		#{get 'moreStyles' /}
+		<link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}">
+		<script src="@{'/public/javascripts/jquery-1.5.1.js'}" type="text/javascript" charset="utf-8"></script>
+		#{get 'moreScripts' /}
+	</head>
+	<body>
+		<div class="page">
+			<header>
 				<h1>&{'site.title'}</h1>
 				<h2>&{'site.subtitle'}</h2>
-	            #{menuadmin userConnected:user /}			
+				#{menuadmin userConnected:user /}			
 			</header>
-	    	<section id="content">
-		        #{doLayout /}
-		    	<div class="clear"></div>
-	    	</section>
-	    	#{footer /}
-    	</div>
+			<section id="content">
+				#{doLayout /}
+				<div class="clear"></div>
+			</section>
+			#{footer /}
+		</div>
 	</body>
 </html>

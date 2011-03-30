@@ -263,4 +263,15 @@ public class GameLibrary extends Controller {
 		// render page
 		render("GameLibrary/addGame.html");
 	}
+	
+	/**
+	 * Affiche la fiche du jeu dont l'<code>id</code> est passé en paramètre.
+	 * @param id
+	 *           Identifiant unique du jeu à afficher.
+	 */
+	public static void show(Long id){
+		User user = (User) renderArgs.get("user");
+		Game game = Game.findById(id);
+		render("GameLibrary/show.html",game,user);
+	}
 }

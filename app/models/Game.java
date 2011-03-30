@@ -6,10 +6,12 @@
 package models;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import play.data.validation.MaxSize;
 import play.data.validation.Required;
@@ -97,6 +99,11 @@ public class Game extends Model {
 	public User author;
 	
 	/**
+	 * Commentaires des utilisateurs liés au jeu.
+	 */
+	@OneToMany
+	public List<Comment> comments;
+	/**
 	 * Default constructor for persistence purpose.
 	 * @param title
 	 * @param Game
@@ -129,5 +136,12 @@ public class Game extends Model {
 	 */
 	public String toString(){
 		return this.title + " - ( " + this.platform + " / "+ this.yearOfPublication + " )";
+	}
+	
+	/**
+	 * Return shorter description limited to 90 characters.
+	 */
+	public String getShortDescription(){
+		return (this.description.length()>90?this.description.substring(0,90):this.description);
 	}
 }

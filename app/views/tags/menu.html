@@ -8,8 +8,8 @@ ${_userConnected.firstname} ${_userConnected.lastname}</a></li>
     </ul>
     <ul class="admin">
 	   #{if _userConnected}
-			<li><a id="userpreferences" class="item prefs" href="@{Preferences.show()}" title="&{'admin.preferences.label.tooltip'}">&{'admin.preferences.label'}</a></li>
 			<li><a id="logout" class="item logout"href="@{Secure.logout()}" title="&{'home.actions.logout.label'}">&{'home.actions.logout'}</a></li>
+			<li><a id="userpreferences" class="item prefs" href="@{Preferences.show()}" title="&{'admin.preferences.label.tooltip'}">&{'admin.preferences.label'}</a></li>
 			#{if  _userConnected?.isRole("ADMINISTRATOR")}
 			<li><a class="item admin" 
 	          href="@{Administration.index()}" 

@@ -129,6 +129,9 @@ public class User extends Model {
      */
 	@OneToMany
 	public List<Game> games;
+	
+	@OneToMany
+	public List<GameList> gamesLists;
 
 	/**
 	 * Constructeur paramétré par défaut.
@@ -144,9 +147,18 @@ public class User extends Model {
 	 * @param role
 	 * @param language
 	 */
-	public User(String username, String password, String firstname,
-			String lastname, String email, String webblog, String image,
-			String status, UserRole role, String language) {
+	public User(
+			String username, 
+			String password, 
+			String firstname,
+			String lastname, 
+			String email, 
+			String webblog, 
+			String image,
+			String status, 
+			UserRole role, 
+			String language,
+			List<GameList> gamesLists) {
 		this.username = username;
 		this.password = password;
 		this.firstname = firstname;
@@ -157,6 +169,7 @@ public class User extends Model {
 		this.status = status;
 		this.role = role;
 		this.language = language;
+		this.gamesLists = gamesLists;
 	}
 
 	/**

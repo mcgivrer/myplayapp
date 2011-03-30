@@ -11,15 +11,15 @@
 		<li><a class="item logout" 
             href="@{Secure.logout()}" 
             title="&{'admin.logout.label.tooltip'}">&{'admin.logout.label'}</a></li>      
+		<li><a class="item prefs" 
+			href="@{Preferences.show()}" 
+			title="&{'admin.preferences.label.tooltip'}">&{'admin.preferences.label'}</a></li>
 		<li><a class="item admin users-bt" 
             href="@{admin.Users.list()}" 
             title="&{'admin.users.label.tooltip'}">&{'admin.users.label'}</a></li>
 		<li><a class="item admin games-bt" 
             href="@{admin.Games.list()}" 
             title="&{'admin.games.label.tooltip'}">&{'admin.games.label'}</a></li>
-		<li><a class="item prefs" 
-            href="@{Preferences.show()}" 
-            title="&{'admin.preferences.label.tooltip'}">&{'admin.preferences.label'}</a></li>
 	</ul>
 	#{/if}
     <div class="clear"></div>
