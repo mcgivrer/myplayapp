@@ -3,7 +3,7 @@
 #
 site.title=My Video Games list
 site.subtitle=the site to manage your own list of video games
-site.welcome.label=Welcome
+site.welcome.label=Welcome %s !
 site.footer.label=Copyright (c) 2011 - Frédéric Delorme - <a href="mailto:frederic.delorme@web-context.com">contact</a>
 title=Title
 platform=Platform

@@ -1,37 +1,40 @@
 ﻿#{extends 'administration.html' /}
+#{set 'moreStyles'}
+	<link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/admin.css'}" />
+#{/set}
 
-<div class="games">
-	<h2>&{'site.welcome.label'} ${user.firstname} ${user.lastname}!</h2>
+<div class="files">
+	<h2>&{'admin.welcome.label', user.firstname + " "+ user.lastname}</h2>
 	<p>&{'admin.welcome.message'}</p>
-	<table class="admin">
-		<thead>
-			<th>&{'admin.games.column.title.label'}</th>
-			<th>&{'admin.games.column.publish.label'}</th>
-		</thead>
-		<tbody>
-		#{list items:games, as:'game'}
-			<tr>
-				<td><a class="item" 
-						id="${game.id}" 
-						href="#" 
-						title="&{'admin.games.column.title.link.tooltip', game.title}">${game.title}</a>
-				</td>
-				<td>${(game.publish==true?"ok":"ko")}</td>
-			</tr>
-		#{/list}
-		</tbody>
-	</table>
-	<div class="clear"></div>
+	<div class="admin">
+		<ul>
+			#{list items:games, as:'game'}
+				<li><a class="item" id="${game.id}" href="@{GameLibrary.show}"
+					title="&{'admin.games.column.title.link.tooltip', game.title}">
+						<img alt="&{'game.details.cover.alt', game.title, game.platform}"
+							src="@{GameLibrary.getPicture(game.id,'cover',null,'60x90')}"
+							title="${game.platform}/${game.title}" />
+						<p>${game.shortTitle}</p>
+					</a>
+				</li>
+			#{/list}
+		</ul>
+	</div>
+	<div class="clearLeft"></div>
 </div>
-<div id="game" class="games"></div>
+<div id="game" class="details"></div>
 <script>
 	$(document).ready(function(){
-		$('td .item').click(function(item){
-			$('#game').slideUp();
+		$('li .item').click(function(item){
+			//$('#game').slideUp();
 			var id = $(this).attr('id');
-			
+			$(this).attr('href',"#")
 			//alert('id='+id);
-			$.get( '@{GameLibrary.show}', {id: id },function(data){$('#game').html(data);$('#game').slideDown()});
+			$.get( '@{GameLibrary.show}', {id: id },
+					function(data){
+						$('#game').html(data);
+						//$('#game').slideDown();
+					});
+			});
 		});
-	});
 </script>

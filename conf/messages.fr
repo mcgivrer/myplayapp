@@ -2,8 +2,8 @@
 # For example, for French create a messages.fr file
 #
 site.title=My Video Games list
-site.subtitle=LE site pour gérer Votre liste de jeux vidéos.
-site.welcome.label=Bienvenu 
+site.subtitle=Le site de gestion gérer de Vos listes de jeux vidéos.
+site.welcome.label=Bienvenue %s !
 site.footer.label=Copyright (c) 2011 - Frédéric Delorme - <a href="mailto:frederic.delorme@web-context.com">contact</a>
 title=Titre
 platform=Plateforme

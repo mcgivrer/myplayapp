@@ -1,20 +1,20 @@
-﻿<h2>&{'game.details'}</h2>
-
+﻿
 <div class="details" id="game_${game.id}">
-		<div class="title"><span>#${game.id}.</span> <a href="@{Application.details(game.id)}">${game.platform}/${game.title}</a></div>
+	<h2>&{'game.details'}</h2>
+	<div class="title"><span>#${game.id}.</span> <a href="@{Application.details(game.id)}">${game.platform}/${game.title}</a></div>
 	<div class="side">
 		#{if game.cover}
 		<div class="cover">
 			<a rel="lightbox" 
 				href="@{GameLibrary.getPicture(game.id,'cover',null,'320x640')}"
 				title="<strong>${game.platform}/${game.title}<strong><br/><em>&{game.shortDescription}</em>">
-			<img alt="&{'game.details.cover.alt', game.title, game.platform}" 
-				 src="@{GameLibrary.getPicture(game.id,'cover',null,'120x180')}"
-				 title="${game.platform}/${game.title}"/></a>
+				<img alt="&{'game.details.cover.alt', game.title, game.platform}" 
+					src="@{GameLibrary.getPicture(game.id,'cover',null,'120x180')}"
+					title="${game.platform}/${game.title}"/>
+			</a>
 		</div>
 		#{/if}
 		<div class="tags">
-		<!-- in futur chapter-->
 		</div>
 	</div>
 	<div class="info">
@@ -31,19 +31,21 @@
 		<div class="bloc 3columns">${game.testContent.textile().raw()}</div>
 		#{/if}
 	</div>
+
+	#{if game.comments}
+		<h2>&{'game.comments'}</h2>
+		
+		<div class="coments">
+			#{list items:comments ,as:'comment'}
+				#{comment comment:comment /}
+			#{/list}
+		</div>
+	#{/if}
+	#{else}
+		<p>&{'game.no.comments'}</p>
+	#{/else}
 </div>
-#{if game.comments}
-	<h2>&{'game.comments'}</h2>
-	
-	<div class="coments">
-		#{list items:comments ,as:'comment'}
-			#{comment comment:comment /}
-		#{/list}
-	</div>
-#{/if}
-#{else}
-	<p>&{'game.no.comments'}</p>
-#{/else}
+
 <script type="text/javascript">
 $(function() {
    $('a[rel=lightbox]').lightBox({

@@ -8,6 +8,7 @@ package models;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
@@ -143,5 +144,12 @@ public class Game extends Model {
 	 */
 	public String getShortDescription(){
 		return (this.description.length()>90?this.description.substring(0,90):this.description);
+	}
+	
+	/**
+	 * Return shorter title limited to 30 characters.
+	 */
+	public String getShortTitle(){
+		return (this.title.length()>30?this.title.substring(0,30)+"...":this.title);
 	}
 }

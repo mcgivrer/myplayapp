@@ -47,7 +47,7 @@ public class GameLibrary extends Controller {
 	/**
 	 * Add a new game to the collection
 	 */
-	@Check("USER")
+	@Check("USER,MODERATOR,ADMINISTRATOR")
 	public static void addGame() {
 		User user = (User) renderArgs.get("user");
 		render(user);
@@ -269,6 +269,7 @@ public class GameLibrary extends Controller {
 	 * @param id
 	 *           Identifiant unique du jeu à afficher.
 	 */
+	@Check("USER,ADMINISTRATOR,MODERATOR")
 	public static void show(Long id){
 		User user = (User) renderArgs.get("user");
 		Game game = Game.findById(id);

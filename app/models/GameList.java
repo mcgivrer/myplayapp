@@ -13,6 +13,8 @@ import javax.persistence.OneToMany;
 
 import play.data.validation.Required;
 import play.db.jpa.Model;
+import play.mvc.With;
+import controllers.Security;
 
 /**
  * Liste de jeux pour un utilisateur connecté, proposant un titre (<code>title</code>),

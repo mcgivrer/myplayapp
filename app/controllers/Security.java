@@ -34,11 +34,17 @@ public class Security extends controllers.Secure.Security {
 		Application.index();
 	}
 	/**
-	 * return if User have corresponding role.
+	 * return if User have one of the corresponding role listed with comma separator.
 	 * @param role
 	 * @return boolean value.
 	 */
 	static boolean check(String role) {
-	    return User.find("byUsername", connected()).<User>first().isRole(role);
+		String[] roles = role.split(",");
+		for (String roleList : roles) {
+			if(User.find("byUsername", connected()).<User>first().isRole(roleList)){
+				return true;
+			}
+		}
+	    return false;
 	}
 }

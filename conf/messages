@@ -3,7 +3,7 @@
 #
 site.title=My Video Games list
 site.subtitle=the site to manage your own list of video games
-site.welcome.label=Welcome
+site.welcome.label=Welcome %s !
 site.footer.label=Copyright (c) 2011 - Frédéric Delorme - <a href="mailto:frederic.delorme@web-context.com"
 site.footer.credits=Icons from <a href="http://www.famfamfam.com/lab/icons/silk/">Silk iconset from famfamfam</a> and <a href="http://www.iconfinder.com/blog/5/">IconFinder "Copenhagen" iconset</a>
  title="send a mail to team member">contact</a>
@@ -76,7 +76,11 @@ admin.preferences.label=Preferences
 admin.preferences.label.tooltip=Edit user preferences
 admin.backhome.label=Home
 admin.backhome.label.tooltip=Back to home page
+
+admin.welcome.label=Welcome %s !
 admin.welcome.message=Please, find bellow your games.
+
+admin.games.column.cover.label=cover
 admin.games.column.title.label=Game title
 admin.games.column.title.link.tooltip=show details about %s
 admin.games.column.publish.label=Published

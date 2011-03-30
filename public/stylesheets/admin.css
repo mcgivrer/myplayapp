@@ -1,0 +1,41 @@
+@CHARSET "UTF-8";
+#content .files {
+	display:block;
+	margin:0px;
+	padding:0px;
+}
+#game .details{
+	float:left;
+	display:block;
+	padding:0px;
+	margin:0px;
+}
+#content .admin ul {
+	list-style:none;
+	margin:0px;
+	padding:0px;
+}
+#content .admin ul li {
+	float:left;
+	margin:0px;
+	padding:4px;
+}
+#content .admin ul li {
+	max-width:65px;
+}
+#content .admin ul li a p{
+	font-size:6pt;
+	color:#999;
+	text-align:left; 
+	padding:0px;
+	margin:0px;
+}
+#content .admin ul li a img {
+	padding:0px;
+	margin:0px;
+	border:1px solid #ccc;
+	border-radius:4px;
+}
+#content .admin ul li a:hover img {
+	box-shadow: 2px 2px 4px #333;
+}

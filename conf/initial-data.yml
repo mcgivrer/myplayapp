@@ -96,8 +96,7 @@ Game(game4):
    testContent: todo.
    developerStudio: Vigil Games 
    editor: THQ
-   tags: action, aventure, beat'em all
-   
+   tags: action, aventure, beat'em all   
    yearOfPublication: 2010-01-01
    note: 8
    cover: x360-darksiders-cover.jpg
@@ -185,35 +184,3 @@ Game(game10):
    note: 6
    cover: wii-le_seigneur_des_anneaux_la_quete_d_aragorn-cover.jpg
    author: user1
-
-Comment(comment1):
-   game:game1
-   title:What is this list ?
-   content:I am not agree with you about content of the list.
-   user:admin
-
-GameListItem(glitem1):
-   list:gl1
-   user:user1
-   game:game1
-   rate:6
-   comment:A beautiful RPG game
-
-GameListItem(glitem2):
-   list:gl1
-   user:user1
-   game:game5
-   rate:8
-   comment:The first Spy RPG game
-
-GameListItem(glitem3):
-   list:gl1
-   user:user1
-   game:game9
-   rate:7
-   comment:I'd like to get it !
-
-GameList(gl1):
-   title:My first list
-   description:RPG games
-   user:user1
