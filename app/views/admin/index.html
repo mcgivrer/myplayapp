@@ -8,41 +8,61 @@
 <div class="files">
 	<h2 id="welcome">&{'admin.welcome.label', user.firstname + " "+ user.lastname}</h2>
 	<p>&{'admin.welcome.message'}</p>
-	<div class="admin">
-		<ul>
-			#{list items:games, as:'game'}
-				<li><a class="item" id="${game.id}" href="@{GameLibrary.show}#welcome"
-					title="&{'admin.games.column.title.link.tooltip', game.title}">
-						<img alt="&{'game.details.cover.alt', game.title, game.platform}"
-							src="@{GameLibrary.getPicture(game.id,'cover',null,'60x90')}"
-							title="${game.platform}/${game.title}" />
-						<p>${game.shortTitle}</p>
-					</a>
-				</li>
-			#{/list}
-		</ul>
+	<div class="admin form">
+		<fieldset>
+			<legend style="width:350px;">
+				&{'admin.games.list.label'}
+			</legend>
+			<div class="filters">
+				<input type="text" cols="30" id="search" class="searchShort" name="search" value="" placeholder="&{'admin.games.search.placeholder'}"/>
+				<span class="platform">
+					<a id="all" href="@{Administration.filterByPlatform('all')}" title="&{'admin.games.search.filter.all'}" class="&{'admin.games.search.filter.all'}">&{'admin.games.search.filter.all'}</a>
+					#{list items:platforms, as:'pf'}
+					<a id="${pf}" href="@{Administration.filterByPlatform(pf)}" title="&{'admin.games.search.filter',pf}" class="${pf.toLowerCase()}">${pf}</a>
+					#{/list}
+				</span>
+				<script type="text/javascript">
+				$("#search").bind('keyup',function(event) {
+					//si RETURN+ENTER pressée
+					if(event.keyCode==13){
+						$.post('@{Administration.findByGameTitle()}',
+								{search: $("#search").val()}, 
+								function(data){
+									$('#games').fadeOut('fast');
+									$('#games').html(data);
+									$('#games').fadeIn('fast');
+								}
+						);
+					}
+				});
+				$("#search").dblclick(function(){
+					$.post('@{Administration.filterByPlatform()}',
+							{platform: "all"}, 
+							function(data){
+								$('#games').fadeOut('fast');
+								$('#games').html(data);
+								$('#games').fadeIn('fast');
+							}
+					);
+				});
+				$('.admin fieldset .platform a').click(function(){
+					var pf=$(this).attr('id');
+					$(this).attr('href',"#games");
+					$.post('@{Administration.filterByPlatform()}',
+							{platform: pf}, 
+							function(data){
+								$('#games').fadeOut('fast');
+								$('#games').html(data);
+								$('#games').fadeIn('fast');
+							}
+					);
+	
+				});
+				</script>
+			</div>
+			<div id="games">#{gamecoverlist games:games /}</div>
+		</fieldset>
 	</div>
 	<div class="clearLeft"></div>
 </div>
 <div id="game" class="details"></div>
-<script>
-	$(document).ready(function(){
-		var currentGame="";
-		$('li .item').click(function(item){
-			$('#game').fadeOut("fast");
-			var id = $(this).attr('id');
-			$(this).attr('href',"#")
-			//alert('id='+id);
-			if(currentGame!=""){
-				$('#' + currentGame).removeClass("activated");
-			}
-			$(this).addClass("activated");
-			currentGame=$(this).attr('id');
-			$.get( '@{GameLibrary.show}', {id: id },
-					function(data){
-						$('#game').html(data);
-						$('#game').fadeIn();
-					});
-			});
-		});
-</script>

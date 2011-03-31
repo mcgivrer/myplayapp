@@ -1,0 +1,36 @@
+<ul>
+	#{list items:_games, as:'game'}
+		<li><a class="item" id="${game.id}" href="@{GameLibrary.show(game.id)}#games"
+			title="&{'admin.games.column.title.link.tooltip', game.title}">
+				<img alt="&{'game.details.cover.alt', game.title, game.platform}"
+					src="@{GameLibrary.getPicture(game.id,'cover',null,'60x90')}"
+					width="60"
+					height="90"
+					title="${game.platform}/${game.title}" />
+				<!--<p>${game.shortTitle}</p>-->
+			</a>
+		</li>
+	#{/list}
+</ul>
+<script>
+var currentGame="";
+$('li .item').click(function(item){
+	$(this).attr('href',"#games")
+	var id = $(this).attr('id');
+	// show selected file
+	/*alert('id='+id);
+	if(currentGame!=""){
+		$('#' + currentGame).removeClass("activated");
+	}
+	$(this).addClass("activated");
+	currentGame=$(this).attr('id');
+	*/
+	$.get( '@{GameLibrary.show}', 
+			{id: id },
+			function(data){
+				$('#game').fadeOut("fast");
+				$('#game').html(data);
+				$('#game').fadeIn();
+			});	
+});
+</script>

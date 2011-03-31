@@ -78,7 +78,11 @@ admin.backhome.label=Home
 admin.backhome.label.tooltip=Back to home page
 
 admin.welcome.label=Welcome %s !
-admin.welcome.message=Please, find bellow your games.
+admin.welcome.message=Please, find bellow all game files.
+admin.games.list.label=Authors' Game files
+admin.games.search.placeholder=Enter searched game title
+admin.games.search.filter=Filter games on %s platform.
+admin.games.search.filter.all=All
 
 admin.games.column.cover.label=cover
 admin.games.column.title.label=Game title

@@ -14,4 +14,21 @@
 	width:150px;
 	text-align:left;
 }
+.form fieldset .filters{
+	float:right;
+	display:inline-block;
+	margin-top:-28px;
+	border-radius:8px;
+	background-color:#ccc;
+	padding: 2px 8px 2px 8px;
+}
+.form fieldset .filters .platform{
+	display:inline-block;
+}
+
+input#search.searchShort{
+	width:20em;
+	font-size:8pt;
+}
+
 

@@ -368,9 +368,14 @@ input#search {
 	-moz-border-radius:4px;
 	border-radius:4px;
 	font-size:7pt;
-	padding:2px;
+	padding:2px 4px;
 	text-decoration:none;
 }
+.All {
+	background-color:#666;
+	color:#fff;
+}
+
 .x360 {
 	background-color:#396;
 	color:#fff;

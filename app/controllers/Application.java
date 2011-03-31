@@ -95,7 +95,7 @@ public class Application extends Controller {
 	 * @param user
 	 *            Utilisateur connecté
 	 */
-	private static List<Game> getGames(String platform, User user){
+	public static List<Game> getGames(String platform, User user){
 		renderArgs.put("filterPlatform", platform);
 
 		List<Game> games = null;
