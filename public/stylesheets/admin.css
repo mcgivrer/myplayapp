@@ -17,25 +17,47 @@
 }
 #content .admin ul li {
 	float:left;
+	display:block;
 	margin:0px;
 	padding:4px;
 }
 #content .admin ul li {
-	max-width:65px;
+	width:80px;
+	text-align:center;
+}
+#content .admin ul li a{
+	display:block;
+	text-decoration:none;
+	-moz-border-radius:8px;
+	-webkit-border-radius:8px;
+	border-radius:8px;
 }
 #content .admin ul li a p{
-	font-size:6pt;
+	font-size:8pt;
 	color:#999;
 	text-align:left; 
-	padding:0px;
+	padding:2px;
 	margin:0px;
+	text-align:center;
 }
 #content .admin ul li a img {
-	padding:0px;
+	padding:2px;
 	margin:0px;
 	border:1px solid #ccc;
 	border-radius:4px;
 }
 #content .admin ul li a:hover img {
 	box-shadow: 2px 2px 4px #333;
+}
+#content .admin ul li a:hover p {
+	color:#000;
+	text-shadow:2px 2px 4px #333;
+}
+#content .admin ul li a.activated{
+	border:2px solid #900;
+	background-color:#900;
+}
+#content .admin ul li a.activated p{
+	color:#fff;
+	text-shadow:2px 2px 4px #333;
 }

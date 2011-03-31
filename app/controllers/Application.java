@@ -44,20 +44,7 @@ public class Application extends Controller {
 			List<Game> platforms = Game
 					.find("select distinct g.platform from Game g where g.author = ? order by g.platform",
 							user).fetch();
-			List<Game> games = null;
-			if (platform != null) {
-				games = Game.find(
-						"select g from Game g " + "where " + "g.publish=true "
-								+ "and g.author = ? " + "and g.platform = ? "
-								+ "order by platform asc, title asc", user,
-						platform).fetch();
-			} else {
-				games = Game.find(
-						"select g from Game g " + "where " + "g.publish=true "
-								+ "and g.author = ? "
-								+ "order by platform asc, title asc", user)
-						.fetch();
-			}
+			List<Game> games = getGames(platform,user);
 			Logger.debug(
 					"Number of retrieved games: %d, Number of platforme: %d",
 					games.size(), platforms.size());
@@ -78,9 +65,7 @@ public class Application extends Controller {
 		List<Game> platforms = Game
 				.find("select distinct g.platform from Game g where g.author = ? order by g.platform",
 						user).fetch();
-		List<Game> games = Game
-				.find("select g from Game g where g.publish=true and g.author = ? order by platform, title",
-						user).fetch();
+		List<Game> games = getGames("*",user);
 		Game game = Game.findById(id);
 		Logger.debug("Game details displayed for '%s/%s'", game.platform,
 				game.title);
@@ -95,10 +80,26 @@ public class Application extends Controller {
 	 */
 	public static void filterByPlatform(String platform) {
 		User user = (User) renderArgs.get("user");
+		
+		List<Game> games = getGames(platform,user);
+		List<Game> platforms = Game.find(
+				"select distinct g.platform from Game g order by g.platform")
+				.fetch();
+		render(games, platforms, user);
+	}
+
+	/**
+	 * Usage interne : constitution de la liste des jeux.
+	 * @param platform
+	 *            code de la platform sur laquelle filtrer la liste des jeux.
+	 * @param user
+	 *            Utilisateur connecté
+	 */
+	private static List<Game> getGames(String platform, User user){
 		renderArgs.put("filterPlatform", platform);
 
 		List<Game> games = null;
-		if (platform.equals("*")) {
+		if (platform==null || platform.equals("*")) {
 			session.remove("filterPlatform");
 			games = Game
 					.find("select g from Game g where g.publish=true and g.author=? order by title asc",
@@ -107,11 +108,8 @@ public class Application extends Controller {
 			session.put("filterPlatform", platform);
 			games = Game
 					.find("select g from Game g where g.publish=true and g.author=? and g.platform=? order by title asc",
-							user, platform).fetch();
+							user, "*").fetch();
 		}
-		List<Game> platforms = Game.find(
-				"select distinct g.platform from Game g order by g.platform")
-				.fetch();
-		render(games, platforms, user);
+		return games;
 	}
 }

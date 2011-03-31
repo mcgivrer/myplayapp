@@ -2,14 +2,16 @@
  * Project myplayapp tutorial
  */
 package controllers;
+
+import java.util.List;
+
+import models.Game;
+import models.User;
+import play.mvc.Before;
+import play.mvc.Controller;
+import play.mvc.With;
  
-import play.*;
-import play.mvc.*;
- 
-import java.util.*;
- 
-import models.*;
- 
+
 /**
  * Contrôleur de la zone de sécurité
  * @author McGivrer
@@ -40,12 +42,21 @@ public class Administration extends Controller {
 	 */
 	public static void index(){
 		User user = (User)renderArgs.get("user");
-		List<Game> games = Game.find(
-				"select g from Game g " + "where " 
-						/*+ "g.publish=true and"*/
-						+ "g.author = ? "
-						+ "order by platform asc, title asc", user)
-				.fetch();
+		List<Game> games = null;
+		if(user.isRole("ADMINISTRATOR")){
+			games = Game.find(
+					"select g from Game g "
+							//+ "where " 
+							+ "order by platform asc, title asc")
+					.fetch(0,20);
+		}else{
+			games = Game.find(
+					"select g from Game g " + "where " 
+							/*+ "g.publish=true and"*/
+							+ "g.author = ? "
+							+ "order by platform asc, title asc", user)
+					.fetch(0,20);
+		}
 		renderTemplate("admin/index.html",games,user);
 	}
 }

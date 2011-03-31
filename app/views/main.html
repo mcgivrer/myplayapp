@@ -8,10 +8,14 @@
 		<link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/loginForm.css'}">
 		<link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/jquery.lightbox-0.5.css'}">
 		#{get 'moreStyles' /}
+		
 		<link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}">
 		<script src="@{'/public/javascripts/jquery-1.5.1.js'}" type="text/javascript" charset="utf-8"></script>
 		<script src="@{'/public/javascripts/jquery.lightbox-0.5.pack.js'}" type="text/javascript" charset="utf-8"></script>
 		#{get 'moreScripts' /}
+		<!--[if lt IE 9]>
+		<script src="{'/public/javascripts/html5.js'}" type="text/javascript" charset="utf-8"></script>
+		<![endif]-->
 	</head>
 	<body>
 		<div class="page">

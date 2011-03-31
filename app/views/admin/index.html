@@ -1,15 +1,17 @@
-﻿#{extends 'administration.html' /}
+#{extends 'administration.html' /}
+
 #{set 'moreStyles'}
 	<link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/admin.css'}" />
+	<link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/admingameshow.css'}">
 #{/set}
 
 <div class="files">
-	<h2>&{'admin.welcome.label', user.firstname + " "+ user.lastname}</h2>
+	<h2 id="welcome">&{'admin.welcome.label', user.firstname + " "+ user.lastname}</h2>
 	<p>&{'admin.welcome.message'}</p>
 	<div class="admin">
 		<ul>
 			#{list items:games, as:'game'}
-				<li><a class="item" id="${game.id}" href="@{GameLibrary.show}"
+				<li><a class="item" id="${game.id}" href="@{GameLibrary.show}#welcome"
 					title="&{'admin.games.column.title.link.tooltip', game.title}">
 						<img alt="&{'game.details.cover.alt', game.title, game.platform}"
 							src="@{GameLibrary.getPicture(game.id,'cover',null,'60x90')}"
@@ -25,15 +27,21 @@
 <div id="game" class="details"></div>
 <script>
 	$(document).ready(function(){
+		var currentGame="";
 		$('li .item').click(function(item){
-			//$('#game').slideUp();
+			$('#game').fadeOut("fast");
 			var id = $(this).attr('id');
 			$(this).attr('href',"#")
 			//alert('id='+id);
+			if(currentGame!=""){
+				$('#' + currentGame).removeClass("activated");
+			}
+			$(this).addClass("activated");
+			currentGame=$(this).attr('id');
 			$.get( '@{GameLibrary.show}', {id: id },
 					function(data){
 						$('#game').html(data);
-						//$('#game').slideDown();
+						$('#game').fadeIn();
 					});
 			});
 		});

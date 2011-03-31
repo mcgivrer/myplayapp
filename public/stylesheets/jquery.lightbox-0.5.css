@@ -88,7 +88,12 @@
 	width: 70%; 
 	float: left; 
 	text-align: left; 
-}	
+}
+#lightbox-image-details{
+	margin-right:10px;
+	padding-right:10px;
+	border-right:1px dotted #ccc;
+}
 #lightbox-image-details-caption { 
 	/*font-weight: bold; */
 }

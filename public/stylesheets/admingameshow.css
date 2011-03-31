@@ -1,0 +1,17 @@
+.form{
+	width:100%;
+}
+.form fieldset{
+	border:2px solid #ccc;
+	border-radius:8px;
+	margin:10px 0px;
+}
+.form fieldset legend{
+	background-color:#ccc;
+	border-radius:8px;
+	color:#000;
+	padding:4px 10px;
+	width:150px;
+	text-align:left;
+}
+

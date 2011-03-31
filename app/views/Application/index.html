@@ -1,6 +1,7 @@
 #{extends 'main.html' /}
 <section id="platforms" class="platforms">
 	#{platforms items:platforms, userConnected:user /}
+	#{gameslists items:gameslists, userConnected:user /}
 </section>
 <section id="games" class="games">
 	#{games items:games, userConnected:user/}

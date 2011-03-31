@@ -1,6 +1,7 @@
-﻿
-<div class="details" id="game_${game.id}">
-	<h2>&{'game.details'}</h2>
+﻿#{form @GameLibrary.save(game.id), id:'upload', method:'POST', enctype:'multipart/form-data'}
+<div class="form details" id="game_${game.id}">
+<fieldset>
+	<legend>&{'game.details'}</legend>
 	<div class="title"><span>#${game.id}.</span> <a href="@{Application.details(game.id)}">${game.platform}/${game.title}</a></div>
 	<div class="side">
 		#{if game.cover}
@@ -31,21 +32,25 @@
 		<div class="bloc 3columns">${game.testContent.textile().raw()}</div>
 		#{/if}
 	</div>
-
+	</fieldset>
 	#{if game.comments}
-		<h2>&{'game.comments'}</h2>
-		
+	<fieldset>
+		<legend>&{'game.comments'}</legend>
 		<div class="coments">
 			#{list items:comments ,as:'comment'}
 				#{comment comment:comment /}
 			#{/list}
 		</div>
+	</fieldset>
 	#{/if}
 	#{else}
+	<fieldset>
+		<legend>&{'game.comments'}</legend>
 		<p>&{'game.no.comments'}</p>
+	</fieldset>
 	#{/else}
 </div>
-
+#{/form}
 <script type="text/javascript">
 $(function() {
    $('a[rel=lightbox]').lightBox({
