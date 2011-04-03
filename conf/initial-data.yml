@@ -16,19 +16,19 @@ User(mods):
    firstname: Moderator
    lastname: Game moderator
    email: mods@myplayapp.com
-   weblog: 
+   weblog: http://www.mcgivrer.fr/
    image: avatar_user_group.png
    status: a
    role: MODERATOR
    language: fr
 
-User(user1):
-   username: user1
-   password: user1
-   firstname: User1
-   lastname: FirstUser
-   email: firstuser@myplayapp.com
-   weblog: 
+User(user2):
+   username: user2
+   password: user2
+   firstname: User2
+   lastname: FirstUser2
+   email: firstuser2@myplayapp.com
+   weblog: http://www.mcgivrer.fr/
    image: avatar_user_default.png
    status: a
    role: USER
