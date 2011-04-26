@@ -112,4 +112,12 @@ public class Application extends Controller {
 		}
 		return games;
 	}
+	
+	/**
+	 * Test de rendu user pour chapitre 9.1 - Création d'un tag. 
+	 */
+	public static void userDetails(){
+		User userConnected = (User) renderArgs.get("user");
+		render(userConnected);
+	}
 }

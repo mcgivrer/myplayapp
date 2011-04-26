@@ -48,6 +48,8 @@ public class Game extends Model {
 	 * une description sommaire du jeu permettant une affichage court dans les pages
 	 */
 	@Required
+	@Lob
+	@MaxSize(1000)	
 	public String description;
 	
 	/**

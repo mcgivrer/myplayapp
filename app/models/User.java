@@ -45,7 +45,7 @@ public class User extends Model {
      * Enumérateur listant les rôles des utilisateurs
      */
 	public enum UserRole {
-		ADMINISTRATOR, MODERATOR, USER
+		ADMINISTRATOR, MODERATOR, USER, VISITOR
 	}
 
     /**
@@ -132,6 +132,10 @@ public class User extends Model {
 	
 	@OneToMany
 	public List<GameList> gamesLists;
+	
+	public User(){
+		this.role = UserRole.VISITOR;
+	}
 
 	/**
 	 * Constructeur paramétré par défaut.
