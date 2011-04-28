@@ -11,10 +11,10 @@
 				#{if game.cover}
 				<div class="cover">
 					<a rel="lightbox" 
-						href="@{GameLibrary.getPicture(game.id,"cover",null,"320x640")}"
+						href="@{GameLibrary.getPicture(game.id,"cover",0,"320x640")}"
 						title="<strong>${game.platform} / ${game.title}</strong><br/><em>${game.shortDescription}</em>">
 						<img alt="&{'game.details.cover.alt', game.title, game.platform}" 
-							 src="@{GameLibrary.getPicture(game.id,"cover",null,"60x90")}"
+							 src="@{GameLibrary.getPicture(game.id,"cover",0,"60x90")}"
 							 title="${game.platform}/${game.title}"/></a>
 				</div>
 				#{/if}

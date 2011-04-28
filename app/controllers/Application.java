@@ -44,7 +44,8 @@ public class Application extends Controller {
 			List<Game> platforms = Game
 					.find("select distinct g.platform from Game g where g.author = ? order by g.platform",
 							user).fetch();
-			List<Game> games = getGames(platform,user);
+			List<Game> games = getGames(platform,user);			
+			
 			Logger.debug(
 					"Number of retrieved games: %d, Number of platforme: %d",
 					games.size(), platforms.size());
@@ -108,7 +109,7 @@ public class Application extends Controller {
 			session.put("filterPlatform", platform);
 			games = Game
 					.find("select g from Game g where g.publish=true and g.author=? and g.platform=? order by title asc",
-							user, "*").fetch();
+							user, platform).fetch();
 		}
 		return games;
 	}

@@ -3,11 +3,11 @@
 		<li><a class="item" id="${game.id}" href="@{GameLibrary.show(game.id)}#games"
 			title="&{'admin.games.column.title.link.tooltip', game.title}">
 				<img alt="&{'game.details.cover.alt', game.title, game.platform}"
-					src="@{GameLibrary.getPicture(game.id,'cover',null,'60x90')}"
+					src="@{GameLibrary.getPicture(game.id,'cover',0,'60x90')}"
 					width="60"
 					height="90"
 					title="${game.platform}/${game.title}" />
-				<!--<p>${game.shortTitle}</p>-->
+				<p>${game.shortTitle}</p>
 			</a>
 		</li>
 	#{/list}

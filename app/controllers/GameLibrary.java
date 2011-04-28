@@ -213,7 +213,7 @@ public class GameLibrary extends Controller {
 			String size) {
 		return type + "/" + game.platform.toLowerCase() + "-"
 				+ WS.encode(game.title.toLowerCase()) + "-" + type
-				+ (number != null ? "-" + number : "")
+				+ ((number == null) || (number == Long.valueOf(0L)) ? "" :"-" + number )
 				+ (size != null && !size.equals("") ? "." + size : "") + ".jpg";
 	}
 
