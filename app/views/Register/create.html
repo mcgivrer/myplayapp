@@ -1,30 +1,46 @@
 #{extends 'main.html' /}
-
-#{form @Register.save(), id:"registerForm"}
-<fieldset>
-	<legend>&{'user.create.legend'}</legend>
-	<div>
-		<label for="user.username">&{'user.create.username'}</label>
-		<input type="text" name="user.username" value="${flash['user.username']}" />
-		<span class="error">#{error 'user.username' /}</span>
-	</div>
-	<div>
-		<label for="user.email">&{'user.create.email'}</label>
-		<input type="text" name="user.email" value="${flash['user.email']}" />
-		<span class="error">#{error 'user.email' /}</span>
-	</div>
-	<div>
-		<label for="user.password">&{'user.create.password'}</label>
-		<input type="password" name="user.password" value="${flash['user.password']}" />
-		<span class="error">#{error 'user.password' /}</span>
-	</div>
-	<div>
-		<label for="user.password2">&{'user.create.password.confirm'}</label>
-		<input type="password" name="user.password2" value="${flash['user.password2']}" />
-		<span class="error">#{error 'user.password2' /}</span>
-	</div>
-	<div>
-		<input type="submit" value="&{'user.create.save'}" /> 
-	</div>
-</fieldset>
-#{/form}
+#{set 'moreStyles'}
+<link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/form.css'}">
+#{/set}
+<div id="register" class="form">
+	#{form @Register.save(), id:"registerForm"}
+	<fieldset>
+		<legend>&{'user.create.legend'}</legend>
+		<div class="message">${flash['msg']}</div>
+		<ul>
+	#{field 'user.username'}
+	<li class="field ${field.errorClass}"><label for="${field.id}">&{'preferences.user.username.label'}</label>
+		<input id="${field.id}" type="text" name="${field.name}"
+			value="${flash['user.username']}" class="${field.errorClass}" /> <span
+			class="error">${field.error}</span></li>
+	#{/field}
+	#{field 'user.email'}
+	<li class="field ${field.errorClass}"><label for="${field.id}">&{'preferences.user.email.label'}</label>
+		<input id="${field.id}" type="text" name="${field.name}"
+			value="${flash['user.email']}" class="${field.errorClass}" /> <span
+			class="error">${field.error}</span></li>
+	#{/field} 
+	#{field 'user.password'}
+	<li class="field ${field.errorClass}"><label for="${field.id}">&{'preferences.user.password.label'}</label>
+		<input id="${field.id}" type="password" name="${field.name}"
+			value="${flash['user.password']}" class="${field.errorClass}" /> <span
+			class="error">${field.error}</span></li>
+	#{/field} 
+	
+	#{field 'user.passwordConfirm'}
+	<li class="field ${field.errorClass}"><label for="${field.id}">&{'preferences.user.passwordConfirm.label'}</label>
+		<input id="${field.id}" type="password" name="${field.name}"
+			value="${flash['user.passwordConfirm']}" class="${field.errorClass}" /> <span
+			class="error">${field.error}</span></li>
+	#{/field}
+		</ul>
+		<div class="action">
+			<input type="submit" class="button save"
+				value="&{'user.actions.create.save.label'}" 
+				title="&{'user.actions.create.save.tooltip'}" />
+			<a class="button cancel" href="/"
+				title="&{'user.actions.cancel.label.tooltip'}">&{'user.actions.cancel.label'}</a> 
+		</div>
+	</fieldset>
+	#{/form}
+</div>

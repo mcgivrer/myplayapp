@@ -1,8 +1,8 @@
 #{extends 'main.html' /}
 #{set 'moreStyles'}
-<link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/preferences.css'}">
+<link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/form.css'}">
 #{/set}
-<div id="preferences">
+<div id="preferences" class="form">
 
 #{form @Preferences.upload(), id:'upload', method:'POST', enctype:'multipart/form-data'}
 	<input type="hidden" name="id" value="${user.id}"/>
@@ -89,14 +89,13 @@
 		</select> <span class="error">${field.error}</span>
 	</li>
 		#{/field}
-
+	</ul>
 	<div class="actions">
 		<input type="submit" class="button save"
 			value="&{'preferences.actions.update.label'}"
-			title="&{'preferences.actions.update.label.tooltip'}" /> <a
-			class="button cancel" href="/"
+			title="&{'preferences.actions.update.label.tooltip'}" /> 
+		<a class="button cancel" href="/"
 			title="&{'preferences.actions.cancel.label.tooltip'}">&{'preferences.actions.cancel.label'}</a>
-	
 	</div>
 </fieldset>
 #{/form}

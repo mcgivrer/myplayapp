@@ -39,9 +39,7 @@ public class Preferences extends Controller {
 	 * 
 	 * @param userLanguage
 	 */
-	public static void update(
-			@Valid User user
-			) {
+	public static void update( @Valid User user ) {
 		User other = (User)User.find("byUsername", user.username).first();
 		
 		if(other!=null && user.id!=other.id){
@@ -133,15 +131,15 @@ public class Preferences extends Controller {
 	 */
 	public static void show(Long id) {
 		User user = (User) renderArgs.get("user");
-	    flash("user.image",user.image); // add http parameters to the flash scope
-	    flash("user.username",user.username); // add http parameters to the flash scope
-	    flash("user.firstname",user.firstname); // add http parameters to the flash scope
-	    flash("user.lastname",user.lastname); // add http parameters to the flash scope
-	    flash("user.email",user.email); // add http parameters to the flash scope
-	    flash("user.webblog",user.webblog); // add http parameters to the flash scope
-	    flash("user.password",user.password); // add http parameters to the flash scope
-	    flash("user.passwordConfirm",user.password); // add http parameters to the flash scope
-	    flash("user.language",user.language); // add http parameters to the flash scope
+	    flash("user.image",user.image);
+	    flash("user.username",user.username);
+	    flash("user.firstname",user.firstname);
+	    flash("user.lastname",user.lastname);
+	    flash("user.email",user.email);
+	    flash("user.webblog",user.webblog);
+	    flash("user.password",user.password);
+	    flash("user.passwordConfirm",user.password);
+	    flash("user.language",user.language);
 		render(user);
 	}
 }

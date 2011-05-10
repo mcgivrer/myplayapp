@@ -6,6 +6,8 @@
 GET     /										Application.index
 GET		/game/{id}								Application.details
 GET		/preferences							Preferences.show
+*       /picture/{id}/{type}/{size}/{number}	GameLibrary.getPicture(id,type,number,size)
+
 # Map static resources from the /app/public folder to the /public path
 GET     /public/                                staticDir:public
 
