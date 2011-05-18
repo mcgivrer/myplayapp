@@ -274,6 +274,7 @@ input#search {
 	border-bottom:1px solid #ddd;
 	font-size:8pt;
 	min-height:36px;
+	mouse:hand;
 }
 .result .listof li div{
 	float:right;
