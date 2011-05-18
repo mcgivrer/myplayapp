@@ -1,6 +1,11 @@
 #{if _userConnected}
 	#{if _items}
-	<h2>&{'home.games.title', _userConnected?.username}</h2>
+		#{if _gameList}
+			<h2>&{'home.gamelist.title', _gameList.title, _userConnected?.username}</h2>
+		#{/if}
+		#{else}
+			<h2>&{'home.games.title', _userConnected?.username}</h2>
+		#{/else}
 		#{list items:_items, as:'game'}
 		#{set title:'Home - list of games for ' + _userConnected.username /}
 		

@@ -33,6 +33,7 @@ home.secure.title=Please Login
 
 #Games zone
 home.games.title=List of games for %s
+home.gamelist.title=» %s / <em>%s</em>
 home.games.noitems=No game in database !
 home.games.game.description=Description
 home.games.game.test=Test
@@ -40,7 +41,7 @@ home.add.game.label=Add Game
 home.add.game.label.tooltip=Add a new Game to your collection
 home.export.game.label=Export List
 home.export.game.label.tooltip=Export list of Games to your own file type
-
+home.gameslists.title=Game's lists
 home.search.label=Search :
 home.search.placeholder=Game title parts
 

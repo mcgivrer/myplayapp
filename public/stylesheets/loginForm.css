@@ -3,9 +3,11 @@
 /*----- FOrmulaire de connexion -----*/ 
 #loginForm{
 	position:absolute;
-	margin-left:35%;
-	width:350px;
-	height:250px;
+	top:200px;
+	margin-left:30%;
+	width:30%;
+	height:40%;
+	min-height:260px;
 	text-align:0px;
 	border:3px outset #333;
 	border-radius:4px;

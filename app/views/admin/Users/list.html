@@ -11,7 +11,7 @@
 	<div id="crudListTable">
 		#{crud.table fields:['image','username', 'firstname', 'lastname', 'email']}
 		#{crud.custom 'image'}
-		 <a href="@{administration.Users.show(object.id)}"><img src="@{Preferences.getAvatarPicture(object.id)}" title="${object.username}" width="32" height="32"/></a>
+		 <a href="@{admin.Users.show(object.id)}"><img src="@{Preferences.getAvatarPicture(object.id)}" title="${object.username}" width="32" height="32"/></a>
 		#{/crud.custom}
 		#{/crud.table}
 	</div>

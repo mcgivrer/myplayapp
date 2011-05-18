@@ -1,0 +1,26 @@
+<ul class="listof">
+#{list items:_items, as:'game'}
+	<li id="${game.id}">
+		<div class="${game.platform.toLowerCase()}">${game.platform}</div>
+		<img alt="&{'game.details.cover.alt', game.title, game.platform}" 
+		 src="@{GameLibrary.getPicture(game.id,"cover",0,"32x32")}"
+		 title="${game.platform}/${game.title}"/>
+		${game.title}
+	</li>
+#{/list}
+</ul>
+<script type="text/javascript">
+	$('.listof li').each(function(){
+		$(this).click(function(){
+			var selected = $(this).attr("id");
+			//alert(selected);
+			$.post('@{GameLibrary.findByGameId()}',
+				{id: selected}, 
+				function(data){
+					$('#games').html(data);
+				}
+			);
+			$('.result').css("display","none");
+		});
+	});
+</script>

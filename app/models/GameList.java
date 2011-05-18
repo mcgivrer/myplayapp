@@ -9,12 +9,11 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import play.data.validation.Required;
 import play.db.jpa.Model;
-import play.mvc.With;
-import controllers.Security;
 
 /**
  * Liste de jeux pour un utilisateur connecté, proposant un titre (<code>title</code>),
@@ -47,19 +46,14 @@ public class GameList extends Model {
      * Utilisateur propriétaire de la liste
      */
 	@Required
+	@ManyToOne
 	public User user;
 
     /**
      * Liste des jeux (GameListItem) éléments.
      */
-	@OneToMany(mappedBy="list", cascade=CascadeType.ALL)
+	@OneToMany(mappedBy="gameList", cascade=CascadeType.ALL)
 	public List<GameListItem> games;
-
-	/**
-	 * Commentaire des internautes sur cette liste
-	 */
-	@OneToMany(mappedBy="gamelist")
-	public List<Comment> comments;
 	
 	/**
 	 * Constructeur par défaut d'une GameList.

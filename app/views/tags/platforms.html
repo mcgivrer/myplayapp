@@ -1,15 +1,26 @@
 #{if _userConnected}
 	<section id="searchForm">
 		<label for="search">&{'home.search.label'}</label><br />
-		<input type="text" name="search" id="search" size="25" maxlength="40" placeholder="&{'home.search.placeholder'}"/>
+		<input type="text" name="search" id="search" size="25" accesskey="R" maxlength="40" autocomplete="none" placeholder="&{'home.search.placeholder'}"/>
+		<div class="result" style="display:none;">
+		</div>
 		<script type="text/javascript">
 		$("#search").keyup(function(event) { // retour simple
 			if(event.keyCode==13){
 				$.post('@{GameLibrary.findByGameTitle()}',
-						{search: $("#search").val()}, 
-						function(data){
-							$('#games').html(data);
-						}
+					{search: $("#search").val()}, 
+					function(data){
+						$('#games').html(data);
+					}
+				);
+			}
+			if($('#search').val().length>2){
+				$.post('@{GameLibrary.proposedGameTitle()}',
+					{search: $("#search").val()}, 
+					function(data){
+						$('#searchForm .result').css("display","block");
+						$('#searchForm .result').html(data);
+					}
 				);
 			}
 		});

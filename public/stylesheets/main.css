@@ -22,7 +22,6 @@ body {
 /*----- Define action button -----*/
 .button {
 	padding:0.2em 1em;
-
 	font-size:8pt;
 	color:#000;
 	background-color:#FC6;
@@ -36,13 +35,13 @@ body {
 	background-position: 4px 0px;
 }
 .button:hover{
-	color:#000;
-	text-shadow:#751 2px 2px 2px,
-				#EB5 -2px -2px 2px,
-				#EB5 -1px 1px 2px,
-				#EB5 1px -1px 2px;
+	color: #000;
+	text-shadow: #751 2px 2px 2px,
+		#EB5 -2px -2px 2px,
+		#EB5 -1px 1px 2px,
+		#EB5 1px -1px 2px;
 	background-color:#FE9;
-	border-color: #FE9
+	border-color: #FE9;
 }
 .register{
 	background-image:url('../images/icons/silk/application_form.png');
@@ -262,24 +261,53 @@ input#search {
 	-moz-border-radius:0.4em;
 	border-radius:0.4em;
 }
-
-/*----- Games list zone -----*/
-.games{
+.result{
+	position:relative;
+	z-index:0;
+	border:1px solid #ddd;
+	max-height:100px;
+	scroll:auto
+}
+.result .listof li{
+	display:block;
+	background-color:#fff;
+	border-bottom:1px solid #ddd;
+	font-size:8pt;
+	min-height:36px;
+}
+.result .listof li div{
+	float:right;
+	font-size:6pt;
+	padding:1px;
+	margin:2px;
+}
+.result .listof li img {
 	float:left;
-	display:inline-block;
-	width:76%;
-	padding:0.5em;
-	border-right:1px dotted #ddd;
+	display:block;
+	padding:2px;
+}
+.result .listof  li:hover{
+	background-color:#eee;
+}
+/*----- Games list zone -----*/
+.page{
+	display:block;
+}
+.games{
+	margin-right:20em;
+	display:block;
 	margin:0em;
-	box-shadow: 4px 0px 4px #333;
-	border-radius: 0px 0px 10px 4px;
+	padding:0.5em;
 }
 .platforms{
-	float:right;
-	width:20%;
-	padding:0.5em;
-	padding-right:0.2em;
-	margin:0em;
+	float: right;
+	width: 16em;
+	padding: 0.5em;
+	padding-right: 0.2em;
+	margin: 0em;
+	/*border-left:1px solid red;*/
+	box-shadow:#666 -2px 0px 8px;
+	min-height:400px;
 }
 /*----- Actions links on page bottom -----*/
 .games ul.actions{
@@ -331,7 +359,6 @@ input#search {
 	margin:0px 10px;
 	padding-right:10px;
 	border-right:1px dotted #ddd;
-	clear:both;
 }
 .title {
 	display:block;
@@ -397,10 +424,10 @@ input#search {
 }
 /*----- Fiche de détails d'un jeu -----*/
 .details {
-	
+	margin-right:18em;
 }
 .details .info{
-	margin-left:160px;
+	margin-left:180px;
 }
 .details .info .platform a{
 	font-size:11pt;
@@ -410,6 +437,7 @@ input#search {
 	border:2px solid #ccc;
 	border-radius: 8px;
 	box-shadow:4px 4px 8px #000;
+	clear:left;
 }
 .details .title {
 	padding:0.5em 0em;

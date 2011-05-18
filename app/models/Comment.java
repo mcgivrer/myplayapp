@@ -52,6 +52,7 @@ public class Comment extends Model {
 	 * Utilisateur propriétaire de la liste
 	 */
 	@Required
+	@ManyToOne
 	public User user;
 
 	/**
@@ -69,13 +70,8 @@ public class Comment extends Model {
 	/**
 	 * jeu (Game) cible du commentaire.
 	 */
-	public Game game;
-
-	/**
-	 * jeu (Game) cible du commentaire.
-	 */
 	@ManyToOne
-	public GameList gamelist;
+	public GameListItem gameListItem;
 
 	/**
 	 * Constructeur par défaut d'une Comment.
@@ -84,11 +80,11 @@ public class Comment extends Model {
 	 * @param user
 	 * @param game
 	 */
-	public Comment(String title, String content, User user, Game game, Comment parent, List<Comment> childComments) {
+	public Comment(String title, String content, User user, GameListItem gameItem, Comment parent, List<Comment> childComments) {
 		this.title = title;
 		this.content = content;
 		this.user = user;
-		this.game = game;
+		this.gameListItem = gameItem;
 		this.parent = parent;
 		this.childComments = childComments;
 	}

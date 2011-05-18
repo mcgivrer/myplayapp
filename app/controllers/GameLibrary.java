@@ -11,6 +11,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -88,11 +89,57 @@ public class GameLibrary extends Controller {
 				"select g from Game g " + "where lower(g.title) like ? "
 						+ "and g.author=? " + "and g.publish=true "
 						+ "order by g.platform, g.title ",
-				"%" + search.toLowerCase() + "%", user).fetch();
+				"%" + search.toLowerCase().trim() + "%", user).fetch();
 		// rendu de la page
 		renderTemplate("GameLibrary/search.html", games, user, platforms);
 	}
 
+	
+	/**
+	 * Recherche dans la liste de jeux de l'utilisateur connecté des jeux
+	 * contenant la chaîne <code>search</code> dans le titre du jeu. Se base
+	 * également sur la plateforme sélectionnée et sur l'utilisateur connecté.
+	 * Retourne une liste des jeux formaté UL->LI pour un affichage en autocomplete.
+	 * 
+	 * @param search
+	 *            nom ou partie du nom de jeu à rechercher
+	 */
+	public static void proposedGameTitle(String search) {
+		renderArgs.put("search", search);
+		// récupération de l'utilisateur connecté
+		User user = (User) renderArgs.get("user");
+		// recupération de la plateforme (si présente)
+		// String platform = (String) renderArgs.get("filterPlatform");
+		// Constitution de la liste des plateformes distinctes
+		List<Game> platforms = Game.find(
+				"select distinct g.platform from Game g order by g.platform")
+				.fetch();
+		// recherche des jeux correspondant à game.title=%search% et
+		// game.platform=platefom
+		List<Game> games = Game.find(
+				"select g from Game g " + "where lower(g.title) like ? "
+						+ "and g.author=? " + "and g.publish=true "
+						+ "order by g.platform, g.title ",
+				"%" + search.toLowerCase() + "%", user).fetch();
+		// rendu de la page
+		renderTemplate("GameLibrary/ajaxsearch.html", games, user, platforms);
+	}
+	
+	
+	/**
+	 * Recherche dans la liste de jeux de l'utilisateur connecté des jeux
+	 * contenant la chaîne <code>search</code> dans le titre du jeu. Se base
+	 * également sur la plateforme sélectionnée et sur l'utilisateur connecté.
+	 * 
+	 * @param search
+	 *            nom ou partie du nom de jeu à rechercher
+	 */
+	public static void findByGameId(Long id) {
+		Game game = Game.findById(id);
+		// rendu de la page
+		renderTemplate("Application/show.html", game);
+	}
+	
 	/**
 	 * Export la liste des jeux affichés dans le format souhaité
 	 */

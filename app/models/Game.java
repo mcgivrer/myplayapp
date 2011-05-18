@@ -102,6 +102,12 @@ public class Game extends Model {
 	public User author;
 	
 	/**
+	 * Item des liste des jeux référençant ce jeu.
+	 */
+	@OneToMany(mappedBy="game")
+	public List<GameListItem> listItems;
+	
+	/**
 	 * Commentaires des utilisateurs liés au jeu.
 	 */
 	@OneToMany

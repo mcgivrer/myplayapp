@@ -9,7 +9,7 @@
 	<div id="crudListTable">
 		#{crud.table fields:['cover','title','yearOfPublication', 'publish', 'platform', 'author']} 
 			#{crud.custom 'cover'} 
-				<a href="@{administration.Games.show(object.id)}">
+				<a href="@{admin.Games.show(object.id)}">
 					#{gamecover game:object, size:'resized'/} 
 				</a>
 			#{/crud.custom}

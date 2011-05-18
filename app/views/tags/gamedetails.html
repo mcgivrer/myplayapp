@@ -1,14 +1,14 @@
-<div class="details" id="game_${game.id}">
-		<div class="title"><span>#${game.id}.</span> <a href="@{Application.details(game.id)}">${game.platform}/${game.title}</a></div>
+<div class="details" id="game_${_game.id}">
+		<div class="title"><span>#${_game.id}.</span> <a href="@{Application.details(_game.id)}">${_game.platform}/${_game.title}</a></div>
 	<div class="side">
-		#{if game.cover}
+		#{if _game.cover}
 		<div class="cover">
 			<a rel="lightbox" 
-				href="@{GameLibrary.getPicture(game.id,"cover",null,"320x640")}"
-				title="<strong>${game.platform}/${game.title}<strong><br/><em>&{game.shortDescription}</em>">
-			<img alt="&{'game.details.cover.alt', game.title, game.platform}" 
-				 src="@{GameLibrary.getPicture(game.id,"cover",null,"120x180")}"
-				 title="${game.platform}/${game.title}"/></a>
+				href="@{GameLibrary.getPicture(_game.id,"cover",null,"320x640")}"
+				title="<strong>${_game.platform}/${_game.title}<strong><br/><em>&{_game.shortDescription}</em>">
+			<img alt="&{'game.details.cover.alt', _game.title, _game.platform}" 
+				 src="@{GameLibrary.getPicture(_game.id,"cover",null,"120x180")}"
+				 title="${_game.platform}/${_game.title}"/></a>
 		</div>
 		#{/if}
 		<div class="tags">
@@ -17,20 +17,20 @@
 	</div>
 	<div class="info">
 		<span class="platform">
-			<a class="${game.platform.toLowerCase()}" 
-			href="@{Application.filterByPlatform(game.platform)}">${game.platform}</a>
+			<a class="${_game.platform.toLowerCase()}" 
+			href="@{Application.filterByPlatform(_game.platform)}">${_game.platform}</a>
 		</span>
-		#{if game.description}
+		#{if _game.description}
 		<div class="label">&{'home.games.game.description'}</div>
-		<div class="bloc">${game.description}</div>
+		<div class="bloc">${_game.description}</div>
 		#{/if}
-		#{if game.testContent}
-		<div class="label">&{'home.games.game.test'}</div>
-		<div class="bloc 3columns">${game.testContent.textile().raw()}</div>
+		#{if _game.testContent}
+		<div class="label">&{'home.games._game.test'}</div>
+		<div class="bloc 3columns">${_game.testContent.textile().raw()}</div>
 		#{/if}
 
 		<h2>&{'game.show.referenced.gamelist.title'}</h2>
-		#{list items:game.listItems, as:'gameItem'}
+		#{list items:_game.listItems, as:'gameItem'}
 			<li>${gameItem.gameList.title}</li>
 		#{/list}
 

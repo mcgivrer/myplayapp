@@ -7,10 +7,9 @@ package models;
 import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
-import play.data.validation.MaxSize;
 import play.data.validation.Required;
 import play.db.jpa.Model;
 
@@ -28,8 +27,9 @@ public class GameListItem extends Model {
 	/**
 	 * Liste d'appartenance de cet item
 	 */
+	@Required
 	@ManyToOne
-	public GameList list;
+	public GameList gameList;
     /**
      * Utilisateur détenteur de ce jeux
      */
@@ -41,6 +41,7 @@ public class GameListItem extends Model {
      * Jeu possédé par l'utilisateur.
      */
 	@Required
+	@ManyToOne
 	public Game game;
 	
 	/**
@@ -52,9 +53,8 @@ public class GameListItem extends Model {
 	/**
 	 * Commentaire de l'utilisateur (user) user sur ce jeu (game).
 	 */
-	@Required
-	@Lob
-	public String comment;
+	@OneToMany
+	public List<Comment> comments;
 
 	/**
 	 * Constructeur par défaut pour l'item de liste.
@@ -63,10 +63,10 @@ public class GameListItem extends Model {
 	 * @param rate
 	 * @param comment
 	 */
-	public GameListItem(User user, Game game, Integer rate, String comment) {
+	public GameListItem(User user, Game game, Integer rate, List<Comment> comments) {
 		this.user = user;
 		this.game = game;
 		this.rate = rate;
-		this.comment = comment;
+		this.comments = comments;
 	}
 }

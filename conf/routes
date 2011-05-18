@@ -6,7 +6,9 @@
 GET     /										Application.index
 GET		/game/{id}								Application.details
 GET		/preferences							Preferences.show
-*       /picture/{id}/{type}/{size}/{number}	GameLibrary.getPicture(id,type,number,size)
+GET		/gameslist/{gameListId}					Application.filterByGameList
+GET		/platform/{platform}					Application.filterByPlatform
+GET     /picture/{id}/{type}/{size}/{number}	GameLibrary.getPicture(id,type,number,size)
 
 # Map static resources from the /app/public folder to the /public path
 GET     /public/                                staticDir:public
@@ -16,8 +18,8 @@ GET     /public/                                staticDir:public
 
 # Crud Path
 GET     /admin/?                                Administration.index
-*       /admin                                  module:crud
 *       /crud/index                             Administration.index
+*       /admin                                  module:crud
 
 # Import Secure routes
 *       /                                       module:secure
