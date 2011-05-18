@@ -1,7 +1,7 @@
 #{if _userConnected}
 	<section id="searchForm">
 		<label for="search">&{'home.search.label'}</label><br />
-		<input type="text" name="search" id="search" size="25" accesskey="R" maxlength="40" autocomplete="none" placeholder="&{'home.search.placeholder'}"/>
+		<input type="text" name="search" id="search" size="25" accesskey="R" maxlength="40" autocomplete="off" placeholder="&{'home.search.placeholder'}"/>
 		<div class="result" style="display:none;">
 		</div>
 		<script type="text/javascript">
@@ -14,7 +14,7 @@
 					}
 				);
 			}
-			if($('#search').val().length>2){
+			if($('#search').val().length>0){
 				$.post('@{GameLibrary.proposedGameTitle()}',
 					{search: $("#search").val()}, 
 					function(data){
