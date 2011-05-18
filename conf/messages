@@ -37,6 +37,7 @@ home.gamelist.title=» %s / <em>%s</em>
 home.games.noitems=No game in database !
 home.games.game.description=Description
 home.games.game.test=Test
+home.game.show.referenced.gamelist.title=List(s) where game is referenced
 home.add.game.label=Add Game
 home.add.game.label.tooltip=Add a new Game to your collection
 home.export.game.label=Export List

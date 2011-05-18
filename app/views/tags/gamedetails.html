@@ -25,14 +25,16 @@
 		<div class="bloc">${_game.description}</div>
 		#{/if}
 		#{if _game.testContent}
-		<div class="label">&{'home.games._game.test'}</div>
+		<div class="label">&{'home.games.game.test'}</div>
 		<div class="bloc 3columns">${_game.testContent.textile().raw()}</div>
 		#{/if}
 
-		<h2>&{'game.show.referenced.gamelist.title'}</h2>
-		#{list items:_game.listItems, as:'gameItem'}
-			<li>${gameItem.gameList.title}</li>
-		#{/list}
+		#{if _game.listItems}
+			<h2>&{'home.game.show.referenced.gamelist.title'}</h2>
+			#{list items:_game.listItems, as:'gameItem'}
+				<li><a href="@{Application.filterByGameList(gameItem.id)}">${gameItem.gameList.title}</a></li>
+			#{/list}
+		#{/if}
 
 	</div>
 
