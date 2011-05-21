@@ -1,10 +1,14 @@
 #{if _userConnected}
 	<section id="searchForm">
 		<label for="search">&{'home.search.label'}</label><br />
-		<input type="text" name="search" id="search" size="25" accesskey="R" maxlength="40" autocomplete="off" placeholder="&{'home.search.placeholder'}"/>
-		<div class="result" style="display:none;">
+		<div id="searcher">
+			<input type="text" name="search" id="search" size="25" accesskey="R" maxlength="40" autocomplete="off" placeholder="&{'home.search.placeholder'}"/>
+			<div class="result" style="display:none;">
+			</div>
 		</div>
 		<script type="text/javascript">
+		//Mise en place de l'autocomplete avec affichage spécifique.
+		//Ajout de l'évènnement keyup sur le champ de recherche
 		$("#search").keyup(function(event) { // retour simple
 			if(event.keyCode==13){
 				$.post('@{GameLibrary.findByGameTitle()}',
@@ -14,15 +18,57 @@
 					}
 				);
 			}
+			// Si la taille de texte est 0, on vide la liste de proposition
+			if($('#search').val().length==0){
+				$('#searchForm .result .listof').html("");
+				$('.result').css("display","none");
+			}
+			// Si la taille est supérieure à 1, on lance la recherche de proposition
 			if($('#search').val().length>0){
-				$.post('@{GameLibrary.proposedGameTitle()}',
+				$.post('@{GameLibrary.ajaxSearchGameTitle()}',
 					{search: $("#search").val()}, 
 					function(data){
+						// On vide la liste UL
+						$('#searchForm .result').html("<ul class=\"listof\"></ul>");
+						// On prépare l'appel à la la méthode de récupération de l'image de la couverture du jeu
+						var getPicture = #{jsAction @GameLibrary.getPicture(':id', ':type', ':number', ':size') /}
+						// on parle la liste des propositions retournées
+						$(data).each(function(){
+							// pour chaque item de la loiste (tableau javascript JSON)
+							// On affiche un item LI ave une image et le titre du jeu.
+							$('#searchForm .result .listof').prepend(
+										" <li id=\""+this.id+"\" title=\""+this.title+"\">"
+										+ "<img src=\"" + getPicture({id:this.id,type:'cover',number:0,size:'32x32'}) +"\"/>" 
+										+ this.title
+										+ "</li>");
+						});
+						// Une fois la liste composée, on ajoute la gestion de l'évènnement click sur les LI 
+						$('.listof li').each(function(){
+							$(this).click(function(){
+								// A la secltion d'un LI, on lance l'affichage de la fiche du jeu
+								var selected = $(this).attr("id");
+								$("#search").val($(this).attr("title"));
+								
+								
+								$.post('@{GameLibrary.findByGameId()}',
+									{id: selected}, 
+									function(data){
+										// A la réception des données, on affiche la fiche dans la div "#games"
+										$('#games').html(data);
+									}
+								);
+								// et on cache la liste de résultat.
+								$('.result').css("display","none");
+							});
+						});
 						$('#searchForm .result').css("display","block");
-						$('#searchForm .result').html(data);
 					}
 				);
 			}
+		});
+		// Si on quitte le formulaire du champ de recherche, on s'assure de vider la liste des propositions et de la cacher. 
+		$('#searcher').blur(function(){
+			$('#searchForm .result').html("<ul class=\"listof\"></ul>");
 		});
 		</script>
 	</section>

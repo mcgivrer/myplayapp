@@ -262,11 +262,18 @@ input#search {
 	border-radius:0.4em;
 }
 .result{
+	display:block;
+	top:-4px;
+	float:right;
 	position:relative;
 	z-index:0;
-	border:1px solid #ddd;
-	max-height:100px;
-	scroll:auto
+	border:2px inset #ddd;
+	border-top:1px solid #ddd;
+	border-radius:0px 0px 4px 4px;
+	padding:2px;
+	/*max-height:100px;*/
+	width:200px;
+	scroll:auto	
 }
 .result .listof li{
 	display:block;

@@ -96,33 +96,47 @@ public class GameLibrary extends Controller {
 
 	
 	/**
-	 * Recherche dans la liste de jeux de l'utilisateur connecté des jeux
-	 * contenant la chaîne <code>search</code> dans le titre du jeu. Se base
-	 * également sur la plateforme sélectionnée et sur l'utilisateur connecté.
 	 * Retourne une liste des jeux formaté UL->LI pour un affichage en autocomplete.
-	 * 
+	 * @see GameLibrary#retrieveGamesWhereTitleLike(User, String)
 	 * @param search
 	 *            nom ou partie du nom de jeu à rechercher
 	 */
-	public static void proposedGameTitle(String search) {
-		renderArgs.put("search", search);
+	public static void searchGamesWhereTitleLike(String search) {
 		// récupération de l'utilisateur connecté
 		User user = (User) renderArgs.get("user");
-		// recupération de la plateforme (si présente)
-		// String platform = (String) renderArgs.get("filterPlatform");
-		// Constitution de la liste des plateformes distinctes
-		List<Game> platforms = Game.find(
-				"select distinct g.platform from Game g order by g.platform")
-				.fetch();
+		List<Game> games = GameLibrary.retrieveGamesWhereTitleLike(user, search);
+		renderTemplate("GameLibrary/ajaxsearch.html", games);
+	}
+	
+	/**
+	 * Search on title and return results in JSON 
+	 * @see GameLibrary#retrieveGamesWhereTitleLike(User, String)
+	 * @param search
+	 */
+	public static void ajaxSearchGameTitle(String search){
+		// récupération de l'utilisateur connecté
+		User user = (User) renderArgs.get("user");
+		List<Game> games = GameLibrary.retrieveGamesWhereTitleLike(user, search);
+		renderJSON(games);
+	}
+
+	
+	/**
+	 * Recherche dans la liste de jeux de l'utilisateur connecté des jeux
+	 * contenant la chaîne <code>search</code> dans le titre du jeu. 
+	 * Se base sur l'utilisateur <code>user</code> connecté.
+	 * @param user
+	 * @param search
+	 * @return List<Game>
+	 */
+	public static List<Game> retrieveGamesWhereTitleLike(User user, String search){
 		// recherche des jeux correspondant à game.title=%search% et
-		// game.platform=platefom
 		List<Game> games = Game.find(
 				"select g from Game g " + "where lower(g.title) like ? "
 						+ "and g.author=? " + "and g.publish=true "
 						+ "order by g.platform, g.title ",
 				"%" + search.toLowerCase() + "%", user).fetch();
-		// rendu de la page
-		renderTemplate("GameLibrary/ajaxsearch.html", games, user, platforms);
+		return games;
 	}
 	
 	
