@@ -29,29 +29,29 @@ import play.db.jpa.Model;
 @Entity
 public class GameList extends Model {
 
-    /**
-     * nom de la liste de jeux
-     */
+	/**
+	 * nom de la liste de jeux
+	 */
 	@Required
 	public String title;
 
-    /**
-     * description pour cette liste de jeux
-     */
+	/**
+	 * description pour cette liste de jeux
+	 */
 	@Required
 	@Lob
 	public String description;
 
-    /**
-     * Utilisateur propriétaire de la liste
-     */
+	/**
+	 * Utilisateur propriétaire de la liste
+	 */
 	@Required
 	@ManyToOne
 	public User user;
 
-    /**
-     * Liste des jeux (GameListItem) éléments.
-     */
+	/**
+	 * Liste des jeux (GameListItem) éléments.
+	 */
 	@OneToMany(mappedBy="gameList", cascade=CascadeType.ALL)
 	public List<GameListItem> games;
 	
@@ -67,5 +67,12 @@ public class GameList extends Model {
 		this.description = description;
 		this.user = user;
 		this.games = games;
+	}
+
+	/**
+ 	 * Affichage du titre de la liste.
+	 */
+	public String toString(){
+		return this.title + " - "+games.size()+" game(s)";
 	}
 }

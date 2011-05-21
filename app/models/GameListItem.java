@@ -69,4 +69,12 @@ public class GameListItem extends Model {
 		this.rate = rate;
 		this.comments = comments;
 	}
+
+	/**
+ 	 * Affichage du titre de la liste.
+	 */
+	public String toString(){
+		return this.user.username + " / " + this.game.title;
+	}
+
 }
