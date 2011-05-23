@@ -1,0 +1,6 @@
+requires:
+    - play [1.2,)
+    - play -> crud
+    - play -> secure
+    - play -> excel [1.1,)
+    - play -> maven head
