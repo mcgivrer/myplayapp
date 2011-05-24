@@ -95,7 +95,14 @@ public class Game extends Model {
 	public String cover;
 	
 	/**
-	 * Auteur du jeux
+	 * Date de création de la fiche du jeu.
+	 */
+	@Required
+	public Date createdAt = new Date();
+
+
+	/**
+	 * Auteur de la fiche du jeux
 	 */
 	@Required
 	@ManyToOne

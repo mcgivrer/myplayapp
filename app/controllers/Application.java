@@ -43,20 +43,27 @@ public class Application extends Controller {
 		renderArgs.put("filterPlatform",
 				Messages.get("home.platforms.filter.showAll.pageTitle"));
 		if (user != null) {
+			// Un utilisateur est connecté ? 
 			Logger.debug(user.username + ": " + user.firstname + " "
 					+ user.lastname);
+			//  on récupère les plateformes sur lesquels ses jeux tournent
 			List<Game> platforms = Game
 					.find("select distinct g.platform from Game g where g.author = ? order by g.platform",
 							user).fetch();
+			  // et la liste de ses jeux
 			List<Game> games = getGames(platform,user);
+			// On récupère également la liste de ses listes de jeux.
 			List<GameList> gameslists= GameList.find("select gl from GameList gl where gl.user = ? order by gl.title asc", user).fetch();
-			
 			Logger.debug(
 					"Number of retrieved games: %d, Number of platforme: %d",
 					games.size(), platforms.size());
 			render(games, platforms,gameslists);
 		} else {
-			render();
+			// Aucun utilisateur connecté, on affiche les derniers jeux ajoutés.
+			List<Game> platforms = Game
+			.find("select distinct g.platform from Game g order by g.platform").fetch();
+			List<Game> games = Game.find("select g from Game g where g.publish=true order by createdAt desc, title asc").fetch(0,6);                                                                     
+			render(games,platforms);
 		}
 	}
 

@@ -1,7 +1,7 @@
 #{extends 'main.html' /}
-
-#{set title:'Home - ' + user.username + ' - ' + game.platform + ' / ' + game.title /}
-
+#{if user}
+	#{set title:'Home - ' + user.username + ' - ' + game.platform + ' / ' + game.title /}
+#{/if}
 <section id="platforms" class="platforms">
 		#{platforms items:platforms, userConnected:user /}
 		#{gameslists items:gameslists, userConnected:user /}
