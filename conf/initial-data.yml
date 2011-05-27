@@ -64,7 +64,7 @@ Game(game1):
 Game(game2):
    title: Wet
    platform: X360
-   description: Wet un jeu d'arcade action aventure avec une héroïne à très gros charisme ! 
+   description: Wet un jeu d'arcade action aventure avec une héroïne à très gros charisme !
    publish: true
    testContent: todo.
    developerStudio: A2M
@@ -79,12 +79,12 @@ Game(game2):
 Game(game3):
    title: Donkey Kong Country Returns
    platform: Wii
-   description: Le grand retour du grand gorille et du petit singe. 
+   description: Le grand retour du grand gorille et du petit singe.
    publish: true
    testContent: todo.
    developerStudio: A2M
    editor: Bethesda Softwork
-   tags: plateforme, Donkey 
+   tags: plateforme, Donkey
    yearOfPublication: 2009-01-01
    note: 8
    cover: wii-donkey_kong_country_returns-cover.jpg
@@ -94,22 +94,22 @@ Game(game3):
 Game(game4):
    title: Darksiders
    platform: X360
-   description: Un jeu dans un monde Gothique post-appocalytique. 
+   description: Un jeu dans un monde Gothique post-appocalytique.
    publish: true
    testContent: todo.
-   developerStudio: Vigil Games 
+   developerStudio: Vigil Games
    editor: THQ
-   tags: action, aventure, beat'em all   
+   tags: action, aventure, beat'em all
    yearOfPublication: 2010-01-01
    note: 8
    cover: x360-darksiders-cover.jpg
    author: admin
    createdAt: 2011-05-22
-   
+
 Game(game5):
    title: Alpha Protocol
    platform: X360
-   description: Un RPG d'espionage ! 
+   description: Un RPG d'espionage !
    publish: true
    testContent: todo.
    developerStudio: Obsidian Entertainment
@@ -124,7 +124,7 @@ Game(game5):
 Game(game6):
    title: Super Mario All Stars 25th anniversary edition
    platform: Wii
-   description: Un revivalde tous les mario Nintendo 
+   description: Un revivalde tous les mario Nintendo
    publish: true
    testContent: todo.
    developerStudio: Nintendo
@@ -139,7 +139,7 @@ Game(game6):
 Game(game7):
    title: New Super Mario Bros Wii
    platform: Wii
-   description: Le petit dernier né dela série des MArio sur Wii. Une référence 
+   description: Le petit dernier né dela série des MArio sur Wii. Une référence
    publish: true
    testContent: todo.
    developerStudio: Nintendo
@@ -154,7 +154,7 @@ Game(game7):
 Game(game8):
    title: Prince of Persia Forgotten Sands
    platform: Wii
-   description: Un PoP taillé pour la Wii,  une vraie réussite sur les plans graphique et gameplay.  
+   description: Un PoP taillé pour la Wii,  une vraie réussite sur les plans graphique et gameplay.
    publish: true
    testContent: todo.
    developerStudio: Ubisoft Quebec
@@ -164,7 +164,7 @@ Game(game8):
    cover: wii-prince_of_persia_forgotten_sands-cover.jpg
    author: user1
    createdAt: 2010-06-10
-   
+
 Game(game9):
    title: The Last Story
    platform: Wii
@@ -179,7 +179,7 @@ Game(game9):
    cover: wii-the_last_story-cover.jpg
    author: user1
    createdAt: 2011-09-14
-   
+
 Game(game10):
    title: Le seigneur des anneaux, la quête d'Aragorn
    platform: Wii
@@ -195,3 +195,28 @@ Game(game10):
    author: user1
    createdAt: 2011-05-25
 
+GameList(gl_1):
+   title: My First List
+   description: this is my first games list
+   user: admin
+
+GameListItem(gli_1):
+   gameList: gl_1
+   user: admin
+   game: game10
+   rate: 7
+   comments: null
+   
+GameListItem(gli_2):
+   gameList: gl_1
+   user: admin
+   game: game2
+   rate: 6
+   comments: null
+
+GameListItem(gli_3):
+   gameList: gl_1
+   user: admin
+   game: game7
+   rate: 8
+   comments: null
