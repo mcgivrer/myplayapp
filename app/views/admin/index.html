@@ -22,19 +22,7 @@
 					#{/list}
 				</span>
 				<script type="text/javascript">
-				$("#search").bind('keyup',function(event) {
-					//si RETURN+ENTER pressée
-					if(event.keyCode==13){
-						$.post('@{Administration.findByGameTitle()}',
-								{search: $("#search").val()}, 
-								function(data){
-									$('#games').fadeOut('fast');
-									$('#games').html(data);
-									$('#games').fadeIn('fast');
-								}
-						);
-					}
-				});
+
 				$("#search").dblclick(function(){
 					$.post('@{Administration.filterByPlatform()}',
 							{platform: "all"}, 
@@ -45,6 +33,7 @@
 							}
 					);
 				});
+				
 				$('.admin fieldset .platform a').click(function(){
 					var pf=$(this).attr('id');
 					$(this).attr('href',"#games");

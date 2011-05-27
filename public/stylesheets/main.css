@@ -311,9 +311,9 @@ input#search {
 	float: right;
 	width: 16em;
 	padding: 0.5em;
-	padding-right: 0.2em;
 	margin: 0em;
 	/*border-left:1px solid red;*/
+	border-radius:0px 0px 2em 2em;
 	box-shadow:#666 -2px 0px 8px;
 	min-height:400px;
 }
@@ -346,6 +346,7 @@ input#search {
 	border-bottom:1px solid #ddd;
 	background-color:#eee;
 	text-decoration:none;
+	color:#000;
 }
 .platforms li a:hover{
 	background-color:#999;
