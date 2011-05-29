@@ -1,4 +1,6 @@
-requires:
+# all required Dependencies for this play application
+
+require:
     - play [1.2,)
     - play -> crud
     - play -> secure
