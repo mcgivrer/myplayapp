@@ -1,0 +1,42 @@
+#{extends 'main.html' /}
+#{set 'moreStyles'}
+<link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/form.css'}">
+#{/set}
+<div id="gamelist" class="form">
+
+#{form @GameLibrary.saveGameList(gameList?.id)}
+	#{field 'gameList.id'}
+	<input type="hidden" name="${field.name}" id="${field.id}" value="${field.value}"/>
+	#{/field}
+<fieldset>
+	<legend>&{'games.gamelist.create.legend'}</legend>
+
+	#{ifErrors}
+	<p class="error">&{'games.gamelist.error.global'}</p>
+	#{/ifErrors}
+	
+	<ul>
+	#{field 'gameList.title'}
+	<li class="field ${field.errorClass} mandatory"><label for="${field.id}">&{'games.gamelist.create.title.label'}</label>
+		<input id="${field.id}" type="text" name="${field.name}"
+			value="${flash['gameList.title']}" class="${field.errorClass}" /> <span
+			class="error">${field.error}</span></li>
+	#{/field}
+	#{field 'gameList.description'}
+	<li class="field ${field.errorClass}"><label for="${field.id}">&{'games.gamelist.create.description.label'}</label>
+		<textarea id="${field.id}" type="text" name="${field.name}"
+			class="${field.errorClass}" />${flash['gameList.description']}</textarea><div
+			class="error">${field.error}</div></li>
+	#{/field}
+
+	<div class="actions">
+		<input type="submit" class="button save"
+			value="&{'gamelist.actions.create.label'}"
+			title="&{'gamelist.actions.create.label.tooltip'}" /> 
+		<a class="button cancel" href="/"
+			title="&{'gamelist.actions.cancel.label.tooltip'}">&{'preferences.actions.cancel.label'}</a>
+	</div>
+	
+</fieldset>
+#{/form}
+</div>

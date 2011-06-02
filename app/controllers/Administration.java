@@ -111,6 +111,6 @@ public class Administration extends Controller {
 						+ "order by g.title ",
 				"%" + search.toLowerCase() + "%").fetch();
 		// rendu de la page
-		renderTemplate("admin/gamelistsearch.html", games, user, platforms);
+		renderTemplate("admin/gamelistsearch.html", games, user, platforms, platform);
 	}
 }

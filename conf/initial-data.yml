@@ -200,14 +200,14 @@ GameList(gl_1):
    description: this is my first games list
    user: admin
 
-GameListItem(gli_1):
+GameListItem(gli_11):
    gameList: gl_1
    user: admin
    game: game10
    rate: 7
    comments: null
    
-GameListItem(gli_2):
+GameListItem(gli_12):
    gameList: gl_1
    user: admin
    game: game2
@@ -219,4 +219,23 @@ GameListItem(gli_3):
    user: admin
    game: game7
    rate: 8
+   comments: null
+
+GameList(gl_2):
+   title: My Second List
+   description: this is my second games list
+   user: admin
+
+GameListItem(gli_21):
+   gameList: gl_2
+   user: admin
+   game: game5
+   rate: 5
+   comments: null
+
+GameListItem(gli_22):
+   gameList: gl_2
+   user: admin
+   game: game6
+   rate: 7
    comments: null

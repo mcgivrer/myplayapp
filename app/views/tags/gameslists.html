@@ -1,7 +1,7 @@
 #{if _userConnected}
 	#{if _items}
 		<h2>&{'home.gameslists.title'}</h2>
-		<ul>
+		<ul class="gameslists">
 		#{list items:_items, as:'gamelist'}
 			<li><a href="@{Application.filterByGameList(gamelist.id)}" 
 					title="${gamelist.description}">${gamelist.title}</a>

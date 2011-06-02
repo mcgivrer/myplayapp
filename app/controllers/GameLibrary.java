@@ -16,6 +16,8 @@ import java.util.Date;
 import java.util.List;
 
 import models.Game;
+import models.GameList;
+import models.GameListItem;
 import models.User;
 import play.Logger;
 import play.Play;
@@ -25,6 +27,8 @@ import play.mvc.Before;
 import play.mvc.Controller;
 import play.mvc.With;
 import shared.ThumbnailGenerator;
+
+import com.mysql.jdbc.Messages;
 
 /**
  * Classe de gestion de la bibliothèque des jeux video.
@@ -101,7 +105,7 @@ public class GameLibrary extends Controller {
 	 * @param search
 	 *            nom ou partie du nom de jeu à rechercher
 	 */
-	public static void searchGamesWhereTitleLike(String search) {
+	private static void searchGamesWhereTitleLike(String search) {
 		// récupération de l'utilisateur connecté
 		User user = (User) renderArgs.get("user");
 		List<Game> games = GameLibrary.retrieveGamesWhereTitleLike(user, search);
@@ -129,13 +133,26 @@ public class GameLibrary extends Controller {
 	 * @param search
 	 * @return List<Game>
 	 */
-	public static List<Game> retrieveGamesWhereTitleLike(User user, String search){
-		// recherche des jeux correspondant à game.title=%search% et
-		List<Game> games = Game.find(
-				"select g from Game g " + "where lower(g.title) like ? "
-						+ "and g.author=? " + "and g.publish=true "
-						+ "order by g.platform, g.title ",
+	private static List<Game> retrieveGamesWhereTitleLike(User user, String search){
+		List<Game> games =null;
+		// recherche des jeux correspondant à game.title=%search%
+		
+		//L'utilisateur est-il connecté ?
+		if(user!=null){
+			// oui, alors, on cherche dans ses listes de jeux
+			games = Game.find(
+				"select g.game from GameListItem g where lower(g.game.title) like ? "
+						+ "and g.game.author=? and g.game.publish=true "
+						+ "order by g.game.platform, g.game.title ",
 				"%" + search.toLowerCase() + "%", user).fetch();
+		}else{
+			// non ?  alors on cherche dans les fiches de jeux.
+			games = Game.find(
+					"select g from Game g where lower(g.title) like ? "
+							+ "and g.publish=true "
+							+ "order by g.platform, g.title ",
+					"%" + search.toLowerCase() + "%").fetch();
+		}
 		return games;
 	}
 	
@@ -335,5 +352,124 @@ public class GameLibrary extends Controller {
 		User user = (User) renderArgs.get("user");
 		Game game = Game.findById(id);
 		render("GameLibrary/show.html",game,user);
+	}
+	
+	/**
+	 * Création d'une nouvelle liste.
+	 */
+	public static void createList(){
+		User userConnected = (User)renderArgs.get("user");
+		GameList gameList = new GameList("Default","",userConnected,null);
+
+		flash("gameList.title",gameList.title);
+	    flash("gameList.description",gameList.description);
+		
+		render(gameList,userConnected);
+	}
+	
+	/**
+	 * Sauvegarde de la liste de jeux nouvellement créée
+	 * @param gameList
+	 */
+	public static void saveGameList(@Valid GameList gameList){
+		User userConnected = (User)renderArgs.get("user");
+		GameList other = (GameList)GameList.find("byTitleAndUser", gameList.title, userConnected).first();
+		if(other!=null && gameList.id==other.id){
+			validation.addError("gameList.title", "games.gamelist.error.create.title.already.exists");
+		}else{		
+			gameList.games = new ArrayList<GameListItem>();
+			gameList.user = userConnected;
+			gameList.save();
+			flash("msg",Messages.getString("gamelist.create.message.gamelist.added"));
+			renderArgs.put("gameListId",gameList.id.toString());
+		}
+		
+	    flash("gameList.title",gameList.title);
+	    flash("gameList.description",gameList.description);
+	    
+	    Application.index();
+	    
+	}
+	
+	/**
+	 * Suppression de la liste de jeux.
+	 * @param id
+	 */
+	public static void deleteGameList(Long id) {
+	    Application.index();
+	}
+	
+	/**
+	 * Constitue la liste des jeux d'une list <code>gameListId</code> d'un
+	 * utilisateur <code>user</code>
+	 * 
+	 * @param gameListId
+	 * @param user
+	 * @return
+	 */
+	public static List<Game> getGamesFromGameList(Long gameListId, User user) {
+		GameList gameList = GameList.findById(gameListId);
+		List<GameListItem> gamesItems = gameList.games;
+		List<Game> games = new ArrayList<Game>();
+		for (GameListItem gameItem : gamesItems) {
+			games.add(gameItem.game);
+		}
+		return games;
+	}
+
+	/**
+	 * Usage interne : constitution de la liste des jeux.
+	 * 
+	 * @param platform
+	 *            code de la platform sur laquelle filtrer la liste des jeux.
+	 * @param user
+	 *            Utilisateur connecté
+	 */
+	public static List<Game> findGamesForUserAndPlatform(String platform, User user) {
+		renderArgs.put("filterPlatform", platform);
+
+		List<GameList > lgames = null;
+		List<Game> games = new ArrayList<Game>();
+		if (user != null) {
+			lgames = GameList.find("select gl from GameList gl where gl.user=? order by title asc",
+								user).fetch();
+			
+			if (platform == null || platform.equals("*")) {
+				session.remove("filterPlatform");
+			} else {
+				session.put("filterPlatform", platform);
+			}
+			games = getListOfGamesFromGameLists(lgames, user, platform);
+		} else {
+			if(platform == null || platform.equals("*")){
+				games = Game
+				.find("select g from Game g where g.publish=true order by title asc").fetch(0,6);
+			}else{
+				games = Game
+				.find("select g from Game g where g.publish=true and g.platform=? order by title asc",
+						platform).fetch(0,6);
+			}
+		}
+		return games;
+	}
+
+	/**
+	 * Recompose la liste des jeux de la liste d'après la(les) listes <code>lgames</code>) de 
+	 * l'utilisateur <code>user</code> pour la <code>platform</code> passée.
+	 * @param lgames
+	 * @return
+	 */
+	public static List<Game> getListOfGamesFromGameLists(List<GameList> lgames, User user, String platform){
+		List<Game> games = new ArrayList<Game>();
+		for(GameList lgame : lgames){
+			for(GameListItem ligame : lgame.games){
+				if(ligame.game.publish 
+					&& platform!=null 
+					&& (ligame.game.platform.equals(platform)||platform.equals("*"))){
+					games.add(ligame.game);
+				}
+			}
+		}
+		return games;
 	}
 }

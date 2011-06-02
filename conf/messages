@@ -37,6 +37,7 @@ home.gamelist.title=» %s / <em>%s</em>
 home.games.noitems=No game in database !
 home.games.game.description=Description
 home.games.game.test=Test
+home.game.items.count=(<strong>%s</strong> User got that game)
 home.game.show.referenced.gamelist.title=List(s) where game is referenced
 home.add.game.label=Add Game
 home.add.game.label.tooltip=Add a new Game to your collection
@@ -46,6 +47,18 @@ home.gameslists.title=Game's lists
 home.search.label=Search :
 home.search.placeholder=Game title parts
 
+#GameList create
+games.gamelist.create.legend=New Game List
+gamelist.create.message.gamelist.added=Your new list of games '%s' has just been create.
+games.gamelist.create.title.label=Title for your List
+games.gamelist.create.description.label=Short Description 
+games.gamelist.error.global=Some error exists, please modify your input data as explain bellow.
+games.gamelist.error.create.title.already.exists=A list with such title already exists !
+games.list.create.label=Create New List
+games.list.create.label.tooltip=Create a brand new list for your games!
+games.list.delete.this=Delete this list
+gamelist.actions.create.label=Create List
+	
 #Game details
 game.details.cover.alt=Cover for game '%s' on %s platform
 game.details.readmore=Read more about the game %s

@@ -14,6 +14,8 @@ import java.io.OutputStream;
 
 import javax.swing.ImageIcon;
 
+import shared.exceptions.ThumbnailException;
+
 import com.sun.image.codec.jpeg.JPEGCodec;
 import com.sun.image.codec.jpeg.JPEGImageEncoder;
 import com.sun.imageio.plugins.png.PNGImageWriter;
@@ -56,14 +58,14 @@ public class ThumbnailGenerator {
 				&& !inFilename.getName().endsWith(".jpeg")
 				&& !inFilename.getName().endsWith(".gif")
 				&& !inFilename.getName().endsWith(".png")) {
-			throw new Exception(
+			throw new ThumbnailException(
 					"Error: Unsupported image type, please only either JPG, GIF or PNG");
 		}
 
 		Image inImage = Toolkit.getDefaultToolkit().getImage(
 				inFilename.getAbsolutePath());
 		if (inImage.getWidth(null) == -1 || inImage.getHeight(null) == -1) {
-			throw new Exception("Error loading file: \"" + inFilename + "\"");
+			throw new ThumbnailException("Error loading file: \"" + inFilename + "\"");
 		}
 		// find biggest dimension
 		if (inImage.getWidth(null) > inImage.getHeight(null)) {

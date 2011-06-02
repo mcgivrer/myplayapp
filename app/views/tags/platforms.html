@@ -76,15 +76,17 @@
 	    <h2>&{'home.platforms.title'}</h2>
 	    <ul>
 	        <li>
-	        	<a href="@{Application.filterByPlatform('*')}" 
+	        	<a class="logo all" href="@{Application.filterByPlatform('*')}" 
 	        		title="&{'home.platforms.filter.showAll.label'}">
 	        		&{'home.platforms.filter.showAll'}</a>
 	        </li>
 		#{list items:_items, as:'platform'}
-	        <li><a href="@{Application.filterByPlatform(platform)}" 
+			#{if platform}
+	        <li><a class="logo ${platform?.toLower()}" href="@{Application.filterByPlatform(platform)}" 
 	        		title="&{'home.platforms.filter.label', platform}">
 	        		${platform}</a>
        		</li>
+       		#{/if}
 		#{/list}
 	    </ul>
 	#{/if}

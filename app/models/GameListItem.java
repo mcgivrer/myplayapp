@@ -10,6 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import javax.persistence.CascadeType;
+
 import play.data.validation.Required;
 import play.db.jpa.Model;
 
@@ -41,7 +43,7 @@ public class GameListItem extends Model {
      * Jeu possédé par l'utilisateur.
      */
 	@Required
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.REFRESH)
 	public Game game;
 	
 	/**

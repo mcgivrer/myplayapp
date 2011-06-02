@@ -14,6 +14,8 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import org.hibernate.engine.CascadeStyle;
+
 import play.data.validation.MaxSize;
 import play.data.validation.Required;
 import play.db.jpa.Model;
@@ -111,7 +113,7 @@ public class Game extends Model {
 	/**
 	 * Item des liste des jeux référençant ce jeu.
 	 */
-	@OneToMany(mappedBy="game")
+	@OneToMany(mappedBy="game",cascade=CascadeType.REMOVE)
 	public List<GameListItem> listItems;
 	
 	/**

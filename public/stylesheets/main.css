@@ -55,6 +55,9 @@ body {
 .add{
 	background-image:url('../images/icons/silk/item_add.png');
 }
+.addlist{
+	background-image:url('../images/icons/silk/page_white_add.png');
+}
 .export{
 	background-image:url('../images/icons/silk/table_excel.png');
 }
@@ -293,6 +296,7 @@ input#search {
 	float:left;
 	display:block;
 	padding:2px;
+	vertical-align:center;
 }
 .result .listof  li:hover{
 	background-color:#eee;
@@ -314,6 +318,8 @@ input#search {
 	margin: 0em;
 	/*border-left:1px solid red;*/
 	border-radius:0px 0px 2em 2em;
+	-webkit-box-shadow:#666 -2px 0px 8px;
+	-moz-box-shadow:#666 -2px 0px 8px;
 	box-shadow:#666 -2px 0px 8px;
 	min-height:400px;
 }
@@ -324,6 +330,7 @@ input#search {
 	margin:0px;
 	padding:10px 0px;
 	border-top:2px solid #ccc;
+	width:70%;
 }
 .games ul.actions li{
 	display:inline-block;
@@ -339,19 +346,61 @@ input#search {
 .platforms li {
 	padding:0em;
 	margin:0em;	
+	/*-webkit-box-shadow:inset 4px 4px 8px #000;
+	-moz-box-shadow:inset 4px 4px 8px #000;
+	box-shadow:inset 4px 4px 8px #000;*/
 }
-.platforms li a{
+#platforms li a{
 	display:block;
 	padding:0.5em;
-	border-bottom:1px solid #ddd;
+	border-bottom:1px solid #000;
 	background-color:#eee;
 	text-decoration:none;
-	color:#000;
-}
-.platforms li a:hover{
-	background-color:#999;
 	color:#fff;
+	text-shadow:0px 0px 2px #000;
+	height:24px;
+	font-size:12pt;
+	font-weight:bold;
 }
+#platforms li:hover{
+	opacity : 0.4;
+    filter: alpha(opacity=40); // msie
+}
+#platforms li a:hover{
+	color:#000;
+	text-shadow:0px 0px 2px #fff;
+	opacity : 0.4;
+    filter: alpha(opacity=40); // msie
+    background-color: #000;
+    -webkit-transform:margin:
+}
+#platforms li a img{
+	vertical-align:middle;
+	max-width:24px;
+	max-height:24px;
+}
+#platforms li a.logo{
+	padding:4px;
+	background-repeat:no-repeat;
+	background-position:center;
+}
+#platforms li a.all{
+	background-image:url('../images/icons/consoles/medium/all.png');
+}
+#platforms li a.wii{
+	background-image:url('../images/icons/consoles/medium/wii.png');
+}
+#platforms li a.x360{
+	background-image:url('../images/icons/consoles/medium/x360.png');
+}
+#platforms ul.gameslists li a{
+	height:18px;
+	font-size:10pt;
+	font-weight:normal;
+	padding:0.2em 0.8em;	
+}
+
+/*----- Game item -----*/
 .game {
 	float:left;
 	display:block;
@@ -359,8 +408,12 @@ input#search {
 	padding-bottom:0.5em;
 	/*border-bottom:1px dotted #ddd;*/
 	width:22em;
-	height:12em;
+	height:13em;
 	font-size:0.8em;
+}
+.bloc{
+	min-height:3.5em;
+	max-height:3.5em;
 }
 .cover {
 	float:left;
@@ -377,6 +430,15 @@ input#search {
 	padding-bottom:5px;
 	margin-bottom:5px;
 	vertical-align:bottom;
+}
+.count{
+	display:box;
+	float:left;
+	bottom:0px;
+	font-size:7;
+	margin-top:10px;
+	border-top:1px dotted #ddd;
+	padding-top:10px;
 }
 .title a{
 	text-decoration:none;

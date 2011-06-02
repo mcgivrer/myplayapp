@@ -1,7 +1,6 @@
 package controllers;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import models.Game;
@@ -39,31 +38,38 @@ public class Application extends Controller {
 	 */
 	public static void index() {
 		User user = (User) renderArgs.get("user");
+		String gameListId = (String) session.get("gameListId");
 		String platform = (String) session.get("filterPlatform");
 		renderArgs.put("filterPlatform",
 				Messages.get("home.platforms.filter.showAll.pageTitle"));
 		if (user != null) {
-			// Un utilisateur est connecté ? 
+			// Un utilisateur est connecté ?
 			Logger.debug(user.username + ": " + user.firstname + " "
 					+ user.lastname);
-			//  on récupère les plateformes sur lesquels ses jeux tournent
+			// on récupère les plateformes sur lesquels ses jeux tournent
 			List<Game> platforms = Game
 					.find("select distinct g.platform from Game g where g.author = ? order by g.platform",
 							user).fetch();
-			  // et la liste de ses jeux
-			List<Game> games = getGames(platform,user);
+			// et la liste de ses jeux
+			List<Game> games = GameLibrary.findGamesForUserAndPlatform(platform, user);
 			// On récupère également la liste de ses listes de jeux.
-			List<GameList> gameslists= GameList.find("select gl from GameList gl where gl.user = ? order by gl.title asc", user).fetch();
+			List<GameList> gameslists = GameList
+					.find("select gl from GameList gl where gl.user = ? order by gl.title asc",
+							user).fetch();
 			Logger.debug(
 					"Number of retrieved games: %d, Number of platforme: %d",
 					games.size(), platforms.size());
-			render(games, platforms,gameslists);
+			GameList gameList = (gameListId!=null?(GameList)GameList.findById(Long.parseLong(gameListId)):null);
+			render(games, platforms, gameslists,gameList);
 		} else {
 			// Aucun utilisateur connecté, on affiche les derniers jeux ajoutés.
 			List<Game> platforms = Game
-			.find("select distinct g.platform from Game g order by g.platform").fetch();
-			List<Game> games = Game.find("select g from Game g where g.publish=true order by createdAt desc, title asc").fetch(0,6);                                                                     
-			render(games,platforms);
+					.find("select distinct g.platform from Game g order by g.platform")
+					.fetch();
+			List<Game> games = Game
+					.find("select g from Game g where g.publish=true order by createdAt desc, title asc")
+					.fetch(0, 6);
+			render(games, platforms);
 		}
 	}
 
@@ -78,7 +84,7 @@ public class Application extends Controller {
 		List<Game> platforms = Game
 				.find("select distinct g.platform from Game g where g.author = ? order by g.platform",
 						user).fetch();
-		List<Game> games = getGames("*",user);
+		List<Game> games = GameLibrary.findGamesForUserAndPlatform("*", user);
 		Game game = Game.findById(id);
 		Logger.debug("Game details displayed for '%s/%s'", game.platform,
 				game.title);
@@ -93,12 +99,17 @@ public class Application extends Controller {
 	 */
 	public static void filterByPlatform(String platform) {
 		User user = (User) renderArgs.get("user");
-		
-		List<Game> games = getGames(platform,user);
+		renderArgs.put("platform", platform);
+		List<Game> games = GameLibrary.findGamesForUserAndPlatform(platform, user);
 		List<Game> platforms = Game.find(
 				"select distinct g.platform from Game g order by g.platform")
 				.fetch();
-		List<GameList> gameslists= GameList.find("select gl from GameList gl where gl.user = ? order by gl.title asc", user).fetch();
+		List<GameList> gameslists = new ArrayList<GameList>();
+		if (user != null) {
+			gameslists = GameList
+					.find("select gl from GameList gl where gl.user = ? order by gl.title asc",
+							user).fetch();
+		}
 		render(games, platforms, user, gameslists);
 	}
 
@@ -111,61 +122,22 @@ public class Application extends Controller {
 	public static void filterByGameList(Long gameListId) {
 		User user = (User) renderArgs.get("user");
 		String platform = session.get("filteredPlatform");
-		List<Game> games = getGamesFromGameList(gameListId,user);
+		List<Game> games = GameLibrary.getGamesFromGameList(gameListId, user);
 		GameList gamelist = GameList.findById(gameListId);
 		List<Game> platforms = Game.find(
 				"select distinct g.platform from Game g order by g.platform")
 				.fetch();
-		List<GameList> gameslists= GameList.find("select gl from GameList gl where gl.user = ? order by gl.title asc", user).fetch();
-		render(games, platforms, user, gameslists, gamelist);
-	}
-	
-	
-	/**
-	 * Constitue la liste des jeux d'une list <code>gameListId</code> d'un utilisateur <code>user</code>
-	 * @param gameListId
-	 * @param user
-	 * @return
-	 */
-	private static List<Game> getGamesFromGameList(Long gameListId, User user) {
-		GameList gameList = GameList.findById(gameListId);
-		List<GameListItem> gamesItems = gameList.games;
-		List<Game> games = new ArrayList<Game>();
-		for (GameListItem gameItem : gamesItems) {
-			games.add(gameItem.game);
-		}
-		return games;
+		List<GameList> gameslists = GameList
+				.find("select gl from GameList gl where gl.user = ? order by gl.title asc",
+						user).fetch();
+		render(games, platforms, platform, user, gameslists, gamelist);
 	}
 
-	/**
-	 * Usage interne : constitution de la liste des jeux.
-	 * @param platform
-	 *            code de la platform sur laquelle filtrer la liste des jeux.
-	 * @param user
-	 *            Utilisateur connecté
-	 */
-	public static List<Game> getGames(String platform, User user){
-		renderArgs.put("filterPlatform", platform);
-
-		List<Game> games = null;
-		if (platform==null || platform.equals("*")) {
-			session.remove("filterPlatform");
-			games = Game
-					.find("select g from Game g where g.publish=true and g.author=? order by title asc",
-							user).fetch();
-		} else {
-			session.put("filterPlatform", platform);
-			games = Game
-					.find("select g from Game g where g.publish=true and g.author=? and g.platform=? order by title asc",
-							user, platform).fetch();
-		}
-		return games;
-	}
 	
 	/**
-	 * Test de rendu user pour chapitre 9.1 - Création d'un tag. 
+	 * Test de rendu user pour chapitre 9.1 - Création d'un tag.
 	 */
-	public static void userDetails(){
+	public static void userDetails() {
 		User userConnected = (User) renderArgs.get("user");
 		render(userConnected);
 	}
