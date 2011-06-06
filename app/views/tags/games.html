@@ -1,6 +1,6 @@
 #{if _userConnected}
 	#{if _gameList}
-		<h2>&{'home.gamelist.title', _gameList.title, _userConnected?.username}</h2>
+		<h2>&{'home.gamelist.title', _gameList?.title, _userConnected?.username}</h2>
 		<a href="@{GameLibrary.deleteGameList(_gameList.id)}">&{'games.list.delete.this'}</a>
 		#{set title:'Home - list of games for ' + _userConnected.username /}
 	#{/if}
