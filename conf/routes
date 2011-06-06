@@ -9,6 +9,7 @@ GET     /preferences                            Preferences.show
 GET     /gameslist/{gameListId}                 Application.filterByGameList
 GET     /platform/{platform}                    Application.filterByPlatform
 GET     /picture/{id}/{type}/{size}/{number}    GameLibrary.getPicture(id,type,number,size)
+GET     /exportlist/{gameListId}                GameLibrary.exportGamesList(gameListId)
 
 # Map static resources from the /app/public folder to the /public path
 GET     /public/                                staticDir:public
