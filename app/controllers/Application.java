@@ -37,38 +37,63 @@ public class Application extends Controller {
 	 * Affichage de la page d'accueil.
 	 */
 	public static void index() {
+		List<Game> games = null;
+		List<Game> platforms = null;
+		List<GameList> gameslists =null;
+
+		// Récupération de l'utilisateur connecté
 		User user = (User) renderArgs.get("user");
-		String gameListId = (String) session.get("gameListId");
+		
+		// Recupération de la plateforme filtrée
 		String platform = (String) session.get("filterPlatform");
 		renderArgs.put("filterPlatform",
 				Messages.get("home.platforms.filter.showAll.pageTitle"));
+
 		if (user != null) {
 			// Un utilisateur est connecté ?
 			Logger.debug(user.username + ": " + user.firstname + " "
 					+ user.lastname);
-			// on récupère les plateformes sur lesquels ses jeux tournent
-			List<Game> platforms = Game
-					.find("select distinct g.platform from Game g where g.author = ? order by g.platform",
-							user).fetch();
-			// et la liste de ses jeux
-			List<Game> games = GameLibrary.findGamesForUserAndPlatform(platform, user);
+
 			// On récupère également la liste de ses listes de jeux.
-			List<GameList> gameslists = GameList
+			gameslists= GameList
 					.find("select gl from GameList gl where gl.user = ? order by gl.title asc",
 							user).fetch();
+
+			// Récupération de l'ID la liste sélectionnée si il existe en session
+			String gameListId = (String) session.get("gameListId");
+			
+			// on récupère une liste par défaut sélectionnée, ou la première de la liste.
+			GameList gamelist = (gameListId!=null ? (GameList)GameList.findById(Long.parseLong(gameListId)) : (GameList)gameslists.get(0));
+			Logger.debug(
+					"Selected game list: %s",gamelist.title);			
+			
+			// on récupère les plateformes sur lesquels ses jeux tournent
+			platforms = Game
+					.find("select distinct g.platform from Game g where g.author = ? order by g.platform",
+							user).fetch();
+
+			// et la liste de ses jeux
+			if(platform!=null){
+				games = GameLibrary.findGamesForUserAndPlatform(platform, user);
+			}else{
+				games = GameLibrary.getGamesFromGameList(gamelist.id, user);
+			}
 			Logger.debug(
 					"Number of retrieved games: %d, Number of platforme: %d",
 					games.size(), platforms.size());
-			GameList gameList = (gameListId!=null?(GameList)GameList.findById(Long.parseLong(gameListId)):null);
-			render(games, platforms, gameslists,gameList);
+			
+			// rendu de la page pour l'utilisateur connecté
+			render(games, platforms, platform, user, gameslists, gamelist);		
 		} else {
 			// Aucun utilisateur connecté, on affiche les derniers jeux ajoutés.
-			List<Game> platforms = Game
+			platforms = Game
 					.find("select distinct g.platform from Game g order by g.platform")
 					.fetch();
-			List<Game> games = Game
+			games = Game
 					.find("select g from Game g where g.publish=true order by createdAt desc, title asc")
 					.fetch(0, 6);
+			
+			// rendu de la page par défaut.
 			render(games, platforms);
 		}
 	}
