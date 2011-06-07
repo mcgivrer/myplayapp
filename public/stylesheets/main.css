@@ -37,26 +37,26 @@ p.info{
 /*----- Define action button -----*/
 .button {
 	padding:0.2em 1em;
-	font-size:8pt;
+	font-size:11px;
 	color:#000;
-	background-color:#FC6;
+	background-color:#eee;
 	-webkit-border-radius:4px;
 	-moz-border-radius:4px;
 	border-radius:4px;
-	border:2px outset #EB5;
+	border:1px outset #bbb;
 	text-decoration:none;
 	padding-left:24px;
 	background-repeat:no-repeat;
-	background-position: 4px 0px;
+	background-position: 2px 1px;
 }
 .button:hover{
 	color: #000;
-	text-shadow: #751 2px 2px 2px,
-		#EB5 -2px -2px 2px,
-		#EB5 -1px 1px 2px,
-		#EB5 1px -1px 2px;
-	background-color:#FE9;
-	border-color: #FE9;
+	text-shadow: #888 2px 2px 2px;
+		/*,#888 -2px -2px 2px
+		,#888 -1px 1px 2px
+		,#888 1px -1px 2px;*/
+	background-color:#ddd;
+	border-color: #ddd;
 }
 .register{
 	background-image:url('../images/icons/silk/application_form.png');
@@ -71,7 +71,10 @@ p.info{
 	background-image:url('../images/icons/silk/item_add.png');
 }
 .addlist{
-	background-image:url('../images/icons/silk/page_white_add.png');
+	background-image:url('../images/icons/silk/application_view_tile.png');
+}
+.dellist{
+	background-image:url('../images/icons/silk/delete.png');
 }
 .export{
 	background-image:url('../images/icons/silk/table_excel.png');
@@ -428,8 +431,8 @@ header nav ul li a:active {
 .game {
 	float:left;
 	display:block;
-	margin:0.5em;
-	padding:0.2em;
+	margin:0.2em;
+	padding:0.5em;
 	padding-bottom:0.5em;
 	/*border-bottom:1px dotted #ddd;*/
 	width:22em;
@@ -437,7 +440,7 @@ header nav ul li a:active {
 	font-size:0.8em;
 }
 .game:hover{
-	background-color:#eee;
+	background-color:#eeeeee;
 	border-radius:8px;
 }
 .bloc{

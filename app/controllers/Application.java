@@ -122,7 +122,7 @@ public class Application extends Controller {
 	 */
 	public static void filterByPlatform(String platform) {
 		User user = (User) renderArgs.get("user");
-		renderArgs.put("platform", platform);
+		renderArgs.put("filteredPlatform", platform);
 		List<Game> games = GameLibrary.findGamesForUserAndPlatform(platform, user);
 		List<Game> platforms = Game.find(
 				"select distinct g.platform from Game g order by g.platform")
@@ -133,7 +133,7 @@ public class Application extends Controller {
 					.find("select gl from GameList gl where gl.user = ? order by gl.title asc",
 							user).fetch();
 		}
-		render(games, platforms, user, gameslists);
+		render(games, platforms, user, gameslists, platform);
 	}
 
 	/**
