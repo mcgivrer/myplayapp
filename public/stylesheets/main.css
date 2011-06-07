@@ -19,15 +19,17 @@ body {
 .hidden{
 	display:none;
 }
+#messages {
+	text-align:center;
+}
 p.panel{
 	float:left;
 	display:block;
 	border:1px solid #999;
 	padding:10px;
-	margin:10px;
-	width:70%;
+	margin:0em;
 	max-height:100px;
-	padding-left:40px;
+	clear:left;
 }
 p.info{
 	background-color:#ddf;
@@ -104,6 +106,7 @@ a.games-bt{
 	box-shadow:#000 0.3em 0.3em 1em;
 	margin:0em 5%;
 	padding:0em;
+	min-width:740px;
 }
 /*----- Page header definition -----*/
 header {
@@ -264,10 +267,11 @@ header nav ul li a:active {
 
 #content{
 	min-height:20em;
-	padding:0em 2em;
+	padding:0em 0em;
 }
 /*----- Search component -----*/
-input#search {
+#sidebar input#search {
+	float:left;
 	background-color:#eee;
 	width:98%;
 	background-image:url('../images/icons/silk/magnifier.png');
@@ -318,13 +322,7 @@ input#search {
 .page{
 	display:block;
 }
-.games{
-	margin-right:20em;
-	display:block;
-	margin:0em;
-	padding:0.5em;
-}
-.platforms{
+#sidebar{
 	float: right;
 	width: 16em;
 	padding: 0.5em;
@@ -336,8 +334,21 @@ input#search {
 	box-shadow:#666 -2px 0px 8px;
 	min-height:400px;
 }
+.games{
+	margin-right:20em;
+	display:block;
+	margin:0em;
+	padding:0em;
+}
+.games h2{
+	float:left;
+}
+.games .list{
+	clear:left;
+}
 /*----- Actions links on page bottom -----*/
 .games ul.actions{
+	float:left;
 	display:block;
 	list-style:none;
 	margin:0px;
@@ -351,19 +362,19 @@ input#search {
 	margin:0px;
 	margin-right:4px;
 }
-.platforms ul {
+#sidebar ul {
 	list-style:none;
 	padding:0em;
 	margin:0em;
 }
-.platforms li {
+#sidebar li {
 	padding:0em;
 	margin:0em;	
 	/*-webkit-box-shadow:inset 4px 4px 8px #000;
 	-moz-box-shadow:inset 4px 4px 8px #000;
 	box-shadow:inset 4px 4px 8px #000;*/
 }
-#platforms li a{
+#sidebar li a{
 	display:block;
 	padding:0.5em;
 	border-bottom:1px solid #000;
@@ -375,11 +386,11 @@ input#search {
 	font-size:12pt;
 	font-weight:bold;
 }
-#platforms li:hover{
+#sidebar li:hover{
 	opacity : 0.4;
     filter: alpha(opacity=40); // msie
 }
-#platforms li a:hover{
+#sidebar li a:hover{
 	color:#000;
 	text-shadow:0px 0px 2px #fff;
 	opacity : 0.4;
@@ -387,26 +398,26 @@ input#search {
     background-color: #000;
     -webkit-transform:margin:
 }
-#platforms li a img{
+#sidebar li a img{
 	vertical-align:middle;
 	max-width:24px;
 	max-height:24px;
 }
-#platforms li a.logo{
+#sidebar li a.logo{
 	padding:4px;
 	background-repeat:no-repeat;
 	background-position:center;
 }
-#platforms li a.all{
+#sidebar li a.all{
 	background-image:url('../images/icons/consoles/medium/all.png');
 }
-#platforms li a.wii{
+#sidebar li a.wii{
 	background-image:url('../images/icons/consoles/medium/wii.png');
 }
-#platforms li a.x360{
+#sidebar li a.x360{
 	background-image:url('../images/icons/consoles/medium/x360.png');
 }
-#platforms ul.gameslists li a{
+#sidebar ul.gameslists li a{
 	height:18px;
 	font-size:10pt;
 	font-weight:normal;
@@ -418,15 +429,21 @@ input#search {
 	float:left;
 	display:block;
 	margin:0.5em;
+	padding:0.2em;
 	padding-bottom:0.5em;
 	/*border-bottom:1px dotted #ddd;*/
 	width:22em;
 	height:13em;
 	font-size:0.8em;
 }
+.game:hover{
+	background-color:#eee;
+	border-radius:8px;
+}
 .bloc{
 	min-height:3.5em;
 	max-height:3.5em;
+	color:#666;
 }
 .cover {
 	float:left;
@@ -446,12 +463,13 @@ input#search {
 }
 .count{
 	display:box;
-	float:left;
+	float:right;
 	bottom:0px;
-	font-size:7;
+	font-size:7pt;
 	margin-top:10px;
 	border-top:1px dotted #ddd;
 	padding-top:10px;
+	color:#999;
 }
 .title a{
 	text-decoration:none;
@@ -460,10 +478,10 @@ input#search {
 	font-weight:bold;
 }
 .title span {
-	margin:0.2em;
-	float:left;
-	font-size:8pt;
-	color:#666;
+	margin:0em;
+	font-size:7pt;
+	color:#999;
+	text-align:center;
 }
 .info {
 	margin: 10px 0px 10px 80px;

@@ -8,6 +8,7 @@ import models.GameList;
 import models.GameListItem;
 import models.User;
 import play.Logger;
+import play.Play;
 import play.i18n.Messages;
 import play.mvc.Before;
 import play.mvc.Controller;
@@ -49,7 +50,7 @@ public class Application extends Controller {
 		renderArgs.put("filterPlatform",
 				Messages.get("home.platforms.filter.showAll.pageTitle"));
 
-		if (user != null) {
+		if (user != null && !user.username.equals("")) {
 			// Un utilisateur est connecté ?
 			Logger.debug(user.username + ": " + user.firstname + " "
 					+ user.lastname);
@@ -71,27 +72,24 @@ public class Application extends Controller {
 			platforms = Game
 					.find("select distinct g.platform from Game g where g.author = ? order by g.platform",
 							user).fetch();
-
+			platform = ((String) session.get("filterPlatform")!=null?(String) session.get("filterPlatform"):"*");
 			// et la liste de ses jeux
 			if(platform!=null){
 				games = GameLibrary.findGamesForUserAndPlatform(platform, user);
 			}else{
 				games = GameLibrary.getGamesFromGameList(gameList.id, user);
 			}
-			Logger.debug(
-					"Number of retrieved games: %d, Number of platforme: %d",
-					games.size(), platforms.size());
+			Logger.debug("Number of retrieved games: %d, Number of platforme: %d",games.size(), platforms.size());
 			
 			// rendu de la page pour l'utilisateur connecté
-			render(games, platforms, platform, user, gameslists, gameList);		
+			render(games, platforms, platform, user, gameslists, gameList);
 		} else {
 			// Aucun utilisateur connecté, on affiche les derniers jeux ajoutés.
 			platforms = Game
-					.find("select distinct g.platform from Game g order by g.platform")
-					.fetch();
+					.find("select distinct g.platform from Game g order by g.platform").fetch();
 			games = Game
 					.find("select g from Game g where g.publish=true order by createdAt desc, title asc")
-					.fetch(0, 6);
+					.fetch(0, Integer.parseInt(Play.configuration.getProperty("home.default.game.list.size", "6")));
 			
 			// rendu de la page par défaut.
 			render(games, platforms);

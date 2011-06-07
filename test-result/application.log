@@ -1,7 +1,0 @@
-24 mars 2011 01:18:21,005 INFO  ~ Starting /home/frederic/Projects/Java/play/myplayapp
-24 mars 2011 01:18:21,010 INFO  ~ Module secure is available (/home/frederic/Tools/java/tools/play-1.1.1/modules/secure)
-24 mars 2011 01:18:21,010 INFO  ~ Module excel is available (/home/frederic/Tools/java/tools/play-1.1.1/modules/excel-1.1)
-24 mars 2011 01:18:21,010 INFO  ~ Module maven is available (/home/frederic/Tools/java/tools/play-1.1.1/modules/maven-head)
-24 mars 2011 01:18:21,011 INFO  ~ Module crud is available (/home/frederic/Tools/java/tools/play-1.1.1/modules/crud)
-24 mars 2011 01:18:21,761 WARN  ~ You're running Play! in DEV mode
-24 mars 2011 01:18:21,855 INFO  ~ Listening for HTTP on port 9000 (Waiting a first request to start) ...
