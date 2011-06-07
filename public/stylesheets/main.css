@@ -19,6 +19,19 @@ body {
 .hidden{
 	display:none;
 }
+p.panel{
+	float:left;
+	display:block;
+	border:1px solid #999;
+	padding:10px;
+	margin:10px;
+	width:70%;
+	max-height:100px;
+	padding-left:40px;
+}
+p.info{
+	background-color:#ddf;
+}	
 /*----- Define action button -----*/
 .button {
 	padding:0.2em 1em;

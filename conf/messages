@@ -34,6 +34,7 @@ home.secure.title=Please Login
 #Games zone
 home.games.title=List of games for %s
 home.gamelist.title=» %s / <em>%s</em>
+home.gamelist.last.added=» Last added games
 home.games.noitems=No game in database !
 home.games.game.description=Description
 home.games.game.test=Test
