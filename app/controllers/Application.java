@@ -63,9 +63,9 @@ public class Application extends Controller {
 			String gameListId = (String) session.get("gameListId");
 			
 			// on récupère une liste par défaut sélectionnée, ou la première de la liste.
-			GameList gamelist = (gameListId!=null ? (GameList)GameList.findById(Long.parseLong(gameListId)) : (GameList)gameslists.get(0));
+			GameList gameList = (gameListId!=null ? (GameList)GameList.findById(Long.parseLong(gameListId)) : (GameList)gameslists.get(0));
 			Logger.debug(
-					"Selected game list: %s",gamelist.title);			
+					"Selected game list: %s",gameList.title);			
 			
 			// on récupère les plateformes sur lesquels ses jeux tournent
 			platforms = Game
@@ -76,14 +76,14 @@ public class Application extends Controller {
 			if(platform!=null){
 				games = GameLibrary.findGamesForUserAndPlatform(platform, user);
 			}else{
-				games = GameLibrary.getGamesFromGameList(gamelist.id, user);
+				games = GameLibrary.getGamesFromGameList(gameList.id, user);
 			}
 			Logger.debug(
 					"Number of retrieved games: %d, Number of platforme: %d",
 					games.size(), platforms.size());
 			
 			// rendu de la page pour l'utilisateur connecté
-			render(games, platforms, platform, user, gameslists, gamelist);		
+			render(games, platforms, platform, user, gameslists, gameList);		
 		} else {
 			// Aucun utilisateur connecté, on affiche les derniers jeux ajoutés.
 			platforms = Game
