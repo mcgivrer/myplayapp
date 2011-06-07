@@ -146,14 +146,14 @@ public class Application extends Controller {
 		User user = (User) renderArgs.get("user");
 		String platform = session.get("filteredPlatform");
 		List<Game> games = GameLibrary.getGamesFromGameList(gameListId, user);
-		GameList gamelist = GameList.findById(gameListId);
+		GameList gameList = GameList.findById(gameListId);
 		List<Game> platforms = Game.find(
 				"select distinct g.platform from Game g order by g.platform")
 				.fetch();
 		List<GameList> gameslists = GameList
 				.find("select gl from GameList gl where gl.user = ? order by gl.title asc",
 						user).fetch();
-		render(games, platforms, platform, user, gameslists, gamelist);
+		render(games, platforms, platform, user, gameslists, gameList);
 	}
 
 	
