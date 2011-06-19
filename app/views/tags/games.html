@@ -1,32 +1,48 @@
 #{if _userConnected}
 	#{if _gameList}
-		<h2>&{'home.gamelist.title', _gameList.title, _userConnected?.username}</h2>
-		<a href="@{GameLibrary.deleteGameList(_gameList.id)}">&{'games.list.delete.this'}</a>
+		<h2>&{'home.gamelist.title', _gameList?.title, _userConnected?.username}</h2>
 		#{set title:'Home - list of games for ' + _userConnected.username /}
 	#{/if}
 #{/if}
 #{else}
-	<p>&{'home.anonymous.welcome.message',"Register/create","Goto to Register form"}</p>
+<div id="messages">
+	<p class="panel info">&{'home.anonymous.welcome.message',"Register/create","Goto to Register form"}</p>
+</div>
+<h2>&{'home.gamelist.last.added'}</h2>
 #{/else}
 
 #{if _userConnected}
 	<ul class="actions">
-		<li><a class="button addlist" href="@{GameLibrary.createList}" title="&{'games.list.create.label.tooltip'}">&{'games.list.create.label'}</a></li>
+		<li><a class="button addlist"
+				accesskey="+" 
+				href="@{GameLibrary.createList}" 
+				title="&{'games.list.create.label.tooltip'}">&{'games.list.create.label'}</a></li>
 	#{if _gameList}
-		<li><a class="button add" accesskey="A" href="@{GameLibrary.addGame()}" title="&{'home.add.game.label.tooltip'}">&{'home.add.game.label'}</a></li>
+		<li><a class="button dellist" 
+				accesskey="D"
+				href="@{GameLibrary.deleteGameList(_gameList.id)}"
+				onclick="if(!confirm('&{'games.list.delete.confirm.message', _gameList.title}')){return -1;}" 
+				title="&{'games.list.delete.label.tooltip'}">&{'games.list.delete.label'}</a></li>
+		<li><a class="button add" 
+				accesskey="A" 
+				href="@{GameLibrary.addGame()}" 
+				title="&{'home.add.game.label.tooltip'}">&{'home.add.game.label'}</a></li>
 	#{/if}
-	#{if _items}
-		<li><a class="button export" accesskey="E" href="@{GameLibrary.exportGamesList()}" title="&{'home.export.game.label.tooltip'}">&{'home.export.game.label'}</a></li>
+	#{if _gameList && _items}
+		<li><a class="button export" accesskey="E" href="@{GameLibrary.exportGamesList(_gameList.id)}" title="&{'home.export.game.label.tooltip'}">&{'home.export.game.label'}</a></li>
 	#{/if}
 	</ul>
 #{/if}
 
 
 #{if _items}
+	<div class="list">
 		#{list items:_items, as:'game'}		
 		<div class="game" id="game_${game.id}">
-			<div class="title"><span>#${game.id}.</span>
-			<a href="@{Application.details(game.id)}" title="&{'game.details.readmore',game.title}">${game.title}</a></div>
+			<div class="title">
+				<span>#${game.id.format("0000")}.</span>
+				<a href="@{Application.details(game.id)}" title="&{'game.details.readmore',game.title}">${game.title}</a>
+			</div>
 			<div class="side">
 				#{if game.cover}
 				<div class="cover">
@@ -57,6 +73,8 @@
 			<div class="clear"></div>
 		</div>
 		#{/list}
+		<div class="clear"></div>
+	</div>
 #{/if}
 #{else}
 	<p>&{'home.games.noitems'}</p>

@@ -2,10 +2,10 @@
 #{if user}
 	#{set title:'Home - ' + user.username + ' - ' + game.platform + ' / ' + game.title /}
 #{/if}
-<section id="platforms" class="platforms">
+<section id="sidebar" >
 		#{platforms items:platforms, userConnected:user /}
 		#{gameslists items:gameslists, userConnected:user /}
 </section>
 <section id="games" class="games">
-#{gamedetails game:game /}
+	#{gamedetails game:game /}
 </section>

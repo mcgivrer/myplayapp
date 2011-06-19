@@ -31,7 +31,8 @@ import shared.ThumbnailGenerator;
 import com.mysql.jdbc.Messages;
 
 /**
- * Classe de gestion de la bibliothèque des jeux video.
+ * Classe de gestion de la bibliothèque des jeux vidéo ainsi que des listes
+ * de jeux des utilisateurs.
  * 
  * @author frederic
  */
@@ -50,7 +51,7 @@ public class GameLibrary extends Controller {
 	}
 
 	/**
-	 * Add a new game to the collection
+	 * Ajout d'un jeu à la collection
 	 */
 	@Check("USER,MODERATOR,ADMINISTRATOR")
 	public static void addGame() {
@@ -59,7 +60,7 @@ public class GameLibrary extends Controller {
 	}
 
 	/**
-	 * Save the input game to db.
+	 * Sauve vers la base de données les données saisies pour le jeu.
 	 * 
 	 * @param game
 	 */
@@ -72,7 +73,7 @@ public class GameLibrary extends Controller {
 	/**
 	 * Recherche dans la liste de jeux de l'utilisateur connecté des jeux
 	 * contenant la chaîne <code>search</code> dans le titre du jeu. Se base
-	 * également sur la plateforme sélectionnée et sur l'utilisateur connecté.
+	 * également sur la plate-forme sélectionnée et sur l'utilisateur connecté.
 	 * 
 	 * @param search
 	 *            nom ou partie du nom de jeu à rechercher
@@ -81,14 +82,13 @@ public class GameLibrary extends Controller {
 		renderArgs.put("search", search);
 		// récupération de l'utilisateur connecté
 		User user = (User) renderArgs.get("user");
-		// recupération de la plateforme (si présente)
+		// Récupération de la plate-forme (si présente)
 		// String platform = (String) renderArgs.get("filterPlatform");
 		// Constitution de la liste des plateformes distinctes
 		List<Game> platforms = Game.find(
 				"select distinct g.platform from Game g order by g.platform")
 				.fetch();
 		// recherche des jeux correspondant à game.title=%search% et
-		// game.platform=platefom
 		List<Game> games = Game.find(
 				"select g from Game g " + "where lower(g.title) like ? "
 						+ "and g.author=? " + "and g.publish=true "
@@ -113,7 +113,7 @@ public class GameLibrary extends Controller {
 	}
 	
 	/**
-	 * Search on title and return results in JSON 
+	 * Recherche sur le titre des jeux et retourne le résulats au format JSON 
 	 * @see GameLibrary#retrieveGamesWhereTitleLike(User, String)
 	 * @param search
 	 */
@@ -174,7 +174,7 @@ public class GameLibrary extends Controller {
 	/**
 	 * Export la liste des jeux affichés dans le format souhaité
 	 */
-	public static void exportGamesList() {
+	public static void exportGamesList(Long gameListId) {
 		// Récupération de l'utilisateur connecté.
 		User user = (User) renderArgs.get("user");
 		Logger.debug("Export game list for user " + user.username);
@@ -182,18 +182,19 @@ public class GameLibrary extends Controller {
 		if (user != null) {
 			Logger.debug(user.username + ": " + user.firstname + " "
 					+ user.lastname);
+			GameList gl = GameList.findById(gameListId);
 			// Création de la liste des jeux
-			List<Game> games = Game.find(
-					"select g from Game g " + "where " + "g.publish=true "
-							+ "and g.author = ? "
-							+ "order by platform asc, title asc", user).fetch();
+			List<Game> games = GameLibrary.getGamesFromGameList(gameListId, user);
+			
 			Logger.debug("Number of exported games: %d", games.size());
+			
 			// Preparation de la date de génération
 			Date dateOfTheDay = new Date();
 			DateFormat df = new SimpleDateFormat("dd-mm-yyyy");
 			String date = df.format(dateOfTheDay);
+			
 			// Définition du nom de fichier (pour FF)
-			renderArgs.put("filename", "mygames.xls");
+			renderArgs.put("fileName", "gamelist-"+user.username+"-"+date+"-"+gl.title.replace(' ', '_')+".xls");
 			renderExcel(user, games, date);
 		}
 	}

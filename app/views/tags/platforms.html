@@ -74,7 +74,7 @@
 	</section>
 	#{if _items}
 	    <h2>&{'home.platforms.title'}</h2>
-	    <ul>
+	    <ul class="platforms">
 	        <li>
 	        	<a class="logo all" href="@{Application.filterByPlatform('*')}" 
 	        		title="&{'home.platforms.filter.showAll.label'}">
@@ -82,10 +82,7 @@
 	        </li>
 		#{list items:_items, as:'platform'}
 			#{if platform}
-	        <li><a class="logo ${platform?.toLower()}" href="@{Application.filterByPlatform(platform)}" 
-	        		title="&{'home.platforms.filter.label', platform}">
-	        		${platform}</a>
-       		</li>
+	        <li><a class="logo ${platform?.toLower()}" href="@{Application.filterByPlatform(platform)}" 	        		title="&{'home.platforms.filter.label', platform}">${platform}</a></li>
        		#{/if}
 		#{/list}
 	    </ul>

@@ -8,6 +8,7 @@ import models.GameList;
 import models.GameListItem;
 import models.User;
 import play.Logger;
+import play.Play;
 import play.i18n.Messages;
 import play.mvc.Before;
 import play.mvc.Controller;
@@ -37,38 +38,60 @@ public class Application extends Controller {
 	 * Affichage de la page d'accueil.
 	 */
 	public static void index() {
+		List<Game> games = null;
+		List<Game> platforms = null;
+		List<GameList> gameslists =null;
+
+		// Récupération de l'utilisateur connecté
 		User user = (User) renderArgs.get("user");
-		String gameListId = (String) session.get("gameListId");
+		
+		// Recupération de la plateforme filtrée
 		String platform = (String) session.get("filterPlatform");
 		renderArgs.put("filterPlatform",
 				Messages.get("home.platforms.filter.showAll.pageTitle"));
-		if (user != null) {
+
+		if (user != null && !user.username.equals("")) {
 			// Un utilisateur est connecté ?
 			Logger.debug(user.username + ": " + user.firstname + " "
 					+ user.lastname);
-			// on récupère les plateformes sur lesquels ses jeux tournent
-			List<Game> platforms = Game
-					.find("select distinct g.platform from Game g where g.author = ? order by g.platform",
-							user).fetch();
-			// et la liste de ses jeux
-			List<Game> games = GameLibrary.findGamesForUserAndPlatform(platform, user);
+
 			// On récupère également la liste de ses listes de jeux.
-			List<GameList> gameslists = GameList
+			gameslists= GameList
 					.find("select gl from GameList gl where gl.user = ? order by gl.title asc",
 							user).fetch();
+
+			// Récupération de l'ID la liste sélectionnée si il existe en session
+			String gameListId = (String) session.get("gameListId");
+			
+			// on récupère une liste par défaut sélectionnée, ou la première de la liste.
+			GameList gameList = (gameListId!=null ? (GameList)GameList.findById(Long.parseLong(gameListId)) : (GameList)gameslists.get(0));
 			Logger.debug(
-					"Number of retrieved games: %d, Number of platforme: %d",
-					games.size(), platforms.size());
-			GameList gameList = (gameListId!=null?(GameList)GameList.findById(Long.parseLong(gameListId)):null);
-			render(games, platforms, gameslists,gameList);
+					"Selected game list: %s",gameList.title);			
+			
+			// on récupère les plateformes sur lesquels ses jeux tournent
+			platforms = Game
+					.find("select distinct g.platform from Game g where g.author = ? order by g.platform",
+							user).fetch();
+			platform = ((String) session.get("filterPlatform")!=null?(String) session.get("filterPlatform"):"*");
+			// et la liste de ses jeux
+			if(platform!=null){
+				games = GameLibrary.findGamesForUserAndPlatform(platform, user);
+			}else{
+				games = GameLibrary.getGamesFromGameList(gameList.id, user);
+			}
+			Logger.debug("Number of retrieved games: %d, Number of platforme: %d",games.size(), platforms.size());
+			
+			// rendu de la page pour l'utilisateur connecté
+			render(games, platforms, platform, user, gameslists, gameList);
 		} else {
 			// Aucun utilisateur connecté, on affiche les derniers jeux ajoutés.
-			List<Game> platforms = Game
-					.find("select distinct g.platform from Game g order by g.platform")
-					.fetch();
-			List<Game> games = Game
+			platforms = Game
+					.find("select distinct g.platform from Game g order by g.platform").fetch();
+			games = Game
 					.find("select g from Game g where g.publish=true order by createdAt desc, title asc")
-					.fetch(0, 6);
+					.fetch(0, Integer.parseInt(Play.configuration.getProperty("home.default.game.list.size", "6")));
+			
+			// rendu de la page par défaut.
 			render(games, platforms);
 		}
 	}
@@ -99,7 +122,7 @@ public class Application extends Controller {
 	 */
 	public static void filterByPlatform(String platform) {
 		User user = (User) renderArgs.get("user");
-		renderArgs.put("platform", platform);
+		renderArgs.put("filteredPlatform", platform);
 		List<Game> games = GameLibrary.findGamesForUserAndPlatform(platform, user);
 		List<Game> platforms = Game.find(
 				"select distinct g.platform from Game g order by g.platform")
@@ -110,7 +133,7 @@ public class Application extends Controller {
 					.find("select gl from GameList gl where gl.user = ? order by gl.title asc",
 							user).fetch();
 		}
-		render(games, platforms, user, gameslists);
+		render(games, platforms, user, gameslists, platform);
 	}
 
 	/**
@@ -123,14 +146,14 @@ public class Application extends Controller {
 		User user = (User) renderArgs.get("user");
 		String platform = session.get("filteredPlatform");
 		List<Game> games = GameLibrary.getGamesFromGameList(gameListId, user);
-		GameList gamelist = GameList.findById(gameListId);
+		GameList gameList = GameList.findById(gameListId);
 		List<Game> platforms = Game.find(
 				"select distinct g.platform from Game g order by g.platform")
 				.fetch();
 		List<GameList> gameslists = GameList
 				.find("select gl from GameList gl where gl.user = ? order by gl.title asc",
 						user).fetch();
-		render(games, platforms, platform, user, gameslists, gamelist);
+		render(games, platforms, platform, user, gameslists, gameList);
 	}
 
 	

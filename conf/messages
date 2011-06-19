@@ -34,6 +34,7 @@ home.secure.title=Please Login
 #Games zone
 home.games.title=List of games for %s
 home.gamelist.title=» %s / <em>%s</em>
+home.gamelist.last.added=» Last added games
 home.games.noitems=No game in database !
 home.games.game.description=Description
 home.games.game.test=Test
@@ -56,7 +57,8 @@ games.gamelist.error.global=Some error exists, please modify your input data as 
 games.gamelist.error.create.title.already.exists=A list with such title already exists !
 games.list.create.label=Create New List
 games.list.create.label.tooltip=Create a brand new list for your games!
-games.list.delete.this=Delete this list
+games.list.delete.label=Delete this list
+games.list.delete.label.tooltip=Delete the displayed list
 gamelist.actions.create.label=Create List
 	
 #Game details

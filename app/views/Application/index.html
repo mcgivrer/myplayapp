@@ -1,11 +1,11 @@
 #{extends 'main.html' /}
-<section id="platforms" class="platforms">
+<section id="sidebar">
 		#{platforms items:platforms, userConnected:user /}
 		#{gameslists items:gameslists, userConnected:user /}
 </section>
 <section id="games" class="games">
 	<div class="gameslist">
-	#{games items:games, userConnected:user, gameList:gamelist /}
+	#{games items:games, userConnected:user, gameList:gameList /}
 	<div class="clearLeft"></div>
 	</div>
 </section>
