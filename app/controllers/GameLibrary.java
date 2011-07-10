@@ -4,8 +4,6 @@
  */
 package controllers;
 
-import static play.modules.excel.Excel.renderExcel;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -36,7 +34,8 @@ import com.mysql.jdbc.Messages;
  * 
  * @author frederic
  */
-@With(Security.class)
+//@With(Security.class)
+@With(ExcelControllerHelper.class)
 public class GameLibrary extends Controller {
 
 	/**
@@ -180,6 +179,7 @@ public class GameLibrary extends Controller {
 		Logger.debug("Export game list for user " + user.username);
 		// Si un utilisateur connecté.
 		if (user != null) {
+			request.format="xls";
 			Logger.debug(user.username + ": " + user.firstname + " "
 					+ user.lastname);
 			GameList gl = GameList.findById(gameListId);
@@ -195,7 +195,7 @@ public class GameLibrary extends Controller {
 			
 			// Définition du nom de fichier (pour FF)
 			renderArgs.put("fileName", "gamelist-"+user.username+"-"+date+"-"+gl.title.replace(' ', '_')+".xls");
-			renderExcel(user, games, date);
+			renderTemplate("GameLibrary/exportGamesList.xls",user, games, date);
 		}
 	}
 
