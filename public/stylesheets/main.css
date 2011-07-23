@@ -20,19 +20,28 @@ body {
 	display:none;
 }
 #messages {
+	margin:0.5em;
+	margin-right:18em;
 	text-align:center;
+
 }
-p.panel{
-	float:left;
+#messages p.panel{
 	display:block;
-	border:1px solid #999;
+	/*border:1px solid #999;*/
 	padding:10px;
 	margin:0em;
 	max-height:100px;
 	clear:left;
+	border-webkit-radius:0.5em;
+	border-moz-radius:0.5em;
+	border-radius:0.5em;
+	box-shadow:#666 0.5em 0.5em 1em;
 }
-p.info{
-	background-color:#ddf;
+#messages p.info{
+	background-image:url('../images/icons/silk/information.png');
+	background-position:0.8em 0.8em;
+	background-repeat:no-repeat;
+	background-color:#cee;
 }	
 /*----- Define action button -----*/
 .button {
@@ -448,14 +457,14 @@ header nav ul li a:active {
 	max-height:3.5em;
 	color:#666;
 }
-.cover {
+.game .cover {
 	float:left;
 	display:block;
 	margin:0px 10px;
 	padding-right:10px;
 	border-right:1px dotted #ddd;
 }
-.title {
+.game .title {
 	display:block;
 	height:2.2em;
 	font-size:1.2em;
@@ -464,7 +473,7 @@ header nav ul li a:active {
 	margin-bottom:5px;
 	vertical-align:bottom;
 }
-.count{
+.game .count{
 	display:box;
 	float:right;
 	bottom:0px;
@@ -474,19 +483,19 @@ header nav ul li a:active {
 	padding-top:10px;
 	color:#999;
 }
-.title a{
+.game .title a{
 	text-decoration:none;
 	font-size:9pt;
 	color:#333;
 	font-weight:bold;
 }
-.title span {
+.game .title span {
 	margin:0em;
 	font-size:7pt;
 	color:#999;
 	text-align:center;
 }
-.info {
+.game .info {
 	margin: 10px 0px 10px 80px;
 	padding-left:10px;
 	text-align:justify;

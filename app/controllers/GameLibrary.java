@@ -4,8 +4,6 @@
  */
 package controllers;
 
-import static play.modules.excel.Excel.renderExcel;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -53,7 +51,7 @@ public class GameLibrary extends Controller {
 	/**
 	 * Ajout d'un jeu à la collection
 	 */
-	@Check("USER,MODERATOR,ADMINISTRATOR")
+	//@Check("USER,MODERATOR,ADMINISTRATOR")
 	public static void addGame() {
 		User user = (User) renderArgs.get("user");
 		render(user);
@@ -82,7 +80,7 @@ public class GameLibrary extends Controller {
 		renderArgs.put("search", search);
 		// récupération de l'utilisateur connecté
 		User user = (User) renderArgs.get("user");
-		// Récupération de la plate-forme (si présente)
+		// TODO Récupération de la plate-forme (si présente)
 		// String platform = (String) renderArgs.get("filterPlatform");
 		// Constitution de la liste des plateformes distinctes
 		List<Game> platforms = Game.find(
@@ -157,33 +155,7 @@ public class GameLibrary extends Controller {
 		renderTemplate("Application/show.html", game);
 	}
 	
-	/**
-	 * Export la liste des jeux affichés dans le format souhaité
-	 */
-	public static void exportGamesList(Long gameListId) {
-		// Récupération de l'utilisateur connecté.
-		User user = (User) renderArgs.get("user");
-		Logger.debug("Export game list for user " + user.username);
-		// Si un utilisateur connecté.
-		if (user != null) {
-			Logger.debug(user.username + ": " + user.firstname + " "
-					+ user.lastname);
-			GameList gl = GameList.findById(gameListId);
-			// Création de la liste des jeux
-			List<Game> games = GameLibrary.getGamesFromGameList(gameListId, user);
-			
-			Logger.debug("Number of exported games: %d", games.size());
-			
-			// Preparation de la date de génération
-			Date dateOfTheDay = new Date();
-			DateFormat df = new SimpleDateFormat("dd-mm-yyyy");
-			String date = df.format(dateOfTheDay);
-			
-			// Définition du nom de fichier (pour FF)
-			renderArgs.put("fileName", "gamelist-"+user.username+"-"+date+"-"+gl.title.replace(' ', '_')+".xls");
-			renderExcel(user, games, date);
-		}
-	}
+
 
 	/**
 	 * Render Picture <code>type</code>/<code>number</code> for game
@@ -204,7 +176,7 @@ public class GameLibrary extends Controller {
 					"/public/images/games/", game, type, number, size));
 			
 			if(!of.exists()){
-				ThumbnailGenerator th = new ThumbnailGenerator();
+				ThumbnailGenerator th = ThumbnailGenerator.getInstance();
 				try {
 					th.create(
 							Play.getFile(GameLibrary.getPicturePath("/public/images/games/", game, type, number, "")),
@@ -334,7 +306,7 @@ public class GameLibrary extends Controller {
 	 * @param id
 	 *           Identifiant unique du jeu à afficher.
 	 */
-	@Check("USER,ADMINISTRATOR,MODERATOR")
+	//@Check("USER,ADMINISTRATOR,MODERATOR")
 	public static void show(Long id){
 		User user = (User) renderArgs.get("user");
 		Game game = Game.findById(id);

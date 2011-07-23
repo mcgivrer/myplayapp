@@ -29,7 +29,7 @@
 				title="&{'home.add.game.label.tooltip'}">&{'home.add.game.label'}</a></li>
 	#{/if}
 	#{if _gameList && _items}
-		<li><a class="button export" accesskey="E" href="@{GameLibrary.exportGamesList(_gameList.id)}" title="&{'home.export.game.label.tooltip'}">&{'home.export.game.label'}</a></li>
+		<li><a class="button export" accesskey="E" href="@{GameExport.exportGamesList(_gameList.id)}" title="&{'home.export.game.label.tooltip'}">&{'home.export.game.label'}</a></li>
 	#{/if}
 	</ul>
 #{/if}

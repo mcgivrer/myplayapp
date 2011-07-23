@@ -18,16 +18,27 @@ import shared.exceptions.ThumbnailException;
 
 import com.sun.image.codec.jpeg.JPEGCodec;
 import com.sun.image.codec.jpeg.JPEGImageEncoder;
-import com.sun.imageio.plugins.png.PNGImageWriter;
 
 /**
- * Thumbnail class generator from
+ * Thumbnail generator.
+ * give it input image and sizes target, thunmbs images will be 
+ * gerenated in the destination fodler.
  * 
- * @author frederic
+ * Size are Resolution object.
+ * 
+ * @author Frédéric Delorme<frederic.delorme@gmail.com>
  * 
  */
 public class ThumbnailGenerator {
+	
+	private static ThumbnailGenerator _instance;
 
+	
+	/**
+	 * Resolution entity to modelize thumbnail size and name.
+	 * @author frederic
+	 *
+	 */
 	protected class Resolution {
 		public int width;
 		public int height;
@@ -196,5 +207,17 @@ public class ThumbnailGenerator {
 			}
 		}
 		return res;
+	}
+	
+	/**
+	 * Singleton <code>getInstance()</code> implementation. if <code>_instance</code>
+	 * is not instantiate, instantiate it and return this.
+	 * @return
+	 */
+	public static ThumbnailGenerator getInstance(){
+		if(_instance==null){
+			_instance = new ThumbnailGenerator();
+		}
+		return _instance;
 	}
 }

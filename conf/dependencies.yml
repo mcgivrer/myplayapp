@@ -4,5 +4,6 @@ require:
     - play [1.2,)
     - play -> crud
     - play -> secure
-    - play -> excel [1.1,)
+    - play -> excel [1.2.1,)
     - play -> maven head
+    - play -> cloudbees 0.2.2
