@@ -12,7 +12,7 @@ public class BasicTest extends UnitTest {
 	
 	@Before
 	public void setup(){
-        Fixtures.load("initial-data.yml");
+        Fixtures.loadYaml("initial-data.yml");
         //retrieve admin user
 		user.findById(new Long(1));
 	}

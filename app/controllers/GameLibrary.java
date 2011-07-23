@@ -97,20 +97,6 @@ public class GameLibrary extends Controller {
 		// rendu de la page
 		renderTemplate("GameLibrary/search.html", games, user, platforms);
 	}
-
-	
-	/**
-	 * Retourne une liste des jeux formaté UL->LI pour un affichage en autocomplete.
-	 * @see GameLibrary#retrieveGamesWhereTitleLike(User, String)
-	 * @param search
-	 *            nom ou partie du nom de jeu à rechercher
-	 */
-	private static void searchGamesWhereTitleLike(String search) {
-		// récupération de l'utilisateur connecté
-		User user = (User) renderArgs.get("user");
-		List<Game> games = GameLibrary.retrieveGamesWhereTitleLike(user, search);
-		renderTemplate("GameLibrary/ajaxsearch.html", games);
-	}
 	
 	/**
 	 * Recherche sur le titre des jeux et retourne le résulats au format JSON 
